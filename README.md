@@ -68,6 +68,7 @@ xdg-open index.html
 random-website-explorer/
 ├── index.html          # Main HTML file
 ├── styles.css          # CSS styles and animations
+├── websites.js         # Website list data
 ├── script.js           # JavaScript functionality
 └── README.md           # This file
 ```
@@ -76,17 +77,14 @@ random-website-explorer/
 
 ### Adding New Websites
 
-To add your own websites, edit the `websites` array in `script.js`:
+To add your own websites, edit the `websites` array in `websites.js`:
 
 ```javascript
-const websites = [
-    {
-        name: "Your Website Name",
-        url: "https://yourwebsite.com",
-        description: "A brief description of your website"
-    },
-    // Add more websites here...
-];
+{
+    name: "Your Website Name",
+    url: "https://yourwebsite.com",
+    description: "A brief description of your website"
+}
 ```
 
 ### Modifying the Design
