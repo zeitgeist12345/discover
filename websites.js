@@ -144,5 +144,15 @@ const websites = [
         name: "This Is Sand",
         url: "https://thisissand.com",
         description: "Digital sand art creator"
+    },
+    {
+        name: "DeepSeek",
+        url: "https://deepseek.com",
+        description: "AI research and development company"
+    },
+    {
+        name: "Al Jazeera",
+        url: "https://www.aljazeera.com",
+        description: "International news and current affairs network"
     }
 ];
