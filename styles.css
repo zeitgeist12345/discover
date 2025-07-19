@@ -146,25 +146,25 @@ body {
     body {
         padding: 15px;
     }
-    
+
     .header {
         padding: 30px 15px;
     }
-    
+
     .controls {
         padding: 20px 15px;
     }
-    
+
     .btn {
         margin: 6px;
         min-width: 100px;
     }
-    
+
     .current-site {
         padding: 15px;
         margin: 15px auto;
     }
-    
+
 
 }
 
@@ -173,15 +173,15 @@ body {
     body {
         padding: 25px;
     }
-    
+
     .header {
         padding: 35px 25px;
     }
-    
+
     .controls {
         padding: 25px;
     }
-    
+
     .current-site {
         padding: 25px;
         margin: 25px auto;
@@ -193,15 +193,15 @@ body {
     body {
         padding: 30px;
     }
-    
+
     .header {
         padding: 40px 30px;
     }
-    
+
     .controls {
         padding: 30px;
     }
-    
+
     .current-site {
         padding: 30px;
         margin: 30px auto;
@@ -210,9 +210,10 @@ body {
 
 /* Ultra-wide screen optimization */
 @media (min-width: 1440px) {
+
     .header,
     .controls,
     .current-site {
         max-width: 1000px;
     }
-} 
+}
