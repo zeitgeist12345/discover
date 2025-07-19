@@ -113,7 +113,6 @@ let websiteHistory = [];
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            updateStats();
             showSuccessMessage("Ready to explore! Click 'Load Random Website' to begin.");
         });
 
@@ -184,7 +183,6 @@ function loadWebsite(index, addToHistory = true) {
 
     // Update UI
     updateCurrentSiteInfo(website);
-    updateStats();
     showSuccessMessage(`Opening ${website.name} in a new window...`);
 
     // Open the website in a new window/tab
@@ -198,8 +196,7 @@ function updateCurrentSiteInfo(website) {
 }
 
 function updateStats() {
-    document.getElementById('visited-count').textContent = visitedWebsites.length;
-    document.getElementById('total-count').textContent = websites.length;
+    // Stats functionality removed for minimalist design
 }
 
 function showSuccessMessage(message) {
@@ -209,15 +206,11 @@ function showSuccessMessage(message) {
     loading.style.display = 'flex';
     
     // Change the styling to show success
-    loading.style.background = '#d4edda';
-    loading.style.color = '#155724';
-    loading.querySelector('.spinner').style.display = 'none';
+    loading.style.color = '#4ade80';
     
     // Reset after 3 seconds
     setTimeout(() => {
-        loading.style.background = '#f8f9fa';
-        loading.style.color = '#6c757d';
-        loading.querySelector('.spinner').style.display = 'block';
+        loading.style.color = '#888';
         loading.querySelector('span').textContent = 'Ready to explore! Click "Load Random Website" to continue.';
     }, 3000);
 }
