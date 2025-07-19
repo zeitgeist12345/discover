@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Website Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🌐 Random Website Explorer</h1>
+        <p>Discover amazing websites from around the web!</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 10px;">
+            🚀 Websites open in new windows/tabs for the best experience!
+        </p>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="loadRandomWebsite()">🎲 Load Random Website</button>
+        <button class="btn" onclick="loadNextWebsite()">➡️ Next Website</button>
+        <button class="btn" onclick="loadPreviousWebsite()">⬅️ Previous Website</button>
+    </div>
+
+    <div class="current-site" id="current-site-info">
+        <h3>Current Website:</h3>
+        <a href="#" id="current-site-link" target="_blank">Click "Load Random Website" to start exploring!</a>
+    </div>
+
+    <div class="stats" id="stats">
+        <p>Websites visited: <span id="visited-count">0</span> | Total websites: <span id="total-count">0</span></p>
+    </div>
+
+    <div class="status-container">
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <span>Ready to explore! Click "Load Random Website" to begin.</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
