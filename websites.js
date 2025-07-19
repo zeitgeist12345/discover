@@ -17,7 +17,7 @@ const websites = [
     },
     {
         name: "Library Genesis",
-        url: "http://gen.lib.rus.ec/",
+        url: "https://libgen.li/",
         description: "Massive digital library of books, articles, and media"
     },
     {
@@ -51,13 +51,8 @@ const websites = [
         description: "Online LaTeX editor with real-time collaboration"
     },
     {
-        name: "My Side Project Rocks",
-        url: "https://mysideproject.rocks/",
-        description: "Showcase for early-stage side projects"
-    },
-    {
         name: "The Longest Blockchain",
-        url: "https://blog.ethereum.org/2014/05/24/longest-chain-rules/",
+        url: "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
         description: "Interesting perspective on blockchain strength"
     },
     {
@@ -66,19 +61,9 @@ const websites = [
         description: "Collection of random fun websites and games"
     },
     {
-        name: "Strange Loop",
-        url: "https://strangeloop.co/",
-        description: "Curated collection of the internet's most interesting corners"
-    },
-    {
         name: "Radio Garden",
         url: "http://radio.garden/",
         description: "Listen to live radio stations across the globe"
-    },
-    {
-        name: "Ocearch Shark Tracker",
-        url: "https://www.ocearch.org/tracker/",
-        description: "Real-time tracking of sharks and marine animals"
     },
     {
         name: "Window Swap",
@@ -91,18 +76,8 @@ const websites = [
         description: "Visual essays that explain ideas with data and visuals"
     },
     {
-        name: "Wait But Why",
-        url: "https://waitbutwhy.com/",
-        description: "Long-form articles with stick-figure illustrations"
-    },
-    {
         name: "xkcd",
         url: "https://xkcd.com/",
         description: "A webcomic of romance, sarcasm, math, and language"
-    },
-    {
-        name: "The Museum of Modern Betas",
-        url: "https://mobbeta.com/",
-        description: "Collection of new and experimental web projects"
     }
 ];
