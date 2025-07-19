@@ -181,18 +181,23 @@ function loadWebsite(index, addToHistory = true) {
         visitedWebsites.push(index);
     }
 
-    // Update UI
+    // Update UI first
     updateCurrentSiteInfo(website);
-    showSuccessMessage(`Opening ${website.name} in a new window...`);
-
+    
     // Open the website in a new window/tab
-    window.open(website.url, '_blank', 'noopener,noreferrer');
+    const newWindow = window.open(website.url, '_blank');
+    
+    if (newWindow) {
+        showSuccessMessage(`Opening ${website.name} in a new window...`);
+    } else {
+        showSuccessMessage(`Click the link above to visit ${website.name}`);
+    }
 }
 
 function updateCurrentSiteInfo(website) {
     const link = document.getElementById('current-site-link');
     link.href = website.url;
-    link.textContent = `${website.name} - ${website.description}`;
+    link.textContent = `${website.name} - ${website.url}`;
 }
 
 function updateStats() {
