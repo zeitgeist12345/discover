@@ -79,5 +79,70 @@ const websites = [
         name: "xkcd",
         url: "https://xkcd.com/",
         description: "A webcomic of romance, sarcasm, math, and language"
+    },
+    {
+        name: "Stellarium Web",
+        url: "https://stellarium-web.org/",
+        description: "Real-time 3D simulation of space with planetarium view"
+    },
+    {
+        name: "Patatap",
+        url: "https://patatap.com",
+        description: "Turn your keyboard into a sound machine with colorful animations"
+    },
+    {
+        name: "Little Alchemy 2",
+        url: "https://littlealchemy2.com",
+        description: "Combine elements to discover new objects (e.g., Earth + Fire = Lava)"
+    },
+    {
+        name: "Pointer Pointer",
+        url: "https://pointerpointer.com",
+        description: "Photos of people pointing at your cursor wherever you move it"
+    },
+    {
+        name: "Ncase.me",
+        url: "https://ncase.me",
+        description: "Interactive simulations about trust and human behavior"
+    },
+    {
+        name: "Connected Papers",
+        url: "https://www.connectedpapers.com",
+        description: "Visual tool to explore academic research connections"
+    },
+    {
+        name: "Quick, Draw!",
+        url: "https://quickdraw.withgoogle.com",
+        description: "AI game that guesses your doodles"
+    },
+    {
+        name: "A Soft Murmur",
+        url: "https://asoftmurmur.com",
+        description: "Mix ambient sounds (rain, waves) for focus"
+    },
+    {
+        name: "10 Minute Mail",
+        url: "https://10minutemail.com",
+        description: "Disposable email for spam-free signups"
+    },
+    {
+        name: "The Deep Sea",
+        url: "https://neal.fun/deep-sea",
+        description: "Interactive dive into ocean depths with fascinating facts"
+    },
+    {
+        name: "Don't Even Reply",
+        url: "https://dontevenreply.com",
+        description: "Hilarious fictional email exchanges"
+    },
+    {
+        name: "Scream Into the Void",
+        url: "https://screamintothevoid.com",
+        description: "Type your frustrations and hear a scream"
+    },
+    {
+        name: "This Is Sand",
+        url: "https://thisissand.com",
+        description: "Digital sand art creator"
     }
 ];
