@@ -139,28 +139,7 @@ body {
     text-align: center;
 }
 
-.status-container {
-    margin: 20px;
-    background: #0f0f0f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100px;
-    width: 100%;
-    max-width: 800px;
-}
 
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    color: #888;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-    font-weight: 300;
-    text-align: center;
-    padding: 20px;
-}
 
 /* Mobile-first responsive design */
 @media (max-width: 768px) {
@@ -186,10 +165,7 @@ body {
         margin: 15px auto;
     }
     
-    .status-container {
-        margin: 15px;
-        min-height: 80px;
-    }
+
 }
 
 /* Tablet optimization */
@@ -236,8 +212,7 @@ body {
 @media (min-width: 1440px) {
     .header,
     .controls,
-    .current-site,
-    .status-container {
+    .current-site {
         max-width: 1000px;
     }
 } 

@@ -113,7 +113,7 @@ let websiteHistory = [];
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            showSuccessMessage("Ready to explore! Click 'Load Random Website' to begin.");
+            // Page is ready
         });
 
 function loadRandomWebsite() {
@@ -125,7 +125,6 @@ function loadRandomWebsite() {
         visitedWebsites = [];
         websiteHistory = [];
         currentIndex = -1;
-        showSuccessMessage("All websites visited! Starting fresh...");
         setTimeout(loadRandomWebsite, 2000);
         return;
     }
@@ -154,7 +153,6 @@ function loadNextWebsite() {
 
 function loadPreviousWebsite() {
     if (websiteHistory.length === 0 || currentIndex <= 0) {
-        showSuccessMessage("No previous websites to go back to.");
         return;
     }
     
@@ -185,13 +183,7 @@ function loadWebsite(index, addToHistory = true) {
     updateCurrentSiteInfo(website);
     
     // Open the website in a new window/tab
-    const newWindow = window.open(website.url, '_blank');
-    
-    if (newWindow) {
-        showSuccessMessage(`Opening ${website.name} in a new window...`);
-    } else {
-        showSuccessMessage(`Click the link above to visit ${website.name}`);
-    }
+    window.open(website.url, '_blank');
 }
 
 function updateCurrentSiteInfo(website) {
@@ -206,25 +198,7 @@ function updateCurrentSiteInfo(website) {
     }
 }
 
-function updateStats() {
-    // Stats functionality removed for minimalist design
-}
 
-function showSuccessMessage(message) {
-    const loading = document.getElementById('loading');
-    
-    loading.querySelector('span').textContent = message;
-    loading.style.display = 'flex';
-    
-    // Change the styling to show success
-    loading.style.color = '#4ade80';
-    
-    // Reset after 3 seconds
-    setTimeout(() => {
-        loading.style.color = '#888';
-        loading.querySelector('span').textContent = 'Ready to explore! Click "Load Random Website" to continue.';
-    }, 3000);
-}
 
 // Keyboard shortcuts
 document.addEventListener('keydown', function(event) {
