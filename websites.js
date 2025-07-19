@@ -147,7 +147,7 @@ const websites = [
     },
     {
         name: "DeepSeek",
-        url: "https://deepseek.com",
+        url: "https://www.deepseek.com/en",
         description: "AI research and development company"
     },
     {
