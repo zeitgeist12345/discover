@@ -198,6 +198,12 @@ function updateCurrentSiteInfo(website) {
     const link = document.getElementById('current-site-link');
     link.href = website.url;
     link.textContent = `${website.name} - ${website.url}`;
+    
+    // Add description as a separate element
+    const description = document.getElementById('website-description');
+    if (description) {
+        description.textContent = website.description;
+    }
 }
 
 function updateStats() {
