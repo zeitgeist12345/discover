@@ -1,4 +1,4 @@
-// Static list of websites to explore (iframe-friendly)
+// Static list of websites to explore
 const websites = [
     {
         name: "Wikipedia",
@@ -222,6 +222,11 @@ function showSuccessMessage(message) {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', function(event) {
+    // Only trigger shortcuts if not typing in an input field
+    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+        return;
+    }
+    
     switch(event.key) {
         case 'ArrowRight':
             event.preventDefault();
@@ -245,7 +250,7 @@ document.querySelector('.header h1').addEventListener('click', function() {
     if (clickCount === 5) {
         this.textContent = '🎉 You found the secret! 🎉';
         setTimeout(() => {
-            this.textContent = '🌐 Random Website Explorer';
+            this.textContent = '🌐 Discover';
             clickCount = 0;
         }, 2000);
     }
