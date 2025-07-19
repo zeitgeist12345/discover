@@ -1,79 +1,39 @@
 // Static list of websites to explore
 const websites = [
     {
-        name: "Wikipedia",
-        url: "https://wikipedia.org",
-        description: "The free encyclopedia that anyone can edit"
+        name: "skribbl.io",
+        url: "https://skribbl.io/",
+        description: "Free multiplayer drawing and guessing game"
     },
     {
-        name: "GitHub",
-        url: "https://github.com",
-        description: "The world's leading software development platform"
+        name: "zeitgeist12345",
+        url: "https://zeitgeist12345.github.io/",
+        description: "The personal website of the creator of this project"
     },
     {
-        name: "Stack Overflow",
-        url: "https://stackoverflow.com",
-        description: "Where developers learn, share, & build careers"
+        name: "Sci-Hub",
+        url: "https://sci-hub.se/",
+        description: "Removing barriers in the way of science by providing free access to research papers"
     },
     {
-        name: "MDN Web Docs",
-        url: "https://developer.mozilla.org",
-        description: "Resources for developers, by developers"
+        name: "Library Genesis",
+        url: "http://gen.lib.rus.ec/",
+        description: "Massive digital library of books, articles, and media"
     },
     {
-        name: "W3Schools",
-        url: "https://w3schools.com",
-        description: "The world's largest web developer site"
+        name: "Internet Archive",
+        url: "https://archive.org/",
+        description: "Digital library of free & borrowable books, movies, music & Wayback Machine"
     },
     {
-        name: "FreeCodeCamp",
-        url: "https://freecodecamp.org",
-        description: "Learn to code for free"
+        name: "The Useless Web",
+        url: "https://theuselessweb.com/",
+        description: "Random fun and bizarre websites with one click"
     },
     {
-        name: "Dev.to",
-        url: "https://dev.to",
-        description: "A constructive and inclusive social network for software developers"
-    },
-    {
-        name: "CSS-Tricks",
-        url: "https://css-tricks.com",
-        description: "Tips, tricks, and techniques for CSS"
-    },
-    {
-        name: "Smashing Magazine",
-        url: "https://smashingmagazine.com",
-        description: "For professional web designers and developers"
-    },
-    {
-        name: "A List Apart",
-        url: "https://alistapart.com",
-        description: "For people who make websites"
-    },
-    {
-        name: "Web Design Weekly",
-        url: "https://webdesignweekly.com",
-        description: "A free weekly newsletter for web designers"
-    },
-    {
-        name: "The Verge",
-        url: "https://theverge.com",
-        description: "Technology, science, art, and culture"
-    },
-    {
-        name: "TechCrunch",
-        url: "https://techcrunch.com",
-        description: "Latest technology news and startup information"
-    },
-    {
-        name: "Ars Technica",
-        url: "https://arstechnica.com",
-        description: "Technology news and analysis"
-    },
-    {
-        name: "Hacker News",
-        url: "https://news.ycombinator.com",
-        description: "Social news website focusing on computer science"
+        name: "Play Counter-Strike 1.6",
+        url: "https://play-cs.com/",
+        description: "Play classic CS 1.6 online without downloading"
     },
     {
         name: "Product Hunt",
@@ -81,28 +41,68 @@ const websites = [
         description: "The best new products in tech"
     },
     {
-        name: "Dribbble",
-        url: "https://dribbble.com",
-        description: "Discover and connect with designers worldwide"
+        name: "Hacker News",
+        url: "https://news.ycombinator.com",
+        description: "Social news website focusing on computer science"
     },
     {
-        name: "Behance",
-        url: "https://behance.net",
-        description: "Showcase and discover creative work"
+        name: "Overleaf",
+        url: "https://www.overleaf.com/",
+        description: "Online LaTeX editor with real-time collaboration"
     },
     {
-        name: "Awwwards",
-        url: "https://awwwards.com",
-        description: "The awards for design, creativity and innovation"
+        name: "My Side Project Rocks",
+        url: "https://mysideproject.rocks/",
+        description: "Showcase for early-stage side projects"
     },
     {
-        name: "Codepen",
-        url: "https://codepen.io",
-        description: "An online code editor and open-source learning environment"
+        name: "The Longest Blockchain",
+        url: "https://blog.ethereum.org/2014/05/24/longest-chain-rules/",
+        description: "Interesting perspective on blockchain strength"
     },
     {
-        name: "JSFiddle",
-        url: "https://jsfiddle.net",
-        description: "Online code editor for web developers"
+        name: "Bored Button",
+        url: "https://www.boredbutton.com/",
+        description: "Collection of random fun websites and games"
+    },
+    {
+        name: "Strange Loop",
+        url: "https://strangeloop.co/",
+        description: "Curated collection of the internet's most interesting corners"
+    },
+    {
+        name: "Radio Garden",
+        url: "http://radio.garden/",
+        description: "Listen to live radio stations across the globe"
+    },
+    {
+        name: "Ocearch Shark Tracker",
+        url: "https://www.ocearch.org/tracker/",
+        description: "Real-time tracking of sharks and marine animals"
+    },
+    {
+        name: "Window Swap",
+        url: "https://window-swap.com/",
+        description: "See the view from someone else's window around the world"
+    },
+    {
+        name: "The Pudding",
+        url: "https://pudding.cool/",
+        description: "Visual essays that explain ideas with data and visuals"
+    },
+    {
+        name: "Wait But Why",
+        url: "https://waitbutwhy.com/",
+        description: "Long-form articles with stick-figure illustrations"
+    },
+    {
+        name: "xkcd",
+        url: "https://xkcd.com/",
+        description: "A webcomic of romance, sarcasm, math, and language"
+    },
+    {
+        name: "The Museum of Modern Betas",
+        url: "https://mobbeta.com/",
+        description: "Collection of new and experimental web projects"
     }
-]; 
+];
