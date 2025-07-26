@@ -40,7 +40,10 @@ async function uploadWebsitesToCosmosDB() {
                 description: website.description,
                 createdAt: new Date().toISOString(),
                 category: 'curated',
-                active: true
+                active: true,
+                views: 0,
+                likes: 0,
+                dislikes: 0
             };
 
             try {
