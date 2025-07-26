@@ -156,3 +156,6 @@ const websites = [
         description: "International news and current affairs network"
     }
 ];
+
+// Export for use in other modules
+module.exports = { websites };

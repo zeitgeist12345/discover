@@ -1,0 +1,22 @@
+{
+  "name": "discover-cosmosdb-uploader",
+  "version": "1.0.0",
+  "description": "Helper script to upload websites list to Azure Cosmos DB",
+  "main": "upload-to-cosmosdb.js",
+  "scripts": {
+    "upload": "node upload-to-cosmosdb.js",
+    "setup": "node -e \"require('./upload-to-cosmosdb.js').setupCosmosDB()\""
+  },
+  "dependencies": {
+    "@azure/cosmos": "^4.0.0",
+    "@azure/identity": "^4.0.0"
+  },
+  "keywords": [
+    "azure",
+    "cosmosdb",
+    "upload",
+    "websites"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+} 
