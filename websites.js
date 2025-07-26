@@ -1,5 +1,5 @@
 // Static list of websites to explore
-const websites = [
+window.websites = [
     {
         name: "skribbl.io",
         url: "https://skribbl.io/",
@@ -157,5 +157,7 @@ const websites = [
     }
 ];
 
-// Export for use in other modules
-module.exports = { websites };
+// Export for use in other modules (for Node.js compatibility)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { websites: window.websites };
+}

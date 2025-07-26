@@ -70,6 +70,20 @@ body {
     background: #444;
 }
 
+.btn:disabled {
+    background: #222;
+    border-color: #333;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn:disabled:hover {
+    background: #222;
+    border-color: #333;
+    color: #666;
+}
+
 .current-site {
     background: #0f0f0f;
     padding: 20px;

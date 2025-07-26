@@ -2,13 +2,158 @@
 let currentIndex = -1;
 let visitedWebsites = [];
 let websiteHistory = [];
+let websites = []; // Will be populated from API
+let isLoading = false;
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function () {
-    // Page is ready
+    // Load websites based on configuration
+    if (CONFIG.USE_API) {
+        loadWebsitesFromAPI();
+    } else {
+        loadStaticWebsites();
+    }
 });
 
+async function loadWebsitesFromAPI() {
+    try {
+        isLoading = true;
+        updateLoadingState(true);
+        
+        // Create a timeout promise
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error('Request timeout')), CONFIG.API_TIMEOUT);
+        });
+        
+        // Create the fetch promise
+        const fetchPromise = fetch(`${CONFIG.API_BASE_URL}/getWebsites`);
+        
+        // Race between fetch and timeout
+        const response = await Promise.race([fetchPromise, timeoutPromise]);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        websites = await response.json();
+        
+        // Sort websites by name for consistency
+        websites.sort((a, b) => a.name.localeCompare(b.name));
+        
+        console.log(`Loaded ${websites.length} websites from API`);
+        updateLoadingState(false);
+        
+        // Enable the random website button
+        enableControls();
+        
+    } catch (error) {
+        console.error('Failed to load websites from API:', error);
+        updateLoadingState(false);
+        
+        if (CONFIG.ENABLE_FALLBACK) {
+            console.log('Attempting fallback to static websites...');
+            await loadStaticWebsites();
+        } else {
+            showErrorMessage(CONFIG.ERROR_MESSAGE);
+        }
+    }
+}
+
+async function loadStaticWebsites() {
+    try {
+        // Check if websites are already loaded
+        if (typeof window.websites !== 'undefined' && window.websites.length > 0) {
+            websites = window.websites;
+            console.log(`Loaded ${websites.length} websites from static file`);
+            updateLoadingState(false);
+            enableControls();
+            return;
+        }
+        
+        // Try to load from the static websites.js file
+        const script = document.createElement('script');
+        script.src = 'websites.js';
+        script.onload = function() {
+            if (typeof window.websites !== 'undefined' && window.websites.length > 0) {
+                websites = window.websites;
+                console.log(`Loaded ${websites.length} websites from static file`);
+                updateLoadingState(false);
+                enableControls();
+            } else {
+                showErrorMessage('No websites available. Please check your connection and refresh.');
+            }
+        };
+        script.onerror = function() {
+            showErrorMessage('Unable to load websites. Please check your connection and refresh.');
+        };
+        document.head.appendChild(script);
+    } catch (error) {
+        console.error('Failed to load static websites:', error);
+        showErrorMessage('No websites available. Please check your connection and refresh.');
+    }
+}
+
+function updateLoadingState(loading) {
+    const buttons = document.querySelectorAll('.btn');
+    const randomButton = document.querySelector('.btn:nth-child(2)'); // Random website button
+    
+    buttons.forEach(btn => {
+        btn.disabled = loading;
+    });
+    
+    if (loading) {
+        if (randomButton) {
+            randomButton.textContent = CONFIG.LOADING_TEXT;
+        }
+    } else {
+        if (randomButton) {
+            randomButton.textContent = CONFIG.RANDOM_BUTTON_TEXT;
+        }
+    }
+}
+
+function enableControls() {
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.disabled = false;
+    });
+}
+
+function showErrorMessage(message) {
+    const currentSiteInfo = document.getElementById('current-site-info');
+    currentSiteInfo.innerHTML = `
+        <h3>Error</h3>
+        <div class="website-box" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.1);">
+            <p style="color: #ef4444; margin: 0;">${message}</p>
+        </div>
+    `;
+}
+
+async function incrementWebsiteViews(websiteId) {
+    if (!CONFIG.ENABLE_VIEW_TRACKING) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&category=curated`, {
+            method: 'POST'
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            console.log(`Incremented views for ${websiteId}: ${result.views}`);
+        }
+    } catch (error) {
+        console.error('Failed to increment views:', error);
+        // Don't show error to user, just log it
+    }
+}
+
 function loadRandomWebsite() {
+    if (isLoading || websites.length === 0) {
+        return;
+    }
+
     // Get a random website that hasn't been visited yet
     const unvisitedWebsites = websites.filter((_, index) => !visitedWebsites.includes(index));
 
@@ -73,6 +218,11 @@ function loadWebsite(index, addToHistory = true) {
 
     // Update UI first
     updateCurrentSiteInfo(website);
+
+    // Increment views in the background (don't wait for it)
+    if (website.id) {
+        incrementWebsiteViews(website.id);
+    }
 
     // Open the website in a new window/tab
     window.open(website.url, '_blank');

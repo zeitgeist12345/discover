@@ -7,6 +7,21 @@ const CONTAINER_NAME = 'list';
 const MANAGED_IDENTITY_CLIENT_ID = process.env.AZURE_CLIENT_ID;
 
 module.exports = async function (context, req) {
+    // Handle CORS preflight requests
+    if (req.method === 'OPTIONS') {
+        context.res = {
+            status: 200,
+            headers: {
+                'Access-Control-Allow-Origin': 'https://zeitgeist12345.github.io',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Max-Age': '86400'
+            },
+            body: {}
+        };
+        return;
+    }
+
     try {
         const credential = new DefaultAzureCredential({
             managedIdentityClientId: MANAGED_IDENTITY_CLIENT_ID
@@ -19,13 +34,23 @@ module.exports = async function (context, req) {
         const { resources: websites } = await container.items.readAll().fetchAll();
         context.res = {
             status: 200,
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://zeitgeist12345.github.io',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            },
             body: websites
         };
     } catch (err) {
         context.log.error('Error fetching websites:', err);
         context.res = {
             status: 500,
+            headers: { 
+                'Access-Control-Allow-Origin': 'https://zeitgeist12345.github.io',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            },
             body: { error: 'Failed to fetch websites', details: err.message }
         };
     }
