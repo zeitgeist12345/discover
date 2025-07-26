@@ -153,6 +153,106 @@ body {
     text-align: center;
 }
 
+/* Website Stats Styles */
+.website-stats {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.stat-icon {
+    font-size: 1.2em;
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #4ade80;
+    margin-bottom: 2px;
+}
+
+.stat-label {
+    font-size: 0.7em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.action-btn {
+    background: #333;
+    color: #ffffff;
+    border: 1px solid #555;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 400;
+    min-width: 80px;
+}
+
+.action-btn:hover {
+    background: #555;
+    border-color: #777;
+    transform: translateY(-1px);
+}
+
+.action-btn:active {
+    background: #444;
+    transform: translateY(0);
+}
+
+.action-btn:disabled {
+    background: #222;
+    border-color: #333;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.like-btn:hover {
+    background: #059669;
+    border-color: #10b981;
+}
+
+.dislike-btn:hover {
+    background: #dc2626;
+    border-color: #ef4444;
+}
+
+.like-btn.liked {
+    background: #059669;
+    border-color: #10b981;
+    color: #ffffff;
+}
+
+.dislike-btn.disliked {
+    background: #dc2626;
+    border-color: #ef4444;
+    color: #ffffff;
+}
 
 
 /* Mobile-first responsive design */

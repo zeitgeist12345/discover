@@ -26,6 +26,35 @@
         <div class="website-box">
             <a href="#" id="current-site-link" target="_blank">Loading websites from API...<br>Please wait while we fetch the latest curated list!</a>
             <div id="website-description" class="website-description"></div>
+            
+            <!-- Stats and Action Buttons -->
+            <div class="website-stats" id="website-stats" style="display: none;">
+                <div class="stats-row">
+                    <span class="stat-item">
+                        <span class="stat-icon">👁️</span>
+                        <span class="stat-value" id="views-count">0</span>
+                        <span class="stat-label">views</span>
+                    </span>
+                    <span class="stat-item">
+                        <span class="stat-icon">👍</span>
+                        <span class="stat-value" id="likes-count">0</span>
+                        <span class="stat-label">likes</span>
+                    </span>
+                    <span class="stat-item">
+                        <span class="stat-icon">👎</span>
+                        <span class="stat-value" id="dislikes-count">0</span>
+                        <span class="stat-label">dislikes</span>
+                    </span>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn like-btn" id="like-btn" onclick="likeWebsite()">
+                        👍 Like
+                    </button>
+                    <button class="action-btn dislike-btn" id="dislike-btn" onclick="dislikeWebsite()">
+                        👎 Dislike
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 

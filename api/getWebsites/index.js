@@ -6,17 +6,34 @@ const DATABASE_NAME = 'websites';
 const CONTAINER_NAME = 'list';
 const MANAGED_IDENTITY_CLIENT_ID = process.env.AZURE_CLIENT_ID;
 
+// CORS configuration
+const ALLOWED_ORIGINS = [
+    'https://zeitgeist12345.github.io',
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:3000'
+];
+
+function getCorsHeaders(origin) {
+    const corsOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+    return {
+        'Access-Control-Allow-Origin': corsOrigin,
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Max-Age': '86400'
+    };
+}
+
 module.exports = async function (context, req) {
+    const origin = req.headers.origin || req.headers.Origin;
+    const corsHeaders = getCorsHeaders(origin);
+    
     // Handle CORS preflight requests
     if (req.method === 'OPTIONS') {
         context.res = {
             status: 200,
-            headers: {
-                'Access-Control-Allow-Origin': 'https://zeitgeist12345.github.io',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'Access-Control-Max-Age': '86400'
-            },
+            headers: corsHeaders,
             body: {}
         };
         return;
@@ -36,9 +53,7 @@ module.exports = async function (context, req) {
             status: 200,
             headers: { 
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://zeitgeist12345.github.io',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type'
+                ...corsHeaders
             },
             body: websites
         };
@@ -46,11 +61,7 @@ module.exports = async function (context, req) {
         context.log.error('Error fetching websites:', err);
         context.res = {
             status: 500,
-            headers: { 
-                'Access-Control-Allow-Origin': 'https://zeitgeist12345.github.io',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type'
-            },
+            headers: corsHeaders,
             body: { error: 'Failed to fetch websites', details: err.message }
         };
     }

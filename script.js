@@ -4,6 +4,8 @@ let visitedWebsites = [];
 let websiteHistory = [];
 let websites = []; // Will be populated from API
 let isLoading = false;
+let currentWebsiteId = null;
+let userActions = new Map(); // Track user actions per website to prevent duplicates
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function () {
@@ -129,23 +131,76 @@ function showErrorMessage(message) {
     `;
 }
 
-async function incrementWebsiteViews(websiteId) {
+async function updateWebsiteStats(websiteId, action) {
     if (!CONFIG.ENABLE_VIEW_TRACKING) {
         return;
     }
     
+    // Check if user has already performed this action for this website
+    const actionKey = `${websiteId}-${action}`;
+    if (userActions.has(actionKey)) {
+        console.log(`User already performed ${action} for ${websiteId}`);
+        return;
+    }
+    
     try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&category=curated`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&category=curated&action=${action}`, {
             method: 'POST'
         });
         
         if (response.ok) {
             const result = await response.json();
-            console.log(`Incremented views for ${websiteId}: ${result.views}`);
+            console.log(`Updated ${action} for ${websiteId}:`, result);
+            
+            // Mark this action as performed
+            userActions.set(actionKey, true);
+            
+            // Update the UI with new stats
+            updateStatsDisplay(result);
+            
+            // Update button states
+            updateButtonStates(action);
+            
+        } else {
+            console.error(`Failed to update ${action} for ${websiteId}:`, response.status);
         }
     } catch (error) {
-        console.error('Failed to increment views:', error);
-        // Don't show error to user, just log it
+        console.error(`Failed to update ${action} for ${websiteId}:`, error);
+    }
+}
+
+function updateStatsDisplay(stats) {
+    const viewsCount = document.getElementById('views-count');
+    const likesCount = document.getElementById('likes-count');
+    const dislikesCount = document.getElementById('dislikes-count');
+    
+    if (viewsCount) viewsCount.textContent = stats.views || 0;
+    if (likesCount) likesCount.textContent = stats.likes || 0;
+    if (dislikesCount) dislikesCount.textContent = stats.dislikes || 0;
+}
+
+function updateButtonStates(action) {
+    const likeBtn = document.getElementById('like-btn');
+    const dislikeBtn = document.getElementById('dislike-btn');
+    
+    if (action === 'like') {
+        likeBtn.classList.add('liked');
+        dislikeBtn.classList.remove('disliked');
+    } else if (action === 'dislike') {
+        dislikeBtn.classList.add('disliked');
+        likeBtn.classList.remove('liked');
+    }
+}
+
+function likeWebsite() {
+    if (currentWebsiteId) {
+        updateWebsiteStats(currentWebsiteId, 'like');
+    }
+}
+
+function dislikeWebsite() {
+    if (currentWebsiteId) {
+        updateWebsiteStats(currentWebsiteId, 'dislike');
     }
 }
 
@@ -219,9 +274,12 @@ function loadWebsite(index, addToHistory = true) {
     // Update UI first
     updateCurrentSiteInfo(website);
 
+    // Track the current website ID for stats
+    currentWebsiteId = website.id;
+
     // Increment views in the background (don't wait for it)
     if (website.id) {
-        incrementWebsiteViews(website.id);
+        updateWebsiteStats(website.id, 'view');
     }
 
     // Open the website in a new window/tab
@@ -230,6 +288,10 @@ function loadWebsite(index, addToHistory = true) {
 
 function updateCurrentSiteInfo(website) {
     const link = document.getElementById('current-site-link');
+    const statsDiv = document.getElementById('website-stats');
+    const likeBtn = document.getElementById('like-btn');
+    const dislikeBtn = document.getElementById('dislike-btn');
+    
     link.href = website.url;
     link.textContent = `${website.name} - ${website.url}`;
 
@@ -238,6 +300,22 @@ function updateCurrentSiteInfo(website) {
     if (description) {
         description.textContent = website.description;
     }
+
+    // Show stats and reset button states
+    if (statsDiv) {
+        statsDiv.style.display = 'block';
+    }
+    
+    // Reset button states
+    if (likeBtn) likeBtn.classList.remove('liked');
+    if (dislikeBtn) dislikeBtn.classList.remove('disliked');
+    
+    // Update stats with current data
+    updateStatsDisplay({
+        views: website.views || 0,
+        likes: website.likes || 0,
+        dislikes: website.dislikes || 0
+    });
 }
 
 
