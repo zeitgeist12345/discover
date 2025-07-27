@@ -2,7 +2,7 @@ const { CosmosClient } = require('@azure/cosmos');
 const { DefaultAzureCredential } = require('@azure/identity');
 
 // Import the websites array from the local file
-const { websites } = require('./websites.js');
+const { websites } = require('./websites-node.js');
 
 // Cosmos DB configuration
 const COSMOS_ENDPOINT = 'https://discover-cosmosdb.documents.azure.com:443/';

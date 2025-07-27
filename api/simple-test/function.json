@@ -5,8 +5,8 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["get", "options"],
-      "route": "getWebsites"
+      "methods": ["get", "post", "options"],
+      "route": "simple-test"
     },
     {
       "type": "http",

@@ -1,5 +1,5 @@
 // Test script for the Azure Functions API
-const API_BASE_URL = 'https://discover-api.azurewebsites.net/api';
+const API_BASE_URL = 'https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api';
 
 async function testAPI() {
     console.log('🧪 Testing Azure Functions API...\n');

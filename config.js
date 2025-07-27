@@ -1,7 +1,7 @@
 // Configuration for Discover website
 const CONFIG = {
     // API Configuration
-    API_BASE_URL: 'https://discover-api.azurewebsites.net/api',
+    API_BASE_URL: 'https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api',
     
     // Feature flags
     USE_API: true,           // Enable API mode for testing
