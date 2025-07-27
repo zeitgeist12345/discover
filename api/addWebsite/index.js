@@ -23,14 +23,14 @@ module.exports = async function (context, req) {
     }
 
     try {
-        // Validate required fields
-        const { name, url, description, category = 'user-submitted' } = req.body;
+        // Validate required fields (more lenient)
+        const { name, url, description = '', category = 'user-submitted' } = req.body;
         
-        if (!name || !url || !description) {
+        if (!name || !url) {
             context.res = {
                 status: 400,
                 body: { 
-                    error: 'Missing required fields: name, url, and description are required' 
+                    error: 'Missing required fields: name and url are required' 
                 },
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -41,14 +41,22 @@ module.exports = async function (context, req) {
             return;
         }
 
+        // Normalize and validate URL format (more lenient)
+        let normalizedUrl = url.trim();
+        
+        // Add protocol if missing
+        if (!normalizedUrl.startsWith('http://') && !normalizedUrl.startsWith('https://')) {
+            normalizedUrl = 'https://' + normalizedUrl;
+        }
+        
         // Validate URL format
         try {
-            new URL(url);
+            new URL(normalizedUrl);
         } catch (error) {
             context.res = {
                 status: 400,
                 body: { 
-                    error: 'Invalid URL format' 
+                    error: 'Invalid URL format. Please provide a valid website address.' 
                 },
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -71,10 +79,10 @@ module.exports = async function (context, req) {
 
         const container = client.database(DATABASE_NAME).container(CONTAINER_NAME);
 
-        // Check if website already exists
+        // Check if website already exists (using normalized URL)
         const querySpec = {
             query: "SELECT * FROM c WHERE c.url = @url",
-            parameters: [{ name: "@url", value: url.trim() }]
+            parameters: [{ name: "@url", value: normalizedUrl }]
         };
 
         const { resources: existingWebsites } = await container.items.query(querySpec).fetchAll();
@@ -94,14 +102,14 @@ module.exports = async function (context, req) {
             return;
         }
 
-        // Create new website object
+        // Create new website object (more lenient)
         const id = `website-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
         const newWebsite = {
             id: id,
-            name: name.trim(),
-            url: url.trim(),
-            description: description.trim(),
-            category: category,
+            name: name.trim() || 'Untitled Website',
+            url: normalizedUrl,
+            description: description.trim() || 'A user-submitted website',
+            category: category || 'user-submitted',
             createdAt: new Date().toISOString(),
             active: true,
             views: 0,
