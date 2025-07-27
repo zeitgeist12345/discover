@@ -477,10 +477,73 @@ function showAddWebsiteForm() {
     // Clear any existing error messages
     hideModalError();
     
+    // Add custom validation listeners
+    addCustomValidation();
+    
     // Focus on first input
     setTimeout(() => {
         document.getElementById('website-name').focus();
     }, 100);
+}
+
+function addCustomValidation() {
+    const form = document.getElementById('add-website-form');
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+    
+    inputs.forEach(input => {
+        // Remove existing listeners to prevent duplicates
+        input.removeEventListener('invalid', handleInvalidInput);
+        input.removeEventListener('input', clearInputError);
+        
+        // Add new listeners
+        input.addEventListener('invalid', handleInvalidInput);
+        input.addEventListener('input', clearInputError);
+    });
+}
+
+function handleInvalidInput(event) {
+    event.preventDefault();
+    
+    const input = event.target;
+    const fieldName = input.getAttribute('name');
+    let errorMessage = '';
+    
+    // Custom error messages for different fields
+    switch(fieldName) {
+        case 'name':
+            errorMessage = 'Please enter a link name';
+            break;
+        case 'url':
+            errorMessage = 'Please enter a valid URL (e.g., https://example.com)';
+            break;
+        case 'description':
+            errorMessage = 'Please enter a description for the link';
+            break;
+        default:
+            errorMessage = 'This field is required';
+    }
+    
+    // Show error in modal
+    showModalError(errorMessage);
+    
+    // Add visual error styling to the input
+    input.classList.add('input-error');
+    
+    // Focus on the problematic field
+    input.focus();
+}
+
+function clearInputError(event) {
+    const input = event.target;
+    input.classList.remove('input-error');
+    hideModalError();
+}
+
+function clearAllInputErrors() {
+    const inputs = document.querySelectorAll('.input-error');
+    inputs.forEach(input => {
+        input.classList.remove('input-error');
+    });
 }
 
 function hideAddWebsiteForm() {
@@ -516,6 +579,22 @@ function hideModalError() {
 
 async function submitWebsite(event) {
     event.preventDefault();
+    
+    // Clear any existing errors
+    hideModalError();
+    clearAllInputErrors();
+    
+    // Check if form is valid
+    const form = event.target;
+    if (!form.checkValidity()) {
+        // Trigger validation for the first invalid field
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) {
+            firstInvalid.focus();
+            handleInvalidInput({ target: firstInvalid, preventDefault: () => {} });
+        }
+        return;
+    }
     
     const submitBtn = document.getElementById('submit-btn');
     const originalText = submitBtn.textContent;
