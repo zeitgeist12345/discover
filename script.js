@@ -172,6 +172,38 @@ async function updateWebsiteStats(websiteId, action) {
         return;
     }
     
+    // Optimistic update - update UI immediately
+    const currentStats = {
+        views: parseInt(document.getElementById('views-count').textContent) || 0,
+        likes: parseInt(document.getElementById('likes-count').textContent) || 0,
+        dislikes: parseInt(document.getElementById('dislikes-count').textContent) || 0
+    };
+    
+    // Increment the appropriate counter
+    switch (action) {
+        case 'view':
+            currentStats.views++;
+            break;
+        case 'like':
+            currentStats.likes++;
+            break;
+        case 'dislike':
+            currentStats.dislikes++;
+            break;
+    }
+    
+    // Update UI immediately (optimistic)
+    updateStatsDisplay(currentStats);
+    
+    // Mark this action as performed to prevent duplicate clicks
+    userActions.set(actionKey, true);
+    
+    // Update button states for like/dislike
+    if (action === 'like' || action === 'dislike') {
+        updateButtonStates(action);
+    }
+    
+    // Sync with server in the background
     try {
         const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${action}`, {
             method: 'POST'
@@ -179,33 +211,38 @@ async function updateWebsiteStats(websiteId, action) {
         
         if (response.ok) {
             const result = await response.json();
-            console.log(`Updated ${action} for ${websiteId}:`, result);
+            console.log(`Synced ${action} for ${websiteId}:`, result);
             
-            // Mark this action as performed
-            userActions.set(actionKey, true);
-            
-            // Update the UI with new stats
+            // Update UI with actual server response (in case there were any server-side adjustments)
             updateStatsDisplay(result);
             
-            // Update button states
-            updateButtonStates(action);
-            
         } else {
-            console.error(`Failed to update ${action} for ${websiteId}:`, response.status);
+            console.error(`Failed to sync ${action} for ${websiteId}:`, response.status);
+            // Optionally revert the optimistic update on error
+            // For now, we'll keep the optimistic update for better UX
         }
     } catch (error) {
-        console.error(`Failed to update ${action} for ${websiteId}:`, error);
+        console.error(`Failed to sync ${action} for ${websiteId}:`, error);
+        // Optionally revert the optimistic update on error
+        // For now, we'll keep the optimistic update for better UX
     }
 }
 
-function updateStatsDisplay(stats) {
+function updateStatsDisplay(stats, forceUpdate = false) {
     const viewsCount = document.getElementById('views-count');
     const likesCount = document.getElementById('likes-count');
     const dislikesCount = document.getElementById('dislikes-count');
     
-    if (viewsCount) viewsCount.textContent = stats.views || 0;
-    if (likesCount) likesCount.textContent = stats.likes || 0;
-    if (dislikesCount) dislikesCount.textContent = stats.dislikes || 0;
+    // Only update if forceUpdate is true or if the new value is higher (preserve optimistic updates)
+    if (viewsCount && (forceUpdate || (stats.views || 0) > parseInt(viewsCount.textContent))) {
+        viewsCount.textContent = stats.views || 0;
+    }
+    if (likesCount && (forceUpdate || (stats.likes || 0) > parseInt(likesCount.textContent))) {
+        likesCount.textContent = stats.likes || 0;
+    }
+    if (dislikesCount && (forceUpdate || (stats.dislikes || 0) > parseInt(dislikesCount.textContent))) {
+        dislikesCount.textContent = stats.dislikes || 0;
+    }
 }
 
 function updateButtonStates(action) {
@@ -313,14 +350,18 @@ function loadWebsite(index, addToHistory = true) {
         visitedWebsites.push(index);
     }
 
-    // Update UI first
-    updateCurrentSiteInfo(website);
-
     // Track the current website ID for stats
     currentWebsiteId = website.id;
 
-    // Increment views in the background (don't wait for it)
-    if (website.id) {
+    // Update UI first
+    updateCurrentSiteInfo(website);
+
+    // Optimistically increment views immediately
+    if (website.id && CONFIG.ENABLE_VIEW_TRACKING) {
+        const currentViews = parseInt(document.getElementById('views-count').textContent) || 0;
+        document.getElementById('views-count').textContent = currentViews + 1;
+        
+        // Sync with server in the background
         updateWebsiteStats(website.id, 'view');
     }
 
@@ -353,12 +394,12 @@ function updateCurrentSiteInfo(website) {
     if (likeBtn) likeBtn.classList.remove('liked');
     if (dislikeBtn) dislikeBtn.classList.remove('disliked');
     
-    // Update stats with current data
+    // Update stats with current data (force update for initial load)
     updateStatsDisplay({
         views: website.views || 0,
         likes: website.likes || 0,
         dislikes: website.dislikes || 0
-    });
+    }, true);
 }
 
 
