@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "generatedAt": "2025-07-27T09:39:04.000Z",
+    "apiUrl": "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api",
+    "totalWebsites": 58,
+    "analysis": {
+      "total": 58,
+      "filtered": 2,
+      "shown": 56,
+      "byReason": {
+        "Total votes ≤ 3": 54,
+        "Undesirable score < 0.8 (64.5%)": 1,
+        "Undesirable score < 0.8 (25.0%)": 1,
+        "Undesirable score ≥ 0.8 (80.0%)": 1,
+        "Undesirable score ≥ 0.8 (100.0%)": 1
+      },
+      "byScore": {
+        "0%": 42,
+        "1-25%": 1,
+        "26-50%": 10,
+        "51-75%": 1,
+        "76-79%": 0,
+        "80-100%": 4
+      },
+      "byVoteCount": {
+        "0 votes": 34,
+        "1-3 votes": 20,
+        "4-10 votes": 1,
+        "11-50 votes": 3,
+        "50+ votes": 0
+      }
+    }
+  },
+  "analysis": {
+    "total": 58,
+    "filtered": 2,
+    "shown": 56,
+    "byReason": {
+      "Total votes ≤ 3": 54,
+      "Undesirable score < 0.8 (64.5%)": 1,
+      "Undesirable score < 0.8 (25.0%)": 1,
+      "Undesirable score ≥ 0.8 (80.0%)": 1,
+      "Undesirable score ≥ 0.8 (100.0%)": 1
+    },
+    "byScore": {
+      "0%": 42,
+      "1-25%": 1,
+      "26-50%": 10,
+      "51-75%": 1,
+      "76-79%": 0,
+      "80-100%": 4
+    },
+    "byVoteCount": {
+      "0 votes": 34,
+      "1-3 votes": 20,
+      "4-10 votes": 1,
+      "11-50 votes": 3,
+      "50+ votes": 0
+    }
+  }
+}

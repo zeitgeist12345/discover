@@ -35,24 +35,35 @@ module.exports = async function (context, req) {
             .query("SELECT * FROM c")
             .fetchAll();
 
-        const filteredWebsites = resources.filter(website => {
-            const likes = website.likes || 0;
-            const dislikes = website.dislikes || 0;
-            const total = likes + dislikes;
-            
-            // If less votes, consider it okay
-            if (total <= 3) {
-                return true;
-            }
-            
-            const undesirable_score = dislikes / Math.max(total, 1);
-            
-            return undesirable_score < 0.8;
-        });
+        // Check if we want all websites (including filtered ones)
+        const getAllWebsites = req.query.all === 'true';
+        
+        let websitesToReturn;
+        
+        if (getAllWebsites) {
+            // Return all websites without filtering
+            websitesToReturn = resources;
+        } else {
+            // Apply content filtering
+            websitesToReturn = resources.filter(website => {
+                const likes = website.likes || 0;
+                const dislikes = website.dislikes || 0;
+                const total = likes + dislikes;
+                
+                // If less votes, consider it okay
+                if (total <= 3) {
+                    return true;
+                }
+                
+                const undesirable_score = dislikes / Math.max(total, 1);
+                
+                return undesirable_score < 0.8;
+            });
+        }
 
         context.res = {
             status: 200,
-            body: filteredWebsites,
+            body: websitesToReturn,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
