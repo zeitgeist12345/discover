@@ -427,6 +427,120 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
+// Add Website Modal Functions
+function showAddWebsiteForm() {
+    const modal = document.getElementById('add-website-modal');
+    modal.style.display = 'flex';
+    
+    // Focus on first input
+    setTimeout(() => {
+        document.getElementById('website-name').focus();
+    }, 100);
+}
+
+function hideAddWebsiteForm() {
+    const modal = document.getElementById('add-website-modal');
+    modal.style.display = 'none';
+    
+    // Reset form
+    document.getElementById('add-website-form').reset();
+}
+
+async function submitWebsite(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.getElementById('submit-btn');
+    const originalText = submitBtn.textContent;
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.classList.add('btn-loading');
+    submitBtn.textContent = 'Adding...';
+    
+    try {
+        const formData = new FormData(event.target);
+        const websiteData = {
+            name: formData.get('name'),
+            url: formData.get('url'),
+            description: formData.get('description'),
+            category: formData.get('category')
+        };
+        
+        const response = await fetch(`${CONFIG.API_BASE_URL}/addwebsite`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(websiteData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Success
+            showSuccessMessage('Website added successfully! 🎉');
+            hideAddWebsiteForm();
+            
+            // Reload websites to include the new one
+            if (CONFIG.USE_API) {
+                await loadWebsitesFromAPI();
+            }
+        } else {
+            // Error
+            showErrorMessage(result.error || 'Failed to add website');
+        }
+        
+    } catch (error) {
+        console.error('Error submitting website:', error);
+        showErrorMessage('Failed to add website. Please try again.');
+    } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('btn-loading');
+        submitBtn.textContent = originalText;
+    }
+}
+
+function showSuccessMessage(message) {
+    // Create success message element
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.innerHTML = `
+        <div class="website-box" style="border-color: #10b981; background: rgba(16, 185, 129, 0.1);">
+            <p style="color: #10b981; margin: 0;">${message}</p>
+        </div>
+    `;
+    
+    // Insert after header
+    const header = document.querySelector('.header');
+    header.parentNode.insertBefore(successDiv, header.nextSibling);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        if (successDiv.parentNode) {
+            successDiv.parentNode.removeChild(successDiv);
+        }
+    }, 3000);
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('add-website-modal');
+    if (event.target === modal) {
+        hideAddWebsiteForm();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('add-website-modal');
+        if (modal.style.display === 'flex') {
+            hideAddWebsiteForm();
+        }
+    }
+});
+
 // Add some fun Easter eggs
 let clickCount = 0;
 document.querySelector('.header h1').addEventListener('click', function () {

@@ -19,6 +19,7 @@
         <button class="btn" onclick="loadPreviousWebsite()" disabled>⬅️ Previous Website</button>
         <button class="btn" onclick="loadRandomWebsite()" disabled>⏳ Loading...</button>
         <button class="btn" onclick="loadNextWebsite()" disabled>➡️ Next Website</button>
+        <button class="btn add-website-btn" onclick="showAddWebsiteForm()">➕ Add Website</button>
     </div>
 
     <div class="current-site" id="current-site-info">
@@ -42,6 +43,44 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Add Website Modal -->
+    <div id="add-website-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>➕ Add New Website</h3>
+                <span class="close" onclick="hideAddWebsiteForm()">&times;</span>
+            </div>
+            <form id="add-website-form" onsubmit="submitWebsite(event)">
+                <div class="form-group">
+                    <label for="website-name">Website Name *</label>
+                    <input type="text" id="website-name" name="name" required placeholder="e.g., GitHub">
+                </div>
+                <div class="form-group">
+                    <label for="website-url">Website URL *</label>
+                    <input type="url" id="website-url" name="url" required placeholder="https://github.com">
+                </div>
+                <div class="form-group">
+                    <label for="website-description">Description *</label>
+                    <textarea id="website-description" name="description" required placeholder="Brief description of the website..." rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="website-category">Category</label>
+                    <select id="website-category" name="category">
+                        <option value="curated">Curated</option>
+                        <option value="user-submitted">User Submitted</option>
+                        <option value="educational">Educational</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="tools">Tools</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="hideAddWebsiteForm()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Add Website</button>
+                </div>
+            </form>
         </div>
     </div>
 
