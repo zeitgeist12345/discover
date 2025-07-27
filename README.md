@@ -150,18 +150,27 @@ az functionapp deployment source config-zip \
 
 **Important Notes:**
 - Always run `npm install` in the `api/` directory before creating the deployment package
-- The `addWebsite` function currently validates input and returns success, but database integration is pending due to UAMI/Cosmos DB configuration issues
-- The `getWebsites` and `incrementView` functions work perfectly with full database integration
-- **CORS Status**: POST requests work correctly with CORS headers, but OPTIONS preflight requests are handled by Azure platform (returns 204 without CORS headers). This is normal behavior and doesn't affect functionality.
+- All functions are fully functional with database integration
+- CORS is properly configured for both Azure platform and function code
 
-### Step 5: Upload Sample Data
+### Step 5: Configure CORS
+
+```bash
+# Add CORS origins for your frontend
+az functionapp cors add \
+  --resource-group discover-rg \
+  --name discover-api \
+  --allowed-origins "http://127.0.0.1:8000" "http://localhost:8000" "file://"
+```
+
+### Step 6: Upload Sample Data
 
 ```bash
 # Upload websites data to Cosmos DB
 node upload-to-cosmosdb.js
 ```
 
-### Step 6: Test Deployment
+### Step 7: Test Deployment
 
 ```bash
 # Get your Function App URL
@@ -176,31 +185,17 @@ curl -X POST "https://$FUNCTION_URL/api/addwebsite" \
   -d '{"name":"Test Site","url":"https://example.com","description":"A test website"}'
 ```
 
-## ⚙️ Configuration
-
-### Frontend Configuration (`config.js`)
-
-```javascript
-const CONFIG = {
-    API_BASE_URL: 'https://your-function-app.azurewebsites.net/api',
-    USE_API: true,                    // Enable/disable API usage
-    ENABLE_VIEW_TRACKING: true,       // Enable view/like/dislike tracking
-    ENABLE_FALLBACK: true             // Enable fallback to static data
-};
-```
-
-### Backend Configuration
-
-The Azure Functions use these environment variables:
-- `COSMOS_ENDPOINT`: Cosmos DB endpoint URL
-- `AZURE_CLIENT_ID`: User-Assigned Managed Identity client ID
-- `DATABASE_NAME`: Database name (websites)
-- `CONTAINER_NAME`: Container name (list)
-
 ## 🔌 API Endpoints
 
-### GET /api/getwebsites
+**Base URL**: `https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api`
+
+### GET /getwebsites
 Returns all active websites from the database.
+
+**Test with:**
+```bash
+curl -X GET "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api/getwebsites"
+```
 
 **Response:**
 ```json
@@ -217,13 +212,20 @@ Returns all active websites from the database.
 ]
 ```
 
-### POST /api/incrementview
+### POST /incrementview
 Increments view, like, or dislike count for a website.
 
 **Parameters:**
 - `id`: Website ID
 - `url`: Website URL (used as partition key)
 - `action`: Action type (view, like, dislike)
+
+**Test with:**
+```bash
+curl -X POST "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api/incrementview" \
+  -H "Content-Type: application/json" \
+  -d '{"id":"website-1","url":"https://example.com","action":"view"}'
+```
 
 **Response:**
 ```json
@@ -240,8 +242,15 @@ Increments view, like, or dislike count for a website.
 }
 ```
 
-### POST /api/addwebsite
+### POST /addwebsite
 Adds a new website to the database.
+
+**Test with:**
+```bash
+curl -X POST "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api/addwebsite" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"New Website","url":"https://newexample.com","description":"A new amazing website","category":"user-submitted"}'
+```
 
 **Request Body:**
 ```json
@@ -267,6 +276,27 @@ Adds a new website to the database.
   }
 }
 ```
+
+## ⚙️ Configuration
+
+### Frontend Configuration (`config.js`)
+
+```javascript
+const CONFIG = {
+    API_BASE_URL: 'https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api',
+    USE_API: true,                    // Enable/disable API usage
+    ENABLE_VIEW_TRACKING: true,       // Enable view/like/dislike tracking
+    ENABLE_FALLBACK: true             // Enable fallback to static data
+};
+```
+
+### Backend Configuration
+
+The Azure Functions use these environment variables:
+- `COSMOS_ENDPOINT`: Cosmos DB endpoint URL
+- `AZURE_CLIENT_ID`: User-Assigned Managed Identity client ID
+- `DATABASE_NAME`: Database name (websites)
+- `CONTAINER_NAME`: Container name (list)
 
 ## 🛠️ Troubleshooting
 
