@@ -162,16 +162,18 @@ body {
 
 .stats-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 12px;
-    gap: 10px;
+    gap: 15px;
 }
 
-.stat-item {
+.views-center {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 60px;
+    flex: 1;
+    min-width: 80px;
 }
 
 .stat-icon {
@@ -193,12 +195,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Action Buttons */
-.action-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
+/* Action Buttons - now integrated into stats row */
 
 .action-btn {
     background: #333;
@@ -210,7 +207,22 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     font-weight: 400;
-    min-width: 80px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.count-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
 }
 
 .action-btn:hover {
@@ -279,7 +291,24 @@ body {
         margin: 15px auto;
     }
 
+    .stats-row {
+        gap: 10px;
+    }
 
+    .action-btn {
+        min-width: 80px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .count-badge {
+        font-size: 0.7rem;
+        padding: 1px 4px;
+    }
+
+    .views-center {
+        min-width: 60px;
+    }
 }
 
 /* Tablet optimization */

@@ -24,34 +24,21 @@
     <div class="current-site" id="current-site-info">
         <h3>Current Website</h3>
         <div class="website-box">
-            <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Website" to discover amazing sites!</a>
+            <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Website" to discover amazing sites!<br>Websites open in a new tab for the best experience.</a>
             <div id="website-description" class="website-description"></div>
             
             <!-- Stats and Action Buttons -->
             <div class="website-stats" id="website-stats" style="display: none;">
                 <div class="stats-row">
-                    <span class="stat-item">
-                        <span class="stat-icon">👁️</span>
+                    <button class="action-btn dislike-btn" id="dislike-btn" onclick="dislikeWebsite()">
+                        👎 Dislike <span class="count-badge" id="dislikes-count">0</span>
+                    </button>
+                    <div class="views-center">
                         <span class="stat-value" id="views-count">0</span>
                         <span class="stat-label">views</span>
-                    </span>
-                    <span class="stat-item">
-                        <span class="stat-icon">👍</span>
-                        <span class="stat-value" id="likes-count">0</span>
-                        <span class="stat-label">likes</span>
-                    </span>
-                    <span class="stat-item">
-                        <span class="stat-icon">👎</span>
-                        <span class="stat-value" id="dislikes-count">0</span>
-                        <span class="stat-label">dislikes</span>
-                    </span>
-                </div>
-                <div class="action-buttons">
+                    </div>
                     <button class="action-btn like-btn" id="like-btn" onclick="likeWebsite()">
-                        👍 Like
-                    </button>
-                    <button class="action-btn dislike-btn" id="dislike-btn" onclick="dislikeWebsite()">
-                        👎 Dislike
+                        👍 Like <span class="count-badge" id="likes-count">0</span>
                     </button>
                 </div>
             </div>
