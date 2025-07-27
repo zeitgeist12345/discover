@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-07-27T09:54:35.240Z",
-  "totalWebsites": 58,
+  "timestamp": "2025-07-27T10:14:24.216Z",
+  "totalWebsites": 60,
   "websitesToKeep": [
     {
       "id": "website-1",
@@ -10,14 +10,14 @@
       "createdAt": "2025-07-26T13:54:43.278Z",
       "category": "curated",
       "active": true,
-      "views": 2,
+      "views": 3,
       "likes": 1,
       "dislikes": 0,
       "_rid": "eYpZAMXD++sgAAAAAAAAAA==",
       "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++sgAAAAAAAAAA==/",
-      "_etag": "\"2d007144-0000-3200-0000-6885dfc40000\"",
+      "_etag": "\"2d0012f6-0000-3200-0000-6885fb960000\"",
       "_attachments": "attachments/",
-      "_ts": 1753604036
+      "_ts": 1753611158
     },
     {
       "id": "website-2",
@@ -180,14 +180,14 @@
       "createdAt": "2025-07-26T13:54:43.278Z",
       "category": "curated",
       "active": true,
-      "views": 0,
+      "views": 1,
       "likes": 0,
       "dislikes": 0,
       "_rid": "eYpZAMXD++sqAAAAAAAAAA==",
       "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++sqAAAAAAAAAA==/",
-      "_etag": "\"26002117-0000-3200-0000-6884de250000\"",
+      "_etag": "\"2d0002f6-0000-3200-0000-6885fb900000\"",
       "_attachments": "attachments/",
-      "_ts": 1753538085
+      "_ts": 1753611152
     },
     {
       "id": "website-9",
@@ -452,14 +452,14 @@
       "createdAt": "2025-07-26T13:54:43.279Z",
       "category": "curated",
       "active": true,
-      "views": 2,
+      "views": 3,
       "likes": 1,
       "dislikes": 0,
       "_rid": "eYpZAMXD++s6AAAAAAAAAA==",
       "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s6AAAAAAAAAA==/",
-      "_etag": "\"2d00316c-0000-3200-0000-6885e60a0000\"",
+      "_etag": "\"2d0023f6-0000-3200-0000-6885fb990000\"",
       "_attachments": "attachments/",
-      "_ts": 1753605642
+      "_ts": 1753611161
     },
     {
       "id": "website-22",
@@ -531,23 +531,6 @@
     }
   ],
   "websitesToDelete": [
-    {
-      "id": "website-16",
-      "name": "YouTube",
-      "url": "https://youtube.com",
-      "description": "Share your videos with friends, family, and the world",
-      "createdAt": "2025-07-27T02:34:43.417Z",
-      "category": "curated",
-      "active": true,
-      "views": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "_rid": "eYpZAMXD++s-AAAAAAAAAA==",
-      "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s-AAAAAAAAAA==/",
-      "_etag": "\"2b00c457-0000-3200-0000-688590450000\"",
-      "_attachments": "attachments/",
-      "_ts": 1753583685
-    },
     {
       "id": "website-28",
       "name": "TikTok",
@@ -726,14 +709,14 @@
       "createdAt": "2025-07-27T02:34:43.417Z",
       "category": "curated",
       "active": true,
-      "views": 1,
+      "views": 2,
       "likes": 1,
       "dislikes": 0,
       "_rid": "eYpZAMXD++tKAAAAAAAAAA==",
       "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++tKAAAAAAAAAA==/",
-      "_etag": "\"2d00e924-0000-3200-0000-6885d9d10000\"",
+      "_etag": "\"2d000cf6-0000-3200-0000-6885fb940000\"",
       "_attachments": "attachments/",
-      "_ts": 1753602513
+      "_ts": 1753611156
     },
     {
       "id": "website-19",
@@ -760,14 +743,14 @@
       "createdAt": "2025-07-27T02:34:43.418Z",
       "category": "curated",
       "active": true,
-      "views": 1,
-      "likes": 1,
-      "dislikes": 1,
+      "views": 2,
+      "likes": 2,
+      "dislikes": 2,
       "_rid": "eYpZAMXD++tMAAAAAAAAAA==",
       "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++tMAAAAAAAAAA==/",
-      "_etag": "\"2d001026-0000-3200-0000-6885d9fa0000\"",
+      "_etag": "\"2d00dff5-0000-3200-0000-6885fb8b0000\"",
       "_attachments": "attachments/",
-      "_ts": 1753602554
+      "_ts": 1753611147
     },
     {
       "id": "website-26",
@@ -991,6 +974,57 @@
       "_etag": "\"2d00acb2-0000-3200-0000-6885f1bc0000\"",
       "_attachments": "attachments/",
       "_ts": 1753608636
+    },
+    {
+      "id": "website-1753610745400-s30dettgp",
+      "name": "Pokemon website",
+      "url": "https://www.pokemon.com/us",
+      "description": "Pokemon!",
+      "category": "curated",
+      "createdAt": "2025-07-27T10:05:45.400Z",
+      "active": true,
+      "views": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "_rid": "eYpZAMXD++taAAAAAAAAAA==",
+      "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++taAAAAAAAAAA==/",
+      "_etag": "\"2d003bec-0000-3200-0000-6885f9f90000\"",
+      "_attachments": "attachments/",
+      "_ts": 1753610745
+    },
+    {
+      "id": "website-1753610798664-zc5hms60k",
+      "name": "Beyblade",
+      "url": "https://beyblade.com/",
+      "description": "Beyblade anime!",
+      "category": "curated",
+      "createdAt": "2025-07-27T10:06:38.664Z",
+      "active": true,
+      "views": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "_rid": "eYpZAMXD++tbAAAAAAAAAA==",
+      "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++tbAAAAAAAAAA==/",
+      "_etag": "\"2d0041ed-0000-3200-0000-6885fa2e0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1753610798
+    },
+    {
+      "id": "website-1753611120329-5jclgkiap",
+      "name": "Digimon",
+      "url": "https://digimon.net",
+      "description": "Digimon!!!",
+      "category": "curated",
+      "createdAt": "2025-07-27T10:12:00.329Z",
+      "active": true,
+      "views": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "_rid": "eYpZAMXD++tdAAAAAAAAAA==",
+      "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++tdAAAAAAAAAA==/",
+      "_etag": "\"2d0068f5-0000-3200-0000-6885fb700000\"",
+      "_attachments": "attachments/",
+      "_ts": 1753611120
     }
   ]
 }
