@@ -10,7 +10,7 @@ const CONFIG = {
     
     // UI Configuration
     LOADING_TEXT: '⏳ Loading...',
-    RANDOM_BUTTON_TEXT: '🎲 Load Random Website',
+    RANDOM_BUTTON_TEXT: '🎲 Load Random Link',
     ERROR_MESSAGE: 'Failed to load websites. Please refresh the page to try again.',
     
     // Timeout settings

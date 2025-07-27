@@ -11,21 +11,21 @@
 <body>
     <div class="header">
         <h1>🌐 Discover</h1>
-        <p>Discover amazing websites from around the web!</p>
+        <p>Discover amazing links from around the web!</p>
         <p>No more personalized recommendation algorithms!</p>
     </div>
 
     <div class="controls">
-        <button class="btn" onclick="loadPreviousWebsite()" disabled>⬅️ Previous Website</button>
+        <button class="btn" onclick="loadPreviousWebsite()" disabled>⬅️ Previous link</button>
         <button class="btn" onclick="loadRandomWebsite()" disabled>⏳ Loading...</button>
-        <button class="btn" onclick="loadNextWebsite()" disabled>➡️ Next Website</button>
-        <button class="btn add-website-btn" onclick="showAddWebsiteForm()">➕ Add Website</button>
+        <button class="btn" onclick="loadNextWebsite()" disabled>➡️ Next link</button>
+        <button class="btn add-website-btn" onclick="showAddWebsiteForm()">➕ Add link</button>
     </div>
 
     <div class="current-site" id="current-site-info">
-        <h3>Current Website</h3>
+        <h3>Current Link</h3>
         <div class="website-box">
-            <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Website" to discover amazing sites!<br>Websites open in a new tab for the best experience.</a>
+            <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Link" to discover amazing links!<br>Links open in a new tab for the best experience.</a>
             <div id="website-description" class="website-description"></div>
             
             <!-- Stats and Action Buttons -->
@@ -50,16 +50,16 @@
     <div id="add-website-modal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>➕ Add New Website</h3>
+                <h3>➕ Add New Link</h3>
                 <span class="close" onclick="hideAddWebsiteForm()">&times;</span>
             </div>
             <form id="add-website-form" onsubmit="submitWebsite(event)">
                 <div class="form-group">
-                    <label for="website-name">Website Name *</label>
+                    <label for="website-name">Link Name *</label>
                     <input type="text" id="website-name" name="name" required placeholder="e.g., GitHub">
                 </div>
                 <div class="form-group">
-                    <label for="website-url">Website URL *</label>
+                    <label for="website-url">Link URL *</label>
                     <input type="url" id="website-url" name="url" required placeholder="https://github.com">
                 </div>
                 <div class="form-group">
