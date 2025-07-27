@@ -11,14 +11,15 @@ A modern web application that helps you discover amazing websites from a curated
 - ☁️ **Cloud Backend**: Azure Functions with Cosmos DB for scalable data storage
 - 🔐 **Secure Authentication**: User-Assigned Managed Identity (UAMI) for secure database access
 - 🛡️ **Content Filtering**: Automatic filtering of harmful content based on user feedback
+- 📊 **Data Analysis Tools**: Built-in tools for analyzing website data and filtering statistics
 
 ## 🛡️ Content Filtering Algorithm
 
 The app uses a sophisticated content filtering system to prevent harmful content from being displayed:
 
 ### Filtering Logic:
-- **Sites with ≤10 total votes**: Always shown (need more data to assess)
-- **Sites with >10 total votes**: Filtered based on dislike percentage
+- **Sites with ≤3 total votes**: Always shown (need more data to assess)
+- **Sites with >3 total votes**: Filtered based on dislike percentage
 - **Threshold**: Sites with ≥80% dislikes are filtered out
 
 ### Formula:
@@ -35,6 +36,40 @@ if undesirable_score < 0.8 → Shown
 - **Site with 0 votes**: Always **shown**
 
 This ensures that truly problematic content is automatically hidden while allowing healthy debate and diverse opinions.
+
+## 🛠️ Tools
+
+### Website Data Dump Tool
+
+Located in `tools/dump-websites.js`, this tool provides comprehensive data analysis:
+
+```bash
+# Run the dump tool
+node tools/dump-websites.js
+```
+
+**Output Files:**
+- `tools/websites-dump.json` - Raw website data (all websites including filtered ones)
+- `tools/websites-summary.json` - Analysis and statistics
+
+**Features:**
+- Fetches ALL websites from database (including filtered ones)
+- Applies content filtering algorithm locally
+- Generates detailed statistics and analysis
+- Shows filtering reasons for each website
+- Provides breakdown by dislike score and vote count
+
+**Example Usage:**
+```bash
+# Get only filtered websites
+cat tools/websites-dump.json | jq '[.[] | select(.filterAnalysis.isFiltered == true)]'
+
+# Get summary statistics
+cat tools/websites-summary.json | jq '.analysis'
+
+# Count total websites
+cat tools/websites-summary.json | jq '.metadata.totalWebsites'
+```
 
 ## 🚀 Quick Start
 
@@ -84,9 +119,14 @@ python -m http.server 8000
 
 **Base URL**: `https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api`
 
-### Get All Websites
+### Get All Websites (Filtered)
 ```bash
 curl -X GET "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api/getwebsites"
+```
+
+### Get All Websites (Including Filtered Ones)
+```bash
+curl -X GET "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api/getwebsites?all=true"
 ```
 
 ### Add New Website
@@ -124,6 +164,15 @@ curl -X POST "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.ne
 The app uses environment variables for configuration:
 - `COSMOS_ENDPOINT`: Azure Cosmos DB endpoint
 - `AZURE_CLIENT_ID`: User-Assigned Managed Identity client ID
+
+## 📊 Data Analysis
+
+The project includes tools for analyzing website data and filtering statistics:
+
+- **Content Filtering Analysis**: Understand how the filtering algorithm works
+- **Website Statistics**: View distribution by vote count and dislike percentage
+- **Filtering Reasons**: See why specific websites are shown or filtered
+- **Data Export**: Export raw data for further analysis
 
 ## 📝 License
 
