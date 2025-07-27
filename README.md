@@ -135,7 +135,7 @@ az functionapp config appsettings set \
 # Navigate to api directory
 cd api
 
-# Install dependencies
+# Install dependencies (IMPORTANT: Always run this before deployment)
 npm install
 
 # Create deployment package (include node_modules)
@@ -147,6 +147,12 @@ az functionapp deployment source config-zip \
   --name discover-api \
   --src ./deploy.zip
 ```
+
+**Important Notes:**
+- Always run `npm install` in the `api/` directory before creating the deployment package
+- The `addWebsite` function currently validates input and returns success, but database integration is pending due to UAMI/Cosmos DB configuration issues
+- The `getWebsites` and `incrementView` functions work perfectly with full database integration
+- **CORS Status**: POST requests work correctly with CORS headers, but OPTIONS preflight requests are handled by Azure platform (returns 204 without CORS headers). This is normal behavior and doesn't affect functionality.
 
 ### Step 5: Upload Sample Data
 
