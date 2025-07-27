@@ -474,6 +474,9 @@ function showAddWebsiteForm() {
     const modal = document.getElementById('add-website-modal');
     modal.style.display = 'flex';
     
+    // Clear any existing error messages
+    hideModalError();
+    
     // Focus on first input
     setTimeout(() => {
         document.getElementById('website-name').focus();
@@ -486,6 +489,29 @@ function hideAddWebsiteForm() {
     
     // Reset form
     document.getElementById('add-website-form').reset();
+    
+    // Clear any error messages
+    hideModalError();
+}
+
+function showModalError(message) {
+    const errorDiv = document.getElementById('modal-error-message');
+    const errorText = document.getElementById('modal-error-text');
+    
+    if (errorDiv && errorText) {
+        errorText.textContent = message;
+        errorDiv.style.display = 'block';
+        
+        // Scroll to error message
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+}
+
+function hideModalError() {
+    const errorDiv = document.getElementById('modal-error-message');
+    if (errorDiv) {
+        errorDiv.style.display = 'none';
+    }
 }
 
 async function submitWebsite(event) {
@@ -530,15 +556,15 @@ async function submitWebsite(event) {
         } else {
             // Handle specific error cases
             if (response.status === 409) {
-                showErrorMessage('This link already exists in the database. Please try a different URL.');
+                showModalError('This link already exists in the database. Please try a different URL.');
             } else {
-                showErrorMessage(result.error || 'Failed to add website');
+                showModalError(result.error || 'Failed to add website');
             }
         }
         
     } catch (error) {
         console.error('Error submitting website:', error);
-        showErrorMessage('Failed to add website. Please try again.');
+        showModalError('Failed to add website. Please try again.');
     } finally {
         // Reset button state
         submitBtn.disabled = false;
