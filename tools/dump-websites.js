@@ -140,23 +140,18 @@ function analyzeWebsites(websites) {
 
 function saveToFile(data) {
     try {
-        const output = {
+        // Save raw website data only
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(data.websites, null, 2));
+        console.log(`💾 Raw data saved to: ${OUTPUT_FILE}`);
+        
+        // Save comprehensive summary with metadata
+        const summaryFile = path.join(__dirname, 'websites-summary.json');
+        fs.writeFileSync(summaryFile, JSON.stringify({
             metadata: {
                 generatedAt: new Date().toISOString(),
                 apiUrl: API_BASE_URL,
-                totalWebsites: data.websites.length,
-                analysis: data.analysis
+                totalWebsites: data.websites.length
             },
-            websites: data.websites
-        };
-        
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
-        console.log(`💾 Data saved to: ${OUTPUT_FILE}`);
-        
-        // Also save a summary
-        const summaryFile = path.join(__dirname, 'websites-summary.json');
-        fs.writeFileSync(summaryFile, JSON.stringify({
-            metadata: output.metadata,
             analysis: data.analysis
         }, null, 2));
         console.log(`📋 Summary saved to: ${summaryFile}`);
