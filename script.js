@@ -249,6 +249,12 @@ function updateButtonStates(action) {
     const likeBtn = document.getElementById('like-btn');
     const dislikeBtn = document.getElementById('dislike-btn');
     
+    // Check if buttons exist before manipulating them
+    if (!likeBtn || !dislikeBtn) {
+        console.error('Like or dislike buttons not found');
+        return;
+    }
+    
     if (action === 'like') {
         likeBtn.classList.add('liked');
         dislikeBtn.classList.remove('disliked');
@@ -261,12 +267,16 @@ function updateButtonStates(action) {
 function likeWebsite() {
     if (currentWebsiteId) {
         updateWebsiteStats(currentWebsiteId, 'like');
+    } else {
+        console.error('No current website ID available for like action');
     }
 }
 
 function dislikeWebsite() {
     if (currentWebsiteId) {
         updateWebsiteStats(currentWebsiteId, 'dislike');
+    } else {
+        console.error('No current website ID available for dislike action');
     }
 }
 
@@ -332,7 +342,18 @@ function loadPreviousWebsite() {
 function loadWebsite(index, addToHistory = true) {
     console.log('loadWebsite called with index:', index, 'addToHistory:', addToHistory);
     
+    // Validate index and website
+    if (index < 0 || index >= websites.length) {
+        console.error('Invalid website index:', index);
+        return;
+    }
+    
     const website = websites[index];
+    if (!website) {
+        console.error('Website not found at index:', index);
+        return;
+    }
+    
     console.log('Website to load:', website);
 
     if (addToHistory) {
@@ -358,11 +379,14 @@ function loadWebsite(index, addToHistory = true) {
 
     // Optimistically increment views immediately
     if (website.id && CONFIG.ENABLE_VIEW_TRACKING) {
-        const currentViews = parseInt(document.getElementById('views-count').textContent) || 0;
-        document.getElementById('views-count').textContent = currentViews + 1;
-        
-        // Sync with server in the background
-        updateWebsiteStats(website.id, 'view');
+        const viewsElement = document.getElementById('views-count');
+        if (viewsElement) {
+            const currentViews = parseInt(viewsElement.textContent) || 0;
+            viewsElement.textContent = currentViews + 1;
+            
+            // Sync with server in the background
+            updateWebsiteStats(website.id, 'view');
+        }
     }
 
     // Open the website in a new window/tab
@@ -376,8 +400,14 @@ function updateCurrentSiteInfo(website) {
     const likeBtn = document.getElementById('like-btn');
     const dislikeBtn = document.getElementById('dislike-btn');
     
-    link.href = website.url;
-    link.textContent = `${website.name} - ${website.url}`;
+    // Check if link element exists before accessing its properties
+    if (link) {
+        link.href = website.url;
+        link.textContent = `${website.name} - ${website.url}`;
+    } else {
+        console.error('current-site-link element not found');
+        return;
+    }
 
     // Add description as a separate element
     const description = document.getElementById('website-description');
@@ -486,8 +516,12 @@ async function submitWebsite(event) {
                 await loadWebsitesFromAPI();
             }
         } else {
-            // Error
-            showErrorMessage(result.error || 'Failed to add website');
+            // Handle specific error cases
+            if (response.status === 409) {
+                showErrorMessage('This link already exists in the database. Please try a different URL.');
+            } else {
+                showErrorMessage(result.error || 'Failed to add website');
+            }
         }
         
     } catch (error) {
