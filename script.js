@@ -144,13 +144,25 @@ function enableControls() {
 }
 
 function showErrorMessage(message) {
-    const currentSiteInfo = document.getElementById('current-site-info');
-    currentSiteInfo.innerHTML = `
-        <h3>Error</h3>
+    // Create error message element
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.innerHTML = `
         <div class="website-box" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.1);">
             <p style="color: #ef4444; margin: 0;">${message}</p>
         </div>
     `;
+    
+    // Insert after header
+    const header = document.querySelector('.header');
+    header.parentNode.insertBefore(errorDiv, header.nextSibling);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        if (errorDiv.parentNode) {
+            errorDiv.parentNode.removeChild(errorDiv);
+        }
+    }, 5000);
 }
 
 async function updateWebsiteStats(websiteId, action) {
