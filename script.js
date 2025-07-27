@@ -1,21 +1,31 @@
 // Global variables
+let websites = [];
 let currentIndex = -1;
-let visitedWebsites = [];
 let websiteHistory = [];
-let websites = []; // Will be populated from API
+let visitedWebsites = [];
 let isLoading = false;
 let currentWebsiteId = null;
-let userActions = new Map(); // Track user actions per website to prevent duplicates
+const userActions = new Map();
 
-// Initialize the page
-document.addEventListener('DOMContentLoaded', function () {
+console.log('Script.js loaded successfully');
+
+// Initialize the app when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing app...');
+    initializeApp();
+});
+
+function initializeApp() {
+    console.log('Initializing app...');
     // Load websites based on configuration
     if (CONFIG.USE_API) {
+        console.log('Using API mode');
         loadWebsitesFromAPI();
     } else {
+        console.log('Using static mode');
         loadStaticWebsites();
     }
-});
+}
 
 async function loadWebsitesFromAPI() {
     try {
@@ -43,18 +53,19 @@ async function loadWebsitesFromAPI() {
         websites.sort((a, b) => a.name.localeCompare(b.name));
         
         console.log(`Loaded ${websites.length} websites from API`);
-        updateLoadingState(false);
+        console.log('Websites list:', websites.map(w => `${w.name} (${w.url})`));
         
-        // Enable the random website button
+        isLoading = false;
+        updateLoadingState(false);
         enableControls();
         
     } catch (error) {
         console.error('Failed to load websites from API:', error);
-        updateLoadingState(false);
+        isLoading = false;
         
         if (CONFIG.ENABLE_FALLBACK) {
             console.log('Attempting fallback to static websites...');
-            await loadStaticWebsites();
+            loadStaticWebsites();
         } else {
             showErrorMessage(CONFIG.ERROR_MESSAGE);
         }
@@ -96,28 +107,39 @@ async function loadStaticWebsites() {
 }
 
 function updateLoadingState(loading) {
+    console.log('updateLoadingState called with loading:', loading);
     const buttons = document.querySelectorAll('.btn');
     const randomButton = document.querySelector('.btn:nth-child(2)'); // Random website button
     
-    buttons.forEach(btn => {
+    console.log('Found buttons:', buttons.length);
+    console.log('Random button:', randomButton);
+    
+    buttons.forEach((btn, index) => {
         btn.disabled = loading;
+        console.log(`Button ${index} disabled:`, btn.disabled, 'text:', btn.textContent);
     });
     
     if (loading) {
         if (randomButton) {
             randomButton.textContent = CONFIG.LOADING_TEXT;
+            console.log('Set random button to loading text');
         }
     } else {
         if (randomButton) {
             randomButton.textContent = CONFIG.RANDOM_BUTTON_TEXT;
+            console.log('Set random button to random text');
         }
     }
 }
 
 function enableControls() {
+    console.log('enableControls called');
     const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
+    console.log('Found buttons:', buttons.length);
+    
+    buttons.forEach((btn, index) => {
         btn.disabled = false;
+        console.log(`Button ${index} enabled:`, btn.textContent);
     });
 }
 
@@ -143,8 +165,15 @@ async function updateWebsiteStats(websiteId, action) {
         return;
     }
     
+    // Find the website to get its URL
+    const website = websites.find(w => w.id === websiteId);
+    if (!website) {
+        console.error(`Website not found with id: ${websiteId}`);
+        return;
+    }
+    
     try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&category=curated&action=${action}`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${action}`, {
             method: 'POST'
         });
         
@@ -205,15 +234,23 @@ function dislikeWebsite() {
 }
 
 function loadRandomWebsite() {
+    console.log('loadRandomWebsite called');
+    console.log('isLoading:', isLoading);
+    console.log('websites.length:', websites.length);
+    console.log('visitedWebsites:', visitedWebsites);
+    
     if (isLoading || websites.length === 0) {
+        console.log('Cannot load random website - loading or no websites');
         return;
     }
 
     // Get a random website that hasn't been visited yet
     const unvisitedWebsites = websites.filter((_, index) => !visitedWebsites.includes(index));
+    console.log('unvisitedWebsites.length:', unvisitedWebsites.length);
 
     if (unvisitedWebsites.length === 0) {
         // All websites have been visited, reset
+        console.log('All websites visited, resetting...');
         visitedWebsites = [];
         websiteHistory = [];
         currentIndex = -1;
@@ -224,6 +261,8 @@ function loadRandomWebsite() {
     const randomIndex = Math.floor(Math.random() * unvisitedWebsites.length);
     const website = unvisitedWebsites[randomIndex];
     const originalIndex = websites.indexOf(website);
+    
+    console.log('Selected random website:', website.name, 'at index:', originalIndex);
 
     loadWebsite(originalIndex);
 }
@@ -254,7 +293,10 @@ function loadPreviousWebsite() {
 }
 
 function loadWebsite(index, addToHistory = true) {
+    console.log('loadWebsite called with index:', index, 'addToHistory:', addToHistory);
+    
     const website = websites[index];
+    console.log('Website to load:', website);
 
     if (addToHistory) {
         // Add to history if it's a new website
@@ -283,6 +325,7 @@ function loadWebsite(index, addToHistory = true) {
     }
 
     // Open the website in a new window/tab
+    console.log('Opening website:', website.url);
     window.open(website.url, '_blank');
 }
 

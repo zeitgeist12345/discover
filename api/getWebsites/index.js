@@ -2,6 +2,21 @@ const { CosmosClient } = require('@azure/cosmos');
 const { DefaultAzureCredential } = require('@azure/identity');
 
 module.exports = async function (context, req) {
+    // Add CORS headers
+    context.res = {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        }
+    };
+
+    // Handle preflight OPTIONS request
+    if (req.method === 'OPTIONS') {
+        context.res.status = 200;
+        return;
+    }
+
     try {
         // Initialize with UAMI
         const credential = new DefaultAzureCredential({
@@ -22,13 +37,23 @@ module.exports = async function (context, req) {
 
         context.res = {
             status: 200,
-            body: resources
+            body: resources,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            }
         };
 
     } catch (error) {
         context.res = {
             status: 500,
-            body: { error: error.message }
+            body: { error: error.message },
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            }
         };
     }
 };
