@@ -20,10 +20,10 @@ const CONFIG = {
 
 // Auto-detect environment and adjust settings
 if (window.location.protocol === 'file:') {
-    // Local file system - use static mode to avoid CORS issues
-    CONFIG.USE_API = false;
-    CONFIG.ENABLE_VIEW_TRACKING = false;
-    console.log('Running locally (file://) - using static mode to avoid CORS issues');
+    // Local file system - use API mode since CORS is configured in Azure portal
+    CONFIG.USE_API = true;
+    CONFIG.ENABLE_VIEW_TRACKING = true;
+    console.log('Running locally (file://) - API mode enabled (CORS configured in Azure portal)');
 } else if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     // Local development server - use API mode for testing
     CONFIG.USE_API = true;
