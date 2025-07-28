@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 </head>
 
 <body>
@@ -16,10 +17,19 @@
     </div>
 
     <div class="controls">
-        <button class="btn" onclick="loadPreviousWebsite()" disabled>⬅️ Previous link</button>
-        <button class="btn" onclick="loadRandomWebsite()" disabled>⏳ Loading...</button>
-        <button class="btn" onclick="loadNextWebsite()" disabled>➡️ Next link</button>
-        <button class="btn add-website-btn" onclick="showAddWebsiteForm()">➕ Add link</button>
+        <!-- Loading Animation -->
+        <div id="loading-animation" class="loading-animation">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading amazing websites...</p>
+        </div>
+        
+        <!-- Control Buttons (initially hidden) -->
+        <div id="control-buttons" class="control-buttons" style="display: none;">
+            <button class="btn" onclick="loadPreviousWebsite()">⬅️ Previous link</button>
+            <button class="btn" onclick="loadRandomWebsite()">🎲 Load Random Link</button>
+            <button class="btn" onclick="loadNextWebsite()">➡️ Next link</button>
+            <button class="btn add-website-btn" onclick="showAddWebsiteForm()">➕ Add link</button>
+        </div>
     </div>
 
     <div class="current-site" id="current-site-info">

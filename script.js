@@ -30,7 +30,6 @@ function initializeApp() {
 async function loadWebsitesFromAPI() {
     try {
         isLoading = true;
-        updateLoadingState(true);
         
         // Create a timeout promise
         const timeoutPromise = new Promise((_, reject) => {
@@ -56,7 +55,6 @@ async function loadWebsitesFromAPI() {
         console.log('Websites list:', websites.map(w => `${w.name} (${w.url})`));
         
         isLoading = false;
-        updateLoadingState(false);
         enableControls();
         
     } catch (error) {
@@ -78,7 +76,6 @@ async function loadStaticWebsites() {
         if (typeof window.websites !== 'undefined' && window.websites.length > 0) {
             websites = window.websites;
             console.log(`Loaded ${websites.length} websites from static file`);
-            updateLoadingState(false);
             enableControls();
             return;
         }
@@ -90,7 +87,6 @@ async function loadStaticWebsites() {
             if (typeof window.websites !== 'undefined' && window.websites.length > 0) {
                 websites = window.websites;
                 console.log(`Loaded ${websites.length} websites from static file`);
-                updateLoadingState(false);
                 enableControls();
             } else {
                 showErrorMessage('No websites available. Please check your connection and refresh.');
@@ -106,41 +102,40 @@ async function loadStaticWebsites() {
     }
 }
 
-function updateLoadingState(loading) {
-    console.log('updateLoadingState called with loading:', loading);
-    const buttons = document.querySelectorAll('.btn');
-    const randomButton = document.querySelector('.btn:nth-child(2)'); // Random website button
-    
-    console.log('Found buttons:', buttons.length);
-    console.log('Random button:', randomButton);
-    
-    buttons.forEach((btn, index) => {
-        btn.disabled = loading;
-        console.log(`Button ${index} disabled:`, btn.disabled, 'text:', btn.textContent);
-    });
-    
-    if (loading) {
-        if (randomButton) {
-            randomButton.textContent = CONFIG.LOADING_TEXT;
-            console.log('Set random button to loading text');
-        }
-    } else {
-        if (randomButton) {
-            randomButton.textContent = CONFIG.RANDOM_BUTTON_TEXT;
-            console.log('Set random button to random text');
-        }
-    }
-}
-
 function enableControls() {
     console.log('enableControls called');
-    const buttons = document.querySelectorAll('.btn');
-    console.log('Found buttons:', buttons.length);
     
-    buttons.forEach((btn, index) => {
-        btn.disabled = false;
-        console.log(`Button ${index} enabled:`, btn.textContent);
-    });
+    // Hide loading animation
+    const loadingAnimation = document.getElementById('loading-animation');
+    const controlButtons = document.getElementById('control-buttons');
+    
+    if (loadingAnimation) {
+        loadingAnimation.style.display = 'none';
+        console.log('Loading animation hidden');
+    }
+    
+    // Show control buttons with animation
+    if (controlButtons) {
+        controlButtons.style.display = 'flex';
+        console.log('Control buttons container shown');
+        
+        // Trigger animation after a brief delay
+        setTimeout(() => {
+            controlButtons.classList.add('show');
+            console.log('Control buttons animation triggered');
+        }, 10);
+    }
+    
+    // Enable only the control buttons (not modal buttons)
+    if (controlButtons) {
+        const buttons = controlButtons.querySelectorAll('.btn');
+        console.log('Found control buttons:', buttons.length);
+        
+        buttons.forEach((btn, index) => {
+            btn.disabled = false;
+            console.log(`Control button ${index} enabled:`, btn.textContent);
+        });
+    }
 }
 
 function showErrorMessage(message) {
@@ -443,8 +438,6 @@ function updateCurrentSiteInfo(website) {
         dislikes: website.dislikes || 0
     }, true);
 }
-
-
 
 // Keyboard shortcuts
 document.addEventListener('keydown', function (event) {
