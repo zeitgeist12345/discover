@@ -167,7 +167,7 @@ const WEBSITES_TO_KEEP = [
         description: "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together."
     },
     {
-        name: "Code build systems",
+        name: "Software build systems",
         url: "https://bazel.build/basics",
         description: "The best guide on how software build systems work and the their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts."
     }
