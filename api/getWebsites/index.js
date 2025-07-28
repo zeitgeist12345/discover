@@ -32,7 +32,7 @@ module.exports = async function (context, req) {
             .database('websites')
             .container('list')
             .items
-            .query("SELECT * FROM c")
+            .query("SELECT c.id, c.name, c.url, c.description, c.views, c.likes, c.dislikes FROM c")
             .fetchAll();
 
         // Check if we want all websites (including filtered ones)
