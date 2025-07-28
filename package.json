@@ -5,6 +5,8 @@
   "scripts": {
     "test": "echo \"No tests yet...\""
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@azure/identity": "^4.10.2",
+    "redis": "^5.6.1"
+  }
 }
