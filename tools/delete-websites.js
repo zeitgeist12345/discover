@@ -160,6 +160,16 @@ const WEBSITES_TO_KEEP = [
         name: "Al Jazeera",
         url: "https://www.aljazeera.com",
         description: "International news and current affairs network"
+    },
+    {
+        name: "In depth flow of computers",
+        url: "https://github.com/alex/what-happens-when",
+        description: "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together."
+    },
+    {
+        name: "Code build systems",
+        url: "https://bazel.build/basics",
+        description: "The best guide on how software build systems work and the their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts."
     }
 ];
 
