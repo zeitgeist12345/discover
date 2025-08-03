@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 import android.util.Log
 import android.widget.Toast
 import com.example.discover.network.AddWebsiteResult
+import kotlinx.coroutines.flow.update
 
 class DiscoverViewModel(
     private val context: Context
@@ -54,6 +55,8 @@ class DiscoverViewModel(
     private val visitedWebsites = mutableSetOf<String>()
     private val websiteHistory = mutableListOf<Website>()
     private var currentIndex = -1
+    private var liked = false
+    private var disliked = false
 
     init {
         // Start immediately with fastest available data
@@ -222,6 +225,9 @@ class DiscoverViewModel(
     }
 
     private fun loadWebsite(website: Website, addToHistory: Boolean) {
+        liked = false
+        disliked = false
+
         if (addToHistory) {
             if (currentIndex < websiteHistory.size - 1) {
                 // Remove any forward history if we're going back and then to a new site
@@ -247,6 +253,12 @@ class DiscoverViewModel(
     }
 
     fun likeWebsite() {
+        if (liked) {
+            return
+        }
+        liked = true
+
+        _currentWebsite.update { current -> current?.copy(likes = current.likes + 1) }
         currentWebsite.value?.let { website ->
             viewModelScope.launch {
                 apiService.incrementView(website.id, website.url, "like")
@@ -255,6 +267,12 @@ class DiscoverViewModel(
     }
 
     fun dislikeWebsite() {
+        if (disliked) {
+            return
+        }
+        disliked = true
+
+        _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes + 1) }
         currentWebsite.value?.let { website ->
             viewModelScope.launch {
                 apiService.incrementView(website.id, website.url, "dislike")
