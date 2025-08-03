@@ -34,9 +34,10 @@ fun DiscoverScreen(
     if (showWebView && currentWebViewUrl != null) {
         WebViewScreen(
             url = currentWebViewUrl!!,
-            onClose = { viewModel.closeWebView() },
+            onDiscoverClick = { viewModel.loadRandomWebsite()},
+            onDislikeClick = { viewModel.dislikeWebsite() },
             onLikeClick = { viewModel.likeWebsite() },
-            onDislikeClick = { viewModel.dislikeWebsite() }
+            onClose = { viewModel.closeWebView() }
         )
         return
     }

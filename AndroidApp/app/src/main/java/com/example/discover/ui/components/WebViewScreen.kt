@@ -2,6 +2,7 @@ package com.example.discover.ui.components
 
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -17,9 +18,10 @@ import com.example.discover.ui.theme.*
 @Composable
 fun WebViewScreen(
     url: String,
-    onClose: () -> Unit,
+    onDiscoverClick: () -> Unit = {},
+    onDislikeClick: () -> Unit = {},
     onLikeClick: () -> Unit = {},
-    onDislikeClick: () -> Unit = {}
+    onClose: () -> Unit
 ) {
     var isLiked by remember { mutableStateOf(false) }
     var isDisliked by remember { mutableStateOf(false) }
@@ -52,7 +54,8 @@ fun WebViewScreen(
                     text = "🌐 Discover",
                     style = MaterialTheme.typography.headlineSmall,
                     color = TextPrimary,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.clickable(onClick = onDiscoverClick)
                 )
 
                 // Like/Dislike icons
