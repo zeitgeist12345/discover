@@ -1,8 +1,10 @@
 package com.example.discover.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.discover.data.AddWebsiteRequest
+import com.example.discover.data.LocalStorage
 import com.example.discover.data.StaticWebsites
 import com.example.discover.data.Website
 import com.example.discover.network.ApiService
@@ -11,8 +13,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class DiscoverViewModel : ViewModel() {
+class DiscoverViewModel(
+    private val context: Context
+) : ViewModel() {
     private val apiService = ApiService()
+    private val localStorage = LocalStorage(context)
     
     private val _websites = MutableStateFlow<List<Website>>(emptyList())
     val websites: StateFlow<List<Website>> = _websites.asStateFlow()
@@ -22,6 +27,9 @@ class DiscoverViewModel : ViewModel() {
     
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
+    
+    private val _isUpdating = MutableStateFlow(false)
+    val isUpdating: StateFlow<Boolean> = _isUpdating.asStateFlow()
     
     private val _error = MutableStateFlow<String?>(null)
     val error: StateFlow<String?> = _error.asStateFlow()
@@ -40,44 +48,108 @@ class DiscoverViewModel : ViewModel() {
     private var currentIndex = -1
     
     init {
-        loadWebsites()
+        // Start immediately with fastest available data
+        startWithFastestData()
+        // Then update in background only if needed
+        updateWebsitesInBackgroundIfNeeded()
     }
     
-    fun loadWebsites() {
-        viewModelScope.launch {
-            _isLoading.value = true
+    private fun startWithFastestData() {
+        // Priority order: Local cache → Static websites
+        val cachedWebsites = localStorage.getCachedWebsites()
+        
+        if (cachedWebsites.isNotEmpty()) {
+            // Use cached data for fastest startup (cache is kept forever)
+            _websites.value = cachedWebsites
             _error.value = null
+        } else {
+            // Fallback to static websites
+            _websites.value = StaticWebsites.websites
+            _error.value = null
+        }
+        
+        _isLoading.value = false
+        
+        // Load the first random website immediately
+        loadRandomWebsite()
+    }
+    
+    private fun updateWebsitesInBackgroundIfNeeded() {
+        // Only update if cache is older than 12 hours
+        if (!localStorage.shouldUpdateCache()) {
+            return
+        }
+        
+        viewModelScope.launch {
+            _isUpdating.value = true
             
             try {
                 val websitesList = apiService.getWebsites()
                 
                 if (websitesList.isNotEmpty()) {
+                    // Update with real API data and cache it
                     _websites.value = websitesList
-                    // Clear any existing state
+                    localStorage.saveWebsites(websitesList)
+                    
+                    // Clear any existing state and reload
                     _currentWebsite.value = null
                     visitedWebsites.clear()
                     websiteHistory.clear()
                     currentIndex = -1
                     
-                    // Load the first random website
+                    // Load a new random website from updated data
                     loadRandomWebsite()
-                } else {
-                    // Fallback to static websites
-                    _websites.value = StaticWebsites.websites
-                    _error.value = "Using offline websites. API unavailable."
                     
-                    // Load the first random website from static data
-                    loadRandomWebsite()
+                    _error.value = null // Clear any previous error
+                } else {
+                    // Keep using current data, but show API unavailable message
+                    _error.value = "Using cached websites. API returned empty data."
                 }
             } catch (e: Exception) {
-                // Fallback to static websites on any error
-                _websites.value = StaticWebsites.websites
-                _error.value = "Using offline websites. Network error: ${e.message}"
-                
-                // Load the first random website from static data
-                loadRandomWebsite()
+                // Keep using current data, but show network error
+                _error.value = "Using cached websites. Network error: ${e.message}"
             } finally {
-                _isLoading.value = false
+                _isUpdating.value = false
+            }
+        }
+    }
+    
+    fun loadWebsites() {
+        // This function now triggers a manual refresh regardless of cache age
+        updateWebsitesInBackground()
+    }
+    
+    private fun updateWebsitesInBackground() {
+        viewModelScope.launch {
+            _isUpdating.value = true
+            
+            try {
+                val websitesList = apiService.getWebsites()
+                
+                if (websitesList.isNotEmpty()) {
+                    // Update with real API data and cache it
+                    _websites.value = websitesList
+                    localStorage.saveWebsites(websitesList)
+                    
+                    // Clear any existing state and reload
+                    _currentWebsite.value = null
+                    visitedWebsites.clear()
+                    websiteHistory.clear()
+                    currentIndex = -1
+                    
+                    // Load a new random website from updated data
+                    loadRandomWebsite()
+                    
+                    _error.value = null // Clear any previous error
+                } else {
+                    // Keep using current data, but show API unavailable message
+                    _error.value = "Using cached websites. API returned empty data."
+                }
+            } catch (e: Exception) {
+                // Keep using current data, but show network error
+                _error.value = "Using cached websites. Network error: ${e.message}"
+            } finally {
+                _isUpdating.value = false
             }
         }
     }

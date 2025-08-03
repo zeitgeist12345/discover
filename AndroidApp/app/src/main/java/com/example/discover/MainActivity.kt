@@ -21,7 +21,9 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    val viewModel: DiscoverViewModel = viewModel()
+                    val viewModel: DiscoverViewModel = viewModel { 
+                        DiscoverViewModel(applicationContext) 
+                    }
                     DiscoverScreen(viewModel = viewModel)
                 }
             }

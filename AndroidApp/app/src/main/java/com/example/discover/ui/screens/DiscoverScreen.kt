@@ -24,6 +24,7 @@ fun DiscoverScreen(
     val websites by viewModel.websites.collectAsStateWithLifecycle()
     val currentWebsite by viewModel.currentWebsite.collectAsStateWithLifecycle()
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
+    val isUpdating by viewModel.isUpdating.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
     val showAddWebsiteDialog by viewModel.showAddWebsiteDialog.collectAsStateWithLifecycle()
     val showWebView by viewModel.showWebView.collectAsStateWithLifecycle()
@@ -86,7 +87,31 @@ fun DiscoverScreen(
             
             Spacer(modifier = Modifier.height(24.dp))
             
-            // Loading state
+            // Background update indicator
+            if (isUpdating) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    CircularProgressIndicator(
+                        color = PrimaryGreen,
+                        modifier = Modifier.size(16.dp),
+                        strokeWidth = 2.dp
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Updating websites...",
+                        color = TextSecondary,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontSize = 12.sp
+                    )
+                }
+            }
+            
+            // Loading state (only for initial load)
             if (isLoading) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -118,15 +143,16 @@ fun DiscoverScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "❌ Error",
-                            color = ErrorColor,
+                            text = "ℹ️ Info",
+                            color = TextSecondary,
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             text = error!!,
-                            color = ErrorColor,
-                            textAlign = TextAlign.Center
+                            color = TextSecondary,
+                            textAlign = TextAlign.Center,
+                            fontSize = 12.sp
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Button(
@@ -135,11 +161,11 @@ fun DiscoverScreen(
                                 viewModel.loadWebsites()
                             },
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = ErrorColor,
+                                containerColor = PrimaryGreenDark,
                                 contentColor = TextPrimary
                             )
                         ) {
-                            Text("Retry")
+                            Text("Refresh")
                         }
                     }
                 }
@@ -164,7 +190,7 @@ fun DiscoverScreen(
                     onWebsiteClick = { viewModel.openWebsite() }
                 )
             }
-            // Empty state
+            // Empty state (shouldn't happen with static websites)
             else if (websites.isEmpty()) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
