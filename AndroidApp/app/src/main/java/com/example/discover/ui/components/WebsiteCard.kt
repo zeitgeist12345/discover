@@ -44,19 +44,11 @@ fun WebsiteCard(
                 color = TextPrimary,
                 fontWeight = FontWeight.Bold
             )
-            
+
             Spacer(modifier = Modifier.height(8.dp))
-            
-            // URL (less prominent since it opens automatically)
-            Text(
-                text = website.url,
-                style = MaterialTheme.typography.bodyMedium,
-                color = TextSecondary,
-                fontSize = 12.sp
-            )
-            
+
             Spacer(modifier = Modifier.height(8.dp))
-            
+
             // Description
             Text(
                 text = website.description,
@@ -64,12 +56,12 @@ fun WebsiteCard(
                 color = TextSecondary,
                 fontSize = 14.sp
             )
-            
+
             Spacer(modifier = Modifier.height(12.dp))
-            
-            // Auto-open notice
+
+            // URL
             Text(
-                text = "🌐 Opens automatically in browser",
+                text = website.url,
                 style = MaterialTheme.typography.bodySmall,
                 color = PrimaryGreen,
                 fontSize = 12.sp,
@@ -81,10 +73,13 @@ fun WebsiteCard(
                         shape = RoundedCornerShape(4.dp)
                     )
                     .padding(4.dp)
+                    .clickable(
+                        onClick = onWebsiteClick // Use the passed-in onWebsiteClick lambda
+                    )
             )
-            
+
             Spacer(modifier = Modifier.height(16.dp))
-            
+
             // Stats and action buttons
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -102,7 +97,7 @@ fun WebsiteCard(
                 ) {
                     Text("👎 ${website.dislikes}")
                 }
-                
+
                 // Views count
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -120,7 +115,7 @@ fun WebsiteCard(
                         fontSize = 12.sp
                     )
                 }
-                
+
                 // Like button
                 Button(
                     onClick = onLikeClick,
