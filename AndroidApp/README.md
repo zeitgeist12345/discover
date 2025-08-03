@@ -8,6 +8,7 @@ A simple Android app that replicates the functionality of the Discover web appli
 - **📊 View Tracking**: Track views, likes, and dislikes for each website
 - **🌐 In-App Browser**: View websites within the app using WebView
 - **🚀 Auto-Open**: Websites open automatically in the in-app browser when loaded
+- **👍👎 WebView Rating**: Like/dislike buttons directly in the browser interface
 - **⚡ Fast Startup**: Instant app launch with local caching and background updates
 - **💾 Permanent Cache**: Cached data is kept forever for optimal performance
 - **🔄 Smart Updates**: Background updates only when cache is older than 12 hours
@@ -88,7 +89,7 @@ AndroidApp/
 │   │   │   ├── WebsiteCard.kt  # Website display card
 │   │   │   ├── ControlButtons.kt # Navigation buttons
 │   │   │   ├── AddWebsiteDialog.kt # Add website form
-│   │   │   └── WebViewScreen.kt # In-app browser
+│   │   │   └── WebViewScreen.kt # In-app browser with rating
 │   │   ├── screens/            # Main screens
 │   │   │   └── DiscoverScreen.kt # Main app screen
 │   │   └── theme/              # UI theming
@@ -132,6 +133,8 @@ Provides fast data access:
 Provides in-app browsing experience:
 - Full-screen WebView
 - Close button to return to app
+- **Like/dislike buttons** in the header
+- **Visual feedback** for button states
 - JavaScript enabled for full functionality
 - **Opens automatically** when websites are loaded
 
@@ -171,12 +174,18 @@ The app benefits from the same content filtering algorithm as the web version:
 - **Quick Navigation**: Use Previous/Next buttons to browse
 - **In-App Experience**: All browsing happens within the app
 
+### WebView Rating System
+- **Like/Dislike Buttons**: Available directly in the browser
+- **Visual Feedback**: Buttons change color when pressed
+- **Mutual Exclusion**: Like and dislike are mutually exclusive
+- **Real-time Rating**: Rate websites while browsing them
+
 ### Navigation Flow
 1. **Instant Start**: App launches with cached/static websites
 2. **Load Random**: Click "🎲 Random" to load a new website
 3. **Auto-Open**: Website automatically opens in WebView
-4. **Browse**: Use Previous/Next buttons to navigate history
-5. **Rate**: Like/dislike websites to help with content filtering
+4. **Browse & Rate**: Use like/dislike buttons while browsing
+5. **Navigate**: Use Previous/Next buttons to browse history
 6. **Add**: Submit new websites through the form
 7. **Smart Updates**: Background updates only when cache is old
 
@@ -218,6 +227,8 @@ Potential improvements for the Android app:
 - **Cache Management**: User controls for cache settings
 - **Background Sync**: Periodic data updates
 - **Cache Statistics**: Show cache age and size information
+- **Rating History**: Track user's rating history
+- **Personalized Recommendations**: Based on user ratings
 
 ## 📝 License
 
