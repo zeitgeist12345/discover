@@ -10,10 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.discover.ui.theme.*
 
@@ -26,7 +23,7 @@ fun WebViewScreen(
 ) {
     var isLiked by remember { mutableStateOf(false) }
     var isDisliked by remember { mutableStateOf(false) }
-    
+
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -35,14 +32,17 @@ fun WebViewScreen(
             modifier = Modifier.fillMaxWidth(),
             color = SurfaceDark
         ) {
+            // Get status bar padding
+            val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        top = 32.dp, // Reduced status bar padding
+                        top = statusBarPadding.calculateTopPadding() + Spacing.small,
                         start = Spacing.medium,
                         end = Spacing.medium,
-                        bottom = Spacing.medium
+                        bottom = Spacing.small
                     ),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
@@ -54,7 +54,7 @@ fun WebViewScreen(
                     color = TextPrimary,
                     fontWeight = FontWeight.Bold
                 )
-                
+
                 // Like/Dislike icons
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(Spacing.small),
@@ -75,7 +75,7 @@ fun WebViewScreen(
                             modifier = Modifier.size(Spacing.large)
                         )
                     }
-                    
+
                     // Like icon
                     IconButton(
                         onClick = {
@@ -92,7 +92,7 @@ fun WebViewScreen(
                         )
                     }
                 }
-                
+
                 // Close button
                 Button(
                     onClick = onClose,
@@ -105,7 +105,7 @@ fun WebViewScreen(
                 }
             }
         }
-        
+
         // WebView
         AndroidView(
             factory = { context ->

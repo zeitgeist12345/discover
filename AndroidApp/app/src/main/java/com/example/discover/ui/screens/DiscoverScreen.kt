@@ -8,7 +8,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,7 +29,7 @@ fun DiscoverScreen(
     val showAddWebsiteDialog by viewModel.showAddWebsiteDialog.collectAsStateWithLifecycle()
     val showWebView by viewModel.showWebView.collectAsStateWithLifecycle()
     val currentWebViewUrl by viewModel.currentWebViewUrl.collectAsStateWithLifecycle()
-    
+
     // Handle WebView display
     if (showWebView && currentWebViewUrl != null) {
         WebViewScreen(
@@ -41,19 +40,22 @@ fun DiscoverScreen(
         )
         return
     }
-    
+
     // Main content
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundDark)
     ) {
+        // Get status bar padding
+        val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(
-                    top = 32.dp, // Reduced status bar padding
+                    top = statusBarPadding.calculateTopPadding() + Spacing.medium,
                     start = Spacing.medium,
                     end = Spacing.medium,
                     bottom = Spacing.medium
@@ -69,23 +71,23 @@ fun DiscoverScreen(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
-            
+
             Spacer(modifier = Modifier.height(Spacing.small))
-            
+
             Text(
                 text = "Discover amazing links from around the web!",
                 style = MaterialTheme.typography.bodyLarge,
                 color = TextSecondary,
                 textAlign = TextAlign.Center
             )
-            
+
             Text(
                 text = "No more personalized recommendation algorithms!",
                 style = MaterialTheme.typography.bodyMedium,
                 color = TextSecondary,
                 textAlign = TextAlign.Center
             )
-            
+
             Text(
                 text = "Websites open automatically in the in-app browser",
                 style = MaterialTheme.typography.bodySmall,
@@ -93,9 +95,9 @@ fun DiscoverScreen(
                 textAlign = TextAlign.Center,
                 fontSize = 12.sp
             )
-            
+
             Spacer(modifier = Modifier.height(Spacing.large))
-            
+
             // Background update indicator
             if (isUpdating) {
                 Row(
@@ -119,7 +121,7 @@ fun DiscoverScreen(
                     )
                 }
             }
-            
+
             // Loading state (only for initial load)
             if (isLoading) {
                 Column(
@@ -165,7 +167,7 @@ fun DiscoverScreen(
                         )
                         Spacer(modifier = Modifier.height(Spacing.medium))
                         Button(
-                            onClick = { 
+                            onClick = {
                                 viewModel.clearError()
                                 viewModel.loadWebsites()
                             },
@@ -188,9 +190,9 @@ fun DiscoverScreen(
                     onNextClick = { viewModel.loadNextWebsite() },
                     onAddWebsiteClick = { viewModel.showAddWebsiteDialog() }
                 )
-                
+
                 Spacer(modifier = Modifier.height(Spacing.medium))
-                
+
                 // Current website card
                 WebsiteCard(
                     website = currentWebsite!!,
@@ -223,7 +225,7 @@ fun DiscoverScreen(
                 }
             }
         }
-        
+
         // Add website dialog
         if (showAddWebsiteDialog) {
             AddWebsiteDialog(
