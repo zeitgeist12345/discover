@@ -7,6 +7,7 @@ A simple Android app that replicates the functionality of the Discover web appli
 - **🎲 Random Website Discovery**: Load random websites from the curated collection
 - **📊 View Tracking**: Track views, likes, and dislikes for each website
 - **🌐 In-App Browser**: View websites within the app using WebView
+- **🚀 Auto-Open**: Websites open automatically in the in-app browser when loaded
 - **➕ Add Websites**: Submit new websites through a user-friendly form
 - **🔄 Navigation**: Previous/Next buttons with history tracking
 - **🎨 Modern UI**: Dark theme matching the web app design
@@ -82,18 +83,21 @@ Manages the app state including:
 - Loading and error states
 - Navigation history
 - API interactions
+- **Auto-opening websites** in WebView
 
 ### WebViewScreen
 Provides in-app browsing experience:
 - Full-screen WebView
 - Close button to return to app
 - JavaScript enabled for full functionality
+- **Opens automatically** when websites are loaded
 
 ### WebsiteCard
 Displays current website with:
 - Name, URL, and description
 - View/like/dislike statistics
-- Clickable URL to open in WebView
+- **Auto-open indicator** showing websites open automatically
+- Less prominent URL since it's not clickable
 
 ## 📊 API Integration
 
@@ -109,6 +113,21 @@ The app benefits from the same content filtering algorithm as the web version:
 - Sites with >3 total votes: Filtered based on dislike percentage
 - Threshold: Sites with ≥80% dislikes are filtered out
 
+## 🚀 User Experience
+
+### Auto-Open Feature
+- **Immediate Access**: Websites open automatically when loaded
+- **Seamless Browsing**: No need to click on URLs
+- **Quick Navigation**: Use Previous/Next buttons to browse
+- **In-App Experience**: All browsing happens within the app
+
+### Navigation Flow
+1. **Load Random**: Click "🎲 Random" to load a new website
+2. **Auto-Open**: Website automatically opens in WebView
+3. **Browse**: Use Previous/Next buttons to navigate history
+4. **Rate**: Like/dislike websites to help with content filtering
+5. **Add**: Submit new websites through the form
+
 ## 🚀 Future Enhancements
 
 Potential improvements for the Android app:
@@ -118,6 +137,7 @@ Potential improvements for the Android app:
 - **Deep Linking**: Open specific websites via links
 - **Biometric Authentication**: Secure access to user data
 - **Dark/Light Theme Toggle**: User preference for theme
+- **WebView Settings**: Allow users to configure browser behavior
 
 ## 📝 License
 

@@ -3,6 +3,7 @@ package com.example.discover.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.discover.data.AddWebsiteRequest
+import com.example.discover.data.StaticWebsites
 import com.example.discover.data.Website
 import com.example.discover.network.ApiService
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,13 +50,32 @@ class DiscoverViewModel : ViewModel() {
             
             try {
                 val websitesList = apiService.getWebsites()
-                _websites.value = websitesList
                 
-                if (websitesList.isNotEmpty() && currentWebsite.value == null) {
+                if (websitesList.isNotEmpty()) {
+                    _websites.value = websitesList
+                    // Clear any existing state
+                    _currentWebsite.value = null
+                    visitedWebsites.clear()
+                    websiteHistory.clear()
+                    currentIndex = -1
+                    
+                    // Load the first random website
+                    loadRandomWebsite()
+                } else {
+                    // Fallback to static websites
+                    _websites.value = StaticWebsites.websites
+                    _error.value = "Using offline websites. API unavailable."
+                    
+                    // Load the first random website from static data
                     loadRandomWebsite()
                 }
             } catch (e: Exception) {
-                _error.value = "Failed to load websites: ${e.message}"
+                // Fallback to static websites on any error
+                _websites.value = StaticWebsites.websites
+                _error.value = "Using offline websites. Network error: ${e.message}"
+                
+                // Load the first random website from static data
+                loadRandomWebsite()
             } finally {
                 _isLoading.value = false
             }
@@ -70,7 +90,15 @@ class DiscoverViewModel : ViewModel() {
             visitedWebsites.clear()
             websiteHistory.clear()
             currentIndex = -1
-            loadRandomWebsite()
+            
+            // Try to load a random website again
+            val allWebsites = websites.value
+            if (allWebsites.isNotEmpty()) {
+                val randomWebsite = allWebsites.random()
+                loadWebsite(randomWebsite, addToHistory = true)
+            } else {
+                _error.value = "No websites available. Please try again."
+            }
             return
         }
         
@@ -119,24 +147,36 @@ class DiscoverViewModel : ViewModel() {
         visitedWebsites.add(website.id)
         _currentWebsite.value = website
         
-        // Track view
-        viewModelScope.launch {
-            apiService.incrementView(website.id, website.url, "view")
+        // Track view (only if it's not a static website)
+        if (!website.id.startsWith("website-")) {
+            viewModelScope.launch {
+                apiService.incrementView(website.id, website.url, "view")
+            }
         }
+        
+        // Automatically open the website in WebView
+        _currentWebViewUrl.value = website.url
+        _showWebView.value = true
     }
     
     fun likeWebsite() {
         currentWebsite.value?.let { website ->
-            viewModelScope.launch {
-                apiService.incrementView(website.id, website.url, "like")
+            // Only track likes for non-static websites
+            if (!website.id.startsWith("website-")) {
+                viewModelScope.launch {
+                    apiService.incrementView(website.id, website.url, "like")
+                }
             }
         }
     }
     
     fun dislikeWebsite() {
         currentWebsite.value?.let { website ->
-            viewModelScope.launch {
-                apiService.incrementView(website.id, website.url, "dislike")
+            // Only track dislikes for non-static websites
+            if (!website.id.startsWith("website-")) {
+                viewModelScope.launch {
+                    apiService.incrementView(website.id, website.url, "dislike")
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.discover.network
 
+import android.util.Log
 import com.example.discover.data.AddWebsiteRequest
 import com.example.discover.data.Website
 import com.google.gson.Gson
@@ -18,6 +19,8 @@ class ApiService {
 
     suspend fun getWebsites(): List<Website> = withContext(Dispatchers.IO) {
         try {
+            Log.d("ApiService", "Fetching websites from: $baseUrl/getWebsites")
+            
             val request = Request.Builder()
                 .url("$baseUrl/getWebsites")
                 .get()
@@ -25,13 +28,21 @@ class ApiService {
 
             val response = client.newCall(request).execute()
             
+            Log.d("ApiService", "Response code: ${response.code}")
+            
             if (response.isSuccessful) {
                 val json = response.body?.string() ?: "[]"
-                gson.fromJson(json, Array<Website>::class.java).toList()
+                Log.d("ApiService", "Response body: $json")
+                
+                val websites = gson.fromJson(json, Array<Website>::class.java).toList()
+                Log.d("ApiService", "Parsed ${websites.size} websites")
+                websites
             } else {
+                Log.e("ApiService", "HTTP error: ${response.code}")
                 emptyList()
             }
         } catch (e: Exception) {
+            Log.e("ApiService", "Exception fetching websites", e)
             emptyList()
         }
     }

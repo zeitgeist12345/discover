@@ -37,7 +37,7 @@ fun WebsiteCard(
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            // Website name and URL
+            // Website name
             Text(
                 text = website.name,
                 style = MaterialTheme.typography.headlineSmall,
@@ -47,19 +47,12 @@ fun WebsiteCard(
             
             Spacer(modifier = Modifier.height(8.dp))
             
-            // Clickable URL
+            // URL (less prominent since it opens automatically)
             Text(
                 text = website.url,
                 style = MaterialTheme.typography.bodyMedium,
-                color = PrimaryGreen,
-                modifier = Modifier
-                    .clickable { onWebsiteClick() }
-                    .background(
-                        color = PrimaryGreen.copy(alpha = 0.1f),
-                        shape = RoundedCornerShape(4.dp)
-                    )
-                    .padding(8.dp),
-                textAlign = TextAlign.Center
+                color = TextSecondary,
+                fontSize = 12.sp
             )
             
             Spacer(modifier = Modifier.height(8.dp))
@@ -70,6 +63,24 @@ fun WebsiteCard(
                 style = MaterialTheme.typography.bodyMedium,
                 color = TextSecondary,
                 fontSize = 14.sp
+            )
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            // Auto-open notice
+            Text(
+                text = "🌐 Opens automatically in browser",
+                style = MaterialTheme.typography.bodySmall,
+                color = PrimaryGreen,
+                fontSize = 12.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = PrimaryGreen.copy(alpha = 0.1f),
+                        shape = RoundedCornerShape(4.dp)
+                    )
+                    .padding(4.dp)
             )
             
             Spacer(modifier = Modifier.height(16.dp))

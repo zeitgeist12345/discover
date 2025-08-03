@@ -76,6 +76,14 @@ fun DiscoverScreen(
                 textAlign = TextAlign.Center
             )
             
+            Text(
+                text = "Websites open automatically in the in-app browser",
+                style = MaterialTheme.typography.bodySmall,
+                color = PrimaryGreen,
+                textAlign = TextAlign.Center,
+                fontSize = 12.sp
+            )
+            
             Spacer(modifier = Modifier.height(24.dp))
             
             // Loading state
