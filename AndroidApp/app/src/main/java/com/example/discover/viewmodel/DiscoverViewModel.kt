@@ -13,6 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import android.util.Log
+import android.widget.Toast
+import com.example.discover.network.AddWebsiteResult
 
 class DiscoverViewModel(
     private val context: Context
@@ -292,13 +294,33 @@ class DiscoverViewModel(
     fun addWebsite(name: String, url: String, description: String) {
         viewModelScope.launch {
             val request = AddWebsiteRequest(name, url, description)
-            val success = apiService.addWebsite(request)
 
-            if (success) {
-                hideAddWebsiteDialog()
-            } else {
-                _error.value = "Failed to add website"
+            val result = apiService.addWebsite(request)
+
+            var text = "-"
+            val duration = Toast.LENGTH_SHORT // Or Toast.LENGTH_LONG
+            when (result) {
+                is AddWebsiteResult.Success -> {
+                    text = "Website added successfully!"
+                    hideAddWebsiteDialog()
+                }
+
+                is AddWebsiteResult.Duplicate -> {
+                    // Show duplicate message
+                    text = "This website already exists."
+                }
+
+                is AddWebsiteResult.NetworkError -> {
+                    text = "Network error. Please check your connection."
+                }
+
+                is AddWebsiteResult.Error -> {
+                    // Show generic error message
+                    text = result.message
+                }
             }
+            val toast = Toast.makeText(context, text, duration)
+            toast.show()
         }
     }
 

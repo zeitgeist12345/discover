@@ -10,7 +10,15 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.IOException
 
+// Define possible outcomes for the addWebsite operation
+sealed class AddWebsiteResult {
+    object Success : AddWebsiteResult()
+    object Duplicate : AddWebsiteResult() // Specifically for 409
+    data class Error(val message: String, val statusCode: Int? = null) : AddWebsiteResult()
+    object NetworkError : AddWebsiteResult()
+}
 class ApiService {
     private val client = OkHttpClient()
     private val gson = Gson()
@@ -85,7 +93,7 @@ class ApiService {
             }
         }
 
-    suspend fun addWebsite(request: AddWebsiteRequest): Boolean = withContext(Dispatchers.IO) {
+    suspend fun addWebsite(request: AddWebsiteRequest): AddWebsiteResult = withContext(Dispatchers.IO) {
         try {
             val json = gson.toJson(request)
             val requestBody = json.toRequestBody(jsonMediaType)
@@ -97,15 +105,30 @@ class ApiService {
                 .build()
 
             client.newCall(httpRequest).execute().use { response ->
-                if (!response.isSuccessful) {
-                    Log.w("ApiService", "addWebsite failed: ${response.code} - ${response.message}")
-                    // Log.d("ApiService", "Error body: ${response.body?.string()}") // Optional: log error body
+                if (response.isSuccessful) {
+                    AddWebsiteResult.Success
+                } else {
+                    val errorBody = response.body?.string() // Read error body for more details if needed
+                    Log.w(
+                        "ApiService",
+                        "addWebsite failed: ${response.code} - ${response.message}. Body: $errorBody"
+                    )
+                    if (response.code == 409) { // HTTP 409 Conflict
+                        AddWebsiteResult.Duplicate
+                    } else {
+                        AddWebsiteResult.Error(
+                            "Failed to add website: ${response.message}",
+                            response.code
+                        )
+                    }
                 }
-                response.isSuccessful
-            } // Response and body automatically closed
-        } catch (e: Exception) {
+            }
+        } catch (e: IOException) { // More specific catch for network issues
+            Log.e("ApiService", "Network exception adding website", e)
+            AddWebsiteResult.NetworkError
+        } catch (e: Exception) { // Generic catch for other issues (e.g., JSON parsing)
             Log.e("ApiService", "Exception adding website", e)
-            false
+            AddWebsiteResult.Error("An unexpected error occurred: ${e.message}")
         }
     }
 } 
