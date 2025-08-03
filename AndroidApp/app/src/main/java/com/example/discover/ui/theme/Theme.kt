@@ -14,16 +14,27 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import androidx.compose.ui.unit.dp
+
+// Spacing constants for consistent design
+object Spacing {
+    val small = 8.dp
+    val medium = 16.dp
+    val large = 24.dp
+    val extraLarge = 32.dp
+}
 
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryGreen,
     secondary = PrimaryGreenDark,
-    tertiary = Pink80,
+    tertiary = SuccessColor,
+    error = ErrorColor,
     background = BackgroundDark,
     surface = SurfaceDark,
     onPrimary = TextPrimary,
     onSecondary = TextPrimary,
     onTertiary = TextPrimary,
+    onError = TextPrimary,
     onBackground = TextPrimary,
     onSurface = TextPrimary
 )
@@ -38,7 +49,7 @@ private val LightColorScheme = lightColorScheme(
 fun DiscoverTheme(
     darkTheme: Boolean = true, // Always use dark theme to match web app
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = false, // Disable dynamic colors to maintain consistent theme
+    dynamicColor: Boolean = false, // Disabled to maintain consistent branding
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -46,8 +57,9 @@ fun DiscoverTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        else -> DarkColorScheme // Always use dark theme
     }
     val view = LocalView.current
     if (!view.isInEditMode) {

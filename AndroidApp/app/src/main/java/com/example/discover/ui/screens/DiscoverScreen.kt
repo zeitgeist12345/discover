@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -51,8 +52,14 @@ fun DiscoverScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(
+                    top = 32.dp, // Reduced status bar padding
+                    start = Spacing.medium,
+                    end = Spacing.medium,
+                    bottom = Spacing.medium
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
             // Header
             Text(
@@ -63,7 +70,7 @@ fun DiscoverScreen(
                 textAlign = TextAlign.Center
             )
             
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Spacing.small))
             
             Text(
                 text = "Discover amazing links from around the web!",
@@ -87,14 +94,14 @@ fun DiscoverScreen(
                 fontSize = 12.sp
             )
             
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(Spacing.large))
             
             // Background update indicator
             if (isUpdating) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp),
+                        .padding(Spacing.small),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -103,7 +110,7 @@ fun DiscoverScreen(
                         modifier = Modifier.size(16.dp),
                         strokeWidth = 2.dp
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(Spacing.small))
                     Text(
                         text = "Updating websites...",
                         color = TextSecondary,
@@ -123,7 +130,7 @@ fun DiscoverScreen(
                         color = PrimaryGreen,
                         modifier = Modifier.size(48.dp)
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(Spacing.medium))
                     Text(
                         text = "Loading amazing links...",
                         color = TextSecondary,
@@ -141,7 +148,7 @@ fun DiscoverScreen(
                     border = androidx.compose.foundation.BorderStroke(1.dp, ErrorColor)
                 ) {
                     Column(
-                        modifier = Modifier.padding(16.dp),
+                        modifier = Modifier.padding(Spacing.medium),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
@@ -149,14 +156,14 @@ fun DiscoverScreen(
                             color = TextSecondary,
                             fontWeight = FontWeight.Bold
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(Spacing.small))
                         Text(
                             text = error!!,
                             color = TextSecondary,
                             textAlign = TextAlign.Center,
                             fontSize = 12.sp
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(Spacing.medium))
                         Button(
                             onClick = { 
                                 viewModel.clearError()
@@ -182,7 +189,7 @@ fun DiscoverScreen(
                     onAddWebsiteClick = { viewModel.showAddWebsiteDialog() }
                 )
                 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(Spacing.medium))
                 
                 // Current website card
                 WebsiteCard(
@@ -203,7 +210,7 @@ fun DiscoverScreen(
                         color = TextSecondary,
                         style = MaterialTheme.typography.bodyLarge
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(Spacing.medium))
                     Button(
                         onClick = { viewModel.loadWebsites() },
                         colors = ButtonDefaults.buttonColors(

@@ -38,7 +38,12 @@ fun WebViewScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(
+                        top = 32.dp, // Reduced status bar padding
+                        start = Spacing.medium,
+                        end = Spacing.medium,
+                        bottom = Spacing.medium
+                    ),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -52,7 +57,7 @@ fun WebViewScreen(
                 
                 // Like/Dislike icons
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(Spacing.small),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Dislike icon
@@ -67,7 +72,7 @@ fun WebViewScreen(
                             imageVector = Icons.Default.KeyboardArrowDown,
                             contentDescription = "Dislike",
                             tint = if (isDisliked) ErrorColor else TextSecondary,
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(Spacing.large)
                         )
                     }
                     
@@ -83,7 +88,7 @@ fun WebViewScreen(
                             imageVector = Icons.Default.KeyboardArrowUp,
                             contentDescription = "Like",
                             tint = if (isLiked) SuccessColor else TextSecondary,
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(Spacing.large)
                         )
                     }
                 }
