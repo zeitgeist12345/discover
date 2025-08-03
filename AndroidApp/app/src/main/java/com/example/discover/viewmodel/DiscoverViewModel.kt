@@ -1,0 +1,181 @@
+package com.example.discover.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.discover.data.AddWebsiteRequest
+import com.example.discover.data.Website
+import com.example.discover.network.ApiService
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+
+class DiscoverViewModel : ViewModel() {
+    private val apiService = ApiService()
+    
+    private val _websites = MutableStateFlow<List<Website>>(emptyList())
+    val websites: StateFlow<List<Website>> = _websites.asStateFlow()
+    
+    private val _currentWebsite = MutableStateFlow<Website?>(null)
+    val currentWebsite: StateFlow<Website?> = _currentWebsite.asStateFlow()
+    
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
+    
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error.asStateFlow()
+    
+    private val _showAddWebsiteDialog = MutableStateFlow(false)
+    val showAddWebsiteDialog: StateFlow<Boolean> = _showAddWebsiteDialog.asStateFlow()
+    
+    private val _showWebView = MutableStateFlow(false)
+    val showWebView: StateFlow<Boolean> = _showWebView.asStateFlow()
+    
+    private val _currentWebViewUrl = MutableStateFlow<String?>(null)
+    val currentWebViewUrl: StateFlow<String?> = _currentWebViewUrl.asStateFlow()
+    
+    private val visitedWebsites = mutableSetOf<String>()
+    private val websiteHistory = mutableListOf<Website>()
+    private var currentIndex = -1
+    
+    init {
+        loadWebsites()
+    }
+    
+    fun loadWebsites() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            _error.value = null
+            
+            try {
+                val websitesList = apiService.getWebsites()
+                _websites.value = websitesList
+                
+                if (websitesList.isNotEmpty() && currentWebsite.value == null) {
+                    loadRandomWebsite()
+                }
+            } catch (e: Exception) {
+                _error.value = "Failed to load websites: ${e.message}"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+    
+    fun loadRandomWebsite() {
+        val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.id) }
+        
+        if (unvisitedWebsites.isEmpty()) {
+            // All websites visited, reset
+            visitedWebsites.clear()
+            websiteHistory.clear()
+            currentIndex = -1
+            loadRandomWebsite()
+            return
+        }
+        
+        val randomWebsite = unvisitedWebsites.random()
+        loadWebsite(randomWebsite, addToHistory = true)
+    }
+    
+    fun loadNextWebsite() {
+        if (websiteHistory.isEmpty()) {
+            loadRandomWebsite()
+            return
+        }
+        
+        if (currentIndex < websiteHistory.size - 1) {
+            currentIndex++
+            val website = websiteHistory[currentIndex]
+            loadWebsite(website, addToHistory = false)
+        } else {
+            loadRandomWebsite()
+        }
+    }
+    
+    fun loadPreviousWebsite() {
+        if (websiteHistory.isEmpty() || currentIndex <= 0) {
+            return
+        }
+        
+        currentIndex--
+        val website = websiteHistory[currentIndex]
+        loadWebsite(website, addToHistory = false)
+    }
+    
+    private fun loadWebsite(website: Website, addToHistory: Boolean) {
+        if (addToHistory) {
+            if (currentIndex < websiteHistory.size - 1) {
+                // Remove any forward history if we're going back and then to a new site
+                val newSize = currentIndex + 1
+                while (websiteHistory.size > newSize) {
+                    websiteHistory.removeAt(websiteHistory.size - 1)
+                }
+            }
+            websiteHistory.add(website)
+            currentIndex = websiteHistory.size - 1
+        }
+        
+        visitedWebsites.add(website.id)
+        _currentWebsite.value = website
+        
+        // Track view
+        viewModelScope.launch {
+            apiService.incrementView(website.id, website.url, "view")
+        }
+    }
+    
+    fun likeWebsite() {
+        currentWebsite.value?.let { website ->
+            viewModelScope.launch {
+                apiService.incrementView(website.id, website.url, "like")
+            }
+        }
+    }
+    
+    fun dislikeWebsite() {
+        currentWebsite.value?.let { website ->
+            viewModelScope.launch {
+                apiService.incrementView(website.id, website.url, "dislike")
+            }
+        }
+    }
+    
+    fun openWebsite() {
+        currentWebsite.value?.let { website ->
+            _currentWebViewUrl.value = website.url
+            _showWebView.value = true
+        }
+    }
+    
+    fun closeWebView() {
+        _showWebView.value = false
+        _currentWebViewUrl.value = null
+    }
+    
+    fun showAddWebsiteDialog() {
+        _showAddWebsiteDialog.value = true
+    }
+    
+    fun hideAddWebsiteDialog() {
+        _showAddWebsiteDialog.value = false
+    }
+    
+    fun addWebsite(name: String, url: String, description: String) {
+        viewModelScope.launch {
+            val request = AddWebsiteRequest(name, url, description)
+            val success = apiService.addWebsite(request)
+            
+            if (success) {
+                hideAddWebsiteDialog()
+                loadWebsites() // Reload to include new website
+            } else {
+                _error.value = "Failed to add website"
+            }
+        }
+    }
+    
+    fun clearError() {
+        _error.value = null
+    }
+} 
