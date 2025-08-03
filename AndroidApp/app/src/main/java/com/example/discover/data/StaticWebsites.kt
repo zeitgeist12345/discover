@@ -183,15 +183,6 @@ object StaticWebsites {
             dislikes = 0
         ),
         Website(
-            id = "website-24",
-            name = "A Soft Murmur",
-            url = "https://asoftmurmur.com",
-            description = "Mix ambient sounds (rain, waves) for focus",
-            views = 0,
-            likes = 0,
-            dislikes = 0
-        ),
-        Website(
             id = "website-25",
             name = "10 Minute Mail",
             url = "https://10minutemail.com",
