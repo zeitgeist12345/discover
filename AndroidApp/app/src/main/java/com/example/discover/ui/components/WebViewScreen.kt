@@ -8,7 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.* // Keep existing runtime imports
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -18,13 +18,15 @@ import com.example.discover.ui.theme.*
 @Composable
 fun WebViewScreen(
     url: String,
+    isLiked: Boolean, // Added parameter
+    isDisliked: Boolean, // Added parameter
     onDiscoverClick: () -> Unit = {},
     onDislikeClick: () -> Unit = {},
     onLikeClick: () -> Unit = {},
     onClose: () -> Unit
 ) {
-    var isLiked by remember { mutableStateOf(false) }
-    var isDisliked by remember { mutableStateOf(false) }
+    // Local mutableStateOf for isLiked and isDisliked are removed.
+    // The state is now passed as parameters.
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -32,7 +34,7 @@ fun WebViewScreen(
         // Single row header with title, like/dislike icons, and close button
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            color = SurfaceDark
+            color = SurfaceDark // Assuming SurfaceDark is defined in your theme
         ) {
             // Get status bar padding
             val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
@@ -53,7 +55,7 @@ fun WebViewScreen(
                 Text(
                     text = "🌐 Discover",
                     style = MaterialTheme.typography.headlineSmall,
-                    color = TextPrimary,
+                    color = TextPrimary, // Assuming TextPrimary is defined in your theme
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.clickable(onClick = onDiscoverClick)
                 )
@@ -66,15 +68,15 @@ fun WebViewScreen(
                     // Dislike icon
                     IconButton(
                         onClick = {
-                            isDisliked = !isDisliked
-                            if (isDisliked) isLiked = false
-                            onDislikeClick()
+                            // isDisliked = !isDisliked // Logic moved to ViewModel
+                            // if (isDisliked) isLiked = false // Logic moved to ViewModel
+                            onDislikeClick() // This now calls the ViewModel's function
                         }
                     ) {
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowDown,
                             contentDescription = "Dislike",
-                            tint = if (isDisliked) ErrorColor else TextSecondary,
+                            tint = if (isDisliked) ErrorColor else TextSecondary, // Use passed in isDisliked
                             modifier = Modifier.size(Spacing.large)
                         )
                     }
@@ -82,15 +84,15 @@ fun WebViewScreen(
                     // Like icon
                     IconButton(
                         onClick = {
-                            isLiked = !isLiked
-                            if (isLiked) isDisliked = false
-                            onLikeClick()
+                            // isLiked = !isLiked // Logic moved to ViewModel
+                            // if (isLiked) isDisliked = false // Logic moved to ViewModel
+                            onLikeClick() // This now calls the ViewModel's function
                         }
                     ) {
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowUp,
                             contentDescription = "Like",
-                            tint = if (isLiked) SuccessColor else TextSecondary,
+                            tint = if (isLiked) SuccessColor else TextSecondary, // Use passed in isLiked
                             modifier = Modifier.size(Spacing.large)
                         )
                     }
@@ -100,8 +102,8 @@ fun WebViewScreen(
                 Button(
                     onClick = onClose,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = ErrorColor,
-                        contentColor = TextPrimary
+                        containerColor = ErrorColor, // Assuming ErrorColor is defined
+                        contentColor = TextPrimary  // Assuming TextPrimary is defined
                     )
                 ) {
                     Text("Close")
@@ -128,4 +130,4 @@ fun WebViewScreen(
             }
         )
     }
-} 
+}

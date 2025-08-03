@@ -16,6 +16,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.discover.ui.components.*
 import com.example.discover.ui.theme.*
 import com.example.discover.viewmodel.DiscoverViewModel
+import com.example.discover.viewmodel.UserInteractionState // Import the enum
 
 @Composable
 fun DiscoverScreen(
@@ -29,17 +30,22 @@ fun DiscoverScreen(
     val showAddWebsiteDialog by viewModel.showAddWebsiteDialog.collectAsStateWithLifecycle()
     val showWebView by viewModel.showWebView.collectAsStateWithLifecycle()
     val currentWebViewUrl by viewModel.currentWebViewUrl.collectAsStateWithLifecycle()
+    // Collect the user interaction state
+    val userInteractionState by viewModel.currentUserInteractionState.collectAsStateWithLifecycle()
 
     // Handle WebView display
     if (showWebView && currentWebViewUrl != null) {
         WebViewScreen(
             url = currentWebViewUrl!!,
-            onDiscoverClick = { viewModel.loadRandomWebsite()},
+            // Pass the derived boolean states
+            isLiked = userInteractionState == UserInteractionState.LIKED,
+            isDisliked = userInteractionState == UserInteractionState.DISLIKED,
+            onDiscoverClick = { viewModel.loadRandomWebsite() }, // Keep if you want this button in WebView header
             onDislikeClick = { viewModel.dislikeWebsite() },
             onLikeClick = { viewModel.likeWebsite() },
             onClose = { viewModel.closeWebView() }
         )
-        return
+        return // Return here to only show WebView when it's active
     }
 
     // Main content
@@ -124,7 +130,8 @@ fun DiscoverScreen(
             }
 
             // Loading state (only for initial load)
-            if (isLoading) {
+            // Consider checking if websites.isEmpty() as well for a true "initial" loading state
+            if (isLoading && websites.isEmpty()) { // Added websites.isEmpty() for better initial load indication
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()
@@ -170,7 +177,7 @@ fun DiscoverScreen(
                         Button(
                             onClick = {
                                 viewModel.clearError()
-                                viewModel.loadWebsites()
+                                viewModel.loadWebsites() // Or a more specific refresh action
                             },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = PrimaryGreenDark,
@@ -199,11 +206,11 @@ fun DiscoverScreen(
                     website = currentWebsite!!,
                     onLikeClick = { viewModel.likeWebsite() },
                     onDislikeClick = { viewModel.dislikeWebsite() },
-                    onWebsiteClick = { viewModel.openWebsite() }
+                    onWebsiteClick = { viewModel.openWebsite() } // This will trigger the WebView
                 )
             }
-            // Empty state (shouldn't happen with static websites)
-            else if (websites.isEmpty()) {
+            // Empty state (no websites and not loading and no error)
+            else if (websites.isEmpty() && !isLoading && error == null) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()
@@ -237,4 +244,4 @@ fun DiscoverScreen(
             )
         }
     }
-} 
+}

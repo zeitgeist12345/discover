@@ -17,10 +17,14 @@ import android.widget.Toast
 import com.example.discover.network.AddWebsiteResult
 import kotlinx.coroutines.flow.update
 
+// Enum to represent user interaction
+enum class UserInteractionState {
+    NONE, LIKED, DISLIKED
+}
+
 class DiscoverViewModel(
     private val context: Context
 ) : ViewModel() {
-    // Define a TAG for this class
     private companion object {
         private const val TAG = "DiscoverViewModel"
     }
@@ -52,80 +56,51 @@ class DiscoverViewModel(
     private val _currentWebViewUrl = MutableStateFlow<String?>(null)
     val currentWebViewUrl: StateFlow<String?> = _currentWebViewUrl.asStateFlow()
 
+    private val _currentUserInteractionState = MutableStateFlow(UserInteractionState.NONE)
+    val currentUserInteractionState: StateFlow<UserInteractionState> = _currentUserInteractionState.asStateFlow()
+
     private val visitedWebsites = mutableSetOf<String>()
     private val websiteHistory = mutableListOf<Website>()
     private var currentIndex = -1
-    private var liked = false
-    private var disliked = false
 
     init {
-        // Start immediately with fastest available data
         startWithFastestData()
-        // Then update in background only if needed
         updateWebsitesInBackgroundIfNeeded()
     }
 
     private fun startWithFastestData() {
-        // Priority order: Local cache → Static websites
         val cachedWebsites = localStorage.getCachedWebsites()
-
         if (cachedWebsites.isNotEmpty()) {
-            // Use cached data for fastest startup (cache is kept forever)
             _websites.value = cachedWebsites
-            _error.value = null
         } else {
-            // Fallback to static websites
             _websites.value = StaticWebsites.websites
-            _error.value = null
         }
-
         _isLoading.value = false
-
-        // Load the first random website immediately
         loadRandomWebsite()
     }
 
     private fun updateWebsitesInBackgroundIfNeeded() {
         Log.d(TAG, "updateWebsitesInBackgroundIfNeeded")
-        // Only update if cache is older than 12 hours
         if (!localStorage.shouldUpdateCache()) {
             Log.d(TAG, "Cache is up to date")
             return
         }
-
         viewModelScope.launch {
-            // We can still set _isUpdating if you want to show a subtle loading indicator
-            // for background updates. If not, you can remove these lines too.
             val wasUpdatingBefore = _isUpdating.value
             _isUpdating.value = true
-
             try {
                 val newWebsitesList = apiService.getWebsites()
-
                 if (newWebsitesList.isNotEmpty()) {
-                    // Update with real API data and cache it
                     _websites.value = newWebsitesList
                     localStorage.saveWebsites(newWebsitesList)
-                    _error.value = null // Clear any previous error related to fetching
-
-                    // IMPORTANT: All state clearing and reloading logic has been removed.
-                    // The UI will simply reflect the new list of websites when it next observes
-                    // the `websites` StateFlow. The current website and history remain unchanged.
-
+                    _error.value = null
                     Log.d(TAG, "Background update successful")
                 } else {
-                    // Optionally, you might still want to log this or show a subtle, non-intrusive
-                    // message if the API returns an empty list during a background refresh.
-                    // For now, we'll just log it or do nothing to avoid user interruption.
-                    // _error.value = "Background update: API returned empty data."
                     Log.d(TAG, "Background update: API returned empty data.")
                 }
             } catch (e: Exception) {
-                // Similarly, handle background errors without disrupting the user.
-                // _error.value = "Background update error: ${e.message}"
                 Log.d(TAG, "Background update error: ${e.message}")
             } finally {
-                // Only revert _isUpdating if we were the ones to set it true for this specific operation
                 if (!wasUpdatingBefore) {
                     _isUpdating.value = false
                     Log.d(TAG, "Background update finally: _isUpdating set to false")
@@ -136,38 +111,27 @@ class DiscoverViewModel(
     }
 
     fun loadWebsites() {
-        // This function now triggers a manual refresh regardless of cache age
         updateWebsitesInBackground()
     }
 
     private fun updateWebsitesInBackground() {
         viewModelScope.launch {
             _isUpdating.value = true
-
             try {
                 val websitesList = apiService.getWebsites()
-
                 if (websitesList.isNotEmpty()) {
-                    // Update with real API data and cache it
                     _websites.value = websitesList
                     localStorage.saveWebsites(websitesList)
-
-                    // Clear any existing state and reload
                     _currentWebsite.value = null
                     visitedWebsites.clear()
                     websiteHistory.clear()
                     currentIndex = -1
-
-                    // Load a new random website from updated data
-                    loadRandomWebsite()
-
-                    _error.value = null // Clear any previous error
+                    loadRandomWebsite() // This will also reset interaction state
+                    _error.value = null
                 } else {
-                    // Keep using current data, but show API unavailable message
                     _error.value = "Using cached websites. API returned empty data."
                 }
             } catch (e: Exception) {
-                // Keep using current data, but show network error
                 _error.value = "Using cached websites. Network error: ${e.message}"
             } finally {
                 _isUpdating.value = false
@@ -177,14 +141,10 @@ class DiscoverViewModel(
 
     fun loadRandomWebsite() {
         val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.id) }
-
         if (unvisitedWebsites.isEmpty()) {
-            // All websites visited, reset
             visitedWebsites.clear()
             websiteHistory.clear()
             currentIndex = -1
-
-            // Try to load a random website again
             val allWebsites = websites.value
             if (allWebsites.isNotEmpty()) {
                 val randomWebsite = allWebsites.random()
@@ -194,7 +154,6 @@ class DiscoverViewModel(
             }
             return
         }
-
         val randomWebsite = unvisitedWebsites.random()
         loadWebsite(randomWebsite, addToHistory = true)
     }
@@ -204,7 +163,6 @@ class DiscoverViewModel(
             loadRandomWebsite()
             return
         }
-
         if (currentIndex < websiteHistory.size - 1) {
             currentIndex++
             val website = websiteHistory[currentIndex]
@@ -218,19 +176,16 @@ class DiscoverViewModel(
         if (websiteHistory.isEmpty() || currentIndex <= 0) {
             return
         }
-
         currentIndex--
         val website = websiteHistory[currentIndex]
         loadWebsite(website, addToHistory = false)
     }
 
     private fun loadWebsite(website: Website, addToHistory: Boolean) {
-        liked = false
-        disliked = false
+        _currentUserInteractionState.value = UserInteractionState.NONE // Reset interaction state for new website
 
         if (addToHistory) {
             if (currentIndex < websiteHistory.size - 1) {
-                // Remove any forward history if we're going back and then to a new site
                 val newSize = currentIndex + 1
                 while (websiteHistory.size > newSize) {
                     websiteHistory.removeAt(websiteHistory.size - 1)
@@ -239,46 +194,101 @@ class DiscoverViewModel(
             websiteHistory.add(website)
             currentIndex = websiteHistory.size - 1
         }
-
         visitedWebsites.add(website.id)
         _currentWebsite.value = website
-
         viewModelScope.launch {
             apiService.incrementView(website.id, website.url, "view")
         }
-
-        // Automatically open the website in WebView
         _currentWebViewUrl.value = website.url
         _showWebView.value = true
     }
 
     fun likeWebsite() {
-        if (liked) {
-            return
-        }
-        liked = true
+        val currentInteraction = _currentUserInteractionState.value
+        val websiteToUpdate = currentWebsite.value ?: return
 
-        _currentWebsite.update { current -> current?.copy(likes = current.likes + 1) }
-        currentWebsite.value?.let { website ->
-            viewModelScope.launch {
-                apiService.incrementView(website.id, website.url, "like")
+        when (currentInteraction) {
+            UserInteractionState.LIKED -> {
+                // Currently liked, so unlike it
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(likes = current.likes - 1) } // Decrement like
+                viewModelScope.launch {
+                    // Consider if you need a "unlike" endpoint or if incrementing like with -1 works
+                    // For now, let's assume you might not send an API call for "unliking"
+                    // or you'd have a specific decrement endpoint.
+                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
+                    Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
+                }
+            }
+            UserInteractionState.DISLIKED -> {
+                // Currently disliked, so change to liked
+                _currentUserInteractionState.value = UserInteractionState.LIKED
+                _currentWebsite.update { current ->
+                    current?.copy(
+                        likes = current.likes + 1, // Increment like
+                        dislikes = current.dislikes - 1 // Decrement dislike
+                    )
+                }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
+                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike") // If you track decrements
+                    Log.d(TAG, "Website changed from dislike to like: ${websiteToUpdate.name}")
+                }
+            }
+            UserInteractionState.NONE -> {
+                // Currently neutral, so like it
+                _currentUserInteractionState.value = UserInteractionState.LIKED
+                _currentWebsite.update { current -> current?.copy(likes = current.likes + 1) } // Increment like
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
+                    Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
+                }
             }
         }
     }
 
     fun dislikeWebsite() {
-        if (disliked) {
-            return
-        }
-        disliked = true
+        val currentInteraction = _currentUserInteractionState.value
+        val websiteToUpdate = currentWebsite.value ?: return
 
-        _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes + 1) }
-        currentWebsite.value?.let { website ->
-            viewModelScope.launch {
-                apiService.incrementView(website.id, website.url, "dislike")
+        when (currentInteraction) {
+            UserInteractionState.DISLIKED -> {
+                // Currently disliked, so undislike it
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes - 1) } // Decrement dislike
+                viewModelScope.launch {
+                    // Similar to unlike, consider API for "undisliking"
+                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
+                    Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
+                }
+            }
+            UserInteractionState.LIKED -> {
+                // Currently liked, so change to disliked
+                _currentUserInteractionState.value = UserInteractionState.DISLIKED
+                _currentWebsite.update { current ->
+                    current?.copy(
+                        dislikes = current.dislikes + 1, // Increment dislike
+                        likes = current.likes - 1 // Decrement like
+                    )
+                }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
+                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "like") // If you track decrements
+                    Log.d(TAG, "Website changed from like to dislike: ${websiteToUpdate.name}")
+                }
+            }
+            UserInteractionState.NONE -> {
+                // Currently neutral, so dislike it
+                _currentUserInteractionState.value = UserInteractionState.DISLIKED
+                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes + 1) } // Increment dislike
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
+                    Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
+                }
             }
         }
     }
+
 
     fun openWebsite() {
         currentWebsite.value?.let { website ->
@@ -290,6 +300,7 @@ class DiscoverViewModel(
     fun closeWebView() {
         _showWebView.value = false
         _currentWebViewUrl.value = null
+        // _currentUserInteractionState.value = UserInteractionState.NONE // Optional: reset on close
     }
 
     fun showAddWebsiteDialog() {
@@ -303,30 +314,17 @@ class DiscoverViewModel(
     fun addWebsite(name: String, url: String, description: String) {
         viewModelScope.launch {
             val request = AddWebsiteRequest(name, url, description)
-
             val result = apiService.addWebsite(request)
-
             var text = "-"
-            val duration = Toast.LENGTH_SHORT // Or Toast.LENGTH_LONG
+            val duration = Toast.LENGTH_SHORT
             when (result) {
                 is AddWebsiteResult.Success -> {
                     text = "Website added successfully!"
                     hideAddWebsiteDialog()
                 }
-
-                is AddWebsiteResult.Duplicate -> {
-                    // Show duplicate message
-                    text = "This website already exists."
-                }
-
-                is AddWebsiteResult.NetworkError -> {
-                    text = "Network error. Please check your connection."
-                }
-
-                is AddWebsiteResult.Error -> {
-                    // Show generic error message
-                    text = result.message
-                }
+                is AddWebsiteResult.Duplicate -> text = "This website already exists."
+                is AddWebsiteResult.NetworkError -> text = "Network error. Please check your connection."
+                is AddWebsiteResult.Error -> text = result.message
             }
             val toast = Toast.makeText(context, text, duration)
             toast.show()
@@ -336,4 +334,4 @@ class DiscoverViewModel(
     fun clearError() {
         _error.value = null
     }
-} 
+}
