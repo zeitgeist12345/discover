@@ -58,7 +58,7 @@ fun DiscoverScreen(
                     top = statusBarPadding.calculateTopPadding() + Spacing.medium,
                     start = Spacing.medium,
                     end = Spacing.medium,
-                    bottom = Spacing.medium
+                    bottom = statusBarPadding.calculateTopPadding() + Spacing.medium
                 ),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

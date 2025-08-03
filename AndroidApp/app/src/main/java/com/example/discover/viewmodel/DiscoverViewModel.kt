@@ -296,7 +296,6 @@ class DiscoverViewModel(
 
             if (success) {
                 hideAddWebsiteDialog()
-                loadWebsites() // Reload to include new website
             } else {
                 _error.value = "Failed to add website"
             }
