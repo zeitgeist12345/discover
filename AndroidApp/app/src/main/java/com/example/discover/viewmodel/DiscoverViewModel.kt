@@ -237,11 +237,8 @@ class DiscoverViewModel(
         visitedWebsites.add(website.id)
         _currentWebsite.value = website
 
-        // Track view (only if it's not a static website)
-        if (!website.id.startsWith("website-")) {
-            viewModelScope.launch {
-                apiService.incrementView(website.id, website.url, "view")
-            }
+        viewModelScope.launch {
+            apiService.incrementView(website.id, website.url, "view")
         }
 
         // Automatically open the website in WebView
@@ -251,22 +248,16 @@ class DiscoverViewModel(
 
     fun likeWebsite() {
         currentWebsite.value?.let { website ->
-            // Only track likes for non-static websites
-            if (!website.id.startsWith("website-")) {
-                viewModelScope.launch {
-                    apiService.incrementView(website.id, website.url, "like")
-                }
+            viewModelScope.launch {
+                apiService.incrementView(website.id, website.url, "like")
             }
         }
     }
 
     fun dislikeWebsite() {
         currentWebsite.value?.let { website ->
-            // Only track dislikes for non-static websites
-            if (!website.id.startsWith("website-")) {
-                viewModelScope.launch {
-                    apiService.incrementView(website.id, website.url, "dislike")
-                }
+            viewModelScope.launch {
+                apiService.incrementView(website.id, website.url, "dislike")
             }
         }
     }
