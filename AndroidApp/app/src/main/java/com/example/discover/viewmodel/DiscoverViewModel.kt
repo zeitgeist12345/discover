@@ -1,7 +1,8 @@
 package com.example.discover.viewmodel
 
-import android.content.Context
-import androidx.lifecycle.ViewModel
+// import android.content.Context // No longer directly needed in constructor
+import android.app.Application // Import Application
+import androidx.lifecycle.AndroidViewModel // Import AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.discover.data.AddWebsiteRequest
 import com.example.discover.data.LocalStorage
@@ -13,7 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import android.util.Log
-import android.widget.Toast
+// import android.widget.Toast // Remove this, ViewModel won't show Toasts directly
 import com.example.discover.network.AddWebsiteResult
 import kotlinx.coroutines.flow.update
 
@@ -23,15 +24,17 @@ enum class UserInteractionState {
 }
 
 class DiscoverViewModel(
-    private val context: Context
-) : ViewModel() {
+    application: Application // Change to Application
+) : AndroidViewModel(application) { // Extend AndroidViewModel
     private companion object {
         private const val TAG = "DiscoverViewModel"
     }
 
     private val apiService = ApiService()
-    private val localStorage = LocalStorage(context)
+    // Use getApplication<Application>().applicationContext
+    private val localStorage = LocalStorage(getApplication<Application>().applicationContext)
 
+    // ... (all your existing StateFlows for UI data remain the same)
     private val _websites = MutableStateFlow<List<Website>>(emptyList())
     val websites: StateFlow<List<Website>> = _websites.asStateFlow()
 
@@ -59,6 +62,11 @@ class DiscoverViewModel(
     private val _currentUserInteractionState = MutableStateFlow(UserInteractionState.NONE)
     val currentUserInteractionState: StateFlow<UserInteractionState> = _currentUserInteractionState.asStateFlow()
 
+    // New StateFlow for Toast messages
+    private val _toastMessage = MutableStateFlow<String?>(null)
+    val toastMessage: StateFlow<String?> = _toastMessage.asStateFlow()
+
+
     private val visitedWebsites = mutableSetOf<String>()
     private val websiteHistory = mutableListOf<Website>()
     private var currentIndex = -1
@@ -68,6 +76,7 @@ class DiscoverViewModel(
         updateWebsitesInBackgroundIfNeeded()
     }
 
+    // ... (startWithFastestData, updateWebsitesInBackgroundIfNeeded, loadWebsites, etc. remain the same)
     private fun startWithFastestData() {
         val cachedWebsites = localStorage.getCachedWebsites()
         if (cachedWebsites.isNotEmpty()) {
@@ -209,40 +218,27 @@ class DiscoverViewModel(
 
         when (currentInteraction) {
             UserInteractionState.LIKED -> {
-                // Currently liked, so unlike it
                 _currentUserInteractionState.value = UserInteractionState.NONE
-                _currentWebsite.update { current -> current?.copy(likes = current.likes - 1) } // Decrement like
-                viewModelScope.launch {
-                    // Consider if you need a "unlike" endpoint or if incrementing like with -1 works
-                    // For now, let's assume you might not send an API call for "unliking"
-                    // or you'd have a specific decrement endpoint.
-                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
-                    Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
-                }
+                _currentWebsite.update { current -> current?.copy(likes = current.likes - 1) }
+                Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
             }
             UserInteractionState.DISLIKED -> {
-                // Currently disliked, so change to liked
                 _currentUserInteractionState.value = UserInteractionState.LIKED
                 _currentWebsite.update { current ->
-                    current?.copy(
-                        likes = current.likes + 1, // Increment like
-                        dislikes = current.dislikes - 1 // Decrement dislike
-                    )
+                    current?.copy(likes = current.likes + 1, dislikes = current.dislikes - 1)
                 }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
-                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike") // If you track decrements
-                    Log.d(TAG, "Website changed from dislike to like: ${websiteToUpdate.name}")
                 }
+                Log.d(TAG, "Website changed from dislike to like: ${websiteToUpdate.name}")
             }
             UserInteractionState.NONE -> {
-                // Currently neutral, so like it
                 _currentUserInteractionState.value = UserInteractionState.LIKED
-                _currentWebsite.update { current -> current?.copy(likes = current.likes + 1) } // Increment like
+                _currentWebsite.update { current -> current?.copy(likes = current.likes + 1) }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
-                    Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
                 }
+                Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
             }
         }
     }
@@ -253,38 +249,27 @@ class DiscoverViewModel(
 
         when (currentInteraction) {
             UserInteractionState.DISLIKED -> {
-                // Currently disliked, so undislike it
                 _currentUserInteractionState.value = UserInteractionState.NONE
-                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes - 1) } // Decrement dislike
-                viewModelScope.launch {
-                    // Similar to unlike, consider API for "undisliking"
-                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
-                    Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
-                }
+                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes - 1) }
+                Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
             }
             UserInteractionState.LIKED -> {
-                // Currently liked, so change to disliked
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
                 _currentWebsite.update { current ->
-                    current?.copy(
-                        dislikes = current.dislikes + 1, // Increment dislike
-                        likes = current.likes - 1 // Decrement like
-                    )
+                    current?.copy(dislikes = current.dislikes + 1, likes = current.likes - 1)
                 }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
-                    // apiService.decrementView(websiteToUpdate.id, websiteToUpdate.url, "like") // If you track decrements
-                    Log.d(TAG, "Website changed from like to dislike: ${websiteToUpdate.name}")
                 }
+                Log.d(TAG, "Website changed from like to dislike: ${websiteToUpdate.name}")
             }
             UserInteractionState.NONE -> {
-                // Currently neutral, so dislike it
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
-                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes + 1) } // Increment dislike
+                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes + 1) }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
-                    Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
                 }
+                Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
             }
         }
     }
@@ -300,7 +285,6 @@ class DiscoverViewModel(
     fun closeWebView() {
         _showWebView.value = false
         _currentWebViewUrl.value = null
-        // _currentUserInteractionState.value = UserInteractionState.NONE // Optional: reset on close
     }
 
     fun showAddWebsiteDialog() {
@@ -315,20 +299,22 @@ class DiscoverViewModel(
         viewModelScope.launch {
             val request = AddWebsiteRequest(name, url, description)
             val result = apiService.addWebsite(request)
-            var text = "-"
-            val duration = Toast.LENGTH_SHORT
-            when (result) {
+            val message = when (result) {
                 is AddWebsiteResult.Success -> {
-                    text = "Website added successfully!"
-                    hideAddWebsiteDialog()
+                    hideAddWebsiteDialog() // Hide dialog on success
+                    "Website added successfully!"
                 }
-                is AddWebsiteResult.Duplicate -> text = "This website already exists."
-                is AddWebsiteResult.NetworkError -> text = "Network error. Please check your connection."
-                is AddWebsiteResult.Error -> text = result.message
+                is AddWebsiteResult.Duplicate -> "This website already exists."
+                is AddWebsiteResult.NetworkError -> "Network error. Please check your connection."
+                is AddWebsiteResult.Error -> result.message
             }
-            val toast = Toast.makeText(context, text, duration)
-            toast.show()
+            _toastMessage.value = message // Set the message for the UI to observe
         }
+    }
+
+    // Call this from the UI after the toast is shown
+    fun toastMessageShown() {
+        _toastMessage.value = null
     }
 
     fun clearError() {

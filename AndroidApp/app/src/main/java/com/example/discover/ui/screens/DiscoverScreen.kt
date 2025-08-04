@@ -1,5 +1,6 @@
 package com.example.discover.ui.screens
 
+import android.widget.Toast // Import Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -8,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext // Import LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -16,7 +18,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.discover.ui.components.*
 import com.example.discover.ui.theme.*
 import com.example.discover.viewmodel.DiscoverViewModel
-import com.example.discover.viewmodel.UserInteractionState // Import the enum
+import com.example.discover.viewmodel.UserInteractionState
 
 @Composable
 fun DiscoverScreen(
@@ -30,22 +32,32 @@ fun DiscoverScreen(
     val showAddWebsiteDialog by viewModel.showAddWebsiteDialog.collectAsStateWithLifecycle()
     val showWebView by viewModel.showWebView.collectAsStateWithLifecycle()
     val currentWebViewUrl by viewModel.currentWebViewUrl.collectAsStateWithLifecycle()
-    // Collect the user interaction state
     val userInteractionState by viewModel.currentUserInteractionState.collectAsStateWithLifecycle()
+
+    // Collect the toast message state
+    val toastMessage by viewModel.toastMessage.collectAsStateWithLifecycle()
+    val context = LocalContext.current // Get context for Toast
+
+    // Effect to show Toast when toastMessage changes
+    LaunchedEffect(toastMessage) {
+        toastMessage?.let { message ->
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            viewModel.toastMessageShown() // Important: Notify ViewModel that message was shown
+        }
+    }
 
     // Handle WebView display
     if (showWebView && currentWebViewUrl != null) {
         WebViewScreen(
             url = currentWebViewUrl!!,
-            // Pass the derived boolean states
             isLiked = userInteractionState == UserInteractionState.LIKED,
             isDisliked = userInteractionState == UserInteractionState.DISLIKED,
-            onDiscoverClick = { viewModel.loadRandomWebsite() }, // Keep if you want this button in WebView header
+            onDiscoverClick = { viewModel.loadRandomWebsite() },
             onDislikeClick = { viewModel.dislikeWebsite() },
             onLikeClick = { viewModel.likeWebsite() },
             onClose = { viewModel.closeWebView() }
         )
-        return // Return here to only show WebView when it's active
+        return
     }
 
     // Main content
@@ -54,7 +66,6 @@ fun DiscoverScreen(
             .fillMaxSize()
             .background(BackgroundDark)
     ) {
-        // Get status bar padding
         val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
 
         Column(
@@ -65,10 +76,10 @@ fun DiscoverScreen(
                     top = statusBarPadding.calculateTopPadding() + Spacing.medium,
                     start = Spacing.medium,
                     end = Spacing.medium,
-                    bottom = statusBarPadding.calculateTopPadding() + Spacing.medium
+                    bottom = statusBarPadding.calculateTopPadding() + Spacing.medium // Consider if double padding is needed
                 ),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center // This centers content if it's smaller than screen
         ) {
             // Header
             Text(
@@ -110,7 +121,7 @@ fun DiscoverScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(Spacing.small),
+                        .padding(Spacing.small), // Consider if this padding is good with Column padding
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -129,12 +140,11 @@ fun DiscoverScreen(
                 }
             }
 
-            // Loading state (only for initial load)
-            // Consider checking if websites.isEmpty() as well for a true "initial" loading state
-            if (isLoading && websites.isEmpty()) { // Added websites.isEmpty() for better initial load indication
+            // Loading state
+            if (isLoading && websites.isEmpty()) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth() // Take full width to center content
                 ) {
                     CircularProgressIndicator(
                         color = PrimaryGreen,
@@ -177,7 +187,7 @@ fun DiscoverScreen(
                         Button(
                             onClick = {
                                 viewModel.clearError()
-                                viewModel.loadWebsites() // Or a more specific refresh action
+                                viewModel.loadWebsites()
                             },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = PrimaryGreenDark,
@@ -206,11 +216,11 @@ fun DiscoverScreen(
                     website = currentWebsite!!,
                     onLikeClick = { viewModel.likeWebsite() },
                     onDislikeClick = { viewModel.dislikeWebsite() },
-                    onWebsiteClick = { viewModel.openWebsite() } // This will trigger the WebView
+                    onWebsiteClick = { viewModel.openWebsite() }
                 )
             }
-            // Empty state (no websites and not loading and no error)
-            else if (websites.isEmpty() && !isLoading && error == null) {
+            // Empty state
+            else if (websites.isEmpty()) { // Ensure this condition is mutually exclusive enough
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()

@@ -51,21 +51,21 @@ dependencies {
     implementation(libs.androidx.material3)
     
     // HTTP client for API calls
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(libs.okhttp)
     
     // JSON parsing
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.gson)
     
     // Coroutines for async operations
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     
     // Navigation
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation(libs.androidx.navigation.compose)
     
     // WebView support
-    implementation("androidx.webkit:webkit:1.8.0")
+    implementation(libs.androidx.webkit)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

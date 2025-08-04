@@ -16,7 +16,7 @@ import java.io.IOException
 sealed class AddWebsiteResult {
     object Success : AddWebsiteResult()
     object Duplicate : AddWebsiteResult() // Specifically for 409
-    data class Error(val message: String, val statusCode: Int? = null) : AddWebsiteResult()
+    data class Error(val message: String) : AddWebsiteResult()
     object NetworkError : AddWebsiteResult()
 }
 class ApiService {
@@ -40,7 +40,7 @@ class ApiService {
                 if (response.isSuccessful) {
                     // response.body() is guaranteed to be non-null if isSuccessful is true,
                     // but using ?.use is safer for the body itself.
-                    val json = response.body?.string() ?: "[]"
+                    val json = response.body.string()
                     Log.d("ApiService", "Response body: $json")
 
                     val websites = gson.fromJson(json, Array<Website>::class.java).toList()
@@ -108,7 +108,8 @@ class ApiService {
                 if (response.isSuccessful) {
                     AddWebsiteResult.Success
                 } else {
-                    val errorBody = response.body?.string() // Read error body for more details if needed
+                    val errorBody =
+                        response.body.string() // Read error body for more details if needed
                     Log.w(
                         "ApiService",
                         "addWebsite failed: ${response.code} - ${response.message}. Body: $errorBody"
@@ -117,8 +118,7 @@ class ApiService {
                         AddWebsiteResult.Duplicate
                     } else {
                         AddWebsiteResult.Error(
-                            "Failed to add website: ${response.message}",
-                            response.code
+                            "Failed to add website: ${response.message}"
                         )
                     }
                 }
