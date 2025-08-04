@@ -53,10 +53,11 @@ class LocalStorage(context: Context) {
     }
     
     fun shouldUpdateCache(): Boolean {
-        val lastUpdate = getLastUpdateTime()
-        val currentTime = System.currentTimeMillis()
-        val thresholdMs = CACHE_UPDATE_THRESHOLD_HOURS * 60 * 60 * 1000L
-        return (currentTime - lastUpdate) >= thresholdMs
+//        val lastUpdate = getLastUpdateTime()
+//        val currentTime = System.currentTimeMillis()
+//        val thresholdMs = CACHE_UPDATE_THRESHOLD_HOURS * 60 * 60 * 1000L
+//        return (currentTime - lastUpdate) >= thresholdMs
+        return true
     }
     
     fun clearCache() {
