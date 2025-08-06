@@ -4,17 +4,9 @@
     "name": "skribbl.io",
     "url": "https://skribbl.io/",
     "description": "Free multiplayer drawing and guessing game",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 3,
-    "likes": 1,
+    "views": 12,
+    "likes": 2,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++sgAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++sgAAAAAAAAAA==/",
-    "_etag": "\"2d0012f6-0000-3200-0000-6885fb960000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753611158,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -25,20 +17,12 @@
     "name": "zeitgeist12345",
     "url": "https://zeitgeist12345.github.io/",
     "description": "The personal website of the creator of this project",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 1,
+    "views": 11,
+    "likes": 3,
     "dislikes": 1,
-    "_rid": "eYpZAMXD++shAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++shAAAAAAAAAA==/",
-    "_etag": "\"2d000127-0000-3200-0000-6885da1b0000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753602587,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (25.0%)"
     }
   },
   {
@@ -46,20 +30,12 @@
     "name": "xkcd",
     "url": "https://xkcd.com/",
     "description": "A webcomic of romance, sarcasm, math, and language",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 2,
-    "likes": 1,
-    "dislikes": 1,
-    "_rid": "eYpZAMXD++siAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++siAAAAAAAAAA==/",
-    "_etag": "\"2d00a278-0000-3200-0000-6885e80b0000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753606155,
+    "views": 15,
+    "likes": 4,
+    "dislikes": 3,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (42.9%)"
     }
   },
   {
@@ -67,20 +43,12 @@
     "name": "10 Minute Mail",
     "url": "https://10minutemail.com",
     "description": "Disposable email for spam-free signups",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 0,
-    "dislikes": 1,
-    "_rid": "eYpZAMXD++sjAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++sjAAAAAAAAAA==/",
-    "_etag": "\"2d0030bc-0000-3200-0000-6885f2a00000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753608864,
+    "views": 13,
+    "likes": 1,
+    "dislikes": 4,
     "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "isFiltered": true,
+      "reason": "Undesirable score ≥ 0.8 (80.0%)"
     }
   },
   {
@@ -88,20 +56,12 @@
     "name": "Sci-Hub",
     "url": "https://sci-hub.se/",
     "description": "Removing barriers in the way of science by providing free access to research papers",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 2,
-    "likes": 2,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++skAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++skAAAAAAAAAA==/",
-    "_etag": "\"2d007d5a-0000-3200-0000-6885e3420000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753604930,
+    "views": 18,
+    "likes": 15,
+    "dislikes": 9,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (37.5%)"
     }
   },
   {
@@ -109,17 +69,9 @@
     "name": "Library Genesis",
     "url": "https://libgen.li/",
     "description": "Massive digital library of books, articles, and media",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
+    "views": 15,
     "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++slAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++slAAAAAAAAAA==/",
-    "_etag": "\"26001c17-0000-3200-0000-6884de250000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538085,
+    "dislikes": 3,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -130,17 +82,9 @@
     "name": "Play Counter-Strike 1.6",
     "url": "https://play-cs.com/",
     "description": "Play classic CS 1.6 online without downloading",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
+    "views": 6,
+    "likes": 1,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++smAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++smAAAAAAAAAA==/",
-    "_etag": "\"26001d17-0000-3200-0000-6884de250000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538085,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -151,17 +95,9 @@
     "name": "Product Hunt",
     "url": "https://producthunt.com",
     "description": "The best new products in tech",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
+    "views": 8,
+    "likes": 2,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++snAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++snAAAAAAAAAA==/",
-    "_etag": "\"26001e17-0000-3200-0000-6884de250000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538085,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -172,17 +108,9 @@
     "name": "The Useless Web",
     "url": "https://theuselessweb.com/",
     "description": "Random fun and bizarre websites with one click",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
+    "views": 12,
+    "likes": 3,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++soAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++soAAAAAAAAAA==/",
-    "_etag": "\"26001f17-0000-3200-0000-6884de250000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538085,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -193,20 +121,12 @@
     "name": "Overleaf",
     "url": "https://www.overleaf.com/",
     "description": "Online LaTeX editor with real-time collaboration",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 1,
-    "dislikes": 1,
-    "_rid": "eYpZAMXD++spAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++spAAAAAAAAAA==/",
-    "_etag": "\"2d006e45-0000-3200-0000-6885dfeb0000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753604075,
+    "views": 16,
+    "likes": 4,
+    "dislikes": 3,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (42.9%)"
     }
   },
   {
@@ -214,20 +134,12 @@
     "name": "Internet Archive",
     "url": "https://archive.org/",
     "description": "Digital library of free & borrowable books, movies, music & Wayback Machine",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++sqAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++sqAAAAAAAAAA==/",
-    "_etag": "\"2d0002f6-0000-3200-0000-6885fb900000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753611152,
+    "views": 15,
+    "likes": 7,
+    "dislikes": 6,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (46.2%)"
     }
   },
   {
@@ -235,20 +147,12 @@
     "name": "Hacker News",
     "url": "https://news.ycombinator.com",
     "description": "Social news website focusing on computer science",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++srAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++srAAAAAAAAAA==/",
-    "_etag": "\"26002217-0000-3200-0000-6884de250000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538085,
+    "views": 14,
+    "likes": 7,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (12.5%)"
     }
   },
   {
@@ -256,17 +160,9 @@
     "name": "Window Swap",
     "url": "https://window-swap.com/",
     "description": "See the view from someone else's window around the world",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++ssAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++ssAAAAAAAAAA==/",
-    "_etag": "\"26002817-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
+    "views": 8,
+    "likes": 1,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -277,17 +173,9 @@
     "name": "Patatap",
     "url": "https://patatap.com",
     "description": "Turn your keyboard into a sound machine with colorful animations",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
+    "views": 12,
+    "likes": 3,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++stAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++stAAAAAAAAAA==/",
-    "_etag": "\"26002917-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -298,20 +186,12 @@
     "name": "Radio Garden",
     "url": "http://radio.garden/",
     "description": "Listen to live radio stations across the globe",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 2,
+    "views": 11,
     "likes": 1,
-    "dislikes": 1,
-    "_rid": "eYpZAMXD++suAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++suAAAAAAAAAA==/",
-    "_etag": "\"2d004528-0000-3200-0000-6885da580000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753602648,
+    "dislikes": 3,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (75.0%)"
     }
   },
   {
@@ -319,20 +199,12 @@
     "name": "The Pudding",
     "url": "https://pudding.cool/",
     "description": "Visual essays that explain ideas with data and visuals",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 1,
-    "dislikes": 1,
-    "_rid": "eYpZAMXD++svAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++svAAAAAAAAAA==/",
-    "_etag": "\"2d00d77e-0000-3200-0000-6885e91c0000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753606428,
+    "views": 16,
+    "likes": 4,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (33.3%)"
     }
   },
   {
@@ -340,17 +212,9 @@
     "name": "The Longest Blockchain",
     "url": "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
     "description": "Interesting perspective on blockchain strength",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
+    "views": 9,
+    "likes": 3,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++swAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++swAAAAAAAAAA==/",
-    "_etag": "\"26002c17-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -361,20 +225,12 @@
     "name": "Little Alchemy 2",
     "url": "https://littlealchemy2.com",
     "description": "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 1,
+    "views": 11,
+    "likes": 4,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++sxAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++sxAAAAAAAAAA==/",
-    "_etag": "\"2d00ed22-0000-3200-0000-6885d9880000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753602440,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (0.0%)"
     }
   },
   {
@@ -382,17 +238,9 @@
     "name": "Pointer Pointer",
     "url": "https://pointerpointer.com",
     "description": "Photos of people pointing at your cursor wherever you move it",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
+    "views": 8,
     "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++syAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++syAAAAAAAAAA==/",
-    "_etag": "\"26002e17-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -403,20 +251,12 @@
     "name": "A Soft Murmur",
     "url": "https://asoftmurmur.com",
     "description": "Mix ambient sounds (rain, waves) for focus",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 1,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++szAAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++szAAAAAAAAAA==/",
-    "_etag": "\"2d006a25-0000-3200-0000-6885d9e90000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753602537,
+    "views": 8,
+    "likes": 4,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (33.3%)"
     }
   },
   {
@@ -424,17 +264,9 @@
     "name": "Quick, Draw!",
     "url": "https://quickdraw.withgoogle.com",
     "description": "AI game that guesses your doodles",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++s0AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s0AAAAAAAAAA==/",
-    "_etag": "\"26003017-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
+    "views": 14,
+    "likes": 1,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -445,20 +277,12 @@
     "name": "Bored Button",
     "url": "https://www.boredbutton.com/",
     "description": "Collection of random fun websites and games",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++s1AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s1AAAAAAAAAA==/",
-    "_etag": "\"26003117-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
+    "views": 12,
+    "likes": 3,
+    "dislikes": 4,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (57.1%)"
     }
   },
   {
@@ -466,17 +290,9 @@
     "name": "Stellarium Web",
     "url": "https://stellarium-web.org/",
     "description": "Real-time 3D simulation of space with planetarium view",
-    "createdAt": "2025-07-26T13:54:43.278Z",
-    "category": "curated",
-    "active": true,
-    "views": 1,
-    "likes": 1,
+    "views": 7,
+    "likes": 2,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++s2AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s2AAAAAAAAAA==/",
-    "_etag": "\"2d00994b-0000-3200-0000-6885e0ec0000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753604332,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -487,20 +303,12 @@
     "name": "Ncase.me",
     "url": "https://ncase.me",
     "description": "Interactive simulations about trust and human behavior",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++s3AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s3AAAAAAAAAA==/",
-    "_etag": "\"26003317-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
+    "views": 13,
+    "likes": 4,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (20.0%)"
     }
   },
   {
@@ -508,17 +316,9 @@
     "name": "Don't Even Reply",
     "url": "https://dontevenreply.com",
     "description": "Hilarious fictional email exchanges",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
+    "views": 13,
+    "likes": 3,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++s4AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s4AAAAAAAAAA==/",
-    "_etag": "\"26003517-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -529,20 +329,12 @@
     "name": "This Is Sand",
     "url": "https://thisissand.com",
     "description": "Digital sand art creator",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
-    "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++s5AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s5AAAAAAAAAA==/",
-    "_etag": "\"26003617-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
+    "views": 12,
+    "likes": 2,
+    "dislikes": 5,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (71.4%)"
     }
   },
   {
@@ -550,17 +342,9 @@
     "name": "Al Jazeera",
     "url": "https://www.aljazeera.com",
     "description": "International news and current affairs network",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 3,
-    "likes": 1,
+    "views": 12,
+    "likes": 2,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++s6AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s6AAAAAAAAAA==/",
-    "_etag": "\"2d0023f6-0000-3200-0000-6885fb990000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753611161,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -571,20 +355,12 @@
     "name": "Connected Papers",
     "url": "https://www.connectedpapers.com",
     "description": "Visual tool to explore academic research connections",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 3,
-    "likes": 2,
-    "dislikes": 1,
-    "_rid": "eYpZAMXD++s7AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s7AAAAAAAAAA==/",
-    "_etag": "\"2d004971-0000-3200-0000-6885e6e20000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753605858,
+    "views": 16,
+    "likes": 3,
+    "dislikes": 3,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (50.0%)"
     }
   },
   {
@@ -592,17 +368,9 @@
     "name": "The Deep Sea",
     "url": "https://neal.fun/deep-sea",
     "description": "Interactive dive into ocean depths with fascinating facts",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 0,
+    "views": 9,
     "likes": 0,
-    "dislikes": 0,
-    "_rid": "eYpZAMXD++s8AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s8AAAAAAAAAA==/",
-    "_etag": "\"26003917-0000-3200-0000-6884de260000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753538086,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -613,20 +381,12 @@
     "name": "DeepSeek",
     "url": "https://www.deepseek.com/en",
     "description": "AI research and development company",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
-    "views": 2,
-    "likes": 1,
-    "dislikes": 1,
-    "_rid": "eYpZAMXD++s9AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s9AAAAAAAAAA==/",
-    "_etag": "\"2d004a44-0000-3200-0000-6885dfbd0000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753604029,
+    "views": 12,
+    "likes": 2,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Total votes ≤ 3"
+      "reason": "Undesirable score < 0.8 (50.0%)"
     }
   },
   {
@@ -634,17 +394,152 @@
     "name": "Scream Into the Void",
     "url": "https://screamintothevoid.com",
     "description": "Type your frustrations and hear a scream",
-    "createdAt": "2025-07-26T13:54:43.279Z",
-    "category": "curated",
-    "active": true,
+    "views": 14,
+    "likes": 2,
+    "dislikes": 7,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Undesirable score < 0.8 (77.8%)"
+    }
+  },
+  {
+    "id": "website-1753615327943-19ucf3nd8",
+    "name": "Internet basics",
+    "url": "https://github.com/alex/what-happens-when",
+    "description": "An attempt to answer the age old interview question \"What happens when you type google.com into your browser and press enter?\"",
+    "views": 4,
+    "likes": 2,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1753722205301-3dk9kbpkz",
+    "name": "Software build systems",
+    "url": "https://bazel.build/basics",
+    "description": "The best guide on how software build systems work and the their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
     "views": 1,
     "likes": 0,
     "dislikes": 0,
-    "_rid": "eYpZAMXD++s+AAAAAAAAAA==",
-    "_self": "dbs/eYpZAA==/colls/eYpZAMXD++s=/docs/eYpZAMXD++s+AAAAAAAAAA==/",
-    "_etag": "\"2d00d220-0000-3200-0000-6885d90e0000\"",
-    "_attachments": "attachments/",
-    "_ts": 1753602318,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754210989958-elm457hxi",
+    "name": "example",
+    "url": "https://example.com",
+    "description": "example",
+    "views": 3,
+    "likes": 0,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754211153568-kohyv0ggh",
+    "name": "example",
+    "url": "https://www.example.com",
+    "description": "example",
+    "views": 2,
+    "likes": 0,
+    "dislikes": 2,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754211549593-cul4hyhfd",
+    "name": "ApiService",
+    "url": "https://ApiService.com",
+    "description": "ApiService",
+    "views": 3,
+    "likes": 1,
+    "dislikes": 4,
+    "filterAnalysis": {
+      "isFiltered": true,
+      "reason": "Undesirable score ≥ 0.8 (80.0%)"
+    }
+  },
+  {
+    "id": "website-1754211987027-ellqtsm7e",
+    "name": "example",
+    "url": "https://example2.com",
+    "description": "example",
+    "views": 1,
+    "likes": 0,
+    "dislikes": 2,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754212035695-oh3o1nz4r",
+    "name": "example",
+    "url": "https://example3.com",
+    "description": "example",
+    "views": 4,
+    "likes": 0,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754212067340-1l887d6jy",
+    "name": "example",
+    "url": "https://example4.com",
+    "description": "example",
+    "views": 3,
+    "likes": 0,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754212132607-d2x9ygurz",
+    "name": "example",
+    "url": "https://example5.com",
+    "description": "example",
+    "views": 3,
+    "likes": 0,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754212911174-plzg844cy",
+    "name": "example",
+    "url": "https://example6.com",
+    "description": "example",
+    "views": 1,
+    "likes": 0,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-1754212931267-6jylw26d0",
+    "name": "example",
+    "url": "https://example7.com",
+    "description": "example",
+    "views": 2,
+    "likes": 0,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
