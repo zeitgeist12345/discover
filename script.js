@@ -37,7 +37,7 @@ async function loadWebsitesFromAPI() {
         });
         
         // Create the fetch promise
-        const fetchPromise = fetch(`${CONFIG.API_BASE_URL}/getWebsites`);
+        const fetchPromise = fetch(`${CONFIG.API_BASE_URL}/getWebsitesDesktop`);
         
         // Race between fetch and timeout
         const response = await Promise.race([fetchPromise, timeoutPromise]);
@@ -212,7 +212,9 @@ async function updateWebsiteStats(websiteId, action) {
     
     // Sync with server in the background
     try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${action}`, {
+        actionDesktop = action === 'like' ? 'likeDesktop' : action === 'dislike' ? 'dislikeDesktop' : 'error';
+
+        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementViewDesktop?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${actionDesktop}`, {
             method: 'POST'
         });
         
