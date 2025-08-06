@@ -212,7 +212,7 @@ async function updateWebsiteStats(websiteId, action) {
     
     // Sync with server in the background
     try {
-        actionDesktop = action === 'like' ? 'likeDesktop' : action === 'dislike' ? 'dislikeDesktop' : 'error';
+        actionDesktop = action === 'like' ? 'likeDesktop' : action === 'dislike' ? 'dislikeDesktop' : 'view';
 
         const response = await fetch(`${CONFIG.API_BASE_URL}/incrementViewDesktop?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${actionDesktop}`, {
             method: 'POST'
