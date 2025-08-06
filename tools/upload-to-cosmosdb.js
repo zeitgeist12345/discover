@@ -1,8 +1,8 @@
 const { CosmosClient } = require('@azure/cosmos');
 const { DefaultAzureCredential } = require('@azure/identity');
 
-// Import the websites array from the local file
-const { websites } = require('./websites-node.js');
+// Import the static sites data
+const { WEBSITES_TO_KEEP } = require('./static-sites.js');
 
 // Cosmos DB configuration
 const COSMOS_ENDPOINT = 'https://discover-cosmosdb.documents.azure.com:443/';
@@ -29,10 +29,10 @@ async function uploadWebsitesToCosmosDB() {
         const database = client.database(DATABASE_NAME);
         const container = database.container(CONTAINER_NAME);
 
-        console.log(`📊 Found ${websites.length} websites to upload`);
+        console.log(`📊 Found ${WEBSITES_TO_KEEP.length} websites to upload`);
 
         // Upload each website as a document
-        const uploadPromises = websites.map(async (website, index) => {
+        const uploadPromises = WEBSITES_TO_KEEP.map(async (website, index) => {
             const document = {
                 id: `website-${index + 1}`,
                 name: website.name,
@@ -43,7 +43,9 @@ async function uploadWebsitesToCosmosDB() {
                 active: true,
                 views: 0,
                 likes: 0,
-                dislikes: 0
+                dislikes: 0,
+                likesDesktop: 0,
+                dislikesDesktop: 0
             };
 
             try {
@@ -66,7 +68,7 @@ async function uploadWebsitesToCosmosDB() {
         console.log('\n📈 Upload Summary:');
         console.log(`✅ Successful: ${successful}`);
         console.log(`❌ Failed: ${failed}`);
-        console.log(`📊 Total: ${websites.length}`);
+        console.log(`📊 Total: ${WEBSITES_TO_KEEP.length}`);
 
         if (failed > 0) {
             console.log('\n❌ Failed uploads:');
