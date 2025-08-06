@@ -74,10 +74,10 @@ module.exports = async function (context, req) {
             case 'view':
                 website.views = (website.views || 0) + 1;
                 break;
-            case 'like':
+            case 'likeDesktop':
                 website.likesDesktop = (website.likesDesktop || 0) + 1;
                 break;
-            case 'dislike':
+            case 'dislikeDesktop':
                 website.dislikesDesktop = (website.dislikesDesktop || 0) + 1;
                 break;
             default:
