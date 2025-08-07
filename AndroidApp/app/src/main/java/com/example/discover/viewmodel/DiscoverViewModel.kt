@@ -94,21 +94,60 @@ class DiscoverViewModel(
     private fun updateWebsitesInBackground() {
         viewModelScope.launch {
             _isUpdating.value = true
+            val originalCurrentWebsite = _currentWebsite.value // Keep a reference to the original current website object
+
             try {
                 val websitesList = apiService.getWebsites()
                 if (websitesList.isNotEmpty()) {
+                    // Update the main list of websites
                     _websites.value = websitesList
                     localStorage.saveWebsites(websitesList)
-                    _currentWebsite.value = null
-                    visitedWebsites.clear()
-                    websiteHistory.clear()
-                    currentIndex = -1
-                    _error.value = null
+                    _error.value = null // Clear any previous error
+
+                    // If there was a current website, try to find its updated version in the new list
+                    // to refresh its data (e.g., likes/dislikes) but keep it as the current one.
+                    val updatedCurrentWebsiteInstance = originalCurrentWebsite?.id?.let { currentId ->
+                        websitesList.find { it.id == currentId }
+                    }
+
+                    if (updatedCurrentWebsiteInstance != null) {
+                        // The current website still exists in the new list, update our local instance
+                        // to reflect any changes from the server (e.g., updated like count).
+                        _currentWebsite.value = updatedCurrentWebsiteInstance
+                    } else if (originalCurrentWebsite != null) {
+                        // The original current website is NOT in the new list.
+                        // Per your requirement, we do nothing and keep 'originalCurrentWebsite'
+                        // as '_currentWebsite.value'. It's already set.
+                        // The user can continue interacting with this "stale" website data
+                        // until they navigate away.
+                        // '_websites.value' is updated, so 'next'/'random' will pick from the new list.
+                    } else {
+                        // There was no originalCurrentWebsite (it was null), so load a random one
+                        // from the new list. This handles initial load or scenarios where no site was active.
+                        // Also, reset history as we are picking a fresh start.
+                        visitedWebsites.clear()
+                        websiteHistory.clear()
+                        currentIndex = -1
+                        loadRandomWebsite()
+                    }
+
                 } else {
                     _error.value = "Using cached websites. API returned empty data."
+                    // If API returned empty, _websites.value is unchanged (or from cache/static).
+                    // _currentWebsite.value also remains as it was.
+                    // If _currentWebsite was null and we have some websites, load one.
+                    if (_currentWebsite.value == null && _websites.value.isNotEmpty()) {
+                        loadRandomWebsite() // Potentially reset history here too if needed
+                    }
                 }
             } catch (e: Exception) {
                 _error.value = "Using cached websites. Network error: ${e.message}"
+                // On error, _websites.value is unchanged (or from cache/static).
+                // _currentWebsite.value also remains as it was.
+                // If _currentWebsite was null and we have some websites, load one.
+                if (_currentWebsite.value == null && _websites.value.isNotEmpty()) {
+                    loadRandomWebsite() // Potentially reset history here too if needed
+                }
             } finally {
                 _isUpdating.value = false
             }
