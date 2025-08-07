@@ -11,13 +11,32 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,8 +44,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.example.discover.ui.theme.*
-import kotlinx.coroutines.launch
+import com.example.discover.ui.theme.ErrorColor
+import com.example.discover.ui.theme.PrimaryGreen
+import com.example.discover.ui.theme.Spacing
+import com.example.discover.ui.theme.SuccessColor
+import com.example.discover.ui.theme.SurfaceDark
+import com.example.discover.ui.theme.TextPrimary
+import com.example.discover.ui.theme.TextSecondary
 
 // For remote debugging WebView in Chrome: chrome://inspect
 // In your Application class or an early initialization point:
@@ -47,12 +71,10 @@ fun WebViewScreen(
     onLikeClick: () -> Unit = {},
     onClose: () -> Unit
 ) {
-    var webViewRef by remember { mutableStateOf<WebView?>(null) }
-    var webProgress by remember { mutableStateOf(0) } // For progress bar
-    var pageTitle by remember { mutableStateOf<String?>(null) } // To store page title
+   var webProgress by remember { mutableStateOf(0) } // For progress bar
 
     val context = LocalContext.current
-    val coroutineScope = rememberCoroutineScope()
+    rememberCoroutineScope()
 
     // Custom WebViewClient
     val appWebViewClient = remember {
@@ -66,7 +88,6 @@ fun WebViewScreen(
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 webProgress = 100 // Hide progress indicator
-                pageTitle = view?.title
                 Log.d(WEB_VIEW_SCREEN_TAG, "Page finished loading: $url. Title: ${view?.title}")
             }
 
@@ -111,7 +132,6 @@ fun WebViewScreen(
 
             override fun onReceivedTitle(view: WebView?, title: String?) {
                 super.onReceivedTitle(view, title)
-                pageTitle = title
                 Log.d(WEB_VIEW_SCREEN_TAG, "Received page title: $title")
             }
 
@@ -292,7 +312,7 @@ fun WebViewScreen(
         AndroidView(
             factory = { factoryContext ->
                 WebView(factoryContext).apply {
-                    webViewRef = this // Store reference
+                    // Store reference
 
                     // Apply WebViewClient and WebChromeClient
                     webViewClient = appWebViewClient
