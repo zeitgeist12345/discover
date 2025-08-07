@@ -59,34 +59,38 @@ class ApiService {
             emptyList()
         }
     }
-
-    suspend fun incrementView(websiteId: String, websiteUrl: String, action: String): Boolean =
+    suspend fun incrementView(websiteId: String, websiteUrl: String?, action: String): Boolean = // websiteUrl is nullable
         withContext(Dispatchers.IO) {
+            Log.d("ApiService", "incrementView called with id: '$websiteId', url: '$websiteUrl', action: '$action'") // Logging input parameters
+            if (websiteUrl == null) {
+                Log.e("ApiService", "incrementView failed: websiteUrl is null for id $websiteId")
+                return@withContext false // Or throw IllegalArgumentException("websiteUrl cannot be null")
+            }
+
             try {
+                Log.d("ApiService", "Encoding URL: '$websiteUrl' for incrementView.") // Added logging
+
                 val request = Request.Builder()
                     .url(
                         "$baseUrl/incrementView?id=$websiteId&url=${
                             java.net.URLEncoder.encode(
-                                websiteUrl,
+                                websiteUrl, // Now guaranteed to be non-null here
                                 "UTF-8"
                             )
                         }&action=$action"
                     )
-                    .post("".toRequestBody()) // Empty body for POST
+                    .post("".toRequestBody())
                     .build()
 
                 client.newCall(request).execute().use { response ->
-                    // Even if you only care about isSuccessful, the body (if any) must be closed.
-                    // This is especially true for error responses which might have a body.
                     if (!response.isSuccessful) {
                         Log.w(
                             "ApiService",
                             "incrementView failed: ${response.code} - ${response.message}"
                         )
-                        // Optionally, log response.body?.string() here if you want to see the error body
                     }
                     response.isSuccessful
-                } // Response and body automatically closed
+                }
             } catch (e: Exception) {
                 Log.e("ApiService", "Exception in incrementView", e)
                 false
