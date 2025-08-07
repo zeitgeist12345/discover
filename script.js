@@ -605,7 +605,12 @@ async function submitWebsite(event) {
             name: formData.get('name'),
             url: formData.get('url'),
             description: formData.get('description'),
-            category: formData.get('category')
+            category: formData.get('category'),
+            views: 0,
+            likes: 0,
+            dislikes: 0,
+            likesDesktop: 0,
+            dislikesDesktop: 0
         };
         
         const response = await fetch(`${CONFIG.API_BASE_URL}/addwebsite`, {

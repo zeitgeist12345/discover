@@ -1,43 +1,29 @@
 {
   "metadata": {
-    "generatedAt": "2025-08-06T16:17:24.101Z",
+    "generatedAt": "2025-08-07T16:47:34.585Z",
     "apiUrl": "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api",
-    "totalWebsites": 42
+    "totalWebsites": 33
   },
   "analysis": {
-    "total": 42,
-    "filtered": 2,
-    "shown": 40,
+    "total": 33,
+    "filtered": 0,
+    "shown": 33,
     "byReason": {
-      "Total votes ≤ 3": 24,
-      "Undesirable score < 0.8 (25.0%)": 1,
-      "Undesirable score < 0.8 (42.9%)": 2,
-      "Undesirable score ≥ 0.8 (80.0%)": 2,
-      "Undesirable score < 0.8 (37.5%)": 1,
-      "Undesirable score < 0.8 (46.2%)": 1,
-      "Undesirable score < 0.8 (12.5%)": 1,
-      "Undesirable score < 0.8 (75.0%)": 1,
-      "Undesirable score < 0.8 (33.3%)": 2,
-      "Undesirable score < 0.8 (0.0%)": 1,
-      "Undesirable score < 0.8 (57.1%)": 1,
-      "Undesirable score < 0.8 (20.0%)": 1,
-      "Undesirable score < 0.8 (71.4%)": 1,
-      "Undesirable score < 0.8 (50.0%)": 2,
-      "Undesirable score < 0.8 (77.8%)": 1
+      "Total votes ≤ 3": 33
     },
     "byScore": {
-      "0%": 13,
-      "1-25%": 3,
-      "26-50%": 9,
-      "51-75%": 4,
-      "76-79%": 1,
-      "80-100%": 12
+      "0%": 16,
+      "1-25%": 0,
+      "26-50%": 2,
+      "51-75%": 1,
+      "76-79%": 0,
+      "80-100%": 14
     },
     "byVoteCount": {
-      "0 votes": 2,
-      "1-3 votes": 22,
-      "4-10 votes": 16,
-      "11-50 votes": 2,
+      "0 votes": 13,
+      "1-3 votes": 20,
+      "4-10 votes": 0,
+      "11-50 votes": 0,
       "50+ votes": 0
     }
   }

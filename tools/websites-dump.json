@@ -4,8 +4,51 @@
     "name": "skribbl.io",
     "url": "https://skribbl.io/",
     "description": "Free multiplayer drawing and guessing game",
-    "views": 12,
-    "likes": 2,
+    "category": "curated",
+    "views": 6,
+    "likes": 1,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-5",
+    "name": "Internet Archive",
+    "url": "https://archive.org/",
+    "description": "Digital library of free & borrowable books, movies, music & Wayback Machine",
+    "category": "curated",
+    "views": 4,
+    "likes": 0,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-18",
+    "name": "Patatap",
+    "url": "https://patatap.com",
+    "description": "Turn your keyboard into a sound machine with colorful animations",
+    "category": "curated",
+    "views": 2,
+    "likes": 0,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-25",
+    "name": "10 Minute Mail",
+    "url": "https://10minutemail.com",
+    "description": "Disposable email for spam-free signups",
+    "category": "curated",
+    "views": 2,
+    "likes": 0,
     "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
@@ -17,51 +60,27 @@
     "name": "zeitgeist12345",
     "url": "https://zeitgeist12345.github.io/",
     "description": "The personal website of the creator of this project",
-    "views": 11,
-    "likes": 3,
+    "category": "curated",
+    "views": 5,
+    "likes": 1,
     "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (25.0%)"
+      "reason": "Total votes ≤ 3"
     }
   },
   {
-    "id": "website-16",
-    "name": "xkcd",
-    "url": "https://xkcd.com/",
-    "description": "A webcomic of romance, sarcasm, math, and language",
-    "views": 15,
-    "likes": 4,
-    "dislikes": 3,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (42.9%)"
-    }
-  },
-  {
-    "id": "website-25",
-    "name": "10 Minute Mail",
-    "url": "https://10minutemail.com",
-    "description": "Disposable email for spam-free signups",
-    "views": 13,
+    "id": "website-32",
+    "name": "In depth flow of computers",
+    "url": "https://github.com/alex/what-happens-when",
+    "description": "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together.",
+    "category": "curated",
+    "views": 3,
     "likes": 1,
-    "dislikes": 4,
-    "filterAnalysis": {
-      "isFiltered": true,
-      "reason": "Undesirable score ≥ 0.8 (80.0%)"
-    }
-  },
-  {
-    "id": "website-3",
-    "name": "Sci-Hub",
-    "url": "https://sci-hub.se/",
-    "description": "Removing barriers in the way of science by providing free access to research papers",
-    "views": 18,
-    "likes": 15,
-    "dislikes": 9,
+    "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (37.5%)"
+      "reason": "Total votes ≤ 3"
     }
   },
   {
@@ -69,9 +88,10 @@
     "name": "Library Genesis",
     "url": "https://libgen.li/",
     "description": "Massive digital library of books, articles, and media",
-    "views": 15,
+    "category": "curated",
+    "views": 4,
     "likes": 0,
-    "dislikes": 3,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -82,7 +102,50 @@
     "name": "Play Counter-Strike 1.6",
     "url": "https://play-cs.com/",
     "description": "Play classic CS 1.6 online without downloading",
-    "views": 6,
+    "category": "curated",
+    "views": 2,
+    "likes": 0,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-6",
+    "name": "The Useless Web",
+    "url": "https://theuselessweb.com/",
+    "description": "Random fun and bizarre websites with one click",
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-3",
+    "name": "Sci-Hub",
+    "url": "https://sci-hub.se/",
+    "description": "Removing barriers in the way of science by providing free access to research papers",
+    "category": "curated",
+    "views": 3,
+    "likes": 0,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-9",
+    "name": "Hacker News",
+    "url": "https://news.ycombinator.com",
+    "description": "Social news website focusing on computer science",
+    "category": "curated",
+    "views": 7,
     "likes": 1,
     "dislikes": 0,
     "filterAnalysis": {
@@ -95,8 +158,9 @@
     "name": "Product Hunt",
     "url": "https://producthunt.com",
     "description": "The best new products in tech",
-    "views": 8,
-    "likes": 2,
+    "category": "curated",
+    "views": 6,
+    "likes": 1,
     "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
@@ -104,13 +168,14 @@
     }
   },
   {
-    "id": "website-6",
-    "name": "The Useless Web",
-    "url": "https://theuselessweb.com/",
-    "description": "Random fun and bizarre websites with one click",
-    "views": 12,
-    "likes": 3,
-    "dislikes": 0,
+    "id": "website-12",
+    "name": "Bored Button",
+    "url": "https://www.boredbutton.com/",
+    "description": "Collection of random fun websites and games",
+    "category": "curated",
+    "views": 4,
+    "likes": 0,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -121,38 +186,55 @@
     "name": "Overleaf",
     "url": "https://www.overleaf.com/",
     "description": "Online LaTeX editor with real-time collaboration",
-    "views": 16,
-    "likes": 4,
+    "category": "curated",
+    "views": 2,
+    "likes": 0,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-15",
+    "name": "The Pudding",
+    "url": "https://pudding.cool/",
+    "description": "Visual essays that explain ideas with data and visuals",
+    "category": "curated",
+    "views": 2,
+    "likes": 0,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-17",
+    "name": "Stellarium Web",
+    "url": "https://stellarium-web.org/",
+    "description": "Real-time 3D simulation of space with planetarium view",
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
     "dislikes": 3,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (42.9%)"
+      "reason": "Total votes ≤ 3"
     }
   },
   {
-    "id": "website-5",
-    "name": "Internet Archive",
-    "url": "https://archive.org/",
-    "description": "Digital library of free & borrowable books, movies, music & Wayback Machine",
-    "views": 15,
-    "likes": 7,
-    "dislikes": 6,
+    "id": "website-11",
+    "name": "The Longest Blockchain",
+    "url": "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
+    "description": "Interesting perspective on blockchain strength",
+    "category": "curated",
+    "views": 6,
+    "likes": 0,
+    "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (46.2%)"
-    }
-  },
-  {
-    "id": "website-9",
-    "name": "Hacker News",
-    "url": "https://news.ycombinator.com",
-    "description": "Social news website focusing on computer science",
-    "views": 14,
-    "likes": 7,
-    "dislikes": 1,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (12.5%)"
+      "reason": "Total votes ≤ 3"
     }
   },
   {
@@ -160,22 +242,10 @@
     "name": "Window Swap",
     "url": "https://window-swap.com/",
     "description": "See the view from someone else's window around the world",
-    "views": 8,
-    "likes": 1,
-    "dislikes": 1,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-18",
-    "name": "Patatap",
-    "url": "https://patatap.com",
-    "description": "Turn your keyboard into a sound machine with colorful animations",
-    "views": 12,
-    "likes": 3,
-    "dislikes": 0,
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -186,34 +256,37 @@
     "name": "Radio Garden",
     "url": "http://radio.garden/",
     "description": "Listen to live radio stations across the globe",
-    "views": 11,
-    "likes": 1,
-    "dislikes": 3,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (75.0%)"
-    }
-  },
-  {
-    "id": "website-15",
-    "name": "The Pudding",
-    "url": "https://pudding.cool/",
-    "description": "Visual essays that explain ideas with data and visuals",
-    "views": 16,
-    "likes": 4,
+    "category": "curated",
+    "views": 2,
+    "likes": 0,
     "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (33.3%)"
+      "reason": "Total votes ≤ 3"
     }
   },
   {
-    "id": "website-11",
-    "name": "The Longest Blockchain",
-    "url": "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
-    "description": "Interesting perspective on blockchain strength",
-    "views": 9,
-    "likes": 3,
+    "id": "website-16",
+    "name": "xkcd",
+    "url": "https://xkcd.com/",
+    "description": "A webcomic of romance, sarcasm, math, and language",
+    "category": "curated",
+    "views": 3,
+    "likes": 0,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-21",
+    "name": "Ncase.me",
+    "url": "https://ncase.me",
+    "description": "Interactive simulations about trust and human behavior",
+    "category": "curated",
+    "views": 2,
+    "likes": 0,
     "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
@@ -225,12 +298,27 @@
     "name": "Little Alchemy 2",
     "url": "https://littlealchemy2.com",
     "description": "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
-    "views": 11,
-    "likes": 4,
+    "category": "curated",
+    "views": 1,
+    "likes": 0,
     "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (0.0%)"
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-23",
+    "name": "Quick, Draw!",
+    "url": "https://quickdraw.withgoogle.com",
+    "description": "AI game that guesses your doodles",
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
+    "dislikes": 2,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
     }
   },
   {
@@ -238,7 +326,22 @@
     "name": "Pointer Pointer",
     "url": "https://pointerpointer.com",
     "description": "Photos of people pointing at your cursor wherever you move it",
-    "views": 8,
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
+    "dislikes": 1,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-26",
+    "name": "The Deep Sea",
+    "url": "https://neal.fun/deep-sea",
+    "description": "Interactive dive into ocean depths with fascinating facts",
+    "category": "curated",
+    "views": 4,
     "likes": 0,
     "dislikes": 1,
     "filterAnalysis": {
@@ -251,100 +354,10 @@
     "name": "A Soft Murmur",
     "url": "https://asoftmurmur.com",
     "description": "Mix ambient sounds (rain, waves) for focus",
-    "views": 8,
-    "likes": 4,
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
     "dislikes": 2,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (33.3%)"
-    }
-  },
-  {
-    "id": "website-23",
-    "name": "Quick, Draw!",
-    "url": "https://quickdraw.withgoogle.com",
-    "description": "AI game that guesses your doodles",
-    "views": 14,
-    "likes": 1,
-    "dislikes": 2,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-12",
-    "name": "Bored Button",
-    "url": "https://www.boredbutton.com/",
-    "description": "Collection of random fun websites and games",
-    "views": 12,
-    "likes": 3,
-    "dislikes": 4,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (57.1%)"
-    }
-  },
-  {
-    "id": "website-17",
-    "name": "Stellarium Web",
-    "url": "https://stellarium-web.org/",
-    "description": "Real-time 3D simulation of space with planetarium view",
-    "views": 7,
-    "likes": 2,
-    "dislikes": 0,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-21",
-    "name": "Ncase.me",
-    "url": "https://ncase.me",
-    "description": "Interactive simulations about trust and human behavior",
-    "views": 13,
-    "likes": 4,
-    "dislikes": 1,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (20.0%)"
-    }
-  },
-  {
-    "id": "website-27",
-    "name": "Don't Even Reply",
-    "url": "https://dontevenreply.com",
-    "description": "Hilarious fictional email exchanges",
-    "views": 13,
-    "likes": 3,
-    "dislikes": 0,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-29",
-    "name": "This Is Sand",
-    "url": "https://thisissand.com",
-    "description": "Digital sand art creator",
-    "views": 12,
-    "likes": 2,
-    "dislikes": 5,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (71.4%)"
-    }
-  },
-  {
-    "id": "website-31",
-    "name": "Al Jazeera",
-    "url": "https://www.aljazeera.com",
-    "description": "International news and current affairs network",
-    "views": 12,
-    "likes": 2,
-    "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -355,22 +368,52 @@
     "name": "Connected Papers",
     "url": "https://www.connectedpapers.com",
     "description": "Visual tool to explore academic research connections",
-    "views": 16,
-    "likes": 3,
-    "dislikes": 3,
+    "category": "curated",
+    "views": 5,
+    "likes": 1,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (50.0%)"
+      "reason": "Total votes ≤ 3"
     }
   },
   {
-    "id": "website-26",
-    "name": "The Deep Sea",
-    "url": "https://neal.fun/deep-sea",
-    "description": "Interactive dive into ocean depths with fascinating facts",
-    "views": 9,
+    "id": "website-27",
+    "name": "Don't Even Reply",
+    "url": "https://dontevenreply.com",
+    "description": "Hilarious fictional email exchanges",
+    "category": "curated",
+    "views": 2,
     "likes": 0,
-    "dislikes": 1,
+    "dislikes": 0,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-28",
+    "name": "Scream Into the Void",
+    "url": "https://screamintothevoid.com",
+    "description": "Type your frustrations and hear a scream",
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
+    "dislikes": 3,
+    "filterAnalysis": {
+      "isFiltered": false,
+      "reason": "Total votes ≤ 3"
+    }
+  },
+  {
+    "id": "website-29",
+    "name": "This Is Sand",
+    "url": "https://thisissand.com",
+    "description": "Digital sand art creator",
+    "category": "curated",
+    "views": 5,
+    "likes": 0,
+    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
@@ -381,34 +424,23 @@
     "name": "DeepSeek",
     "url": "https://www.deepseek.com/en",
     "description": "AI research and development company",
-    "views": 12,
-    "likes": 2,
-    "dislikes": 2,
+    "category": "curated",
+    "views": 3,
+    "likes": 0,
+    "dislikes": 1,
     "filterAnalysis": {
       "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (50.0%)"
+      "reason": "Total votes ≤ 3"
     }
   },
   {
-    "id": "website-28",
-    "name": "Scream Into the Void",
-    "url": "https://screamintothevoid.com",
-    "description": "Type your frustrations and hear a scream",
-    "views": 14,
-    "likes": 2,
-    "dislikes": 7,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Undesirable score < 0.8 (77.8%)"
-    }
-  },
-  {
-    "id": "website-1753615327943-19ucf3nd8",
-    "name": "Internet basics",
-    "url": "https://github.com/alex/what-happens-when",
-    "description": "An attempt to answer the age old interview question \"What happens when you type google.com into your browser and press enter?\"",
-    "views": 4,
-    "likes": 2,
+    "id": "website-31",
+    "name": "Al Jazeera",
+    "url": "https://www.aljazeera.com",
+    "description": "International news and current affairs network",
+    "category": "curated",
+    "views": 3,
+    "likes": 0,
     "dislikes": 0,
     "filterAnalysis": {
       "isFiltered": false,
@@ -416,130 +448,14 @@
     }
   },
   {
-    "id": "website-1753722205301-3dk9kbpkz",
+    "id": "website-33",
     "name": "Software build systems",
     "url": "https://bazel.build/basics",
     "description": "The best guide on how software build systems work and the their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
-    "views": 1,
+    "category": "curated",
+    "views": 0,
     "likes": 0,
     "dislikes": 0,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754210989958-elm457hxi",
-    "name": "example",
-    "url": "https://example.com",
-    "description": "example",
-    "views": 3,
-    "likes": 0,
-    "dislikes": 1,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754211153568-kohyv0ggh",
-    "name": "example",
-    "url": "https://www.example.com",
-    "description": "example",
-    "views": 2,
-    "likes": 0,
-    "dislikes": 2,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754211549593-cul4hyhfd",
-    "name": "ApiService",
-    "url": "https://ApiService.com",
-    "description": "ApiService",
-    "views": 3,
-    "likes": 1,
-    "dislikes": 4,
-    "filterAnalysis": {
-      "isFiltered": true,
-      "reason": "Undesirable score ≥ 0.8 (80.0%)"
-    }
-  },
-  {
-    "id": "website-1754211987027-ellqtsm7e",
-    "name": "example",
-    "url": "https://example2.com",
-    "description": "example",
-    "views": 1,
-    "likes": 0,
-    "dislikes": 2,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754212035695-oh3o1nz4r",
-    "name": "example",
-    "url": "https://example3.com",
-    "description": "example",
-    "views": 4,
-    "likes": 0,
-    "dislikes": 1,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754212067340-1l887d6jy",
-    "name": "example",
-    "url": "https://example4.com",
-    "description": "example",
-    "views": 3,
-    "likes": 0,
-    "dislikes": 1,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754212132607-d2x9ygurz",
-    "name": "example",
-    "url": "https://example5.com",
-    "description": "example",
-    "views": 3,
-    "likes": 0,
-    "dislikes": 1,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754212911174-plzg844cy",
-    "name": "example",
-    "url": "https://example6.com",
-    "description": "example",
-    "views": 1,
-    "likes": 0,
-    "dislikes": 0,
-    "filterAnalysis": {
-      "isFiltered": false,
-      "reason": "Total votes ≤ 3"
-    }
-  },
-  {
-    "id": "website-1754212931267-6jylw26d0",
-    "name": "example",
-    "url": "https://example7.com",
-    "description": "example",
-    "views": 2,
-    "likes": 0,
-    "dislikes": 2,
     "filterAnalysis": {
       "isFiltered": false,
       "reason": "Total votes ≤ 3"
