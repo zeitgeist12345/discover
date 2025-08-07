@@ -73,10 +73,9 @@ class DiscoverViewModel(
 
     init {
         startWithFastestData()
-        updateWebsitesInBackgroundIfNeeded()
+        updateWebsitesInBackground()
     }
 
-    // ... (startWithFastestData, updateWebsitesInBackgroundIfNeeded, loadWebsites, etc. remain the same)
     private fun startWithFastestData() {
         val cachedWebsites = localStorage.getCachedWebsites()
         if (cachedWebsites.isNotEmpty()) {
@@ -86,37 +85,6 @@ class DiscoverViewModel(
         }
         _isLoading.value = false
         loadRandomWebsite()
-    }
-
-    private fun updateWebsitesInBackgroundIfNeeded() {
-        Log.d(TAG, "updateWebsitesInBackgroundIfNeeded")
-        if (!localStorage.shouldUpdateCache()) {
-            Log.d(TAG, "Cache is up to date")
-            return
-        }
-        viewModelScope.launch {
-            val wasUpdatingBefore = _isUpdating.value
-            _isUpdating.value = true
-            try {
-                val newWebsitesList = apiService.getWebsites()
-                if (newWebsitesList.isNotEmpty()) {
-                    _websites.value = newWebsitesList
-                    localStorage.saveWebsites(newWebsitesList)
-                    _error.value = null
-                    Log.d(TAG, "Background update successful")
-                } else {
-                    Log.d(TAG, "Background update: API returned empty data.")
-                }
-            } catch (e: Exception) {
-                Log.d(TAG, "Background update error: ${e.message}")
-            } finally {
-                if (!wasUpdatingBefore) {
-                    _isUpdating.value = false
-                    Log.d(TAG, "Background update finally: _isUpdating set to false")
-                }
-                Log.d(TAG, "Background update finally done")
-            }
-        }
     }
 
     fun loadWebsites() {
@@ -135,7 +103,6 @@ class DiscoverViewModel(
                     visitedWebsites.clear()
                     websiteHistory.clear()
                     currentIndex = -1
-                    loadRandomWebsite() // This will also reset interaction state
                     _error.value = null
                 } else {
                     _error.value = "Using cached websites. API returned empty data."
