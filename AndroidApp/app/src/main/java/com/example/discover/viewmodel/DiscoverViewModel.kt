@@ -5,7 +5,6 @@ import android.app.Application // Import Application
 import androidx.lifecycle.AndroidViewModel // Import AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.discover.data.AddWebsiteRequest
-import com.example.discover.data.LocalStorage
 import com.example.discover.data.StaticWebsites
 import com.example.discover.data.Website
 import com.example.discover.network.ApiService
@@ -31,9 +30,6 @@ class DiscoverViewModel(
     }
 
     private val apiService = ApiService()
-    // Use getApplication<Application>().applicationContext
-    private val localStorage = LocalStorage(getApplication<Application>().applicationContext)
-
     // ... (all your existing StateFlows for UI data remain the same)
     private val _websites = MutableStateFlow<List<Website>>(emptyList())
     val websites: StateFlow<List<Website>> = _websites.asStateFlow()
@@ -73,18 +69,17 @@ class DiscoverViewModel(
 
     init {
         startWithFastestData()
+        loadRandomWebsite()
         updateWebsitesInBackground()
     }
 
     private fun startWithFastestData() {
-        val cachedWebsites = localStorage.getCachedWebsites()
-        if (cachedWebsites.isNotEmpty()) {
-            _websites.value = cachedWebsites
-        } else {
-            _websites.value = StaticWebsites.websites
-        }
+        Log.d(TAG, "Begin Start with fastest data")
+        _websites.value = StaticWebsites.websites
         _isLoading.value = false
-        loadRandomWebsite()
+        Log.d(TAG, "Websites: ${_websites.value.size}")
+        Log.d(TAG, "Static websites: ${StaticWebsites.websites.size}")
+        Log.d(TAG, "End Start with fastest data")
     }
 
     fun loadWebsites() {
@@ -101,7 +96,6 @@ class DiscoverViewModel(
                 if (websitesList.isNotEmpty()) {
                     // Update the main list of websites
                     _websites.value = websitesList
-                    localStorage.saveWebsites(websitesList)
                     _error.value = null // Clear any previous error
 
                     // If there was a current website, try to find its updated version in the new list
@@ -155,6 +149,10 @@ class DiscoverViewModel(
     }
 
     fun loadRandomWebsite() {
+        Log.d(TAG, "Start Loading random website")
+        Log.d(TAG, "visitedWebsites: ${visitedWebsites.size}")
+        Log.d(TAG, "websites: ${websites.value.size}")
+
         val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.id) }
         if (unvisitedWebsites.isEmpty()) {
             visitedWebsites.clear()
@@ -166,11 +164,23 @@ class DiscoverViewModel(
                 loadWebsite(randomWebsite, addToHistory = true)
             } else {
                 _error.value = "No websites available. Please try again."
+                Log.d(TAG, "No websites available. Please try again.")
             }
             return
         }
+        // print all unvisitedWebsites
+        Log.d(TAG, "Unvisited websites: ${unvisitedWebsites.size}")
+        unvisitedWebsites.forEach {
+            Log.d(TAG, "Unvisited website: ${it.name}")
+            Log.d(TAG, "Unvisited website id: ${it.id}")
+            Log.d(TAG, "Unvisited website url: ${it.url}")
+        }
+
         val randomWebsite = unvisitedWebsites.random()
+
+        Log.d(TAG, "Random website: ${randomWebsite.name}")
         loadWebsite(randomWebsite, addToHistory = true)
+        Log.d(TAG, "End Loading random website")
     }
 
     fun loadNextWebsite() {

@@ -64,7 +64,8 @@ class ApiService {
             Log.d("ApiService", "incrementView called with id: '$websiteId', url: '$websiteUrl', action: '$action'") // Logging input parameters
             if (websiteUrl == null) {
                 Log.e("ApiService", "incrementView failed: websiteUrl is null for id $websiteId")
-                return@withContext false // Or throw IllegalArgumentException("websiteUrl cannot be null")
+                Log.d("myapp", Log.getStackTraceString(java.lang.Exception()))
+                return@withContext false
             }
 
             try {
