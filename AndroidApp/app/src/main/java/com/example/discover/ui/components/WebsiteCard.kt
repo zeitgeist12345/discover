@@ -14,12 +14,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.discover.data.Website
+import com.example.discover.data.Link
 import com.example.discover.ui.theme.*
 
 @Composable
 fun WebsiteCard(
-    website: Website,
+    website: Link,
     onLikeClick: () -> Unit,
     onDislikeClick: () -> Unit,
     onWebsiteClick: () -> Unit

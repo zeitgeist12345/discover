@@ -4,9 +4,8 @@ package com.example.discover.viewmodel
 import android.app.Application // Import Application
 import androidx.lifecycle.AndroidViewModel // Import AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.discover.data.AddWebsiteRequest
 import com.example.discover.data.StaticWebsites
-import com.example.discover.data.Website
+import com.example.discover.data.Link
 import com.example.discover.network.ApiService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -31,11 +30,11 @@ class DiscoverViewModel(
 
     private val apiService = ApiService()
     // ... (all your existing StateFlows for UI data remain the same)
-    private val _websites = MutableStateFlow<List<Website>>(emptyList())
-    val websites: StateFlow<List<Website>> = _websites.asStateFlow()
+    private val _websites = MutableStateFlow<List<Link>>(emptyList())
+    val websites: StateFlow<List<Link>> = _websites.asStateFlow()
 
-    private val _currentWebsite = MutableStateFlow<Website?>(null)
-    val currentWebsite: StateFlow<Website?> = _currentWebsite.asStateFlow()
+    private val _currentWebsite = MutableStateFlow<Link?>(null)
+    val currentWebsite: StateFlow<Link?> = _currentWebsite.asStateFlow()
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
@@ -61,7 +60,7 @@ class DiscoverViewModel(
 
 
     private val visitedWebsites = mutableSetOf<String>()
-    private val websiteHistory = mutableListOf<Website>()
+    private val websiteHistory = mutableListOf<Link>()
     private var currentIndex = -1
 
     init {
@@ -200,7 +199,7 @@ class DiscoverViewModel(
         loadWebsite(website, addToHistory = false)
     }
 
-    private fun loadWebsite(website: Website, addToHistory: Boolean) {
+    private fun loadWebsite(website: Link, addToHistory: Boolean) {
         _currentUserInteractionState.value = UserInteractionState.NONE // Reset interaction state for new website
 
         if (addToHistory) {
@@ -307,7 +306,7 @@ class DiscoverViewModel(
 
     fun addWebsite(name: String, url: String, description: String) {
         viewModelScope.launch {
-            val request = AddWebsiteRequest(name, url, description)
+            val request = Link(name, url, description)
             val result = apiService.addWebsite(request)
             val message = when (result) {
                 is AddWebsiteResult.Success -> {

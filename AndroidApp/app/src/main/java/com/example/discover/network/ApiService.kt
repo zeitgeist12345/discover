@@ -1,8 +1,7 @@
 package com.example.discover.network
 
 import android.util.Log
-import com.example.discover.data.AddWebsiteRequest
-import com.example.discover.data.Website
+import com.example.discover.data.Link
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -24,7 +23,7 @@ class ApiService {
     private val gson = Gson()
     private val baseUrl = "https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api"
     private val jsonMediaType = "application/json".toMediaType()
-    suspend fun getWebsites(): List<Website> = withContext(Dispatchers.IO) {
+    suspend fun getWebsites(): List<Link> = withContext(Dispatchers.IO) {
         try {
             Log.d("ApiService", "Fetching websites from: $baseUrl/getWebsites")
 
@@ -43,7 +42,7 @@ class ApiService {
                     val json = response.body.string()
                     Log.d("ApiService", "Response body: $json")
 
-                    val websites = gson.fromJson(json, Array<Website>::class.java).toList()
+                    val websites = gson.fromJson(json, Array<Link>::class.java).toList()
                     Log.d("ApiService", "Parsed ${websites.size} websites")
                     websites // This will be the return value of the 'use' block
                 } else {
@@ -98,9 +97,10 @@ class ApiService {
             }
         }
 
-    suspend fun addWebsite(request: AddWebsiteRequest): AddWebsiteResult = withContext(Dispatchers.IO) {
+    suspend fun addWebsite(request: Link): AddWebsiteResult = withContext(Dispatchers.IO) {
         try {
             val json = gson.toJson(request)
+            Log.d("ApiService", "Adding website with JSON: $json")
             val requestBody = json.toRequestBody(jsonMediaType)
 
             val httpRequest = Request.Builder()
@@ -109,6 +109,7 @@ class ApiService {
                 .addHeader("Content-Type", "application/json")
                 .build()
 
+            Log.d("ApiService", "The httpRequest is $httpRequest")
             client.newCall(httpRequest).execute().use { response ->
                 if (response.isSuccessful) {
                     AddWebsiteResult.Success

@@ -2,7 +2,7 @@ package com.example.discover.data
 
 object StaticWebsites {
     val websites = listOf(
-        Website(
+        Link(
             id = "website-2",
             name = "zeitgeist12345",
             url = "https://zeitgeist12345.github.io/",
@@ -11,7 +11,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-3",
             name = "Sci-Hub",
             url = "https://sci-hub.se/",
@@ -20,7 +20,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-4",
             name = "Library Genesis",
             url = "https://libgen.li/",
@@ -29,7 +29,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-5",
             name = "Internet Archive",
             url = "https://archive.org/",
@@ -38,7 +38,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-6",
             name = "The Useless Web",
             url = "https://theuselessweb.com/",
@@ -47,7 +47,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-8",
             name = "Product Hunt",
             url = "https://producthunt.com",
@@ -56,7 +56,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-9",
             name = "Hacker News",
             url = "https://news.ycombinator.com",
@@ -65,7 +65,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-10",
             name = "Overleaf",
             url = "https://www.overleaf.com/",
@@ -74,7 +74,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-11",
             name = "The Longest Blockchain",
             url = "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
@@ -83,7 +83,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-12",
             name = "Bored Button",
             url = "https://www.boredbutton.com/",
@@ -92,7 +92,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-13",
             name = "Radio Garden",
             url = "http://radio.garden/",
@@ -101,7 +101,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-14",
             name = "Window Swap",
             url = "https://window-swap.com/",
@@ -110,7 +110,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-15",
             name = "The Pudding",
             url = "https://pudding.cool/",
@@ -119,7 +119,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-16",
             name = "xkcd",
             url = "https://xkcd.com/",
@@ -128,7 +128,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-18",
             name = "Patatap",
             url = "https://patatap.com",
@@ -137,7 +137,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-19",
             name = "Little Alchemy 2",
             url = "https://littlealchemy2.com",
@@ -146,7 +146,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-20",
             name = "Pointer Pointer",
             url = "https://pointerpointer.com",
@@ -155,7 +155,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-21",
             name = "Ncase.me",
             url = "https://ncase.me",
@@ -164,7 +164,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-22",
             name = "Connected Papers",
             url = "https://www.connectedpapers.com",
@@ -173,7 +173,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-23",
             name = "Quick, Draw!",
             url = "https://quickdraw.withgoogle.com",
@@ -182,7 +182,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-25",
             name = "10 Minute Mail",
             url = "https://10minutemail.com",
@@ -191,7 +191,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-26",
             name = "The Deep Sea",
             url = "https://neal.fun/deep-sea",
@@ -200,7 +200,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-27",
             name = "Don't Even Reply",
             url = "https://dontevenreply.com",
@@ -209,7 +209,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-28",
             name = "Scream Into the Void",
             url = "https://screamintothevoid.com",
@@ -218,7 +218,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-29",
             name = "This Is Sand",
             url = "https://thisissand.com",
@@ -227,7 +227,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-30",
             name = "DeepSeek",
             url = "https://www.deepseek.com/en",
@@ -236,7 +236,7 @@ object StaticWebsites {
             likes = 0,
             dislikes = 0
         ),
-        Website(
+        Link(
             id = "website-31",
             name = "Al Jazeera",
             url = "https://www.aljazeera.com",

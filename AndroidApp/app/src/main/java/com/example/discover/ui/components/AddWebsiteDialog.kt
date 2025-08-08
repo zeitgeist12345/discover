@@ -1,5 +1,6 @@
 package com.example.discover.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -115,7 +116,7 @@ fun AddWebsiteDialog(
                     
                     isLoading = true
                     error = null
-                    
+                    Log.d("AddWebsiteDialog", "Adding website: $name, $url, $description")
                     onAddWebsite(name, url, description)
                     isLoading = false
                 },
