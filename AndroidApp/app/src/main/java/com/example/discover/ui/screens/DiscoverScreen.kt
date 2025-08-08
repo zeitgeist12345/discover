@@ -120,8 +120,6 @@ fun DiscoverScreen(
                 onAddWebsiteClick = { viewModel.showAddWebsiteDialog() }
             )
 
-            Spacer(modifier = Modifier.height(Spacing.medium))
-
             // Current website card
             WebsiteCard(
                 website = currentWebsite!!,
