@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext // Import LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.discover.ui.components.*
@@ -24,10 +23,7 @@ import com.example.discover.viewmodel.UserInteractionState
 fun DiscoverScreen(
     viewModel: DiscoverViewModel
 ) {
-    val websites by viewModel.websites.collectAsStateWithLifecycle()
     val currentWebsite by viewModel.currentWebsite.collectAsStateWithLifecycle()
-    val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
-    val isUpdating by viewModel.isUpdating.collectAsStateWithLifecycle()
     val showAddWebsiteDialog by viewModel.showAddWebsiteDialog.collectAsStateWithLifecycle()
     val showWebView by viewModel.showWebView.collectAsStateWithLifecycle()
     val currentWebViewUrl by viewModel.currentWebViewUrl.collectAsStateWithLifecycle()
@@ -113,93 +109,27 @@ fun DiscoverScreen(
                 fontSize = 12.sp
             )
 
-            Spacer(modifier = Modifier.height(Spacing.large))
+            Spacer(modifier = Modifier.height(Spacing.medium))
 
-            // Background update indicator
-            if (isUpdating) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(Spacing.small), // Consider if this padding is good with Column padding
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    CircularProgressIndicator(
-                        color = PrimaryGreen,
-                        modifier = Modifier.size(16.dp),
-                        strokeWidth = 2.dp
-                    )
-                    Spacer(modifier = Modifier.width(Spacing.small))
-                    Text(
-                        text = "Updating websites...",
-                        color = TextSecondary,
-                        style = MaterialTheme.typography.bodySmall,
-                        fontSize = 12.sp
-                    )
-                }
-            }
-
-            // Loading state
-            if (isLoading && websites.isEmpty()) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.fillMaxWidth() // Take full width to center content
-                ) {
-                    CircularProgressIndicator(
-                        color = PrimaryGreen,
-                        modifier = Modifier.size(48.dp)
-                    )
-                    Spacer(modifier = Modifier.height(Spacing.medium))
-                    Text(
-                        text = "Loading amazing links...",
-                        color = TextSecondary,
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                }
-            }
             // Content state
-            else if (currentWebsite != null) {
-                // Control buttons
-                ControlButtons(
-                    onPreviousClick = { viewModel.loadPreviousWebsite() },
-                    onRandomClick = { viewModel.loadRandomWebsite() },
-                    onNextClick = { viewModel.loadNextWebsite() },
-                    onAddWebsiteClick = { viewModel.showAddWebsiteDialog() }
-                )
+            // Control buttons
+            ControlButtons(
+                onPreviousClick = { viewModel.loadPreviousWebsite() },
+                onRandomClick = { viewModel.loadRandomWebsite() },
+                onNextClick = { viewModel.loadNextWebsite() },
+                onAddWebsiteClick = { viewModel.showAddWebsiteDialog() }
+            )
 
-                Spacer(modifier = Modifier.height(Spacing.medium))
+            Spacer(modifier = Modifier.height(Spacing.medium))
 
-                // Current website card
-                WebsiteCard(
-                    website = currentWebsite!!,
-                    onLikeClick = { viewModel.likeWebsite() },
-                    onDislikeClick = { viewModel.dislikeWebsite() },
-                    onWebsiteClick = { viewModel.openWebsite() }
-                )
-            }
-            // Empty state
-            else if (websites.isEmpty()) { // Ensure this condition is mutually exclusive enough
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = "No websites available",
-                        color = TextSecondary,
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                    Spacer(modifier = Modifier.height(Spacing.medium))
-                    Button(
-                        onClick = { viewModel.loadWebsites() },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = PrimaryGreenDark,
-                            contentColor = TextPrimary
-                        )
-                    ) {
-                        Text("Load Websites")
-                    }
-                }
-            }
+            // Current website card
+            WebsiteCard(
+                website = currentWebsite!!,
+                onLikeClick = { viewModel.likeWebsite() },
+                onDislikeClick = { viewModel.dislikeWebsite() },
+                onWebsiteClick = { viewModel.openWebsite() }
+            )
+
         }
 
         // Add website dialog
