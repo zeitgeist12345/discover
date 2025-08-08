@@ -28,7 +28,6 @@ fun DiscoverScreen(
     val currentWebsite by viewModel.currentWebsite.collectAsStateWithLifecycle()
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
     val isUpdating by viewModel.isUpdating.collectAsStateWithLifecycle()
-    val error by viewModel.error.collectAsStateWithLifecycle()
     val showAddWebsiteDialog by viewModel.showAddWebsiteDialog.collectAsStateWithLifecycle()
     val showWebView by viewModel.showWebView.collectAsStateWithLifecycle()
     val currentWebViewUrl by viewModel.currentWebViewUrl.collectAsStateWithLifecycle()
@@ -156,47 +155,6 @@ fun DiscoverScreen(
                         color = TextSecondary,
                         style = MaterialTheme.typography.bodyLarge
                     )
-                }
-            }
-            // Error state
-            else if (error != null) {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = ErrorColor.copy(alpha = 0.1f)
-                    ),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, ErrorColor)
-                ) {
-                    Column(
-                        modifier = Modifier.padding(Spacing.medium),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "ℹ️ Info",
-                            color = TextSecondary,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.height(Spacing.small))
-                        Text(
-                            text = error!!,
-                            color = TextSecondary,
-                            textAlign = TextAlign.Center,
-                            fontSize = 12.sp
-                        )
-                        Spacer(modifier = Modifier.height(Spacing.medium))
-                        Button(
-                            onClick = {
-                                viewModel.clearError()
-                                viewModel.loadWebsites()
-                            },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = PrimaryGreenDark,
-                                contentColor = TextPrimary
-                            )
-                        ) {
-                            Text("Refresh")
-                        }
-                    }
                 }
             }
             // Content state

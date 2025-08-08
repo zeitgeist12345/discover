@@ -43,9 +43,6 @@ class DiscoverViewModel(
     private val _isUpdating = MutableStateFlow(false)
     val isUpdating: StateFlow<Boolean> = _isUpdating.asStateFlow()
 
-    private val _error = MutableStateFlow<String?>(null)
-    val error: StateFlow<String?> = _error.asStateFlow()
-
     private val _showAddWebsiteDialog = MutableStateFlow(false)
     val showAddWebsiteDialog: StateFlow<Boolean> = _showAddWebsiteDialog.asStateFlow()
 
@@ -96,7 +93,6 @@ class DiscoverViewModel(
                 if (websitesList.isNotEmpty()) {
                     // Update the main list of websites
                     _websites.value = websitesList
-                    _error.value = null // Clear any previous error
 
                     // If there was a current website, try to find its updated version in the new list
                     // to refresh its data (e.g., likes/dislikes) but keep it as the current one.
@@ -126,7 +122,6 @@ class DiscoverViewModel(
                     }
 
                 } else {
-                    _error.value = "Using cached websites. API returned empty data."
                     // If API returned empty, _websites.value is unchanged (or from cache/static).
                     // _currentWebsite.value also remains as it was.
                     // If _currentWebsite was null and we have some websites, load one.
@@ -135,7 +130,7 @@ class DiscoverViewModel(
                     }
                 }
             } catch (e: Exception) {
-                _error.value = "Using cached websites. Network error: ${e.message}"
+                e.printStackTrace()
                 // On error, _websites.value is unchanged (or from cache/static).
                 // _currentWebsite.value also remains as it was.
                 // If _currentWebsite was null and we have some websites, load one.
@@ -163,7 +158,6 @@ class DiscoverViewModel(
                 val randomWebsite = allWebsites.random()
                 loadWebsite(randomWebsite, addToHistory = true)
             } else {
-                _error.value = "No websites available. Please try again."
                 Log.d(TAG, "No websites available. Please try again.")
             }
             return
@@ -331,9 +325,5 @@ class DiscoverViewModel(
     // Call this from the UI after the toast is shown
     fun toastMessageShown() {
         _toastMessage.value = null
-    }
-
-    fun clearError() {
-        _error.value = null
     }
 }
