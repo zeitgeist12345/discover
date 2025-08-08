@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -58,23 +59,26 @@ fun WebsiteCard(
             Spacer(modifier = Modifier.height(12.dp))
 
             // URL
-            Text(
-                text = website.url,
-                style = MaterialTheme.typography.bodySmall,
-                color = PrimaryGreen,
-                fontSize = 12.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        color = PrimaryGreen.copy(alpha = 0.1f),
-                        shape = RoundedCornerShape(4.dp)
-                    )
-                    .padding(4.dp)
-                    .clickable(
-                        onClick = onWebsiteClick // Use the passed-in onWebsiteClick lambda
-                    )
-            )
+
+            SelectionContainer {
+                Text(
+                    text = website.url,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = PrimaryGreen,
+                    fontSize = 12.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = PrimaryGreen.copy(alpha = 0.1f),
+                            shape = RoundedCornerShape(4.dp)
+                        )
+                        .padding(4.dp)
+                        .clickable(
+                            onClick = onWebsiteClick // Use the passed-in onWebsiteClick lambda
+                        )
+                )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
