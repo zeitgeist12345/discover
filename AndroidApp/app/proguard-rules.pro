@@ -26,11 +26,6 @@
 -keep class com.example.discover.data.Link { *; }
 -keepclassmembers class com.example.discover.data.Link { *; }
 
-# Keep the LinkGson data class and its members for Gson (if you use it for Gson parsing anywhere)
-# If LinkGson is not used with Gson, you can remove these two lines.
--keep class com.example.discover.data.LinkGson { *; }
--keepclassmembers class com.example.discover.data.LinkGson { *; }
-
 # General Gson rules that are good to have.
 # These help Gson with reflection, especially if you use @SerializedName or generic types.
 

@@ -2,7 +2,6 @@ package com.example.discover.network
 
 import android.util.Log
 import com.example.discover.data.Link
-import com.example.discover.data.LinkGson
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,51 +33,43 @@ class ApiService {
                 .get()
                 .build()
 
-            // Use client.newCall(request).execute().use { response -> ... }
-            client.newCall(request).execute().use { response ->
-                Log.d("ApiService", "Response code: ${response.code}")
+            client.newCall(request).execute()
+                .use { response -> // This 'use' block needs to return List<Link>
+                    Log.d("ApiService", "Response code: ${response.code}")
 
-                if (response.isSuccessful) {
-                    // response.body() is guaranteed to be non-null if isSuccessful is true,
-                    // but using ?.use is safer for the body itself.
-                    val json = response.body.string()
-                    Log.d("ApiService", "Response body: $json")
-                    val downloadedWebsites = gson.fromJson(json, Array<LinkGson>::class.java)
-                    Log.d("ApiService", "Parsed ${downloadedWebsites.size} websites")
-                    Log.d("ApiService", "First website: ${downloadedWebsites.firstOrNull()?.name}")
-
-                    val castedWebsitesToLink = downloadedWebsites.map {
-                        Link(
-                            it.id,
-                            it.name,
-                            it.url,
-                            it.description,
-                            it.category,
-                            it.likes,
-                            it.dislikes
+                    if (response.isSuccessful) {
+                        // response.body() is guaranteed to be non-null if isSuccessful is true,
+                        // but using ?.use is safer for the body itself.
+                        val json = response.body.string()
+                        Log.d("ApiService", "Response body: $json")
+                        val downloadedWebsites = gson.fromJson(json, Array<Link>::class.java)
+                        Log.d("ApiService", "Parsed ${downloadedWebsites.size} websites")
+                        Log.d(
+                            "ApiService",
+                            "First website: ${downloadedWebsites.firstOrNull()?.name}"
                         )
+
+                        // gson.fromJson returns Array<Link> with Array<Link>::class.java
+                        val downloadedArray: Array<Link> =
+                            gson.fromJson(json, Array<Link>::class.java)
+                        Log.d("ApiService", "Parsed ${downloadedArray.size} websites")
+                        Log.d("ApiService", "First website: ${downloadedArray.firstOrNull()?.name}")
+
+                        // Convert Array<Link> to List<Link> before returning from the 'use' block
+                        return@use downloadedArray.toList() // THIS IS THE KEY CHANGE
+                    } else {
+                        Log.e("ApiService", "HTTP error: ${response.code} - ${response.message}")
+                        // Explicitly return List<Link>
+                        return@use emptyList<Link>()
                     }
-
-                    Log.d("ApiService", "Parsed ${castedWebsitesToLink.size} websites")
-                    Log.d(
-                        "ApiService",
-                        "First website: ${castedWebsitesToLink.firstOrNull()?.name}"
-                    )
-
-                    return@use castedWebsitesToLink // This will be the return value of the 'use' block
-                } else {
-                    Log.e("ApiService", "HTTP error: ${response.code} - ${response.message}")
-                    // It's good practice to log the error message from the response as well
-                    // The body of an error response might also contain useful info,
-                    // but for now, just ensure it's closed by the 'use' block.
-                    return@use emptyList()
-                }
-            } // The response and its body are automatically closed here
+                } // The 'use' block now correctly returns List<Link>
         } catch (e: Exception) {
             Log.e("ApiService", "Exception fetching websites", e)
-            return@withContext emptyList()
+            // Explicitly return List<Link> for the catch block
+            return@withContext emptyList<Link>()
         }
     }
+
 
     suspend fun incrementView(websiteId: String, websiteUrl: String?, action: String): Boolean =
         // websiteUrl is nullable
