@@ -10,3 +10,14 @@ data class Link(
     val likes: Int = 0,
     val dislikes: Int = 0
 )
+
+data class LinkGson(
+    val id: String,
+    val name: String,
+    val url: String,
+    val description: String,
+    val category: String,
+    val views: Int,
+    val likes: Int,
+    val dislikes: Int
+)

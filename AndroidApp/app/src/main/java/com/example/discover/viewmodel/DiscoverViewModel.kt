@@ -29,6 +29,7 @@ class DiscoverViewModel(
     }
 
     private val apiService = ApiService()
+
     // ... (all your existing StateFlows for UI data remain the same)
     private val _websites = MutableStateFlow<List<Link>>(emptyList())
     val websites: StateFlow<List<Link>> = _websites.asStateFlow()
@@ -46,7 +47,8 @@ class DiscoverViewModel(
     val currentWebViewUrl: StateFlow<String?> = _currentWebViewUrl.asStateFlow()
 
     private val _currentUserInteractionState = MutableStateFlow(UserInteractionState.NONE)
-    val currentUserInteractionState: StateFlow<UserInteractionState> = _currentUserInteractionState.asStateFlow()
+    val currentUserInteractionState: StateFlow<UserInteractionState> =
+        _currentUserInteractionState.asStateFlow()
 
     // New StateFlow for Toast messages
     private val _toastMessage = MutableStateFlow<String?>(null)
@@ -65,29 +67,40 @@ class DiscoverViewModel(
 
     private fun startWithFastestData() {
         Log.d(TAG, "Begin Start with fastest data")
-        _websites.value = StaticWebsites.websites
         Log.d(TAG, "Websites: ${_websites.value.size}")
         Log.d(TAG, "Static websites: ${StaticWebsites.websites.size}")
+        if (_websites.value.isEmpty()) {
+            Log.d(TAG, "Starting with static websites")
+            _websites.value = StaticWebsites.websites
+        }
         Log.d(TAG, "End Start with fastest data")
     }
 
     private fun updateWebsitesInBackground() {
         viewModelScope.launch {
-            val originalCurrentWebsite = _currentWebsite.value // Keep a reference to the original current website object
+            val originalCurrentWebsite =
+                _currentWebsite.value // Keep a reference to the original current website object
 
             try {
                 val websitesList = apiService.getWebsites()
                 if (websitesList.isNotEmpty()) {
-                    Log.d(TAG, "API returned ${websitesList.size} items. First item from API before assigning: ID=${websitesList.firstOrNull()?.id}, Name=${websitesList.firstOrNull()?.name}")
+                    Log.d(
+                        TAG,
+                        "API returned ${websitesList.size} items. First item from API before assigning: ID=${websitesList.firstOrNull()?.id}, Name=${websitesList.firstOrNull()?.name}"
+                    )
                     // Update the main list of websites
                     _websites.value = websitesList
-                    Log.d(TAG, "_websites.value updated. Size: ${_websites.value.size}. First item ID: ${_websites.value.firstOrNull()?.id}, Name: ${_websites.value.firstOrNull()?.name}")
+                    Log.d(
+                        TAG,
+                        "_websites.value updated. Size: ${_websites.value.size}. First item ID: ${_websites.value.firstOrNull()?.id}, Name: ${_websites.value.firstOrNull()?.name}"
+                    )
 
                     // If there was a current website, try to find its updated version in the new list
                     // to refresh its data (e.g., likes/dislikes) but keep it as the current one.
-                    val updatedCurrentWebsiteInstance = originalCurrentWebsite?.id?.let { currentId ->
-                        websitesList.find { it.id == currentId }
-                    }
+                    val updatedCurrentWebsiteInstance =
+                        originalCurrentWebsite?.id?.let { currentId ->
+                            websitesList.find { it.id == currentId }
+                        }
 
                     if (updatedCurrentWebsiteInstance != null) {
                         // The current website still exists in the new list, update our local instance
@@ -133,10 +146,12 @@ class DiscoverViewModel(
     fun loadRandomWebsite() {
         Log.d(TAG, "Start Loading random website")
         Log.d(TAG, "visitedWebsites: ${visitedWebsites.size}")
-        Log.d(TAG, "websites: ${websites.value.size}")
         Log.d(TAG, "websites.value size: ${websites.value.size}")
         websites.value.take(3).forEachIndexed { index, link ->
-            Log.d(TAG, "LRW - Initial Website $index from _websites.value: ID='${link.id}', Name='${link.name}', URL='${link.url}'")
+            Log.d(
+                TAG,
+                "LRW - Initial Website $index from _websites.value: ID='${link.id}', Name='${link.name}', URL='${link.url}'"
+            )
         }
         val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.id) }
         if (unvisitedWebsites.isEmpty()) {
@@ -191,7 +206,8 @@ class DiscoverViewModel(
     }
 
     private fun loadWebsite(website: Link, addToHistory: Boolean) {
-        _currentUserInteractionState.value = UserInteractionState.NONE // Reset interaction state for new website
+        _currentUserInteractionState.value =
+            UserInteractionState.NONE // Reset interaction state for new website
 
         if (addToHistory) {
             if (currentIndex < websiteHistory.size - 1) {
@@ -222,6 +238,7 @@ class DiscoverViewModel(
                 _currentWebsite.update { current -> current?.copy(likes = current.likes - 1) }
                 Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
             }
+
             UserInteractionState.DISLIKED -> {
                 _currentUserInteractionState.value = UserInteractionState.LIKED
                 _currentWebsite.update { current ->
@@ -232,6 +249,7 @@ class DiscoverViewModel(
                 }
                 Log.d(TAG, "Website changed from dislike to like: ${websiteToUpdate.name}")
             }
+
             UserInteractionState.NONE -> {
                 _currentUserInteractionState.value = UserInteractionState.LIKED
                 _currentWebsite.update { current -> current?.copy(likes = current.likes + 1) }
@@ -253,6 +271,7 @@ class DiscoverViewModel(
                 _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes - 1) }
                 Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
             }
+
             UserInteractionState.LIKED -> {
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
                 _currentWebsite.update { current ->
@@ -263,6 +282,7 @@ class DiscoverViewModel(
                 }
                 Log.d(TAG, "Website changed from like to dislike: ${websiteToUpdate.name}")
             }
+
             UserInteractionState.NONE -> {
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
                 _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes + 1) }
@@ -304,6 +324,7 @@ class DiscoverViewModel(
                     hideAddWebsiteDialog() // Hide dialog on success
                     "Website added successfully!"
                 }
+
                 is AddWebsiteResult.Duplicate -> "This website already exists."
                 is AddWebsiteResult.NetworkError -> "Network error. Please check your connection."
                 is AddWebsiteResult.Error -> result.message

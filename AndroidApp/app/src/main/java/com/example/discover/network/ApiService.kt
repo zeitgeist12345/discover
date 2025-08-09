@@ -2,6 +2,7 @@ package com.example.discover.network
 
 import android.util.Log
 import com.example.discover.data.Link
+import com.example.discover.data.LinkGson
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,6 +19,7 @@ sealed class AddWebsiteResult {
     data class Error(val message: String) : AddWebsiteResult()
     object NetworkError : AddWebsiteResult()
 }
+
 class ApiService {
     private val client = OkHttpClient()
     private val gson = Gson()
@@ -41,11 +43,29 @@ class ApiService {
                     // but using ?.use is safer for the body itself.
                     val json = response.body.string()
                     Log.d("ApiService", "Response body: $json")
+                    val downloadedWebsites = gson.fromJson(json, Array<LinkGson>::class.java)
+                    Log.d("ApiService", "Parsed ${downloadedWebsites.size} websites")
+                    Log.d("ApiService", "First website: ${downloadedWebsites.firstOrNull()?.name}")
 
-                    val websites = gson.fromJson(json, Array<Link>::class.java).toList()
-                    Log.d("ApiService", "Parsed ${websites.size} websites")
-                    Log.d("ApiService", "First website: ${websites.firstOrNull()?.name}")
-                    return@use websites // This will be the return value of the 'use' block
+                    val castedWebsitesToLink = downloadedWebsites.map {
+                        Link(
+                            it.id,
+                            it.name,
+                            it.url,
+                            it.description,
+                            it.category,
+                            it.likes,
+                            it.dislikes
+                        )
+                    }
+
+                    Log.d("ApiService", "Parsed ${castedWebsitesToLink.size} websites")
+                    Log.d(
+                        "ApiService",
+                        "First website: ${castedWebsitesToLink.firstOrNull()?.name}"
+                    )
+
+                    return@use castedWebsitesToLink // This will be the return value of the 'use' block
                 } else {
                     Log.e("ApiService", "HTTP error: ${response.code} - ${response.message}")
                     // It's good practice to log the error message from the response as well
@@ -59,9 +79,14 @@ class ApiService {
             return@withContext emptyList()
         }
     }
-    suspend fun incrementView(websiteId: String, websiteUrl: String?, action: String): Boolean = // websiteUrl is nullable
+
+    suspend fun incrementView(websiteId: String, websiteUrl: String?, action: String): Boolean =
+        // websiteUrl is nullable
         withContext(Dispatchers.IO) {
-            Log.d("ApiService", "incrementView called with id: '$websiteId', url: '$websiteUrl', action: '$action'") // Logging input parameters
+            Log.d(
+                "ApiService",
+                "incrementView called with id: '$websiteId', url: '$websiteUrl', action: '$action'"
+            ) // Logging input parameters
             if (websiteUrl == null) {
                 Log.e("ApiService", "incrementView failed: websiteUrl is null for id $websiteId")
                 Log.d("myapp", Log.getStackTraceString(java.lang.Exception()))
@@ -69,7 +94,10 @@ class ApiService {
             }
 
             try {
-                Log.d("ApiService", "Encoding URL: '$websiteUrl' for incrementView.") // Added logging
+                Log.d(
+                    "ApiService",
+                    "Encoding URL: '$websiteUrl' for incrementView."
+                ) // Added logging
 
                 val request = Request.Builder()
                     .url(
