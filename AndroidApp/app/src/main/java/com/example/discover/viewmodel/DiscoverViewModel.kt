@@ -36,12 +36,6 @@ class DiscoverViewModel(
     private val _currentWebsite = MutableStateFlow<Link?>(null)
     val currentWebsite: StateFlow<Link?> = _currentWebsite.asStateFlow()
 
-    private val _isLoading = MutableStateFlow(false)
-    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
-
-    private val _isUpdating = MutableStateFlow(false)
-    val isUpdating: StateFlow<Boolean> = _isUpdating.asStateFlow()
-
     private val _showAddWebsiteDialog = MutableStateFlow(false)
     val showAddWebsiteDialog: StateFlow<Boolean> = _showAddWebsiteDialog.asStateFlow()
 
@@ -72,26 +66,22 @@ class DiscoverViewModel(
     private fun startWithFastestData() {
         Log.d(TAG, "Begin Start with fastest data")
         _websites.value = StaticWebsites.websites
-        _isLoading.value = false
         Log.d(TAG, "Websites: ${_websites.value.size}")
         Log.d(TAG, "Static websites: ${StaticWebsites.websites.size}")
         Log.d(TAG, "End Start with fastest data")
     }
 
-    fun loadWebsites() {
-        updateWebsitesInBackground()
-    }
-
     private fun updateWebsitesInBackground() {
         viewModelScope.launch {
-            _isUpdating.value = true
             val originalCurrentWebsite = _currentWebsite.value // Keep a reference to the original current website object
 
             try {
                 val websitesList = apiService.getWebsites()
                 if (websitesList.isNotEmpty()) {
+                    Log.d(TAG, "API returned ${websitesList.size} items. First item from API before assigning: ID=${websitesList.firstOrNull()?.id}, Name=${websitesList.firstOrNull()?.name}")
                     // Update the main list of websites
                     _websites.value = websitesList
+                    Log.d(TAG, "_websites.value updated. Size: ${_websites.value.size}. First item ID: ${_websites.value.firstOrNull()?.id}, Name: ${_websites.value.firstOrNull()?.name}")
 
                     // If there was a current website, try to find its updated version in the new list
                     // to refresh its data (e.g., likes/dislikes) but keep it as the current one.
@@ -136,8 +126,6 @@ class DiscoverViewModel(
                 if (_currentWebsite.value == null && _websites.value.isNotEmpty()) {
                     loadRandomWebsite() // Potentially reset history here too if needed
                 }
-            } finally {
-                _isUpdating.value = false
             }
         }
     }
@@ -146,7 +134,10 @@ class DiscoverViewModel(
         Log.d(TAG, "Start Loading random website")
         Log.d(TAG, "visitedWebsites: ${visitedWebsites.size}")
         Log.d(TAG, "websites: ${websites.value.size}")
-
+        Log.d(TAG, "websites.value size: ${websites.value.size}")
+        websites.value.take(3).forEachIndexed { index, link ->
+            Log.d(TAG, "LRW - Initial Website $index from _websites.value: ID='${link.id}', Name='${link.name}', URL='${link.url}'")
+        }
         val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.id) }
         if (unvisitedWebsites.isEmpty()) {
             visitedWebsites.clear()
