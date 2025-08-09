@@ -297,7 +297,7 @@ class DiscoverViewModel(
 
     fun addWebsite(name: String, url: String, description: String) {
         viewModelScope.launch {
-            val request = Link(name, url, description)
+            val request = Link(name = name, url = url, description = description)
             val result = apiService.addWebsite(request)
             val message = when (result) {
                 is AddWebsiteResult.Success -> {

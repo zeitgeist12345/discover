@@ -44,18 +44,19 @@ class ApiService {
 
                     val websites = gson.fromJson(json, Array<Link>::class.java).toList()
                     Log.d("ApiService", "Parsed ${websites.size} websites")
-                    websites // This will be the return value of the 'use' block
+                    Log.d("ApiService", "First website: ${websites.firstOrNull()?.name}")
+                    return@use websites // This will be the return value of the 'use' block
                 } else {
                     Log.e("ApiService", "HTTP error: ${response.code} - ${response.message}")
                     // It's good practice to log the error message from the response as well
                     // The body of an error response might also contain useful info,
                     // but for now, just ensure it's closed by the 'use' block.
-                    emptyList()
+                    return@use emptyList()
                 }
             } // The response and its body are automatically closed here
         } catch (e: Exception) {
             Log.e("ApiService", "Exception fetching websites", e)
-            emptyList()
+            return@withContext emptyList()
         }
     }
     suspend fun incrementView(websiteId: String, websiteUrl: String?, action: String): Boolean = // websiteUrl is nullable
