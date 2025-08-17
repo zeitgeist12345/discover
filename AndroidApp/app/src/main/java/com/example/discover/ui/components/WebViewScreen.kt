@@ -10,6 +10,7 @@ import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.compose.BackHandler // Import BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -36,7 +37,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,12 +52,6 @@ import com.example.discover.ui.theme.SurfaceDark
 import com.example.discover.ui.theme.TextPrimary
 import com.example.discover.ui.theme.TextSecondary
 
-// For remote debugging WebView in Chrome: chrome://inspect
-// In your Application class or an early initialization point:
-// if (BuildConfig.DEBUG) {
-//     WebView.setWebContentsDebuggingEnabled(true)
-// }
-
 private const val WEB_VIEW_SCREEN_TAG = "WebViewScreen"
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -71,23 +65,24 @@ fun WebViewScreen(
     onLikeClick: () -> Unit = {},
     onClose: () -> Unit
 ) {
-   var webProgress by remember { mutableStateOf(0) } // For progress bar
-
+    var webProgress by remember { mutableStateOf(0) }
     val context = LocalContext.current
-    rememberCoroutineScope()
+    // rememberCoroutineScope() // Not strictly needed here unless used by other async tasks
 
-    // Custom WebViewClient
+    // Hold a reference to the WebView instance
+    var webViewInstance: WebView? by remember { mutableStateOf(null) }
+
     val appWebViewClient = remember {
         object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
-                webProgress = 0 // Reset progress and show indicator
+                webProgress = 0
                 Log.d(WEB_VIEW_SCREEN_TAG, "Page started loading: $url")
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                webProgress = 100 // Hide progress indicator
+                webProgress = 100
                 Log.d(WEB_VIEW_SCREEN_TAG, "Page finished loading: $url. Title: ${view?.title}")
             }
 
@@ -104,7 +99,6 @@ fun WebViewScreen(
                         WEB_VIEW_SCREEN_TAG,
                         "Error loading page: ${request.url}, Code: $errorCode, Desc: $description"
                     )
-                    // Optionally, you could show an error message in the UI here
                 }
             }
 
@@ -114,15 +108,11 @@ fun WebViewScreen(
             ): Boolean {
                 val requestedUrl = request?.url?.toString()
                 Log.d(WEB_VIEW_SCREEN_TAG, "URL Clicked: $requestedUrl")
-                // Load all URLs within this WebView.
-                // You could add logic here to open certain URLs in an external browser
-                // e.g., if (!requestedUrl.startsWith("http")) { Intent(Intent.ACTION_VIEW)...; return true }
-                return false // Return false to load the URL in the current WebView
+                return false
             }
         }
     }
 
-    // Custom WebChromeClient
     val appWebChromeClient = remember {
         object : WebChromeClient() {
             override fun onProgressChanged(view: WebView?, newProgress: Int) {
@@ -135,22 +125,13 @@ fun WebViewScreen(
                 Log.d(WEB_VIEW_SCREEN_TAG, "Received page title: $title")
             }
 
-            // Handle JavaScript alerts, confirms, prompts for better integration
             override fun onJsAlert(
                 view: WebView?,
                 url: String?,
                 message: String?,
                 result: android.webkit.JsResult?
             ): Boolean {
-                // No coroutineScope.launch needed here as AlertDialog.Builder.show()
-                // will run on the main thread if called from there (which WebChromeClient callbacks are)
-                // However, to prevent UI hangs if there's any complex logic before showing the dialog,
-                // or if you want to ensure it's explicitly on the main thread for dialogs,
-                // you can use:
-                // view?.post { /* dialog code here */ }
-                // For simplicity, direct call is often fine for these callbacks.
-
-                AlertDialog.Builder(context) // Use android.app.AlertDialog.Builder
+                AlertDialog.Builder(context)
                     .setTitle("Alert")
                     .setMessage(message)
                     .setPositiveButton(android.R.string.ok) { dialog, _ ->
@@ -161,9 +142,9 @@ fun WebViewScreen(
                         result?.cancel()
                         it.dismiss()
                     }
-                    .setCancelable(false) // Or true, depending on desired behavior
+                    .setCancelable(false)
                     .show()
-                return true // We handled it
+                return true
             }
 
             override fun onJsConfirm(
@@ -172,7 +153,7 @@ fun WebViewScreen(
                 message: String?,
                 result: android.webkit.JsResult?
             ): Boolean {
-                AlertDialog.Builder(context) // Use android.app.AlertDialog.Builder
+                AlertDialog.Builder(context)
                     .setTitle("Confirm")
                     .setMessage(message)
                     .setPositiveButton(android.R.string.ok) { dialog, _ ->
@@ -202,10 +183,10 @@ fun WebViewScreen(
                 val editText = android.widget.EditText(context)
                 editText.setText(defaultValue)
 
-                AlertDialog.Builder(context) // Use android.app.AlertDialog.Builder
+                AlertDialog.Builder(context)
                     .setTitle("Prompt")
                     .setMessage(message)
-                    .setView(editText) // Add EditText for user input
+                    .setView(editText)
                     .setPositiveButton(android.R.string.ok) { dialog, _ ->
                         result?.confirm(editText.text.toString())
                         dialog.dismiss()
@@ -225,14 +206,17 @@ fun WebViewScreen(
 
             override fun onPermissionRequest(request: PermissionRequest?) {
                 Log.d(WEB_VIEW_SCREEN_TAG, "Permission request for: ${request?.origin}, Resources: ${request?.resources?.joinToString()}")
-                // For simplicity, denying. In a real app, you'd request Android runtime permissions
-                // and then call request.grant(request.resources) or request.deny().
-                // Example:
-                // if (request?.resources?.contains(PermissionRequest.RESOURCE_VIDEO_CAPTURE) == true) {
-                //   // Request camera permission
-                // }
                 request?.deny()
             }
+        }
+    }
+
+    // Handle system back button press
+    BackHandler(enabled = true) {
+        if (webViewInstance?.canGoBack() == true) {
+            webViewInstance?.goBack()
+        } else {
+            onClose() // If WebView can't go back, call the onClose lambda
         }
     }
 
@@ -243,7 +227,7 @@ fun WebViewScreen(
         Surface(
             modifier = Modifier.fillMaxWidth(),
             color = SurfaceDark,
-            shadowElevation = 4.dp // Add some shadow to distinguish header
+            shadowElevation = 4.dp
         ) {
             val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
             Row(
@@ -259,7 +243,7 @@ fun WebViewScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "🌐 Discover", // You could use pageTitle here if desired
+                    text = "🌐 Discover",
                     style = MaterialTheme.typography.headlineSmall,
                     color = TextPrimary,
                     fontWeight = FontWeight.Bold,
@@ -287,7 +271,7 @@ fun WebViewScreen(
                     }
                 }
                 Button(
-                    onClick = onClose,
+                    onClick = onClose, // This button now behaves consistently with back press if WebView is at start
                     colors = ButtonDefaults.buttonColors(
                         containerColor = ErrorColor,
                         contentColor = TextPrimary
@@ -298,52 +282,46 @@ fun WebViewScreen(
             }
         }
 
-        // Progress Bar
-        if (webProgress < 100) { // Show only while loading
+        if (webProgress < 100) {
             LinearProgressIndicator(
                 progress = { webProgress / 100f },
                 modifier = Modifier.fillMaxWidth(),
-                color = PrimaryGreen, // Customize color
+                color = PrimaryGreen,
                 trackColor = SurfaceDark.copy(alpha = 0.5f)
             )
         }
 
-        // WebView
         AndroidView(
             factory = { factoryContext ->
                 WebView(factoryContext).apply {
-                    // Store reference
+                    webViewInstance = this // Store the WebView instance
 
-                    // Apply WebViewClient and WebChromeClient
                     webViewClient = appWebViewClient
                     webChromeClient = appWebChromeClient
 
                     settings.apply {
                         javaScriptEnabled = true
-                        domStorageEnabled = true // For localStorage/sessionStorage
-                        loadWithOverviewMode = true // Zoom out to show the whole page
-                        useWideViewPort = true // Makes the WebView viewport like a desktop browser
-                        setSupportZoom(true) // Allow pinch-to-zoom
-                        builtInZoomControls = true // Allow zoom controls
-                        displayZoomControls = false // Hide the on-screen +/- buttons (pinch zoom still works)
-
-                        // Other potentially useful settings:
-                        allowFileAccess = true // Allow access to file system (use with caution)
-                        javaScriptCanOpenWindowsAutomatically = false // Prevent pop-ups unless through user gesture
-                        mediaPlaybackRequiresUserGesture = true // Prevent autoplay of media
-                        // userAgentString = "YourCustomUserAgent/1.0" // If you need to customize
+                        domStorageEnabled = true
+                        loadWithOverviewMode = true
+                        useWideViewPort = true
+                        setSupportZoom(true)
+                        builtInZoomControls = true
+                        displayZoomControls = false
+                        allowFileAccess = true
+                        javaScriptCanOpenWindowsAutomatically = false
+                        mediaPlaybackRequiresUserGesture = true
                     }
-                    // Initial load is handled in update block
                 }
             },
             modifier = Modifier
                 .fillMaxSize()
-                .weight(1f), // Ensure WebView takes remaining space
+                .weight(1f),
             update = { webView ->
-                // Check if the URL is different to prevent unnecessary reloads
-                // (e.g., on configuration change if not handled by remember)
                 if (webView.url != url) {
                     webView.loadUrl(url)
+                    // It's also a good idea to clear history when loading a completely new URL
+                    // if the previous history isn't relevant to the new content.
+                    // webView.clearHistory()
                 }
             }
         )
