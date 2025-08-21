@@ -79,7 +79,7 @@ class RetryInterceptor(
 
         // Return the successful response, or the non-retryable error response,
         // or throw an exception if all retries failed.
-        return response ?: throw (exception ?: IOException("Failed to get a response after $maxRetries retries for ${request.url}."))
+        return response ?: throw (IOException("Failed to get a response after $maxRetries retries for ${request.url}."))
     }
 
     private fun isRetryableHttpCode(code: Int): Boolean {

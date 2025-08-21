@@ -62,17 +62,17 @@ class ApiService {
                 } else {
                     val errorBody = response.body.string() // Attempt to read error body for logging
                     Log.w(TAG, "getWebsites | HTTP error: ${response.code} - ${response.message} for URL: ${request.url}. Body: $errorBody")
-                    return@use emptyList<Link>() // Return empty list on HTTP error after retries
+                    return@use emptyList() // Return empty list on HTTP error after retries
                 }
             }
         } catch (e: IOException) {
             // This IOException is after all retries from RetryInterceptor have failed
             Log.e(TAG, "getWebsites | IOException (Final after retries) for URL $endpointUrl: ${e.message}", e)
-            return@withContext emptyList<Link>()
+            return@withContext emptyList()
         } catch (e: Exception) {
             // Catch any other unexpected exceptions (e.g., JsonSyntaxException if API returns malformed JSON)
             Log.e(TAG, "getWebsites | Generic exception for URL $endpointUrl: ${e.message}", e)
-            return@withContext emptyList<Link>()
+            return@withContext emptyList()
         }
     }
 
