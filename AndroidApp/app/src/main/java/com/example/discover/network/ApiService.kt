@@ -31,7 +31,7 @@ class ApiService {
             .connectTimeout(15, TimeUnit.SECONDS) // Standard timeouts
             .readTimeout(20, TimeUnit.SECONDS)
             .writeTimeout(20, TimeUnit.SECONDS)
-            .addInterceptor(RetryInterceptor(maxRetries = 3, initialDelayMillis = 1500, factor = 2.0)) // Add our retry interceptor
+            .addInterceptor(RetryInterceptor(initialDelayMillis = 1500, factor = 2.0)) // Add our retry interceptor
         builder.build()
     }
 
