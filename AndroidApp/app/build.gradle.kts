@@ -65,24 +65,24 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    
+
     // HTTP client for API calls
     implementation(libs.okhttp)
-    
+
     // JSON parsing
     implementation(libs.gson)
-    
+
     // Coroutines for async operations
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
-    
+
     // Navigation
     implementation(libs.androidx.navigation.compose)
-    
+
     // WebView support
     implementation(libs.androidx.webkit)
-    
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
