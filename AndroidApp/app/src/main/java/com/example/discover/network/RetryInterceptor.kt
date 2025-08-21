@@ -30,7 +30,7 @@ class RetryInterceptor(
 
                 // Check for HTTP codes that we might want to retry
                 if (!response.isSuccessful && isRetryableHttpCode(response.code)) {
-                    val responseBodyString = response.body?.string() ?: "No body" // Consume body to close
+                    val responseBodyString = response.body.string() // Consume body to close
                     Log.w(
                         TAG,
                         "HTTP Error: ${response.code} for ${request.url}. Attempt ${tryCount + 1} of $maxRetries. Body: $responseBodyString. Retrying in ${currentDelay}ms."

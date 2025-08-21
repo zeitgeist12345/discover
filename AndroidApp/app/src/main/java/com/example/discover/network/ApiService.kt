@@ -52,19 +52,15 @@ class ApiService {
             client.newCall(request).execute().use { response ->
                 Log.d(TAG, "getWebsites | Response code: ${response.code} for URL: ${request.url}")
                 if (response.isSuccessful) {
-                    val json = response.body?.string() // Safely get body string
-                    if (json != null) {
-                        Log.d(TAG, "getWebsites | Response body: $json")
-                        // Using Array<Link>::class.java is correct for Gson with arrays
-                        val downloadedArray: Array<Link> = gson.fromJson(json, Array<Link>::class.java) ?: emptyArray()
-                        Log.d(TAG, "getWebsites | Parsed ${downloadedArray.size} websites.")
-                        return@use downloadedArray.toList()
-                    } else {
-                        Log.w(TAG, "getWebsites | Successful response but body was null for URL: ${request.url}")
-                        return@use emptyList<Link>()
-                    }
+                    val json = response.body.string() // Safely get body string
+                    Log.d(TAG, "getWebsites | Response body: $json")
+                    // Using Array<Link>::class.java is correct for Gson with arrays
+                    val downloadedArray: Array<Link> = gson.fromJson(json, Array<Link>::class.java) ?: emptyArray()
+                    Log.d(TAG, "getWebsites | Parsed ${downloadedArray.size} websites.")
+                    return@use downloadedArray.toList()
+
                 } else {
-                    val errorBody = response.body?.string() // Attempt to read error body for logging
+                    val errorBody = response.body.string() // Attempt to read error body for logging
                     Log.w(TAG, "getWebsites | HTTP error: ${response.code} - ${response.message} for URL: ${request.url}. Body: $errorBody")
                     return@use emptyList<Link>() // Return empty list on HTTP error after retries
                 }
@@ -108,7 +104,7 @@ class ApiService {
             client.newCall(request).execute().use { response ->
                 Log.d(TAG, "incrementView | Response code: ${response.code} for URL: ${request.url}")
                 if (!response.isSuccessful) {
-                    val errorBody = response.body?.string()
+                    val errorBody = response.body.string()
                     Log.w(TAG, "incrementView | Failed: ${response.code} - ${response.message} for URL: ${request.url}. Body: $errorBody")
                 }
                 return@use response.isSuccessful // Return true if 2xx, false otherwise (after retries)
@@ -148,7 +144,7 @@ class ApiService {
                         AddWebsiteResult.Duplicate
                     }
                     else -> {
-                        val errorBody = response.body?.string()
+                        val errorBody = response.body.string()
                         Log.w(TAG, "addWebsite | Failed: ${response.code} - ${response.message} for URL: ${httpRequest.url}. Body: $errorBody")
                         AddWebsiteResult.Error("Failed to add website (${response.code}): ${response.message}")
                     }
