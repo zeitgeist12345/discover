@@ -21,7 +21,7 @@ fun AddWebsiteDialog(
     var description by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
-    
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
@@ -55,7 +55,7 @@ fun AddWebsiteDialog(
                     ),
                     singleLine = true
                 )
-                
+
                 // URL field
                 OutlinedTextField(
                     value = url,
@@ -75,7 +75,7 @@ fun AddWebsiteDialog(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
                     singleLine = true
                 )
-                
+
                 // Description field
                 OutlinedTextField(
                     value = description,
@@ -95,7 +95,7 @@ fun AddWebsiteDialog(
                     minLines = 3,
                     maxLines = 5
                 )
-                
+
                 // Error message
                 if (error != null) {
                     Text(
@@ -113,7 +113,7 @@ fun AddWebsiteDialog(
                         error = "Please fill in all required fields"
                         return@Button
                     }
-                    
+
                     isLoading = true
                     error = null
                     Log.d("AddWebsiteDialog", "Adding website: $name, $url, $description")
