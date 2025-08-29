@@ -51,6 +51,7 @@ import com.example.discover.ui.theme.SuccessColor
 import com.example.discover.ui.theme.SurfaceDark
 import com.example.discover.ui.theme.TextPrimary
 import com.example.discover.ui.theme.TextSecondary
+import androidx.compose.foundation.layout.navigationBars // Add this import
 
 private const val WEB_VIEW_SCREEN_TAG = "WebViewScreen"
 
@@ -219,9 +220,12 @@ fun WebViewScreen(
             onClose() // If WebView can't go back, call the onClose lambda
         }
     }
+    val navigationBarPadding = WindowInsets.navigationBars.asPaddingValues()
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = navigationBarPadding.calculateBottomPadding())
     ) {
         // Header
         Surface(
