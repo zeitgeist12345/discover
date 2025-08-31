@@ -14,8 +14,12 @@ import android.webkit.WebViewClient // Required for onPageStarted, onPageFinishe
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -379,7 +383,13 @@ fun WebViewArea(
     }
 
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(
+                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+            )
+    ) {
         if (webViewProgress < 100 && webViewProgress > 0 && (webViewInstanceFromFactory?.url != null && webViewInstanceFromFactory?.url != "about:blank")) {
             LinearProgressIndicator(
                 progress = { webViewProgress / 100f },
@@ -389,122 +399,120 @@ fun WebViewArea(
             )
         }
 
-        AndroidView(
-            factory = { contextForFactory ->
-                Log.d(WEB_VIEW_AREA_TAG, "AndroidView Factory: Creating WebView instance.")
-                WebView(contextForFactory).apply {
-                    webViewInstanceFromFactory = this
-                    this.webViewClient = localWebViewClient
-                    this.webChromeClient = localWebChromeClient
-                    settings.apply {
-                        javaScriptEnabled = true; domStorageEnabled = true; loadWithOverviewMode =
-                        true
-                        useWideViewPort = true; setSupportZoom(true); builtInZoomControls = true
-                        displayZoomControls = false; allowFileAccess = false
-                        javaScriptCanOpenWindowsAutomatically = false
-                        mediaPlaybackRequiresUserGesture = true
+        AndroidView(factory = { contextForFactory ->
+            Log.d(WEB_VIEW_AREA_TAG, "AndroidView Factory: Creating WebView instance.")
+            WebView(contextForFactory).apply {
+                webViewInstanceFromFactory = this
+                this.webViewClient = localWebViewClient
+                this.webChromeClient = localWebChromeClient
+                settings.apply {
+                    javaScriptEnabled = true; domStorageEnabled = true; loadWithOverviewMode = true
+                    useWideViewPort = true; setSupportZoom(true); builtInZoomControls = true
+                    displayZoomControls = false; allowFileAccess = false
+                    javaScriptCanOpenWindowsAutomatically = false
+                    mediaPlaybackRequiresUserGesture = true
+                }
+            }
+        }, modifier = Modifier
+            .fillMaxSize()
+            .weight(1f), update = { webView ->
+            if (webView.webViewClient != localWebViewClient) webView.webViewClient =
+                localWebViewClient
+            if (webView.webChromeClient != localWebChromeClient) webView.webChromeClient =
+                localWebChromeClient
+
+            val actionToExecute = internalWebViewAction
+            if (actionToExecute != WebViewInternalAction.NONE) {
+                Log.d(
+                    WEB_VIEW_AREA_TAG,
+                    "Update Block. Action: $actionToExecute, URL Prop: $url, WebView URL: ${webView.url}, Pending: $pendingUrlAfterBlank"
+                )
+                internalWebViewAction = WebViewInternalAction.NONE
+            }
+
+            when (actionToExecute) {
+                WebViewInternalAction.CLEAR_ONLY -> {
+                    if (webView.url != "about:blank") {
+                        Log.d(WEB_VIEW_AREA_TAG, "Action CLEAR_ONLY: Loading 'about:blank'.")
+                        pendingUrlAfterBlank = null
+                        webView.loadUrl("about:blank")
                     }
                 }
-            }, modifier = Modifier
-                .fillMaxSize()
-                .weight(1f), update = { webView ->
-                if (webView.webViewClient != localWebViewClient) webView.webViewClient =
-                    localWebViewClient
-                if (webView.webChromeClient != localWebChromeClient) webView.webChromeClient =
-                    localWebChromeClient
 
-                val actionToExecute = internalWebViewAction
-                if (actionToExecute != WebViewInternalAction.NONE) {
-                    Log.d(
-                        WEB_VIEW_AREA_TAG,
-                        "Update Block. Action: $actionToExecute, URL Prop: $url, WebView URL: ${webView.url}, Pending: $pendingUrlAfterBlank"
-                    )
-                    internalWebViewAction = WebViewInternalAction.NONE
-                }
-
-                when (actionToExecute) {
-                    WebViewInternalAction.CLEAR_ONLY -> {
-                        if (webView.url != "about:blank") {
-                            Log.d(WEB_VIEW_AREA_TAG, "Action CLEAR_ONLY: Loading 'about:blank'.")
-                            pendingUrlAfterBlank = null
-                            webView.loadUrl("about:blank")
+                WebViewInternalAction.LOAD_URL -> {
+                    val targetUrlToLoad =
+                        if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
+                            "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
+                        } else {
+                            url
                         }
-                    }
-
-                    WebViewInternalAction.LOAD_URL -> {
-                        val targetUrlToLoad =
-                            if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
-                                "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
-                            } else {
-                                url
-                            }
-                        if (webView.url != targetUrlToLoad || (webView.url == "about:blank" && targetUrlToLoad != "about:blank")) {
-                            Log.d(
-                                WEB_VIEW_AREA_TAG,
-                                "Action LOAD_URL: Loading target '$targetUrlToLoad'."
-                            )
-                            pendingUrlAfterBlank = null
-                            webView.loadUrl(targetUrlToLoad)
-                        }
-                    }
-
-                    WebViewInternalAction.CLEAR_THEN_LOAD_URL -> {
-                        val targetUrlToLoad =
-                            if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
-                                "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
-                            } else {
-                                url
-                            }
-
-                        if (webView.url == targetUrlToLoad && pendingUrlAfterBlank == null) {
-                            Log.d(
-                                WEB_VIEW_AREA_TAG,
-                                "Action CLEAR_THEN_LOAD_URL: Already on target '$targetUrlToLoad'."
-                            )
-                            return@AndroidView
-                        }
-                        if (pendingUrlAfterBlank == targetUrlToLoad && webView.url == "about:blank") {
-                            Log.d(
-                                WEB_VIEW_AREA_TAG,
-                                "Action CLEAR_THEN_LOAD_URL: 'about:blank' already loaded for pending '$targetUrlToLoad'."
-                            )
-                            return@AndroidView
-                        }
+                    if (webView.url != targetUrlToLoad || (webView.url == "about:blank" && targetUrlToLoad != "about:blank")) {
                         Log.d(
                             WEB_VIEW_AREA_TAG,
-                            "Action CLEAR_THEN_LOAD_URL: Setting '$targetUrlToLoad' as pending and loading 'about:blank'."
+                            "Action LOAD_URL: Loading target '$targetUrlToLoad'."
                         )
-                        pendingUrlAfterBlank = targetUrlToLoad
-                        if (webView.url != "about:blank") {
-                            webView.loadUrl("about:blank")
-                        } else {
-                            Log.d(
-                                WEB_VIEW_AREA_TAG,
-                                "Action CLEAR_THEN_LOAD_URL: WebView is already 'about:blank'. Client onPageFinished should handle loading '$pendingUrlAfterBlank'."
-                            )
-                        }
+                        pendingUrlAfterBlank = null
+                        webView.loadUrl(targetUrlToLoad)
                     }
+                }
 
-                    WebViewInternalAction.NONE -> {
-                        if (webView.url == "about:blank" && url.isNotBlank() && pendingUrlAfterBlank == null) {
-                            val targetForBlank = if (MimeTypeMap.getFileExtensionFromUrl(url)
-                                    ?.lowercase() == "pdf"
-                            ) {
-                                "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
-                            } else {
-                                url
-                            }
-                            if (targetForBlank != "about:blank") {
-                                Log.w(
-                                    WEB_VIEW_AREA_TAG,
-                                    "Action NONE: WebView blank, URL prop is '$url'. Forcing load of '$targetForBlank'."
-                                )
-                                webView.loadUrl(targetForBlank)
-                            }
+                WebViewInternalAction.CLEAR_THEN_LOAD_URL -> {
+                    val targetUrlToLoad =
+                        if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
+                            "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
+                        } else {
+                            url
+                        }
+
+                    if (webView.url == targetUrlToLoad && pendingUrlAfterBlank == null) {
+                        Log.d(
+                            WEB_VIEW_AREA_TAG,
+                            "Action CLEAR_THEN_LOAD_URL: Already on target '$targetUrlToLoad'."
+                        )
+                        return@AndroidView
+                    }
+                    if (pendingUrlAfterBlank == targetUrlToLoad && webView.url == "about:blank") {
+                        Log.d(
+                            WEB_VIEW_AREA_TAG,
+                            "Action CLEAR_THEN_LOAD_URL: 'about:blank' already loaded for pending '$targetUrlToLoad'."
+                        )
+                        return@AndroidView
+                    }
+                    Log.d(
+                        WEB_VIEW_AREA_TAG,
+                        "Action CLEAR_THEN_LOAD_URL: Setting '$targetUrlToLoad' as pending and loading 'about:blank'."
+                    )
+                    pendingUrlAfterBlank = targetUrlToLoad
+                    if (webView.url != "about:blank") {
+                        webView.loadUrl("about:blank")
+                    } else {
+                        Log.d(
+                            WEB_VIEW_AREA_TAG,
+                            "Action CLEAR_THEN_LOAD_URL: WebView is already 'about:blank'. Client onPageFinished should handle loading '$pendingUrlAfterBlank'."
+                        )
+                    }
+                }
+
+                WebViewInternalAction.NONE -> {
+                    if (webView.url == "about:blank" && url.isNotBlank() && pendingUrlAfterBlank == null) {
+                        val targetForBlank = if (MimeTypeMap.getFileExtensionFromUrl(url)
+                                ?.lowercase() == "pdf"
+                        ) {
+                            "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
+                        } else {
+                            url
+                        }
+                        if (targetForBlank != "about:blank") {
+                            Log.w(
+                                WEB_VIEW_AREA_TAG,
+                                "Action NONE: WebView blank, URL prop is '$url'. Forcing load of '$targetForBlank'."
+                            )
+                            webView.loadUrl(targetForBlank)
                         }
                     }
                 }
-            })
+            }
+        })
     }
 
     BackHandler(enabled = true) {
