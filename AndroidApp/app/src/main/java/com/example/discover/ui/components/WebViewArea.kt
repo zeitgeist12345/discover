@@ -71,7 +71,10 @@ fun WebViewArea(
         object : WebViewClient() {
             override fun onPageStarted(view: WebView?, currentUrl: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, currentUrl, favicon)
-                Log.d(WEB_VIEW_AREA_TAG, "Client: onPageStarted: $currentUrl, pending: $pendingUrlAfterBlank")
+                Log.d(
+                    WEB_VIEW_AREA_TAG,
+                    "Client: onPageStarted: $currentUrl, pending: $pendingUrlAfterBlank"
+                )
                 if (currentUrl != null && currentUrl != "about:blank") {
                     webViewProgress = 0
                 }
@@ -79,91 +82,208 @@ fun WebViewArea(
 
             override fun onPageFinished(view: WebView?, currentFinishedUrl: String?) {
                 super.onPageFinished(view, currentFinishedUrl)
-                Log.d(WEB_VIEW_AREA_TAG, "Client: onPageFinished: $currentFinishedUrl, pending: $pendingUrlAfterBlank")
+                Log.d(
+                    WEB_VIEW_AREA_TAG,
+                    "Client: onPageFinished: $currentFinishedUrl, pending: $pendingUrlAfterBlank"
+                )
                 if (currentFinishedUrl == "about:blank" && pendingUrlAfterBlank != null) {
                     val urlToLoad = pendingUrlAfterBlank
                     pendingUrlAfterBlank = null
-                    Log.i(WEB_VIEW_AREA_TAG, "Client: Finished 'about:blank'. Loading pending: $urlToLoad")
+                    Log.i(
+                        WEB_VIEW_AREA_TAG,
+                        "Client: Finished 'about:blank'. Loading pending: $urlToLoad"
+                    )
                     view?.loadUrl(urlToLoad!!)
                 } else if (currentFinishedUrl != null && currentFinishedUrl != "about:blank") {
                     webViewProgress = 100
                 }
             }
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
                 val requestedFullUrlString = request?.url?.toString() ?: return false
-                val requestedUri: Uri = request.url
+                val requestedUriFromWebView: Uri = request.url // URI given by WebView
 
-                // The 'url' parameter of the WebViewArea Composable is the initial URL.
-                val initialUrlProp: String = url // Capture the Composable's url prop
+                val initialUrlProp: String = url
 
-                Log.i(WEB_VIEW_AREA_TAG, "shouldOverrideUrlLoading: Requested: '$requestedFullUrlString', Initial Prop URL: '$initialUrlProp', Scheme: '${requestedUri.scheme}', Host: '${requestedUri.host}'")
+                Log.i(
+                    WEB_VIEW_AREA_TAG,
+                    "shouldOverrideUrlLoading: Requested: '$requestedFullUrlString', Initial Prop URL: '$initialUrlProp', Scheme: '${requestedUriFromWebView.scheme}', Host: '${requestedUriFromWebView.host}'"
+                )
 
-                val scheme = requestedUri.scheme?.lowercase()
-                val host = requestedUri.host?.lowercase()
+                val scheme = requestedUriFromWebView.scheme?.lowercase()
+                val host = requestedUriFromWebView.host?.lowercase()
 
-                // 1. Handle YouTube explicitly
+                // 1. Handle YouTube explicitly (covers http/https youtube.com and app-specific schemes like vnd.youtube)
                 if ((scheme == "youtube" || scheme == "vnd.youtube") ||
                     ((scheme == "http" || scheme == "https") &&
                             (host != null && (host == "youtube.com" || host.endsWith(".youtube.com") || host == "youtu.be")))
                 ) {
-                    Log.i(WEB_VIEW_AREA_TAG, "YouTube link pattern detected: $requestedFullUrlString. Attempting to open externally.")
+                    Log.i(
+                        WEB_VIEW_AREA_TAG,
+                        "YouTube link pattern detected: $requestedFullUrlString. Attempting to open externally."
+                    )
                     try {
-                        context.startActivity(Intent(Intent.ACTION_VIEW, requestedUri))
+                        // For standard youtube:// or vnd.youtube:// or http/s links to youtube.com
+                        context.startActivity(Intent(Intent.ACTION_VIEW, requestedUriFromWebView))
                         view?.stopLoading()
                         return true
                     } catch (e: ActivityNotFoundException) {
-                        Log.e(WEB_VIEW_AREA_TAG, "YouTube app/handler not found for '$requestedFullUrlString'. Allowing WebView if http/s.", e)
+                        Log.e(
+                            WEB_VIEW_AREA_TAG,
+                            "YouTube app/handler not found for '$requestedFullUrlString'. Allowing WebView if http/s.",
+                            e
+                        )
                         return !(scheme == "http" || scheme == "https")
                     } catch (e: Exception) {
-                        Log.e(WEB_VIEW_AREA_TAG, "Error opening YouTube link '$requestedFullUrlString'. Allowing WebView if http/s.", e)
+                        Log.e(
+                            WEB_VIEW_AREA_TAG,
+                            "Error opening YouTube link '$requestedFullUrlString'. Allowing WebView if http/s.",
+                            e
+                        )
                         return !(scheme == "http" || scheme == "https")
                     }
                 }
 
-                // 2. Handle non-http/https schemes (generic external attempt)
-                if (scheme != "http" && scheme != "https") {
-                    Log.i(WEB_VIEW_AREA_TAG, "Non-http(s) scheme: '$requestedFullUrlString'. Attempting generic external app.")
+                // --- MODIFIED SECTION FOR INTENT URIs ---
+                // 2. Handle "intent://" scheme (Android Intent URIs)
+                if ("intent" == scheme) {
+                    Log.i(WEB_VIEW_AREA_TAG, "Android Intent URI detected: $requestedFullUrlString")
                     try {
-                        context.startActivity(Intent(Intent.ACTION_VIEW, requestedUri))
+                        val intent =
+                            Intent.parseUri(requestedFullUrlString, Intent.URI_INTENT_SCHEME)
+                        // intent.addCategory(Intent.CATEGORY_BROWSABLE) // Might be needed for some intents
+                        // intent.setComponent(null) // Prevent SecurityException if component is set
+                        // intent.setSelector(null)  // Prevent SecurityException if selector is set
+
+                        // Check if there's an Activity to handle this Intent
+                        if (intent.resolveActivity(context.packageManager) != null) {
+                            // To prevent browser hijacking, ensure it's not trying to re-launch your own app
+                            // unless explicitly desired. For now, we'll assume external.
+                            // You might add more safety checks if needed.
+                            context.startActivity(intent)
+                            Log.d(
+                                WEB_VIEW_AREA_TAG,
+                                "Successfully launched intent from Intent URI."
+                            )
+                            view?.stopLoading()
+                            return true
+                        } else {
+                            Log.w(
+                                WEB_VIEW_AREA_TAG,
+                                "No Activity found to handle parsed Intent URI: $requestedFullUrlString"
+                            )
+                            // Fallback: Try to extract a fallback URL if present in the intent URI (S.browser_fallback_url)
+                            val fallbackUrl = intent.getStringExtra("browser_fallback_url")
+                            if (fallbackUrl != null) {
+                                Log.i(
+                                    WEB_VIEW_AREA_TAG,
+                                    "Attempting to load fallback URL: $fallbackUrl"
+                                )
+                                view?.loadUrl(fallbackUrl)
+                                return true // We are handling it by loading the fallback
+                            }
+                            Toast.makeText(context, "Cannot open this link.", Toast.LENGTH_SHORT)
+                                .show()
+                            return true // Handled by showing toast
+                        }
+                    } catch (e: Exception) { // Catches URISyntaxException and others
+                        Log.e(
+                            WEB_VIEW_AREA_TAG,
+                            "Error parsing or handling Intent URI: '$requestedFullUrlString'",
+                            e
+                        )
+                        Toast.makeText(
+                            context,
+                            "Cannot open this link (format error).",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return true // "Handled" it by showing a Toast
+                    }
+                }
+                // --- END OF MODIFIED SECTION ---
+
+                // 3. Handle other non-http/https schemes (generic external attempt)
+                if (scheme != "http" && scheme != "https") { // Already handled "intent", "youtube", "vnd.youtube"
+                    Log.i(
+                        WEB_VIEW_AREA_TAG,
+                        "Other non-http(s) scheme: '$requestedFullUrlString'. Attempting generic external app."
+                    )
+                    try {
+                        context.startActivity(Intent(Intent.ACTION_VIEW, requestedUriFromWebView))
                         view?.stopLoading()
                         return true
                     } catch (e: ActivityNotFoundException) {
-                        Log.e(WEB_VIEW_AREA_TAG, "No app for scheme '$scheme' for: '$requestedFullUrlString'", e)
-                        Toast.makeText(context, "No app found to open this link.", Toast.LENGTH_SHORT).show()
+                        Log.e(
+                            WEB_VIEW_AREA_TAG,
+                            "No app for scheme '$scheme' for: '$requestedFullUrlString'",
+                            e
+                        )
+                        Toast.makeText(
+                            context,
+                            "No app found to open this link.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         return true
                     } catch (e: Exception) {
-                        Log.e(WEB_VIEW_AREA_TAG, "Error opening '$requestedFullUrlString' with generic scheme.", e)
+                        Log.e(
+                            WEB_VIEW_AREA_TAG,
+                            "Error opening '$requestedFullUrlString' with generic scheme.",
+                            e
+                        )
                         return true
                     }
                 }
 
-                // 3. Handle http/https links: Check if navigating to a different host
-                val initialHost = try { initialUrlProp.toUri().host?.lowercase()?.replace("www.","") } catch (e: Exception) { e.printStackTrace(); null }
-                val requestedHost = host?.replace("www.","")
+                // 4. Handle http/https links (includes different host check)
+                // This part remains the same as your previous version.
+                val initialHost = try {
+                    initialUrlProp.toUri().host?.lowercase()?.replace("www.", "")
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    null
+                }
+                val requestedHost =
+                    host // host is already lowercased and from requestedUriFromWebView
 
-                if (initialHost != null && requestedHost != null && initialHost != requestedHost) {
-                    Log.i(WEB_VIEW_AREA_TAG, "Different host navigation: Initial: '$initialHost', Requested: '$requestedHost' for URL '$requestedFullUrlString'. Opening externally.")
+                if (initialHost != null && requestedHost != null && initialHost != requestedHost.replace(
+                        "www.",
+                        ""
+                    )
+                ) {
+                    Log.i(
+                        WEB_VIEW_AREA_TAG,
+                        "Different host navigation: Initial: '$initialHost', Requested: '$requestedHost' for URL '$requestedFullUrlString'. Opening externally."
+                    )
                     try {
-                        context.startActivity(Intent(Intent.ACTION_VIEW, requestedUri))
+                        context.startActivity(Intent(Intent.ACTION_VIEW, requestedUriFromWebView))
                         view?.stopLoading()
-                        return true // Handled: opened in external browser
+                        return true
                     } catch (e: ActivityNotFoundException) {
-                        Log.e(WEB_VIEW_AREA_TAG, "No browser found for $requestedFullUrlString (should be rare). Allowing WebView.", e)
-                        return false // Should be very rare, but let WebView try
+                        Log.e(
+                            WEB_VIEW_AREA_TAG,
+                            "No browser found for $requestedFullUrlString. Allowing WebView.",
+                            e
+                        )
+                        return false
                     } catch (e: Exception) {
-                        Log.e(WEB_VIEW_AREA_TAG, "Error opening different host link $requestedFullUrlString externally. Allowing WebView.", e)
-                        return false // Fallback to WebView
+                        Log.e(
+                            WEB_VIEW_AREA_TAG,
+                            "Error opening different host link $requestedFullUrlString externally. Allowing WebView.",
+                            e
+                        )
+                        return false
                     }
                 } else {
-                    // Same host or initialHost couldn't be parsed (e.g. initial 'url' was not a valid URI for host extraction)
-                    Log.d(WEB_VIEW_AREA_TAG, "Same host or unable to compare hosts. Letting WebView handle: $requestedFullUrlString")
-                    return false // Let WebView handle (navigation within the same site)
+                    Log.d(
+                        WEB_VIEW_AREA_TAG,
+                        "Same host or unable to compare hosts for http/s. Letting WebView handle: $requestedFullUrlString"
+                    )
+                    return false // Let WebView handle (navigation within the same site or initial load)
                 }
-
-                // Fallback, should ideally not be reached if logic above is complete
             }
-
-
         }
     }
 
@@ -184,7 +304,8 @@ fun WebViewArea(
                 Log.i(WEB_VIEW_AREA_TAG, "Launched PDF intent for: $url")
             } catch (e: ActivityNotFoundException) {
                 Log.e(WEB_VIEW_AREA_TAG, "No app for PDF: $url. Falling back to Google Docs.", e)
-                Toast.makeText(context, "No app for PDF. Trying Google Docs.", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "No app for PDF. Trying Google Docs.", Toast.LENGTH_LONG)
+                    .show()
                 internalWebViewAction = WebViewInternalAction.CLEAR_THEN_LOAD_URL // For Google Docs
             }
         } else {
@@ -192,13 +313,18 @@ fun WebViewArea(
             // shouldOverrideUrlLoading will intercept if it's YouTube and try to launch app.
             // If YouTube app launch fails, WebView will proceed with CLEAR_THEN_LOAD_URL.
             val currentActualUrl = webViewInstanceFromFactory?.url
-            val targetForGDocs = if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}" else url
+            val targetForGDocs = if (MimeTypeMap.getFileExtensionFromUrl(url)
+                    ?.lowercase() == "pdf"
+            ) "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}" else url
 
             if (currentActualUrl == "about:blank" || currentActualUrl == null || currentActualUrl == "" || (currentActualUrl != targetForGDocs && currentActualUrl != url)) {
                 Log.d(WEB_VIEW_AREA_TAG, "LaunchedEffect: Setting CLEAR_THEN_LOAD_URL for $url")
                 internalWebViewAction = WebViewInternalAction.CLEAR_THEN_LOAD_URL
             } else {
-                Log.d(WEB_VIEW_AREA_TAG, "LaunchedEffect: WebView already on $url or equivalent. Setting action to NONE.")
+                Log.d(
+                    WEB_VIEW_AREA_TAG,
+                    "LaunchedEffect: WebView already on $url or equivalent. Setting action to NONE."
+                )
                 internalWebViewAction = WebViewInternalAction.NONE
             }
         }
@@ -208,7 +334,10 @@ fun WebViewArea(
     DisposableEffect(lifecycleOwner, url) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_RESUME) {
-                Log.d(WEB_VIEW_AREA_TAG, "ON_RESUME for URL prop: $url. Current WebView URL: ${webViewInstanceFromFactory?.url}")
+                Log.d(
+                    WEB_VIEW_AREA_TAG,
+                    "ON_RESUME for URL prop: $url. Current WebView URL: ${webViewInstanceFromFactory?.url}"
+                )
                 if (webViewInstanceFromFactory != null && pendingUrlAfterBlank == null) {
                     val currentWebViewActualUrl = webViewInstanceFromFactory?.url
                     var targetUrlForDisplayInWebView = url
@@ -221,7 +350,8 @@ fun WebViewArea(
                         try {
                             // Check if an app can handle the PDF URI directly
                             val pdfIntent = Intent(Intent.ACTION_VIEW, url.toUri())
-                            val resolveInfo = context.packageManager.queryIntentActivities(pdfIntent, 0)
+                            val resolveInfo =
+                                context.packageManager.queryIntentActivities(pdfIntent, 0)
                             if (resolveInfo.isEmpty()) { // No direct handler, assume GDocs
                                 isGDocsFallback = true
                             }
@@ -230,16 +360,22 @@ fun WebViewArea(
                             isGDocsFallback = true // Assume GDocs if URI check fails
                         }
                         if (isGDocsFallback) {
-                            targetUrlForDisplayInWebView = "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
+                            targetUrlForDisplayInWebView =
+                                "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
                         }
                     }
 
                     // If it's a YouTube link or a PDF that is *not* a GDocs fallback (meaning it should be external), don't try to reload from onResume.
                     if (isYouTube || (isPdf && !isGDocsFallback)) {
-                        Log.d(WEB_VIEW_AREA_TAG, "ON_RESUME: URL ($url) is likely external type. No auto-reload from onResume.")
-                    }
-                    else if (currentWebViewActualUrl != targetUrlForDisplayInWebView && targetUrlForDisplayInWebView != "about:blank") {
-                        Log.i(WEB_VIEW_AREA_TAG, "ON_RESUME: Content ($currentWebViewActualUrl) differs from GDocs/target ($targetUrlForDisplayInWebView). Signaling LOAD_URL.")
+                        Log.d(
+                            WEB_VIEW_AREA_TAG,
+                            "ON_RESUME: URL ($url) is likely external type. No auto-reload from onResume."
+                        )
+                    } else if (currentWebViewActualUrl != targetUrlForDisplayInWebView && targetUrlForDisplayInWebView != "about:blank") {
+                        Log.i(
+                            WEB_VIEW_AREA_TAG,
+                            "ON_RESUME: Content ($currentWebViewActualUrl) differs from GDocs/target ($targetUrlForDisplayInWebView). Signaling LOAD_URL."
+                        )
                         // internalWebViewAction = WebViewInternalAction.LOAD_URL // Be cautious with this
                     }
                 }
@@ -270,7 +406,8 @@ fun WebViewArea(
                     this.webViewClient = localWebViewClient
                     this.webChromeClient = localWebChromeClient
                     settings.apply {
-                        javaScriptEnabled = true; domStorageEnabled = true; loadWithOverviewMode = true
+                        javaScriptEnabled = true; domStorageEnabled = true; loadWithOverviewMode =
+                        true
                         useWideViewPort = true; setSupportZoom(true); builtInZoomControls = true
                         displayZoomControls = false; allowFileAccess = false
                         javaScriptCanOpenWindowsAutomatically = false
@@ -278,14 +415,21 @@ fun WebViewArea(
                     }
                 }
             },
-            modifier = Modifier.fillMaxSize().weight(1f),
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f),
             update = { webView ->
-                if (webView.webViewClient != localWebViewClient) webView.webViewClient = localWebViewClient
-                if (webView.webChromeClient != localWebChromeClient) webView.webChromeClient = localWebChromeClient
+                if (webView.webViewClient != localWebViewClient) webView.webViewClient =
+                    localWebViewClient
+                if (webView.webChromeClient != localWebChromeClient) webView.webChromeClient =
+                    localWebChromeClient
 
                 val actionToExecute = internalWebViewAction
                 if (actionToExecute != WebViewInternalAction.NONE) {
-                    Log.d(WEB_VIEW_AREA_TAG, "Update Block. Action: $actionToExecute, URL Prop: $url, WebView URL: ${webView.url}, Pending: $pendingUrlAfterBlank")
+                    Log.d(
+                        WEB_VIEW_AREA_TAG,
+                        "Update Block. Action: $actionToExecute, URL Prop: $url, WebView URL: ${webView.url}, Pending: $pendingUrlAfterBlank"
+                    )
                     internalWebViewAction = WebViewInternalAction.NONE
                 }
 
@@ -297,46 +441,75 @@ fun WebViewArea(
                             webView.loadUrl("about:blank")
                         }
                     }
+
                     WebViewInternalAction.LOAD_URL -> {
                         val targetUrlToLoad =
                             if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
                                 "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
-                            } else { url }
+                            } else {
+                                url
+                            }
                         if (webView.url != targetUrlToLoad || (webView.url == "about:blank" && targetUrlToLoad != "about:blank")) {
-                            Log.d(WEB_VIEW_AREA_TAG, "Action LOAD_URL: Loading target '$targetUrlToLoad'.")
+                            Log.d(
+                                WEB_VIEW_AREA_TAG,
+                                "Action LOAD_URL: Loading target '$targetUrlToLoad'."
+                            )
                             pendingUrlAfterBlank = null
                             webView.loadUrl(targetUrlToLoad)
                         }
                     }
+
                     WebViewInternalAction.CLEAR_THEN_LOAD_URL -> {
                         val targetUrlToLoad =
                             if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
                                 "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
-                            } else { url }
+                            } else {
+                                url
+                            }
 
                         if (webView.url == targetUrlToLoad && pendingUrlAfterBlank == null) {
-                            Log.d(WEB_VIEW_AREA_TAG, "Action CLEAR_THEN_LOAD_URL: Already on target '$targetUrlToLoad'.")
+                            Log.d(
+                                WEB_VIEW_AREA_TAG,
+                                "Action CLEAR_THEN_LOAD_URL: Already on target '$targetUrlToLoad'."
+                            )
                             return@AndroidView
                         }
                         if (pendingUrlAfterBlank == targetUrlToLoad && webView.url == "about:blank") {
-                            Log.d(WEB_VIEW_AREA_TAG, "Action CLEAR_THEN_LOAD_URL: 'about:blank' already loaded for pending '$targetUrlToLoad'.")
+                            Log.d(
+                                WEB_VIEW_AREA_TAG,
+                                "Action CLEAR_THEN_LOAD_URL: 'about:blank' already loaded for pending '$targetUrlToLoad'."
+                            )
                             return@AndroidView
                         }
-                        Log.d(WEB_VIEW_AREA_TAG, "Action CLEAR_THEN_LOAD_URL: Setting '$targetUrlToLoad' as pending and loading 'about:blank'.")
+                        Log.d(
+                            WEB_VIEW_AREA_TAG,
+                            "Action CLEAR_THEN_LOAD_URL: Setting '$targetUrlToLoad' as pending and loading 'about:blank'."
+                        )
                         pendingUrlAfterBlank = targetUrlToLoad
                         if (webView.url != "about:blank") {
                             webView.loadUrl("about:blank")
                         } else {
-                            Log.d(WEB_VIEW_AREA_TAG, "Action CLEAR_THEN_LOAD_URL: WebView is already 'about:blank'. Client onPageFinished should handle loading '$pendingUrlAfterBlank'.")
+                            Log.d(
+                                WEB_VIEW_AREA_TAG,
+                                "Action CLEAR_THEN_LOAD_URL: WebView is already 'about:blank'. Client onPageFinished should handle loading '$pendingUrlAfterBlank'."
+                            )
                         }
                     }
+
                     WebViewInternalAction.NONE -> {
                         if (webView.url == "about:blank" && url.isNotBlank() && pendingUrlAfterBlank == null) {
-                            val targetForBlank = if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
+                            val targetForBlank = if (MimeTypeMap.getFileExtensionFromUrl(url)
+                                    ?.lowercase() == "pdf"
+                            ) {
                                 "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}"
-                            } else { url }
+                            } else {
+                                url
+                            }
                             if (targetForBlank != "about:blank") {
-                                Log.w(WEB_VIEW_AREA_TAG, "Action NONE: WebView blank, URL prop is '$url'. Forcing load of '$targetForBlank'.")
+                                Log.w(
+                                    WEB_VIEW_AREA_TAG,
+                                    "Action NONE: WebView blank, URL prop is '$url'. Forcing load of '$targetForBlank'."
+                                )
                                 webView.loadUrl(targetForBlank)
                             }
                         }
