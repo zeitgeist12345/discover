@@ -89,26 +89,22 @@ fun WebViewScreen(
     val context = LocalContext.current
     var webViewInstance: WebView? by remember { mutableStateOf(null) }
 
+    // Determines if the WebView content area should be displayed.
+    // True if content is web page/fallback; false if PDF is opened externally (placeholder shown).
     var shouldShowWebViewContent by remember(url) {
         mutableStateOf(MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() != "pdf")
     }
 
+    // Signals the AndroidView's update block for specific loading actions.
     var internalWebViewAction by remember(url) { mutableStateOf(WebViewInternalAction.NONE) }
 
     val currentAppWebViewClient = remember(url) {
         Log.d(WEB_VIEW_SCREEN_TAG, "Creating WebViewClient for URL: $url")
         object : WebViewClient() {
-            override fun onPageStarted(
-                view: WebView?,
-                currentLoadingUrl: String?,
-                favicon: Bitmap?
-            ) {
+            override fun onPageStarted(view: WebView?, currentLoadingUrl: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, currentLoadingUrl, favicon)
                 if (shouldShowWebViewContent && currentLoadingUrl != null && currentLoadingUrl != "about:blank") {
-                    Log.d(
-                        WEB_VIEW_SCREEN_TAG,
-                        "Client($url) - Page started: $currentLoadingUrl. Progress to 0."
-                    )
+                    Log.d(WEB_VIEW_SCREEN_TAG, "Client($url) - Page started: $currentLoadingUrl. Progress to 0.")
                     webViewProgress = 0
                 }
             }
@@ -116,94 +112,50 @@ fun WebViewScreen(
             override fun onPageFinished(view: WebView?, currentFinishedUrl: String?) {
                 super.onPageFinished(view, currentFinishedUrl)
                 if (shouldShowWebViewContent && currentFinishedUrl != null && currentFinishedUrl != "about:blank") {
-                    Log.d(
-                        WEB_VIEW_SCREEN_TAG,
-                        "Client($url) - Page finished: $currentFinishedUrl. Progress to 100."
-                    )
+                    Log.d(WEB_VIEW_SCREEN_TAG, "Client($url) - Page finished: $currentFinishedUrl. Progress to 100.")
                     webViewProgress = 100
                 }
-                Log.d(
-                    WEB_VIEW_SCREEN_TAG,
-                    "Client($url) - Page finished (generic): $currentFinishedUrl. Title: ${view?.title}"
-                )
+                Log.d(WEB_VIEW_SCREEN_TAG, "Client($url) - Page finished (generic): $currentFinishedUrl. Title: ${view?.title}")
             }
 
-            override fun onReceivedError(
-                view: WebView?,
-                request: WebResourceRequest?,
-                error: WebResourceError?
-            ) {
+            override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
                 super.onReceivedError(view, request, error)
                 if (request?.isForMainFrame == true && shouldShowWebViewContent) {
-                    Log.e(
-                        WEB_VIEW_SCREEN_TAG,
-                        "Client($url) - Error: ${request.url}. Code: ${error?.errorCode}, Desc: ${error?.description}"
-                    )
-                    Toast.makeText(context, "Error: ${error?.description}", Toast.LENGTH_SHORT)
-                        .show()
+                    Log.e(WEB_VIEW_SCREEN_TAG, "Client($url) - Error: ${request.url}. Code: ${error?.errorCode}, Desc: ${error?.description}")
+                    Toast.makeText(context, "Error: ${error?.description}", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
-            ): Boolean {
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 val requestedUri = request?.url
                 val requestedUrlString = requestedUri?.toString()
-                Log.d(
-                    WEB_VIEW_SCREEN_TAG,
-                    "Client($url) - Override: $requestedUrlString. Main prop URL for this client: $url"
-                )
+                Log.d(WEB_VIEW_SCREEN_TAG, "Client($url) - Override: $requestedUrlString. Main prop URL for this client: $url")
 
                 if (requestedUri != null && requestedUrlString != null && requestedUrlString != view?.url && requestedUrlString != "about:blank") {
-                    val mainPropUri = try {
-                        url.toUri()
-                    } catch (e: Exception) {
-                        Log.e(WEB_VIEW_SCREEN_TAG, "Error parsing main prop URL: $url", e)
+                    val mainPropUri = try { url.toUri() } catch (e: Exception) {
+                        Log.e(WEB_VIEW_SCREEN_TAG, "Client($url) - Error parsing mainPropUri from url: $url", e)
                         null
                     }
                     val isEffectivelySameSiteAsMainTarget = mainPropUri != null &&
-                            requestedUri.host?.replace(
-                                "www.",
-                                ""
-                            ) == mainPropUri.host?.replace("www.", "") &&
-                            (requestedUri.scheme == mainPropUri.scheme || (listOf(
-                                "http",
-                                "https"
-                            ).contains(requestedUri.scheme) && listOf("http", "https").contains(
-                                mainPropUri.scheme
-                            )))
+                            requestedUri.host?.replace("www.", "") == mainPropUri.host?.replace("www.", "") &&
+                            (requestedUri.scheme == mainPropUri.scheme || (listOf("http", "https").contains(requestedUri.scheme) && listOf("http", "https").contains(mainPropUri.scheme)))
 
                     if (!isEffectivelySameSiteAsMainTarget) {
-                        Log.i(
-                            WEB_VIEW_SCREEN_TAG,
-                            "Client($url) - External attempt for $requestedUrlString (main host: ${mainPropUri?.host})"
-                        )
+                        Log.i(WEB_VIEW_SCREEN_TAG, "Client($url) - External attempt for $requestedUrlString (main host: ${mainPropUri?.host})")
                         try {
-                            context.startActivity(
-                                Intent(
-                                    Intent.ACTION_VIEW,
-                                    requestedUri
-                                ).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) })
+                            context.startActivity(Intent(Intent.ACTION_VIEW, requestedUri).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) })
                             view?.stopLoading()
                             return true
                         } catch (e: ActivityNotFoundException) {
-                            Log.e(
-                                WEB_VIEW_SCREEN_TAG,
-                                "Client($url) - No app for $requestedUrlString",
-                                e
-                            )
-                            return false
+                            Log.e(WEB_VIEW_SCREEN_TAG, "Client($url) - No app for $requestedUrlString", e)
+                            return false // Let WebView try to load it
                         }
                     } else {
-                        Log.d(
-                            WEB_VIEW_SCREEN_TAG,
-                            "Client($url) - Same-site redirect for $requestedUrlString. WebView will handle."
-                        )
-                        return false
+                        Log.d(WEB_VIEW_SCREEN_TAG, "Client($url) - Same-site redirect for $requestedUrlString. WebView will handle.")
+                        return false // It's a redirect for the main URL, let WebView handle it
                     }
                 }
-                return false
+                return false // Default: Let WebView handle
             }
         }
     }
@@ -222,12 +174,7 @@ fun WebViewScreen(
                 Log.d(WEB_VIEW_SCREEN_TAG, "ChromeClient - Title: $title for ${view?.url}")
             }
 
-            override fun onJsAlert(
-                view: WebView?,
-                url: String?,
-                message: String?,
-                result: android.webkit.JsResult?
-            ): Boolean {
+            override fun onJsAlert(view: WebView?, url: String?, message: String?, result: android.webkit.JsResult?): Boolean {
                 AlertDialog.Builder(context).setTitle("JavaScript Alert").setMessage(message)
                     .setPositiveButton(android.R.string.ok) { _, _ -> result?.confirm() }
                     .setCancelable(false).show()
@@ -235,10 +182,7 @@ fun WebViewScreen(
             }
 
             override fun onPermissionRequest(request: PermissionRequest?) {
-                Log.w(
-                    WEB_VIEW_SCREEN_TAG,
-                    "Denying permission: ${request?.origin} for ${request?.resources?.joinToString()}"
-                )
+                Log.w(WEB_VIEW_SCREEN_TAG, "Denying permission: ${request?.origin} for ${request?.resources?.joinToString()}")
                 request?.deny()
             }
         }
@@ -248,62 +192,43 @@ fun WebViewScreen(
         Log.d(WEB_VIEW_SCREEN_TAG, "LaunchedEffect (URL changed): $url")
         val isPdf = MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf"
 
-        // Determine initial visibility
-        shouldShowWebViewContent = !isPdf
+        shouldShowWebViewContent = !isPdf // Set visibility based on PDF status
 
         if (isPdf) {
-            internalWebViewAction = WebViewInternalAction.CLEAR_ONLY
+            internalWebViewAction = WebViewInternalAction.CLEAR_ONLY // Clear WebView if placeholder is to be shown
             try {
-                context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()).apply {
-                    addFlags(
-                        Intent.FLAG_ACTIVITY_NEW_TASK
-                    )
-                })
+                context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) })
                 Log.i(WEB_VIEW_SCREEN_TAG, "Launched PDF intent for: $url")
             } catch (e: ActivityNotFoundException) {
                 Log.e(WEB_VIEW_SCREEN_TAG, "No app for PDF: $url. Falling back to Google Docs.", e)
-                Toast.makeText(context, "No app for PDF. Trying Google Docs.", Toast.LENGTH_LONG)
-                    .show()
-                shouldShowWebViewContent = true // Show WebView for fallback
+                Toast.makeText(context, "No app for PDF. Trying Google Docs.", Toast.LENGTH_LONG).show()
+                shouldShowWebViewContent = true // Revert to show WebView for Google Docs fallback
                 internalWebViewAction = WebViewInternalAction.LOAD_URL
             }
         } else { // Non-PDF
-            internalWebViewAction =
-                if (webViewInstance?.url == "about:blank" || webViewInstance?.url == null) {
-                    WebViewInternalAction.CLEAR_THEN_LOAD_URL
-                } else {
-                    WebViewInternalAction.LOAD_URL
-                }
+            // If WebView was showing placeholder (or is uninitialized), clear before loading.
+            internalWebViewAction = if (webViewInstance?.url == "about:blank" || webViewInstance?.url == null) {
+                WebViewInternalAction.CLEAR_THEN_LOAD_URL
+            } else {
+                WebViewInternalAction.LOAD_URL
+            }
         }
     }
 
     val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
-    DisposableEffect(lifecycleOwner, url) { // Key only on lifecycle and URL
+    DisposableEffect(lifecycleOwner, url) { // Re-run if lifecycle owner or URL changes
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_RESUME) {
-                Log.d(
-                    WEB_VIEW_SCREEN_TAG,
-                    "ON_RESUME for URL: $url. shouldShowWebViewContent: $shouldShowWebViewContent"
-                )
-                if (shouldShowWebViewContent && webViewInstance != null) {
+                Log.d(WEB_VIEW_SCREEN_TAG, "ON_RESUME for URL: $url. shouldShowWebViewContent: $shouldShowWebViewContent")
+                if (shouldShowWebViewContent && webViewInstance != null) { // Only if WebView should be visible
                     val currentWebViewActualUrl = webViewInstance?.url
-                    val targetUrlForDisplayInWebView =
-                        if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
-                            "https://docs.google.com/gview?embedded=true&url=${
-                                android.net.Uri.encode(
-                                    url
-                                )
-                            }"
-                        } else {
-                            url
-                        }
+                    val targetUrlForDisplay = if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
+                        // This implies fallback to Google Docs for a PDF
+                        "https://docs.google.com/gview?embedded=true&url=${android.net.Uri.encode(url)}"
+                    } else { url }
 
-                    if (currentWebViewActualUrl != targetUrlForDisplayInWebView
-                    ) {
-                        Log.i(
-                            WEB_VIEW_SCREEN_TAG,
-                            "ON_RESUME: Content ($currentWebViewActualUrl) differs from target ($targetUrlForDisplayInWebView). Signaling LOAD_URL."
-                        )
+                    if (currentWebViewActualUrl != targetUrlForDisplay) { // Avoid no-op if both blank
+                        Log.i(WEB_VIEW_SCREEN_TAG, "ON_RESUME: Content ($currentWebViewActualUrl) differs from target ($targetUrlForDisplay). Signaling LOAD_URL.")
                         internalWebViewAction = WebViewInternalAction.LOAD_URL
                     }
                 }
@@ -316,9 +241,7 @@ fun WebViewScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(
-                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-            )
+            .padding(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding())
     ) {
         Surface( // Header
             modifier = Modifier.fillMaxWidth(),
@@ -329,8 +252,7 @@ fun WebViewScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        top = WindowInsets.statusBars.asPaddingValues()
-                            .calculateTopPadding() + Spacing.small,
+                        top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding() + Spacing.small,
                         start = Spacing.medium,
                         end = Spacing.medium,
                         bottom = Spacing.small
@@ -347,30 +269,18 @@ fun WebViewScreen(
                 )
                 Row(horizontalArrangement = Arrangement.spacedBy(Spacing.small)) {
                     IconButton(onClick = onDislikeClick) {
-                        Icon(
-                            Icons.Default.KeyboardArrowDown,
-                            "Dislike",
-                            tint = if (isDisliked) ErrorColor else TextSecondary,
-                            modifier = Modifier.size(Spacing.large)
-                        )
+                        Icon(Icons.Default.KeyboardArrowDown, "Dislike", tint = if (isDisliked) ErrorColor else TextSecondary, modifier = Modifier.size(Spacing.large))
                     }
                     IconButton(onClick = onLikeClick) {
-                        Icon(
-                            Icons.Default.KeyboardArrowUp,
-                            "Like",
-                            tint = if (isLiked) SuccessColor else TextSecondary,
-                            modifier = Modifier.size(Spacing.large)
-                        )
+                        Icon(Icons.Default.KeyboardArrowUp, "Like", tint = if (isLiked) SuccessColor else TextSecondary, modifier = Modifier.size(Spacing.large))
                     }
                 }
-                Button(
-                    onClick = onClose,
-                    colors = ButtonDefaults.buttonColors(containerColor = ErrorColor)
-                ) { Text("Close") }
+                Button(onClick = onClose, colors = ButtonDefaults.buttonColors(containerColor = ErrorColor)) { Text("Close") }
             }
         }
 
         if (shouldShowWebViewContent) {
+            // Show progress bar only if content is being loaded and not yet complete
             if (webViewProgress < 100 && (webViewInstance?.url != null && webViewInstance?.url != "about:blank")) {
                 LinearProgressIndicator(
                     progress = { webViewProgress / 100f },
@@ -382,23 +292,26 @@ fun WebViewScreen(
 
             AndroidView(
                 factory = { contextForFactory ->
-                    Log.d(WEB_VIEW_SCREEN_TAG, "AndroidView Factory: Creating WebView.")
+                    Log.d(WEB_VIEW_SCREEN_TAG, "AndroidView Factory: Creating WebView instance.")
                     WebView(contextForFactory).apply {
                         webViewInstance = this
                         settings.apply {
-                            javaScriptEnabled = true; domStorageEnabled = true
-                            loadWithOverviewMode = true; useWideViewPort = true
-                            setSupportZoom(true); builtInZoomControls = true
-                            displayZoomControls = false; allowFileAccess = false
+                            javaScriptEnabled = true
+                            domStorageEnabled = true
+                            loadWithOverviewMode = true
+                            useWideViewPort = true
+                            setSupportZoom(true)
+                            builtInZoomControls = true
+                            displayZoomControls = false
+                            allowFileAccess = false // Security best practice
                             javaScriptCanOpenWindowsAutomatically = false
                             mediaPlaybackRequiresUserGesture = true
                         }
                     }
                 },
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f),
+                modifier = Modifier.fillMaxSize().weight(1f),
                 update = { webView ->
+                    // Ensure the correct clients are attached
                     if (webView.webViewClient != currentAppWebViewClient) {
                         webView.webViewClient = currentAppWebViewClient
                     }
@@ -406,92 +319,59 @@ fun WebViewScreen(
                         webView.webChromeClient = appWebChromeClient
                     }
 
-                    Log.d(
-                        WEB_VIEW_SCREEN_TAG,
-                        "AndroidView Update. Action: $internalWebViewAction, URL: $url, WebView URL: ${webView.url}"
-                    )
+                    Log.d(WEB_VIEW_SCREEN_TAG, "AndroidView Update. Action: $internalWebViewAction, URL: $url, WebView URL: ${webView.url}")
 
-                    val action = internalWebViewAction
-                    if (action != WebViewInternalAction.NONE) {
-                        internalWebViewAction = WebViewInternalAction.NONE // Consume signal
+                    val actionToExecute = internalWebViewAction
+                    if (actionToExecute != WebViewInternalAction.NONE) {
+                        internalWebViewAction = WebViewInternalAction.NONE // Consume the signal
                     }
 
-                    when (action) {
+                    when (actionToExecute) {
                         WebViewInternalAction.CLEAR_ONLY -> {
                             if (webView.url != "about:blank") {
-                                Log.d(
-                                    WEB_VIEW_SCREEN_TAG,
-                                    "Update: CLEAR_ONLY -> Loading about:blank"
-                                )
+                                Log.d(WEB_VIEW_SCREEN_TAG, "Update: CLEAR_ONLY -> Loading about:blank.")
                                 webView.loadUrl("about:blank")
                             }
                         }
-
                         WebViewInternalAction.LOAD_URL, WebViewInternalAction.CLEAR_THEN_LOAD_URL -> {
-                            val targetUrl = if (MimeTypeMap.getFileExtensionFromUrl(url)
-                                    ?.lowercase() == "pdf"
-                            ) {
-                                "https://docs.google.com/gview?embedded=true&url=${
-                                    android.net.Uri.encode(
-                                        url
-                                    )
-                                }"
-                            } else {
-                                url
-                            }
+                            val targetUrlToLoad = if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
+                                "https://docs.google.com/gview?embedded=true&url=${android.net.Uri.encode(url)}"
+                            } else { url }
 
-                            if (action == WebViewInternalAction.CLEAR_THEN_LOAD_URL && webView.url != "about:blank") {
-                                Log.d(
-                                    WEB_VIEW_SCREEN_TAG,
-                                    "Update: CLEAR_THEN_LOAD_URL -> Clearing then loading $targetUrl"
-                                )
+                            if (actionToExecute == WebViewInternalAction.CLEAR_THEN_LOAD_URL && webView.url != "about:blank") {
+                                Log.d(WEB_VIEW_SCREEN_TAG, "Update: CLEAR_THEN_LOAD_URL -> Clearing before loading $targetUrlToLoad.")
                                 webView.loadUrl("about:blank") // Clear first
                             }
 
-                            // Load if different, or if current is blank and target is not
-                            if (webView.url != targetUrl || (webView.url == "about:blank" && targetUrl != "about:blank")) {
-                                Log.d(WEB_VIEW_SCREEN_TAG, "Update: Loading target $targetUrl")
-                                webView.loadUrl(targetUrl)
+                            // Load if WebView is not already on the target, or if it was just cleared and target is not blank
+                            if (webView.url != targetUrlToLoad || (webView.url == "about:blank" && targetUrlToLoad != "about:blank")) {
+                                Log.d(WEB_VIEW_SCREEN_TAG, "Update: Loading target $targetUrlToLoad.")
+                                webView.loadUrl(targetUrlToLoad)
                             } else {
-                                Log.d(
-                                    WEB_VIEW_SCREEN_TAG,
-                                    "Update: WebView already on target $targetUrl. No reload from signal."
-                                )
+                                Log.d(WEB_VIEW_SCREEN_TAG, "Update: WebView already on target $targetUrlToLoad or no load signaled. No action.")
                             }
                         }
-
                         WebViewInternalAction.NONE -> {
-                            // Safety net: If WebView is blank and it should be showing content
+                            // Safety net: if WebView is blank but should be showing content.
+                            // This usually means an initial load or a post-resume load didn't get explicitly signaled or processed.
                             if (webView.url == "about:blank" && shouldShowWebViewContent) {
-                                val targetUrl = if (MimeTypeMap.getFileExtensionFromUrl(url)
-                                        ?.lowercase() == "pdf"
-                                ) {
-                                    "https://docs.google.com/gview?embedded=true&url=${
-                                        android.net.Uri.encode(
-                                            url
-                                        )
-                                    }"
-                                } else {
-                                    url
-                                }
-                                if (targetUrl != "about:blank") {
-                                    Log.w(
-                                        WEB_VIEW_SCREEN_TAG,
-                                        "Update (NONE): WebView blank but target is $targetUrl. Forcing load."
-                                    )
-                                    webView.loadUrl(targetUrl)
+                                val targetUrlToLoad = if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
+                                     // This implies fallback for PDF
+                                    "https://docs.google.com/gview?embedded=true&url=${android.net.Uri.encode(url)}"
+                                } else { url }
+
+                                if (targetUrlToLoad != "about:blank") {
+                                    Log.w(WEB_VIEW_SCREEN_TAG, "Update (NONE action): WebView is blank but target is $targetUrlToLoad. Forcing load.")
+                                    webView.loadUrl(targetUrlToLoad)
                                 }
                             }
                         }
                     }
                 }
             )
-        } else { // Placeholder for PDF or when content shouldn't be shown
+        } else { // Placeholder UI (e.g., for PDFs opened externally)
             Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f)
-                    .padding(Spacing.medium),
+                modifier = Modifier.fillMaxSize().weight(1f).padding(Spacing.medium),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
@@ -500,12 +380,10 @@ fun WebViewScreen(
                     color = TextSecondary
                 )
             }
+            // When placeholder is shown, ensure the actual WebView instance is cleared.
             LaunchedEffect(webViewInstance) {
                 if (webViewInstance?.url != "about:blank") {
-                    Log.d(
-                        WEB_VIEW_SCREEN_TAG,
-                        "Placeholder visible: Clearing WebView to 'about:blank'."
-                    )
+                    Log.d(WEB_VIEW_SCREEN_TAG, "Placeholder visible: Clearing WebView instance to 'about:blank'.")
                     webViewInstance?.loadUrl("about:blank")
                 }
             }
