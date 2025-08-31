@@ -37,7 +37,10 @@ class RetryInterceptor(
                     response = null // Signal to retry
                 } else if (!response.isSuccessful) {
                     // Non-retryable HTTP error, log and break to return this response
-                    Log.w(TAG, "Non-retryable HTTP Error: ${response.code} for ${request.url} on attempt ${tryCount + 1}.")
+                    Log.w(
+                        TAG,
+                        "Non-retryable HTTP Error: ${response.code} for ${request.url} on attempt ${tryCount + 1}."
+                    )
                     break // Exit loop, will return this unsuccessful response
                 } else {
                     Log.d(TAG, "Request successful for ${request.url} on attempt ${tryCount + 1}")
@@ -58,9 +61,12 @@ class RetryInterceptor(
                 } catch (ie: InterruptedException) {
                     Thread.currentThread().interrupt()
                     Log.w(TAG, "Retry interrupted for ${request.url}", ie)
-                    throw IOException("Retry interrupted for ${request.url}", ie) // Re-throw if interrupted
+                    throw IOException(
+                        "Retry interrupted for ${request.url}", ie
+                    ) // Re-throw if interrupted
                 }
-                currentDelay = (currentDelay * factor).toLong().coerceAtMost(TimeUnit.MINUTES.toMillis(1)) // Cap delay
+                currentDelay = (currentDelay * factor).toLong()
+                    .coerceAtMost(TimeUnit.MINUTES.toMillis(1)) // Cap delay
 
             }
         }

@@ -10,6 +10,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.discover.ui.theme.*
 
+// --- Using Approximation ---
+private val APPROX_SINGLE_CONTROL_BUTTON_WIDTH =
+    Spacing.small * 12 // Adjusted estimate based on "⬅️ Previous" or "🎲 Random"
+private val MIN_INTER_BUTTON_SPACING_ROW = Spacing.small
+private const val NUMBER_OF_MAIN_CONTROL_BUTTONS = 3
+
+// Calculate the threshold dynamically based on the approximations
+private val DYNAMIC_CONTROL_BUTTONS_THRESHOLD =
+    (APPROX_SINGLE_CONTROL_BUTTON_WIDTH * NUMBER_OF_MAIN_CONTROL_BUTTONS) + (MIN_INTER_BUTTON_SPACING_ROW * (NUMBER_OF_MAIN_CONTROL_BUTTONS - 1))
+// Example: (8 * 12 * 3) + (8 * 2) = 283 + 16 = 299 dp
+
 @Composable
 fun ControlButtons(
     onPreviousClick: () -> Unit,
@@ -20,37 +31,36 @@ fun ControlButtons(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(Spacing.small), // Using theme spacing
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Main control buttons
-        // Use BoxWithConstraints to get the available width
         BoxWithConstraints(
-            modifier = Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.Center // Center the content (Row or Column)
+            modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center
         ) {
-            // Define a threshold for when to switch to a Column
-            // This is an arbitrary value; you'll need to test and adjust
-            // based on your button sizes and desired behavior.
-            val thresholdWidth = 360.dp // Example threshold
-
-            if (this.maxWidth < thresholdWidth) {
-                // Not enough space for a Row, use a Column
+            // Use the dynamically calculated threshold
+            if (this.maxWidth < DYNAMIC_CONTROL_BUTTONS_THRESHOLD) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(8.dp) // Add some spacing between buttons
+                    verticalArrangement = Arrangement.spacedBy(Spacing.small) // Using theme spacing
                 ) {
-                    PreviousButton(onClick = onPreviousClick)
-                    RandomButton(onClick = onRandomClick)
-                    NextButton(onClick = onNextClick)
+                    PreviousButton(
+                        onClick = onPreviousClick, modifier = Modifier.fillMaxWidth()
+                    ) // Fill width in Column
+                    RandomButton(
+                        onClick = onRandomClick, modifier = Modifier.fillMaxWidth()
+                    )   // Fill width in Column
+                    NextButton(
+                        onClick = onNextClick, modifier = Modifier.fillMaxWidth()
+                    )       // Fill width in Column
                 }
             } else {
-                // Enough space, use a Row
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    horizontalArrangement = Arrangement.SpaceEvenly, // Or Arrangement.spacedBy for consistent spacing
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    // When in a Row, you might not want them to always fill max width individually
+                    // unless that's the design. `weight(1f)` makes them share space.
                     PreviousButton(onClick = onPreviousClick, modifier = Modifier.weight(1f))
                     RandomButton(onClick = onRandomClick, modifier = Modifier.weight(1f))
                     NextButton(onClick = onNextClick, modifier = Modifier.weight(1f))
@@ -58,63 +68,51 @@ fun ControlButtons(
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(Spacing.medium)) // Using theme spacing
 
-        // Add website button
         Button(
-            onClick = onAddWebsiteClick,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = SuccessColor,
-                contentColor = TextPrimary
-            ),
-            modifier = Modifier.fillMaxWidth()
+            onClick = onAddWebsiteClick, colors = ButtonDefaults.buttonColors(
+                containerColor = SuccessColor, contentColor = TextPrimary
+            ), modifier = Modifier.fillMaxWidth()
         ) {
             Text("➕ Add Website", fontWeight = FontWeight.Bold)
         }
     }
 }
 
-// Extracted Button composables for clarity and reusability
+// Button composables - ensure their padding and content are considered in APPROX_SINGLE_CONTROL_BUTTON_WIDTH
 @Composable
 private fun PreviousButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = SurfaceDark,
-            contentColor = TextPrimary
+            containerColor = SurfaceDark, contentColor = TextPrimary
         ),
         border = BorderStroke(1.dp, BorderColor),
-        modifier = modifier.padding(horizontal = 4.dp) // Add some padding if they are in a row
+        modifier = modifier.padding(horizontal = 1.dp) // This padding adds to the button's total width
     ) {
-        Text("⬅️ Previous")
+        Text("⬅️ Previous", fontSize = MaterialTheme.typography.labelMedium.fontSize)
     }
 }
 
 @Composable
 private fun RandomButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
-        onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = PrimaryGreenDark,
-            contentColor = TextPrimary
-        ),
-        modifier = modifier.padding(horizontal = 4.dp)
+        onClick = onClick, colors = ButtonDefaults.buttonColors(
+            containerColor = PrimaryGreenDark, contentColor = TextPrimary
+        ), modifier = modifier.padding(horizontal = 1.dp)
     ) {
-        Text("🎲 Random", fontWeight = FontWeight.Bold)
+        Text("🎲 Random", fontSize = MaterialTheme.typography.labelMedium.fontSize)
     }
 }
 
 @Composable
 private fun NextButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
-        onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = SurfaceDark,
-            contentColor = TextPrimary
-        ),
-        border = BorderStroke(1.dp, BorderColor),
-        modifier = modifier.padding(horizontal = 4.dp)
+        onClick = onClick, colors = ButtonDefaults.buttonColors(
+            containerColor = SurfaceDark, contentColor = TextPrimary
+        ), border = BorderStroke(1.dp, BorderColor), modifier = modifier.padding(horizontal = 1.dp)
     ) {
-        Text("Next ➡️")
+        Text("Next ➡️", fontSize = MaterialTheme.typography.labelMedium.fontSize)
     }
 }

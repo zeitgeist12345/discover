@@ -41,9 +41,7 @@ fun TopDiscoverBar(
     onClose: () -> Unit
 ) {
     Surface(
-        modifier = Modifier.fillMaxWidth(),
-        color = SurfaceDark,
-        shadowElevation = 4.dp
+        modifier = Modifier.fillMaxWidth(), color = SurfaceDark, shadowElevation = 4.dp
     ) {
         Row(
             modifier = Modifier
@@ -84,8 +82,7 @@ fun TopDiscoverBar(
                 }
             }
             Button(
-                onClick = onClose,
-                colors = ButtonDefaults.buttonColors(containerColor = ErrorColor)
+                onClick = onClose, colors = ButtonDefaults.buttonColors(containerColor = ErrorColor)
             ) { Text("Close") }
         }
     }

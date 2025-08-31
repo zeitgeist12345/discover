@@ -11,8 +11,7 @@ object StaticWebsites {
             views = 29,
             likes = 2,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-18",
             name = "Patatap",
             url = "https://patatap.com",
@@ -21,8 +20,7 @@ object StaticWebsites {
             views = 35,
             likes = 1,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-25",
             name = "10 Minute Mail",
             url = "https://10minutemail.com",
@@ -31,8 +29,7 @@ object StaticWebsites {
             views = 33,
             likes = 2,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-2",
             name = "zeitgeist12345",
             url = "https://zeitgeist12345.github.io/",
@@ -41,8 +38,7 @@ object StaticWebsites {
             views = 36,
             likes = 1,
             dislikes = 2
-        ),
-        Link(
+        ), Link(
             id = "website-32",
             name = "In depth flow of computers",
             url = "https://github.com/alex/what-happens-when",
@@ -51,8 +47,7 @@ object StaticWebsites {
             views = 20,
             likes = 3,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-6",
             name = "The Useless Web",
             url = "https://theuselessweb.com/",
@@ -61,8 +56,7 @@ object StaticWebsites {
             views = 35,
             likes = 2,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-9",
             name = "Hacker News",
             url = "https://news.ycombinator.com",
@@ -71,8 +65,7 @@ object StaticWebsites {
             views = 40,
             likes = 4,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-8",
             name = "Product Hunt",
             url = "https://producthunt.com",
@@ -81,8 +74,7 @@ object StaticWebsites {
             views = 36,
             likes = 2,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-15",
             name = "The Pudding",
             url = "https://pudding.cool/",
@@ -91,8 +83,7 @@ object StaticWebsites {
             views = 35,
             likes = 2,
             dislikes = 2
-        ),
-        Link(
+        ), Link(
             id = "website-11",
             name = "The Longest Blockchain",
             url = "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
@@ -101,8 +92,7 @@ object StaticWebsites {
             views = 35,
             likes = 1,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-16",
             name = "xkcd",
             url = "https://xkcd.com/",
@@ -111,8 +101,7 @@ object StaticWebsites {
             views = 36,
             likes = 1,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-21",
             name = "Ncase.me",
             url = "https://ncase.me",
@@ -121,8 +110,7 @@ object StaticWebsites {
             views = 33,
             likes = 2,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-19",
             name = "Little Alchemy 2",
             url = "https://littlealchemy2.com",
@@ -131,8 +119,7 @@ object StaticWebsites {
             views = 23,
             likes = 2,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-22",
             name = "Connected Papers",
             url = "https://www.connectedpapers.com",
@@ -141,8 +128,7 @@ object StaticWebsites {
             views = 34,
             likes = 1,
             dislikes = 3
-        ),
-        Link(
+        ), Link(
             id = "website-27",
             name = "Don't Even Reply",
             url = "https://dontevenreply.com",
@@ -151,8 +137,7 @@ object StaticWebsites {
             views = 24,
             likes = 2,
             dislikes = 1
-        ),
-        Link(
+        ), Link(
             id = "website-31",
             name = "Al Jazeera",
             url = "https://www.aljazeera.com",
@@ -161,8 +146,7 @@ object StaticWebsites {
             views = 25,
             likes = 1,
             dislikes = 1
-        ),
-        Link(
+        ), Link(
             id = "website-33",
             name = "Software build systems",
             url = "https://bazel.build/basics",
@@ -171,8 +155,7 @@ object StaticWebsites {
             views = 16,
             likes = 2,
             dislikes = 1
-        ),
-        Link(
+        ), Link(
             id = "website-1754716469448-6jnszbuqo",
             name = "MIT collaboration in India and Iran",
             url = "https://www.journals.uchicago.edu/doi/10.1086/507138",
@@ -181,8 +164,7 @@ object StaticWebsites {
             views = 19,
             likes = 2,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-1754717274825-wii8e8nfz",
             name = "Office latop is for office",
             url = "https://www.theverge.com/22671697/personal-laptop-work-security-privacy",
@@ -191,8 +173,7 @@ object StaticWebsites {
             views = 21,
             likes = 1,
             dislikes = 0
-        ),
-        Link(
+        ), Link(
             id = "website-1756219726033-8arf9m269",
             name = "4chan",
             url = "https://4chan.org",

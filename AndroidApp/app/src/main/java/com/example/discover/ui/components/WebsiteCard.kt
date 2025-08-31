@@ -19,19 +19,14 @@ import com.example.discover.ui.theme.*
 
 @Composable
 fun WebsiteCard(
-    website: Link,
-    onLikeClick: () -> Unit,
-    onDislikeClick: () -> Unit,
-    onWebsiteClick: () -> Unit
+    website: Link, onLikeClick: () -> Unit, onDislikeClick: () -> Unit, onWebsiteClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
-        colors = CardDefaults.cardColors(
+            .padding(16.dp), colors = CardDefaults.cardColors(
             containerColor = SurfaceDark
-        ),
-        border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
+        ), border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
@@ -90,12 +85,9 @@ fun WebsiteCard(
             ) {
                 // Dislike button
                 Button(
-                    onClick = onDislikeClick,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = TextPrimary
-                    ),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
+                    onClick = onDislikeClick, colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent, contentColor = TextPrimary
+                    ), border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
                 ) {
                     Text("👎 ${website.dislikes}")
                 }
@@ -120,12 +112,9 @@ fun WebsiteCard(
 
                 // Like button
                 Button(
-                    onClick = onLikeClick,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = TextPrimary
-                    ),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
+                    onClick = onLikeClick, colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent, contentColor = TextPrimary
+                    ), border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
                 ) {
                     Text("👍 ${website.likes}")
                 }

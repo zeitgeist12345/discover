@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 // Import your new components
 import com.example.discover.ui.components.AddWebsiteDialog
@@ -34,7 +33,6 @@ import com.example.discover.ui.components.TopDiscoverBar // Ensure this is impor
 import com.example.discover.ui.components.WebViewArea    // Ensure this is imported
 import com.example.discover.ui.components.WebsiteCard
 import com.example.discover.ui.theme.BackgroundDark
-import com.example.discover.ui.theme.PrimaryGreen
 import com.example.discover.ui.theme.Spacing
 import com.example.discover.ui.theme.TextPrimary
 import com.example.discover.ui.theme.TextSecondary
@@ -96,8 +94,7 @@ fun DiscoverScreen(
                             // Adjust padding as needed, statusBarPadding is now applied by TopDiscoverBar for its content
                             // For this main screen, we might want different padding or rely on the Box background.
                             top = statusBarPadding.calculateTopPadding() + Spacing.medium, // Or remove if Box background is enough
-                            start = Spacing.medium,
-                            end = Spacing.medium,
+                            start = Spacing.medium, end = Spacing.medium,
                             // bottom padding might need to account for navigation bar if not handled globally
                             bottom = Spacing.medium + WindowInsets.navigationBars.asPaddingValues()
                                 .calculateBottomPadding()
@@ -126,21 +123,13 @@ fun DiscoverScreen(
                         color = TextSecondary,
                         textAlign = TextAlign.Center
                     )
-                    Text(
-                        text = "Websites open automatically in the in-app browser",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = PrimaryGreen,
-                        textAlign = TextAlign.Center,
-                        fontSize = 12.sp
-                    )
                     Spacer(modifier = Modifier.height(Spacing.medium))
 
                     ControlButtons(
                         onPreviousClick = { viewModel.loadPreviousWebsite() },
                         onRandomClick = { viewModel.loadRandomWebsite() },
                         onNextClick = { viewModel.loadNextWebsite() },
-                        onAddWebsiteClick = { viewModel.showAddWebsiteDialog() }
-                    )
+                        onAddWebsiteClick = { viewModel.showAddWebsiteDialog() })
 
                     // Show current website card only if there is a current website and WebView is not shown
                     currentWebsite?.let {
@@ -159,8 +148,7 @@ fun DiscoverScreen(
                         onDismiss = { viewModel.hideAddWebsiteDialog() },
                         onAddWebsite = { name, url, description ->
                             viewModel.addWebsite(name, url, description)
-                        }
-                    )
+                        })
                 }
             }
         }

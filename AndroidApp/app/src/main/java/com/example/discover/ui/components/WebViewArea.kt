@@ -100,8 +100,7 @@ fun WebViewArea(
             }
 
             override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
+                view: WebView?, request: WebResourceRequest?
             ): Boolean {
                 val requestedFullUrlString = request?.url?.toString() ?: return false
                 val requestedUriFromWebView: Uri = request.url // URI given by WebView
@@ -117,9 +116,9 @@ fun WebViewArea(
                 val host = requestedUriFromWebView.host?.lowercase()
 
                 // 1. Handle YouTube explicitly (covers http/https youtube.com and app-specific schemes like vnd.youtube)
-                if ((scheme == "youtube" || scheme == "vnd.youtube") ||
-                    ((scheme == "http" || scheme == "https") &&
-                            (host != null && (host == "youtube.com" || host.endsWith(".youtube.com") || host == "youtu.be")))
+                if ((scheme == "youtube" || scheme == "vnd.youtube") || ((scheme == "http" || scheme == "https") && (host != null && (host == "youtube.com" || host.endsWith(
+                        ".youtube.com"
+                    ) || host == "youtu.be")))
                 ) {
                     Log.i(
                         WEB_VIEW_AREA_TAG,
@@ -165,8 +164,7 @@ fun WebViewArea(
                             // You might add more safety checks if needed.
                             context.startActivity(intent)
                             Log.d(
-                                WEB_VIEW_AREA_TAG,
-                                "Successfully launched intent from Intent URI."
+                                WEB_VIEW_AREA_TAG, "Successfully launched intent from Intent URI."
                             )
                             view?.stopLoading()
                             return true
@@ -196,9 +194,7 @@ fun WebViewArea(
                             e
                         )
                         Toast.makeText(
-                            context,
-                            "Cannot open this link (format error).",
-                            Toast.LENGTH_SHORT
+                            context, "Cannot open this link (format error).", Toast.LENGTH_SHORT
                         ).show()
                         return true // "Handled" it by showing a Toast
                     }
@@ -222,9 +218,7 @@ fun WebViewArea(
                             e
                         )
                         Toast.makeText(
-                            context,
-                            "No app found to open this link.",
-                            Toast.LENGTH_SHORT
+                            context, "No app found to open this link.", Toast.LENGTH_SHORT
                         ).show()
                         return true
                     } catch (e: Exception) {
@@ -249,8 +243,7 @@ fun WebViewArea(
                     host // host is already lowercased and from requestedUriFromWebView
 
                 if (initialHost != null && requestedHost != null && initialHost != requestedHost.replace(
-                        "www.",
-                        ""
+                        "www.", ""
                     )
                 ) {
                     Log.i(
@@ -387,9 +380,7 @@ fun WebViewArea(
 
 
     Column(modifier = Modifier.fillMaxSize()) {
-        if (webViewProgress < 100 && webViewProgress > 0 &&
-            (webViewInstanceFromFactory?.url != null && webViewInstanceFromFactory?.url != "about:blank")
-        ) {
+        if (webViewProgress < 100 && webViewProgress > 0 && (webViewInstanceFromFactory?.url != null && webViewInstanceFromFactory?.url != "about:blank")) {
             LinearProgressIndicator(
                 progress = { webViewProgress / 100f },
                 modifier = Modifier.fillMaxWidth(),
@@ -414,11 +405,9 @@ fun WebViewArea(
                         mediaPlaybackRequiresUserGesture = true
                     }
                 }
-            },
-            modifier = Modifier
+            }, modifier = Modifier
                 .fillMaxSize()
-                .weight(1f),
-            update = { webView ->
+                .weight(1f), update = { webView ->
                 if (webView.webViewClient != localWebViewClient) webView.webViewClient =
                     localWebViewClient
                 if (webView.webChromeClient != localWebChromeClient) webView.webChromeClient =
@@ -515,8 +504,7 @@ fun WebViewArea(
                         }
                     }
                 }
-            }
-        )
+            })
     }
 
     BackHandler(enabled = true) {

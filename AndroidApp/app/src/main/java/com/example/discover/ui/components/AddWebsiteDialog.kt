@@ -13,8 +13,7 @@ import com.example.discover.ui.theme.*
 
 @Composable
 fun AddWebsiteDialog(
-    onDismiss: () -> Unit,
-    onAddWebsite: (name: String, url: String, description: String) -> Unit
+    onDismiss: () -> Unit, onAddWebsite: (name: String, url: String, description: String) -> Unit
 ) {
     var name by remember { mutableStateOf("") }
     var url by remember { mutableStateOf("") }
@@ -38,8 +37,7 @@ fun AddWebsiteDialog(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // Name field
-                OutlinedTextField(
-                    value = name,
+                OutlinedTextField(value = name,
                     onValueChange = { name = it },
                     label = { Text("Website Name *") },
                     modifier = Modifier.fillMaxWidth(),
@@ -57,8 +55,7 @@ fun AddWebsiteDialog(
                 )
 
                 // URL field
-                OutlinedTextField(
-                    value = url,
+                OutlinedTextField(value = url,
                     onValueChange = { url = it },
                     label = { Text("Website URL *") },
                     modifier = Modifier.fillMaxWidth(),
@@ -77,8 +74,7 @@ fun AddWebsiteDialog(
                 )
 
                 // Description field
-                OutlinedTextField(
-                    value = description,
+                OutlinedTextField(value = description,
                     onValueChange = { description = it },
                     label = { Text("Description *") },
                     modifier = Modifier.fillMaxWidth(),
@@ -119,18 +115,13 @@ fun AddWebsiteDialog(
                     Log.d("AddWebsiteDialog", "Adding website: $name, $url, $description")
                     onAddWebsite(name, url, description)
                     isLoading = false
-                },
-                enabled = !isLoading,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = PrimaryGreenDark,
-                    contentColor = TextPrimary
+                }, enabled = !isLoading, colors = ButtonDefaults.buttonColors(
+                    containerColor = PrimaryGreenDark, contentColor = TextPrimary
                 )
             ) {
                 if (isLoading) {
                     CircularProgressIndicator(
-                        modifier = Modifier.size(16.dp),
-                        color = TextPrimary,
-                        strokeWidth = 2.dp
+                        modifier = Modifier.size(16.dp), color = TextPrimary, strokeWidth = 2.dp
                     )
                 } else {
                     Text("Add Website")
@@ -139,8 +130,7 @@ fun AddWebsiteDialog(
         },
         dismissButton = {
             TextButton(
-                onClick = onDismiss,
-                colors = ButtonDefaults.textButtonColors(
+                onClick = onDismiss, colors = ButtonDefaults.textButtonColors(
                     contentColor = TextSecondary
                 )
             ) {
