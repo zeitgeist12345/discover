@@ -43,7 +43,6 @@ import com.example.discover.ui.theme.Spacing
 import com.example.discover.ui.theme.SurfaceDark
 import com.example.discover.ui.theme.TextSecondary
 import kotlin.text.lowercase
-import androidx.core.graphics.toColorInt
 
 // You can keep the tag and enum here or move them to a common place if used elsewhere.
 private const val WEB_VIEW_AREA_TAG = "WebViewArea" // Renamed for clarity
@@ -315,7 +314,7 @@ fun WebViewArea(
                         webViewInstance = this
                         // Set background color to mitigate white flash during transitions.
                         // Replace #121212 with your actual SurfaceDark hex color from your theme.
-                        setBackgroundColor("#121212".toColorInt()) // Example: Dark Gray
+//                        setBackgroundColor("#121212".toColorInt()) // Example: Dark Gray
 
                         settings.apply {
                             javaScriptEnabled = true
