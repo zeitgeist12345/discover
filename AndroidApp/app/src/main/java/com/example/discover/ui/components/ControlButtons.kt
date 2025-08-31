@@ -1,13 +1,11 @@
 package com.example.discover.ui.components
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.example.discover.ui.theme.*
 
 // --- Using Approximation ---
@@ -84,14 +82,11 @@ fun ControlButtons(
 @Composable
 private fun PreviousButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
-        onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
+        onClick = onClick, colors = ButtonDefaults.buttonColors(
             containerColor = SurfaceDark, contentColor = TextPrimary
-        ),
-        border = BorderStroke(1.dp, BorderColor),
-        modifier = modifier.padding(horizontal = 1.dp) // This padding adds to the button's total width
+        ), modifier = modifier
     ) {
-        Text("⬅️ Previous", fontSize = MaterialTheme.typography.labelMedium.fontSize)
+        Text("⬅️Previous", fontSize = MaterialTheme.typography.labelMedium.fontSize)
     }
 }
 
@@ -100,9 +95,9 @@ private fun RandomButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick, colors = ButtonDefaults.buttonColors(
             containerColor = PrimaryGreenDark, contentColor = TextPrimary
-        ), modifier = modifier.padding(horizontal = 1.dp)
+        ), modifier = modifier
     ) {
-        Text("🎲 Random", fontSize = MaterialTheme.typography.labelMedium.fontSize)
+        Text("🎲Random", fontSize = MaterialTheme.typography.labelMedium.fontSize)
     }
 }
 
@@ -111,8 +106,8 @@ private fun NextButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick, colors = ButtonDefaults.buttonColors(
             containerColor = SurfaceDark, contentColor = TextPrimary
-        ), border = BorderStroke(1.dp, BorderColor), modifier = modifier.padding(horizontal = 1.dp)
+        ), modifier = modifier
     ) {
-        Text("Next ➡️", fontSize = MaterialTheme.typography.labelMedium.fontSize)
+        Text("Next➡️", fontSize = MaterialTheme.typography.labelMedium.fontSize)
     }
 }
