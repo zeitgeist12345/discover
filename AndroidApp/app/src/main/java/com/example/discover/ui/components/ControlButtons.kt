@@ -10,14 +10,14 @@ import com.example.discover.ui.theme.*
 
 // --- Using Approximation ---
 private val APPROX_SINGLE_CONTROL_BUTTON_WIDTH =
-    Spacing.small * 12 // Adjusted estimate based on "⬅️ Previous" or "🎲 Random"
+    Spacing.small * 14 // Adjusted estimate based on "⬅️ Previous" or "🎲 Random"
 private val MIN_INTER_BUTTON_SPACING_ROW = Spacing.small
 private const val NUMBER_OF_MAIN_CONTROL_BUTTONS = 3
 
 // Calculate the threshold dynamically based on the approximations
 private val DYNAMIC_CONTROL_BUTTONS_THRESHOLD =
     (APPROX_SINGLE_CONTROL_BUTTON_WIDTH * NUMBER_OF_MAIN_CONTROL_BUTTONS) + (MIN_INTER_BUTTON_SPACING_ROW * (NUMBER_OF_MAIN_CONTROL_BUTTONS - 1))
-// Example: (8 * 12 * 3) + (8 * 2) = 283 + 16 = 299 dp
+// Example: (8 * 14 * 3) + (8 * 2) = 336 + 16 = 352 dp
 
 @Composable
 fun ControlButtons(
