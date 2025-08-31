@@ -42,7 +42,7 @@ enum class WebViewInternalAction {
     NONE, LOAD_URL, CLEAR_THEN_LOAD_URL, CLEAR_ONLY
 }
 
-@SuppressLint("SetJavaScriptEnabled")
+@SuppressLint("SetJavaScriptEnabled", "QueryPermissionsNeeded")
 @Composable
 fun WebViewArea(
     url: String, // The target URL from ViewModel
