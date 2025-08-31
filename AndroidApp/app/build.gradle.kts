@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.discover"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 1
         versionName = "18.0"
