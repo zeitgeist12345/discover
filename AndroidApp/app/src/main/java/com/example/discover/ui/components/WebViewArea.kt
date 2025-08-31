@@ -1,18 +1,11 @@
 package com.example.discover.ui.components
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.graphics.Bitmap
 import android.util.Log
 import android.webkit.MimeTypeMap
-import android.webkit.PermissionRequest
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceError
-import android.webkit.WebResourceRequest
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
@@ -59,159 +52,6 @@ fun WebViewArea(
 
     // Signals the AndroidView's update block for specific loading actions.
     var internalWebViewAction by remember(url) { mutableStateOf(WebViewInternalAction.NONE) }
-
-    val currentAppWebViewClient = remember(url) {
-        Log.d(WEB_VIEW_AREA_TAG, "Creating WebViewClient for URL: $url")
-        object : WebViewClient() {
-            override fun onPageStarted(
-                view: WebView?,
-                currentLoadingUrl: String?,
-                favicon: Bitmap?
-            ) {
-                super.onPageStarted(view, currentLoadingUrl, favicon)
-                if (currentLoadingUrl != null && currentLoadingUrl != "about:blank") {
-                    Log.d(
-                        WEB_VIEW_AREA_TAG,
-                        "Client($url) - Page started: $currentLoadingUrl. Progress to 0."
-                    )
-                    webViewProgress = 0
-                }
-            }
-
-            override fun onPageFinished(view: WebView?, currentFinishedUrl: String?) {
-                super.onPageFinished(view, currentFinishedUrl)
-                if (currentFinishedUrl != null && currentFinishedUrl != "about:blank") {
-                    Log.d(
-                        WEB_VIEW_AREA_TAG,
-                        "Client($url) - Page finished: $currentFinishedUrl. Progress to 100."
-                    )
-                    webViewProgress = 100
-                }
-                Log.d(
-                    WEB_VIEW_AREA_TAG,
-                    "Client($url) - Page finished (generic): $currentFinishedUrl. Title: ${view?.title}"
-                )
-            }
-
-            override fun onReceivedError(
-                view: WebView?,
-                request: WebResourceRequest?,
-                error: WebResourceError?
-            ) {
-                super.onReceivedError(view, request, error)
-                if (request?.isForMainFrame == true) {
-                    Log.e(
-                        WEB_VIEW_AREA_TAG,
-                        "Client($url) - Error: ${request.url}. Code: ${error?.errorCode}, Desc: ${error?.description}"
-                    )
-                    Toast.makeText(context, "Error: ${error?.description}", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-
-            override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
-            ): Boolean {
-                val requestedUri = request?.url
-                val requestedUrlString = requestedUri?.toString()
-                Log.d(
-                    WEB_VIEW_AREA_TAG,
-                    "Client($url) - Override: $requestedUrlString. Main prop URL for this client: $url"
-                )
-
-                if (requestedUri != null && requestedUrlString != null && requestedUrlString != view?.url && requestedUrlString != "about:blank") {
-                    val mainPropUri = try {
-                        url.toUri()
-                    } catch (e: Exception) {
-                        Log.e(
-                            WEB_VIEW_AREA_TAG,
-                            "Client($url) - Error parsing mainPropUri from url: $url",
-                            e
-                        )
-                        null
-                    }
-                    val isEffectivelySameSiteAsMainTarget = mainPropUri != null &&
-                            requestedUri.host?.replace(
-                                "www.",
-                                ""
-                            ) == mainPropUri.host?.replace("www.", "") &&
-                            (requestedUri.scheme == mainPropUri.scheme || (listOf(
-                                "http",
-                                "https"
-                            ).contains(requestedUri.scheme) && listOf("http", "https").contains(
-                                mainPropUri.scheme
-                            )))
-
-                    if (!isEffectivelySameSiteAsMainTarget) {
-                        Log.i(
-                            WEB_VIEW_AREA_TAG,
-                            "Client($url) - External attempt for $requestedUrlString (main host: ${mainPropUri?.host})"
-                        )
-                        try {
-                            context.startActivity(
-                                Intent(
-                                    Intent.ACTION_VIEW,
-                                    requestedUri
-                                ).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) })
-                            view?.stopLoading()
-                            return true
-                        } catch (e: ActivityNotFoundException) {
-                            Log.e(
-                                WEB_VIEW_AREA_TAG,
-                                "Client($url) - No app for $requestedUrlString",
-                                e
-                            )
-                            return false
-                        }
-                    } else {
-                        Log.d(
-                            WEB_VIEW_AREA_TAG,
-                            "Client($url) - Same-site redirect for $requestedUrlString. WebView will handle."
-                        )
-                        return false
-                    }
-                }
-                return false
-            }
-        }
-    }
-
-    val appWebChromeClient = remember {
-        object : WebChromeClient() {
-            override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                super.onProgressChanged(view, newProgress)
-                if (view?.url != null && view.url != "about:blank") {
-                    webViewProgress = newProgress
-                }
-            }
-
-            override fun onReceivedTitle(view: WebView?, title: String?) {
-                super.onReceivedTitle(view, title)
-                Log.d(WEB_VIEW_AREA_TAG, "ChromeClient - Title: $title for ${view?.url}")
-            }
-
-            override fun onJsAlert(
-                view: WebView?,
-                url: String?,
-                message: String?,
-                result: android.webkit.JsResult?
-            ): Boolean {
-                AlertDialog.Builder(context).setTitle("JavaScript Alert").setMessage(message)
-                    .setPositiveButton(android.R.string.ok) { _, _ -> result?.confirm() }
-                    .setCancelable(false).show()
-                return true
-            }
-
-            override fun onPermissionRequest(request: PermissionRequest?) {
-                Log.w(
-                    WEB_VIEW_AREA_TAG,
-                    "Denying permission: ${request?.origin} for ${request?.resources?.joinToString()}"
-                )
-                request?.deny()
-            }
-        }
-    }
 
     LaunchedEffect(url) {
         Log.d(WEB_VIEW_AREA_TAG, "LaunchedEffect (URL changed): $url")
@@ -318,13 +158,6 @@ fun WebViewArea(
                 .fillMaxSize()
                 .weight(1f), // WebView takes up remaining space in this Column
             update = { webView ->
-                if (webView.webViewClient != currentAppWebViewClient) {
-                    webView.webViewClient = currentAppWebViewClient
-                }
-                if (webView.webChromeClient != appWebChromeClient) {
-                    webView.webChromeClient = appWebChromeClient
-                }
-
                 Log.d(
                     WEB_VIEW_AREA_TAG,
                     "AndroidView Update. Action: $internalWebViewAction, URL: $url, WebView URL: ${webView.url}"
