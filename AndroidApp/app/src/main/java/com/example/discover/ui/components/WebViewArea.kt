@@ -213,24 +213,20 @@ fun WebViewArea(
 
                     WebViewInternalAction.NONE -> {
                         if (webView.url == "about:blank") {
-                            val targetUrlToLoad = if (MimeTypeMap.getFileExtensionFromUrl(url)
-                                    ?.lowercase() == "pdf"
-                            ) {
-                                "https://docs.google.com/gview?embedded=true&url=${
-                                    android.net.Uri.encode(
-                                        url
-                                    )
-                                }"
-                            } else {
-                                url
+                            var targetUrlToLoad = url
+                            if (MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf") {
+                                targetUrlToLoad =
+                                    "https://docs.google.com/gview?embedded=true&url=${
+                                        android.net.Uri.encode(
+                                            url
+                                        )
+                                    }"
                             }
-                            if (targetUrlToLoad != "about:blank") {
-                                Log.w(
-                                    WEB_VIEW_AREA_TAG,
-                                    "Update (NONE action): WebView is blank but target is $targetUrlToLoad. Forcing load."
-                                )
-                                webView.loadUrl(targetUrlToLoad)
-                            }
+                            Log.w(
+                                WEB_VIEW_AREA_TAG,
+                                "Update (NONE action): WebView is blank but target is $targetUrlToLoad. Forcing load."
+                            )
+                            webView.loadUrl(targetUrlToLoad)
                         }
                     }
                 }
