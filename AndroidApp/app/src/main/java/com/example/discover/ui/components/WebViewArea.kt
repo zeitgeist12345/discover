@@ -119,37 +119,6 @@ fun WebViewArea(
                 val scheme = requestedUriFromWebView.scheme?.lowercase()
                 val host = requestedUriFromWebView.host?.lowercase()
 
-                // 1. Handle YouTube explicitly (covers http/https youtube.com and app-specific schemes like vnd.youtube)
-                if ((scheme == "youtube" || scheme == "vnd.youtube") || ((scheme == "http" || scheme == "https") && (host != null && (host == "youtube.com" || host.endsWith(
-                        ".youtube.com"
-                    ) || host == "youtu.be")))
-                ) {
-                    Log.i(
-                        WEB_VIEW_AREA_TAG,
-                        "YouTube link pattern detected: $requestedFullUrlString. Attempting to open externally."
-                    )
-                    try {
-                        // For standard youtube:// or vnd.youtube:// or http/s links to youtube.com
-                        context.startActivity(Intent(Intent.ACTION_VIEW, requestedUriFromWebView))
-                        view?.stopLoading()
-                        return true
-                    } catch (e: ActivityNotFoundException) {
-                        Log.e(
-                            WEB_VIEW_AREA_TAG,
-                            "YouTube app/handler not found for '$requestedFullUrlString'. Allowing WebView if http/s.",
-                            e
-                        )
-                        return !(scheme == "http" || scheme == "https")
-                    } catch (e: Exception) {
-                        Log.e(
-                            WEB_VIEW_AREA_TAG,
-                            "Error opening YouTube link '$requestedFullUrlString'. Allowing WebView if http/s.",
-                            e
-                        )
-                        return !(scheme == "http" || scheme == "https")
-                    }
-                }
-
                 // --- MODIFIED SECTION FOR INTENT URIs ---
                 // 2. Handle "intent://" scheme (Android Intent URIs)
                 if ("intent" == scheme) {
@@ -284,46 +253,66 @@ fun WebViewArea(
         }
     }
 
-    LaunchedEffect(url) {
-        Log.d(WEB_VIEW_AREA_TAG, "LaunchedEffect (URL prop changed): $url")
-        val isPdf = MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf"
-        // No specific YouTube check here needed for setting initial action,
-        // shouldOverrideUrlLoading will handle YouTube URLs when WebView attempts to load them.
+    // --- REVISED LaunchedEffect ---
+    LaunchedEffect(url, webViewInstanceFromFactory) { // Depend on webViewInstance too
+        if (webViewInstanceFromFactory == null) return@LaunchedEffect // WebView not ready
 
-        pendingUrlAfterBlank = null
+        Log.d(
+            WEB_VIEW_AREA_TAG,
+            "LaunchedEffect for prop '$url'. Current WebView URL: ${webViewInstanceFromFactory?.url}"
+        )
+
+        val isPdf = MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf"
+        pendingUrlAfterBlank = null // Ensure reset for a new URL prop
 
         if (isPdf) {
-            internalWebViewAction = WebViewInternalAction.CLEAR_ONLY
+            // Try to launch PDF externally
+            var launchedExternally = false
             try {
                 context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 })
                 Log.i(WEB_VIEW_AREA_TAG, "Launched PDF intent for: $url")
+                launchedExternally = true
             } catch (e: ActivityNotFoundException) {
-                Log.e(WEB_VIEW_AREA_TAG, "No app for PDF: $url. Falling back to Google Docs.", e)
-                Toast.makeText(context, "No app for PDF. Trying Google Docs.", Toast.LENGTH_LONG)
-                    .show()
-                internalWebViewAction = WebViewInternalAction.CLEAR_THEN_LOAD_URL // For Google Docs
-            }
-        } else {
-            // For all non-PDFs (including YouTube, regular sites), default to clear then load.
-            // shouldOverrideUrlLoading will intercept if it's YouTube and try to launch app.
-            // If YouTube app launch fails, WebView will proceed with CLEAR_THEN_LOAD_URL.
-            val currentActualUrl = webViewInstanceFromFactory?.url
-            val targetForGDocs = if (MimeTypeMap.getFileExtensionFromUrl(url)
-                    ?.lowercase() == "pdf"
-            ) "https://docs.google.com/gview?embedded=true&url=${Uri.encode(url)}" else url
-
-            if (currentActualUrl == "about:blank" || currentActualUrl == null || currentActualUrl == "" || (currentActualUrl != targetForGDocs && currentActualUrl != url)) {
-                Log.d(WEB_VIEW_AREA_TAG, "LaunchedEffect: Setting CLEAR_THEN_LOAD_URL for $url")
-                internalWebViewAction = WebViewInternalAction.CLEAR_THEN_LOAD_URL
-            } else {
-                Log.d(
-                    WEB_VIEW_AREA_TAG,
-                    "LaunchedEffect: WebView already on $url or equivalent. Setting action to NONE."
+                Log.e(
+                    WEB_VIEW_AREA_TAG, "No app for PDF: $url. Will fall back to Google Docs.", e
                 )
-                internalWebViewAction = WebViewInternalAction.NONE
+                // Will load GDocs via CLEAR_THEN_LOAD_URL or LOAD_URL below
             }
+            // If PDF launched externally, we want to clear WebView
+            if (launchedExternally) {
+                internalWebViewAction = WebViewInternalAction.CLEAR_ONLY
+                return@LaunchedEffect // Done for this LaunchedEffect pass
+            }
+            // If not launched externally, it's a GDocs PDF load, treat like other initial loads.
+        }
+
+        // This is the initial load for this 'url' prop
+        // Determine if this URL type might be handled externally by shouldOverrideUrlLoading
+        val scheme = url.toUri().scheme?.lowercase()
+        val host = url.toUri().host?.lowercase()
+        val mightBeExternal =
+            (scheme == "youtube" || scheme == "vnd.youtube" || scheme == "intent" || ((scheme == "http" || scheme == "https") && (host != null && (host == "youtube.com" || host.endsWith(
+                ".youtube.com"
+            ) || host == "youtu.be")))) || isPdf // PDFs for GDocs also benefit from clear_then_load
+
+        if (mightBeExternal) {
+            // For types that might go external, or GDocs PDF, clear first.
+            // This ensures if shouldOverrideUrlLoading hands off, WebView is clean.
+            // If it doesn't hand off (e.g., YouTube app not found), the pending load will occur.
+            Log.d(
+                WEB_VIEW_AREA_TAG,
+                "LaunchedEffect: Initial load for '$url' (might be external or GDocs PDF). Setting CLEAR_THEN_LOAD_URL."
+            )
+            internalWebViewAction = WebViewInternalAction.CLEAR_THEN_LOAD_URL
+        } else {
+            // For a regular new URL from ViewModel that won't go external, load directly.
+            Log.d(
+                WEB_VIEW_AREA_TAG,
+                "LaunchedEffect: Initial load for '$url' (regular internal). Setting LOAD_URL."
+            )
+            internalWebViewAction = WebViewInternalAction.LOAD_URL
         }
     }
 
@@ -339,7 +328,6 @@ fun WebViewArea(
                     val currentWebViewActualUrl = webViewInstanceFromFactory?.url
                     var targetUrlForDisplayInWebView = url
                     val isPdf = MimeTypeMap.getFileExtensionFromUrl(url)?.lowercase() == "pdf"
-                    val isYouTube = url.contains("youtu.be") || url.contains("youtube.com")
 
                     // Determine if Google Docs fallback is implicitly the target
                     var isGDocsFallback = false
@@ -363,7 +351,7 @@ fun WebViewArea(
                     }
 
                     // If it's a YouTube link or a PDF that is *not* a GDocs fallback (meaning it should be external), don't try to reload from onResume.
-                    if (isYouTube || (isPdf && !isGDocsFallback)) {
+                    if (isPdf && !isGDocsFallback) {
                         Log.d(
                             WEB_VIEW_AREA_TAG,
                             "ON_RESUME: URL ($url) is likely external type. No auto-reload from onResume."
