@@ -10,7 +10,7 @@ import com.example.discover.ui.theme.*
 
 // --- Using Approximation ---
 private val APPROX_SINGLE_CONTROL_BUTTON_WIDTH =
-    Spacing.small * 14 // Adjusted estimate based on "⬅️ Previous" or "🎲 Random"
+    Spacing.small * 12 // Adjusted estimate based on "⬅️ Previous" or "🎲 Random"
 private val MIN_INTER_BUTTON_SPACING_ROW = Spacing.small
 private const val NUMBER_OF_MAIN_CONTROL_BUTTONS = 3
 
@@ -84,6 +84,8 @@ private fun PreviousButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick, colors = ButtonDefaults.buttonColors(
             containerColor = SurfaceDark, contentColor = TextPrimary
+        ), contentPadding = PaddingValues(
+            horizontal = Spacing.small, vertical = Spacing.medium
         ), modifier = modifier
     ) {
         Text("⬅️Previous", fontSize = MaterialTheme.typography.labelMedium.fontSize)
@@ -95,6 +97,8 @@ private fun RandomButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick, colors = ButtonDefaults.buttonColors(
             containerColor = PrimaryGreenDark, contentColor = TextPrimary
+        ), contentPadding = PaddingValues(
+            horizontal = Spacing.small, vertical = Spacing.medium
         ), modifier = modifier
     ) {
         Text("🎲Random", fontSize = MaterialTheme.typography.labelMedium.fontSize)
@@ -106,6 +110,8 @@ private fun NextButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick, colors = ButtonDefaults.buttonColors(
             containerColor = SurfaceDark, contentColor = TextPrimary
+        ), contentPadding = PaddingValues(
+            horizontal = Spacing.small, vertical = Spacing.medium
         ), modifier = modifier
     ) {
         Text("Next➡️", fontSize = MaterialTheme.typography.labelMedium.fontSize)
