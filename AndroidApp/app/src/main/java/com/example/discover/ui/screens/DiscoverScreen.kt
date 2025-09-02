@@ -74,7 +74,8 @@ fun DiscoverScreen(
             )
             WebViewArea(
                 url = currentWebViewUrl!!,
-                onCloseArea = { viewModel.closeWebView() } // BackHandler in WebViewArea will call this
+                onCloseArea = { viewModel.closeWebView() },
+                onWebViewHistoryBack = { viewModel.updateNavigatedPreviousWebsite() } // BackHandler in WebViewArea will call this
             )
         } else {
             // Main content (when WebView is not shown)

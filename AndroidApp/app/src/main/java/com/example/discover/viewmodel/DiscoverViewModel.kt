@@ -196,6 +196,13 @@ class DiscoverViewModel(
         }
     }
 
+    fun updateNavigatedPreviousWebsite() {
+        if (websiteHistory.isEmpty() || currentIndex <= 0) {
+            return
+        }
+        currentIndex--
+    }
+
     fun loadPreviousWebsite() {
         if (websiteHistory.isEmpty() || currentIndex <= 0) {
             return

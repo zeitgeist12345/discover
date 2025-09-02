@@ -50,7 +50,7 @@ enum class WebViewInternalAction {
 @Composable
 fun WebViewArea(
     url: String, // The target URL from ViewModel
-    onCloseArea: () -> Unit
+    onCloseArea: () -> Unit, onWebViewHistoryBack: () -> Unit
 ) {
     var webViewProgress by remember { mutableIntStateOf(0) }
     val context = LocalContext.current
@@ -505,8 +505,14 @@ fun WebViewArea(
 
     BackHandler(enabled = true) {
         if (webViewInstanceFromFactory?.canGoBack() == true && pendingUrlAfterBlank == null) {
+            Log.d(WEB_VIEW_AREA_TAG, "BackHandler: WebView can go back. Calling webView.goBack()")
             webViewInstanceFromFactory?.goBack()
+            onWebViewHistoryBack()
         } else {
+            Log.d(
+                WEB_VIEW_AREA_TAG,
+                "BackHandler: WebView cannot go back or pending op. Closing area."
+            )
             onCloseArea()
         }
     }
