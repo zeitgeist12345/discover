@@ -1,13 +1,14 @@
-# Local Backend Setup
+# 🌐 Local Backend Setup
 
-A containerized Node.js backend with MySQL database for the Discover website.
+A containerized **Node.js backend** with a **MySQL database** for the Discover website.  
+The backend automatically creates the database and inserts sample data on first run.
 
-## Prerequisites
+## ⚙️ Prerequisites
 
 - Docker
 - Docker Compose
 
-## Quick Start
+## 🚀 Quick Start
 
 ### 1. Clone and setup
 ```bash
@@ -22,8 +23,13 @@ sudo docker-compose up -d --build
 
 ### 3. Initialize the database
 ```bash
-# Wait 15 seconds for MySQL to start, then:
+# Wait ~15 seconds for MySQL to start, then:
 curl -X POST http://localhost:3000/init
+```
+
+You should see:
+```json
+{"message":"Database initialized successfully with websites data"}
 ```
 
 ### 4. Verify it's working
@@ -32,22 +38,26 @@ curl http://localhost:3000/getWebsitesDesktop
 curl http://localhost:3000/health
 ```
 
-## API Endpoints
+## 🌐 API Endpoints
 
-- `GET /` - API info
-- `GET /getWebsitesDesktop` - Get all websites
-- `POST /incrementViewDesktop` - Update website stats
-- `POST /addwebsite` - Add new website  
-- `POST /init` - Initialize database
-- `GET /health` - Health check
+- `GET /` — API info  
+- `GET /getWebsitesDesktop` — Get all websites  
+- `POST /incrementViewDesktop` — Update website stats  
+- `POST /addwebsite` — Add new website  
+- `POST /init` — Initialize database  
+- `GET /health` — Health check  
 
-## Access Services
+## 💻 Access Services
 
-- **Node.js API**: http://localhost:3000
-- **MySQL Database**: localhost:3306
-- **phpMyAdmin**: http://localhost:8080 (user: `root`, pass: `password`)
+- **Node.js API**: http://localhost:3000  
+- **MySQL Database**: localhost:3307  
+- **phpMyAdmin**: http://localhost:8081 (user: `root`, pass: `password`)  
 
-## Management Commands
+> 📝 **Note:**  
+> Port `3307` is mapped to MySQL’s internal port `3306` to avoid conflicts with local MySQL instances.  
+> Similarly, phpMyAdmin runs on `8081` to prevent port clashes.
+
+## 🔧 Management Commands
 
 ```bash
 # View logs
@@ -57,23 +67,46 @@ sudo docker-compose logs db
 # Stop containers
 sudo docker-compose down
 
-# Restart
+# Restart containers
 sudo docker-compose restart
 
 # Rebuild after code changes
 sudo docker-compose up -d --build
 ```
 
-## Project Structure
+## ✅ Troubleshooting Tips
+
+- **Port already in use**
+  ```bash
+  sudo lsof -i :3000
+  sudo lsof -i :3306
+  sudo lsof -i :8080
+  ```
+  Kill old processes:
+  ```bash
+  sudo pkill -f docker-proxy
+  ```
+
+- **Check container logs**
+  ```bash
+  sudo docker-compose logs
+  ```
+
+- **Rebuild cleanly**
+  ```bash
+  sudo docker-compose down -v
+  sudo docker-compose up -d --build
+  ```
+
+## 🧩 Folder Structure
+
 ```
 localBackend/
-├── docker-compose.yml
-├── backend/
-│   ├── Dockerfile
-│   ├── app.js
-│   └── package.json
-└── database/
-    └── init.sql
+├── backend/               # Node.js app source
+│   ├── package.json
+│   ├── server.js
+│   ├── routes/
+│   └── db/
+├── docker-compose.yml     # Docker Compose configuration
+└── README.md              # This file
 ```
-
-The backend automatically creates the database and sample data on first run.
