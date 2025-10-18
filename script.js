@@ -72,33 +72,17 @@ async function loadWebsitesFromAPI() {
 
 async function loadStaticWebsites() {
     try {
-        // Check if websites are already loaded
-        if (typeof window.websites !== 'undefined' && window.websites.length > 0) {
-            websites = window.websites;
-            console.log(`Loaded ${websites.length} websites from static file`);
+        // Use CONFIG.SAMPLE_WEBSITES directly
+        if (CONFIG.SAMPLE_WEBSITES && CONFIG.SAMPLE_WEBSITES.length > 0) {
+            websites = CONFIG.SAMPLE_WEBSITES;
+            console.log(`Loaded ${websites.length} websites from config.js fallback`);
             enableControls();
-            return;
+        } else {
+            showErrorMessage('No static websites available. Please check your config.js file.');
         }
-
-        // Try to load from the static websites.js file
-        const script = document.createElement('script');
-        script.src = 'websites.js';
-        script.onload = function () {
-            if (typeof window.websites !== 'undefined' && window.websites.length > 0) {
-                websites = window.websites;
-                console.log(`Loaded ${websites.length} websites from static file`);
-                enableControls();
-            } else {
-                showErrorMessage('No websites available. Please check your connection and refresh.');
-            }
-        };
-        script.onerror = function () {
-            showErrorMessage('Unable to load websites. Please check your connection and refresh.');
-        };
-        document.head.appendChild(script);
     } catch (error) {
         console.error('Failed to load static websites:', error);
-        showErrorMessage('No websites available. Please check your connection and refresh.');
+        showErrorMessage('No websites available. Please check your config.js file.');
     }
 }
 
