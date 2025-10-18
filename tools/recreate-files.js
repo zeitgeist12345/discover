@@ -21,8 +21,7 @@ function generateInitSQL(websites) {
     const sqlPath = path.join(PROJECT_ROOT, 'localBackend', 'backend', 'db', 'init.sql');
     console.log(`🧱 Writing SQL init file to ${sqlPath}...`);
 
-    const header = `
-CREATE TABLE IF NOT EXISTS websites (
+    const header = `CREATE TABLE IF NOT EXISTS websites (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     url VARCHAR(500) NOT NULL,
@@ -36,12 +35,18 @@ CREATE TABLE IF NOT EXISTS websites (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE KEY unique_url (url(255))
 );
-
 INSERT IGNORE INTO websites (
-    name, url, description, category, views, likes, dislikes, likesDesktop, dislikesDesktop
-)
-VALUES
-`;
+        name,
+        url,
+        description,
+        category,
+        views,
+        likes,
+        dislikes,
+        likesDesktop,
+        dislikesDesktop
+    )
+VALUES `;
 
     const values = websites.map(site => {
         const name = escapeSQL(site.name || '');
@@ -54,12 +59,22 @@ VALUES
         const likesDesktop = site.likesDesktop ?? 1;
         const dislikesDesktop = site.dislikesDesktop ?? 0;
 
-        return `('${name}', '${url}', '${description}', '${category}', ${views}, ${likes}, ${dislikes}, ${likesDesktop}, ${dislikesDesktop})`;
+        return `(
+        '${name}',
+        '${url}',
+        '${description}',
+        '${category}',
+        ${views},
+        ${likes},
+        ${dislikes},
+        ${likesDesktop},
+        ${dislikesDesktop}
+    )`;
     }).join(',\n    ');
 
-    const content = `${header}\n    ${values};\n`;
+    const content = `${header}${values};`;
     fs.mkdirSync(path.dirname(sqlPath), { recursive: true });
-    fs.writeFileSync(sqlPath, content.trim() + '\n');
+    fs.writeFileSync(sqlPath, content);
     console.log(`✅ init.sql regenerated (${websites.length} entries)\n`);
 }
 
