@@ -17,57 +17,6 @@ const dbConfig = {
 app.use(express.json());
 app.use(cors());
 
-// Create websites table and sample data endpoint
-app.post('/init', async (req, res) => {
-  let connection;
-  try {
-    connection = await mysql.createConnection({
-      host: dbConfig.host,
-      user: dbConfig.user,
-      password: dbConfig.password
-    });
-
-    // Create database if it doesn't exist (using simple query)
-    await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database}`);
-    await connection.query(`USE ${dbConfig.database}`);
-
-    // Create websites table (matching Azure structure)
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS websites (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        url VARCHAR(500) NOT NULL,
-        description TEXT,
-        category VARCHAR(100) DEFAULT 'curated',
-        views INT DEFAULT 0,
-        likes INT DEFAULT 0,
-        dislikes INT DEFAULT 0,
-        likesDesktop INT DEFAULT 0,
-        dislikesDesktop INT DEFAULT 0,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE KEY unique_url (url(255))
-      )
-    `);
-
-    // Insert sample websites data
-    await connection.query(`
-      INSERT IGNORE INTO websites (name, url, description, category, views, likes, dislikes, likesDesktop, dislikesDesktop) VALUES
-      ('GitHub', 'https://github.com', 'The world''s leading software development platform', 'tools', 150, 45, 2, 22, 1),
-      ('Wikipedia', 'https://wikipedia.org', 'The free encyclopedia that anyone can edit', 'educational', 200, 60, 5, 30, 2),
-      ('Hacker News', 'https://news.ycombinator.com', 'Social news website focusing on computer science and entrepreneurship', 'curated', 120, 35, 3, 18, 1),
-      ('Product Hunt', 'https://www.producthunt.com', 'Platform for sharing and discovering new products', 'curated', 95, 28, 2, 15, 0),
-      ('Unsplash', 'https://unsplash.com', 'Beautiful, free images gifted by the world''s most generous community of photographers', 'tools', 180, 52, 4, 25, 1)
-    `);
-
-    await connection.end();
-    res.json({ message: 'Database initialized successfully with websites data' });
-  } catch (error) {
-    console.error('Init error:', error);
-    if (connection) await connection.end();
-    res.status(500).json({ error: error.message });
-  }
-});
-
 // Get all websites (for desktop)
 app.get('/getWebsitesDesktop', async (req, res) => {
   try {
@@ -239,7 +188,6 @@ app.get('/', async (req, res) => {
         '/incrementViewDesktop': 'POST - Update website stats',
         '/addwebsite': 'POST - Add new website',
         '/website/:id': 'GET - Get website by ID',
-        '/init': 'POST - Initialize database',
         '/health': 'GET - Health check'
       }
     });

@@ -21,21 +21,10 @@ cd discover/localBackend
 sudo docker-compose up -d --build
 ```
 
-### 3. Initialize the database
-```bash
-# Wait ~15 seconds for MySQL to start, then:
-curl -X POST http://localhost:3000/init
-```
-
-You should see:
-```json
-{"message":"Database initialized successfully with websites data"}
-```
-
 ### 4. Verify it's working
 ```bash
-curl http://localhost:3000/getWebsitesDesktop
-curl http://localhost:3000/health
+curl http://localhost:3001/getWebsitesDesktop
+curl http://localhost:3001/health
 ```
 
 ## 🌐 API Endpoints
@@ -49,7 +38,7 @@ curl http://localhost:3000/health
 
 ## 💻 Access Services
 
-- **Node.js API**: http://localhost:3000  
+- **Node.js API**: http://localhost:3001
 - **MySQL Database**: localhost:3307  
 - **phpMyAdmin**: http://localhost:8081 (user: `root`, pass: `password`)  
 
@@ -78,7 +67,7 @@ sudo docker-compose up -d --build
 
 - **Port already in use**
   ```bash
-  sudo lsof -i :3000
+  sudo lsof -i :3001
   sudo lsof -i :3306
   sudo lsof -i :8080
   ```
