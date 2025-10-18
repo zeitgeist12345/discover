@@ -7,6 +7,10 @@ let isLoading = false;
 let currentWebsiteId = null;
 const userActions = new Map();
 
+const UI_ANIMATION_DELAY = 10;
+const FOCUS_DELAY = 100;
+const RESET_DELAY = 2000;
+
 console.log('Script.js loaded successfully');
 
 // Initialize the app when the page loads
@@ -107,7 +111,7 @@ function enableControls() {
         setTimeout(() => {
             controlButtons.classList.add('show');
             console.log('Control buttons animation triggered');
-        }, 10);
+        }, UI_ANIMATION_DELAY);
     }
 
     // Enable only the control buttons (not modal buttons)
@@ -141,7 +145,7 @@ function showErrorMessage(message) {
         if (errorDiv.parentNode) {
             errorDiv.parentNode.removeChild(errorDiv);
         }
-    }, 5000);
+    }, RESET_DELAY);
 }
 
 async function updateWebsiteStats(websiteId, action) {
@@ -294,7 +298,7 @@ function loadRandomWebsite() {
         visitedWebsites = [];
         websiteHistory = [];
         currentIndex = -1;
-        setTimeout(loadRandomWebsite, 2000);
+        setTimeout(loadRandomWebsite, RESET_DELAY);
         return;
     }
 
@@ -425,29 +429,6 @@ function updateCurrentSiteInfo(website) {
     }, true);
 }
 
-// Keyboard shortcuts
-document.addEventListener('keydown', function (event) {
-    // Only trigger shortcuts if not typing in an input field
-    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
-        return;
-    }
-
-    switch (event.key) {
-        case 'ArrowRight':
-            event.preventDefault();
-            loadNextWebsite();
-            break;
-        case 'ArrowLeft':
-            event.preventDefault();
-            loadPreviousWebsite();
-            break;
-        case ' ':
-            event.preventDefault();
-            loadRandomWebsite();
-            break;
-    }
-});
-
 // Add Website Modal Functions
 function showAddWebsiteForm() {
     const modal = document.getElementById('add-website-modal');
@@ -462,7 +443,7 @@ function showAddWebsiteForm() {
     // Focus on first input
     setTimeout(() => {
         document.getElementById('website-name').focus();
-    }, 100);
+    }, FOCUS_DELAY);
 }
 
 function addCustomValidation() {
@@ -650,12 +631,12 @@ function showSuccessMessage(message) {
     const header = document.querySelector('.header');
     header.parentNode.insertBefore(successDiv, header.nextSibling);
 
-    // Remove after 3 seconds
+    // Remove after RESET_DELAY
     setTimeout(() => {
         if (successDiv.parentNode) {
             successDiv.parentNode.removeChild(successDiv);
         }
-    }, 3000);
+    }, RESET_DELAY);
 }
 
 // Close modal when clicking outside
@@ -666,13 +647,31 @@ document.addEventListener('click', function (event) {
     }
 });
 
-// Close modal with Escape key
+// Keyboard shortcuts
 document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-        const modal = document.getElementById('add-website-modal');
-        if (modal.style.display === 'flex') {
-            hideAddWebsiteForm();
-        }
+    // Only trigger shortcuts if not typing in an input field
+    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+        return;
+    }
+
+    switch (event.key) {
+        case 'ArrowRight':
+            event.preventDefault();
+            loadNextWebsite();
+            break;
+        case 'ArrowLeft':
+            event.preventDefault();
+            loadPreviousWebsite();
+            break;
+        case ' ':
+            event.preventDefault();
+            loadRandomWebsite();
+            break;
+        case 'Escape':
+            const modal = document.getElementById('add-website-modal');
+            if (modal.style.display === 'flex') {
+                hideAddWebsiteForm();
+            }
     }
 });
 
@@ -685,6 +684,6 @@ document.querySelector('.header h1').addEventListener('click', function () {
         setTimeout(() => {
             this.textContent = '🌐 Discover';
             clickCount = 0;
-        }, 2000);
+        }, RESET_DELAY);
     }
 }); 
