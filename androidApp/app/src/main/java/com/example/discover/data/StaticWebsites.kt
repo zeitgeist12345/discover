@@ -35,16 +35,7 @@ object StaticWebsites {
             dislikes = 4
         ),
 
-        Link(
-            id = "website-4",
-            name = "skribbl.io",
-            url = "https://skribbl.io/",
-            description = "Free multiplayer drawing and guessing game",
-            category = "curated",
-            views = 30,
-            likes = 2,
-            dislikes = 0
-        ),
+,
 
         Link(
             id = "website-5",
@@ -101,16 +92,7 @@ object StaticWebsites {
             dislikes = 0
         ),
 
-        Link(
-            id = "website-10",
-            name = "Play Counter-Strike 1.6",
-            url = "https://play-cs.com/",
-            description = "Play classic CS 1.6 online without downloading",
-            category = "curated",
-            views = 36,
-            likes = 2,
-            dislikes = 0
-        ),
+,
 
         Link(
             id = "website-11",
@@ -156,16 +138,7 @@ object StaticWebsites {
             dislikes = 0
         ),
 
-        Link(
-            id = "website-15",
-            name = "Window Swap",
-            url = "https://window-swap.com/",
-            description = "See the view from someone else's window around the world",
-            category = "curated",
-            views = 43,
-            likes = 2,
-            dislikes = 0
-        ),
+,
 
         Link(
             id = "website-16",
@@ -189,16 +162,7 @@ object StaticWebsites {
             dislikes = 0
         ),
 
-        Link(
-            id = "website-18",
-            name = "Stellarium Web",
-            url = "https://stellarium-web.org/",
-            description = "Real-time 3D simulation of space with planetarium view",
-            category = "curated",
-            views = 46,
-            likes = 2,
-            dislikes = 0
-        ),
+,
 
         Link(
             id = "website-19",
@@ -288,16 +252,7 @@ object StaticWebsites {
             dislikes = 0
         ),
 
-        Link(
-            id = "website-27",
-            name = "The Deep Sea",
-            url = "https://neal.fun/deep-sea",
-            description = "Interactive dive into ocean depths with fascinating facts",
-            category = "curated",
-            views = 55,
-            likes = 2,
-            dislikes = 0
-        ),
+,
 
         Link(
             id = "website-28",
@@ -310,16 +265,7 @@ object StaticWebsites {
             dislikes = 0
         ),
 
-        Link(
-            id = "website-29",
-            name = "Scream Into the Void",
-            url = "https://screamintothevoid.com",
-            description = "Type your frustrations and hear a scream",
-            category = "curated",
-            views = 57,
-            likes = 2,
-            dislikes = 0
-        ),
+,
 
         Link(
             id = "website-30",

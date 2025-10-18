@@ -53,7 +53,7 @@ const CONFIG = {
         "category": "curated",
         "views": 30,
         "likes": 2,
-        "dislikes": 0,
+        "dislikes": 10,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -125,7 +125,7 @@ const CONFIG = {
         "category": "curated",
         "views": 36,
         "likes": 2,
-        "dislikes": 0,
+        "dislikes": 10,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -185,7 +185,7 @@ const CONFIG = {
         "category": "curated",
         "views": 43,
         "likes": 2,
-        "dislikes": 0,
+        "dislikes": 10,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -221,7 +221,7 @@ const CONFIG = {
         "category": "curated",
         "views": 46,
         "likes": 2,
-        "dislikes": 0,
+        "dislikes": 10,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -329,7 +329,7 @@ const CONFIG = {
         "category": "curated",
         "views": 55,
         "likes": 2,
-        "dislikes": 0,
+        "dislikes": 10,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -353,7 +353,7 @@ const CONFIG = {
         "category": "curated",
         "views": 57,
         "likes": 2,
-        "dislikes": 0,
+        "dislikes": 10,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
