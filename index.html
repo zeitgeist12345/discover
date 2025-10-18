@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
             <div class="loading-spinner"></div>
             <p class="loading-text">Loading amazing links...</p>
         </div>
-        
+
         <!-- Control Buttons (initially hidden) -->
         <div id="control-buttons" class="control-buttons" style="display: none;">
             <button class="btn" onclick="loadPreviousWebsite()">⬅️ Previous link</button>
@@ -35,9 +36,10 @@
     <div class="current-site" id="current-site-info">
         <h3>Current Link</h3>
         <div class="website-box">
-            <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Link" to discover amazing links!<br>Links open in a new tab for the best experience.</a>
+            <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Link" to discover amazing
+                links!<br>Links open in a new tab for the best experience.</a>
             <div id="website-description" class="website-description"></div>
-            
+
             <!-- Stats and Action Buttons -->
             <div class="website-stats" id="website-stats" style="display: none;">
                 <div class="stats-row">
@@ -74,7 +76,8 @@
                 </div>
                 <div class="form-group">
                     <label for="website-description">Description *</label>
-                    <textarea id="website-description" name="description" required placeholder="Brief description of the link..." rows="3"></textarea>
+                    <textarea id="website-description" name="description" required
+                        placeholder="Brief description of the link..." rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="website-category">Category</label>
@@ -90,7 +93,7 @@
                     <button type="button" class="btn btn-secondary" onclick="hideAddWebsiteForm()">Cancel</button>
                     <button type="submit" class="btn btn-primary" id="submit-btn">Add Website</button>
                 </div>
-                
+
                 <!-- Error message area - below submit button -->
                 <div id="modal-error-message" class="modal-error" style="display: none;">
                     <div class="error-box">

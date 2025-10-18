@@ -392,6 +392,7 @@ body {
         opacity: 0;
         transform: translateY(-50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -604,6 +605,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -616,13 +618,13 @@ body {
         padding: 30px 15px;
         gap: 15px;
     }
-    
+
     .loading-spinner {
         width: 40px;
         height: 40px;
         border-width: 2px;
     }
-    
+
     .loading-text {
         font-size: 1rem;
     }

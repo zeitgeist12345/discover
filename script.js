@@ -10,7 +10,7 @@ const userActions = new Map();
 console.log('Script.js loaded successfully');
 
 // Initialize the app when the page loads
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded, initializing app...');
     initializeApp();
 });
@@ -30,37 +30,37 @@ function initializeApp() {
 async function loadWebsitesFromAPI() {
     try {
         isLoading = true;
-        
+
         // Create a timeout promise
         const timeoutPromise = new Promise((_, reject) => {
             setTimeout(() => reject(new Error('Request timeout')), CONFIG.API_TIMEOUT);
         });
-        
+
         // Create the fetch promise
         const fetchPromise = fetch(`${CONFIG.API_BASE_URL}/getWebsitesDesktop`);
-        
+
         // Race between fetch and timeout
         const response = await Promise.race([fetchPromise, timeoutPromise]);
-        
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         websites = await response.json();
-        
+
         // Sort websites by name for consistency
         websites.sort((a, b) => a.name.localeCompare(b.name));
-        
+
         console.log(`Loaded ${websites.length} websites from API`);
         console.log('Websites list:', websites.map(w => `${w.name} (${w.url})`));
-        
+
         isLoading = false;
         enableControls();
-        
+
     } catch (error) {
         console.error('Failed to load websites from API:', error);
         isLoading = false;
-        
+
         if (CONFIG.ENABLE_FALLBACK) {
             console.log('Attempting fallback to static websites...');
             loadStaticWebsites();
@@ -79,11 +79,11 @@ async function loadStaticWebsites() {
             enableControls();
             return;
         }
-        
+
         // Try to load from the static websites.js file
         const script = document.createElement('script');
         script.src = 'websites.js';
-        script.onload = function() {
+        script.onload = function () {
             if (typeof window.websites !== 'undefined' && window.websites.length > 0) {
                 websites = window.websites;
                 console.log(`Loaded ${websites.length} websites from static file`);
@@ -92,7 +92,7 @@ async function loadStaticWebsites() {
                 showErrorMessage('No websites available. Please check your connection and refresh.');
             }
         };
-        script.onerror = function() {
+        script.onerror = function () {
             showErrorMessage('Unable to load websites. Please check your connection and refresh.');
         };
         document.head.appendChild(script);
@@ -104,33 +104,33 @@ async function loadStaticWebsites() {
 
 function enableControls() {
     console.log('enableControls called');
-    
+
     // Hide loading animation
     const loadingAnimation = document.getElementById('loading-animation');
     const controlButtons = document.getElementById('control-buttons');
-    
+
     if (loadingAnimation) {
         loadingAnimation.style.display = 'none';
         console.log('Loading animation hidden');
     }
-    
+
     // Show control buttons with animation
     if (controlButtons) {
         controlButtons.style.display = 'flex';
         console.log('Control buttons container shown');
-        
+
         // Trigger animation after a brief delay
         setTimeout(() => {
             controlButtons.classList.add('show');
             console.log('Control buttons animation triggered');
         }, 10);
     }
-    
+
     // Enable only the control buttons (not modal buttons)
     if (controlButtons) {
         const buttons = controlButtons.querySelectorAll('.btn');
         console.log('Found control buttons:', buttons.length);
-        
+
         buttons.forEach((btn, index) => {
             btn.disabled = false;
             console.log(`Control button ${index} enabled:`, btn.textContent);
@@ -147,11 +147,11 @@ function showErrorMessage(message) {
             <p style="color: #ef4444; margin: 0;">${message}</p>
         </div>
     `;
-    
+
     // Insert after header
     const header = document.querySelector('.header');
     header.parentNode.insertBefore(errorDiv, header.nextSibling);
-    
+
     // Remove after 5 seconds
     setTimeout(() => {
         if (errorDiv.parentNode) {
@@ -164,28 +164,28 @@ async function updateWebsiteStats(websiteId, action) {
     if (!CONFIG.ENABLE_VIEW_TRACKING) {
         return;
     }
-    
+
     // Check if user has already performed this action for this website
     const actionKey = `${websiteId}-${action}`;
     if (userActions.has(actionKey)) {
         console.log(`User already performed ${action} for ${websiteId}`);
         return;
     }
-    
+
     // Find the website to get its URL
     const website = websites.find(w => w.id === websiteId);
     if (!website) {
         console.error(`Website not found with id: ${websiteId}`);
         return;
     }
-    
+
     // Optimistic update - update UI immediately
     const currentStats = {
         views: parseInt(document.getElementById('views-count').textContent) || 0,
         likes: parseInt(document.getElementById('likes-count').textContent) || 0,
         dislikes: parseInt(document.getElementById('dislikes-count').textContent) || 0
     };
-    
+
     // Increment the appropriate counter
     switch (action) {
         case 'view':
@@ -198,18 +198,18 @@ async function updateWebsiteStats(websiteId, action) {
             currentStats.dislikes++;
             break;
     }
-    
+
     // Update UI immediately (optimistic)
     updateStatsDisplay(currentStats);
-    
+
     // Mark this action as performed to prevent duplicate clicks
     userActions.set(actionKey, true);
-    
+
     // Update button states for like/dislike
     if (action === 'like' || action === 'dislike') {
         updateButtonStates(action);
     }
-    
+
     // Sync with server in the background
     try {
         actionDesktop = action === 'like' ? 'likeDesktop' : action === 'dislike' ? 'dislikeDesktop' : 'view';
@@ -217,14 +217,14 @@ async function updateWebsiteStats(websiteId, action) {
         const response = await fetch(`${CONFIG.API_BASE_URL}/incrementViewDesktop?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${actionDesktop}`, {
             method: 'POST'
         });
-        
+
         if (response.ok) {
             const result = await response.json();
             console.log(`Synced ${action} for ${websiteId}:`, result);
-            
+
             // Update UI with actual server response (in case there were any server-side adjustments)
             updateStatsDisplay(result);
-            
+
         } else {
             console.error(`Failed to sync ${action} for ${websiteId}:`, response.status);
             // Optionally revert the optimistic update on error
@@ -241,7 +241,7 @@ function updateStatsDisplay(stats, forceUpdate = false) {
     const viewsCount = document.getElementById('views-count');
     const likesCount = document.getElementById('likes-count');
     const dislikesCount = document.getElementById('dislikes-count');
-    
+
     // Only update if forceUpdate is true or if the new value is higher (preserve optimistic updates)
     if (viewsCount && (forceUpdate || (stats.views || 0) > parseInt(viewsCount.textContent))) {
         viewsCount.textContent = stats.views || 0;
@@ -257,13 +257,13 @@ function updateStatsDisplay(stats, forceUpdate = false) {
 function updateButtonStates(action) {
     const likeBtn = document.getElementById('like-btn');
     const dislikeBtn = document.getElementById('dislike-btn');
-    
+
     // Check if buttons exist before manipulating them
     if (!likeBtn || !dislikeBtn) {
         console.error('Like or dislike buttons not found');
         return;
     }
-    
+
     if (action === 'like') {
         likeBtn.classList.add('liked');
         dislikeBtn.classList.remove('disliked');
@@ -294,7 +294,7 @@ function loadRandomWebsite() {
     console.log('isLoading:', isLoading);
     console.log('websites.length:', websites.length);
     console.log('visitedWebsites:', visitedWebsites);
-    
+
     if (isLoading || websites.length === 0) {
         console.log('Cannot load random website - loading or no websites');
         return;
@@ -317,7 +317,7 @@ function loadRandomWebsite() {
     const randomIndex = Math.floor(Math.random() * unvisitedWebsites.length);
     const website = unvisitedWebsites[randomIndex];
     const originalIndex = websites.indexOf(website);
-    
+
     console.log('Selected random website:', website.name, 'at index:', originalIndex);
 
     loadWebsite(originalIndex);
@@ -350,19 +350,19 @@ function loadPreviousWebsite() {
 
 function loadWebsite(index, addToHistory = true) {
     console.log('loadWebsite called with index:', index, 'addToHistory:', addToHistory);
-    
+
     // Validate index and website
     if (index < 0 || index >= websites.length) {
         console.error('Invalid website index:', index);
         return;
     }
-    
+
     const website = websites[index];
     if (!website) {
         console.error('Website not found at index:', index);
         return;
     }
-    
+
     console.log('Website to load:', website);
 
     if (addToHistory) {
@@ -392,7 +392,7 @@ function loadWebsite(index, addToHistory = true) {
         if (viewsElement) {
             const currentViews = parseInt(viewsElement.textContent) || 0;
             viewsElement.textContent = currentViews + 1;
-            
+
             // Sync with server in the background
             updateWebsiteStats(website.id, 'view');
         }
@@ -408,7 +408,7 @@ function updateCurrentSiteInfo(website) {
     const statsDiv = document.getElementById('website-stats');
     const likeBtn = document.getElementById('like-btn');
     const dislikeBtn = document.getElementById('dislike-btn');
-    
+
     // Check if link element exists before accessing its properties
     if (link) {
         link.href = website.url;
@@ -428,11 +428,11 @@ function updateCurrentSiteInfo(website) {
     if (statsDiv) {
         statsDiv.style.display = 'block';
     }
-    
+
     // Reset button states
     if (likeBtn) likeBtn.classList.remove('liked');
     if (dislikeBtn) dislikeBtn.classList.remove('disliked');
-    
+
     // Update stats with current data (force update for initial load)
     updateStatsDisplay({
         views: website.views || 0,
@@ -468,13 +468,13 @@ document.addEventListener('keydown', function (event) {
 function showAddWebsiteForm() {
     const modal = document.getElementById('add-website-modal');
     modal.style.display = 'flex';
-    
+
     // Clear any existing error messages
     hideModalError();
-    
+
     // Add custom validation listeners
     addCustomValidation();
-    
+
     // Focus on first input
     setTimeout(() => {
         document.getElementById('website-name').focus();
@@ -484,12 +484,12 @@ function showAddWebsiteForm() {
 function addCustomValidation() {
     const form = document.getElementById('add-website-form');
     const inputs = form.querySelectorAll('input[required], textarea[required]');
-    
+
     inputs.forEach(input => {
         // Remove existing listeners to prevent duplicates
         input.removeEventListener('invalid', handleInvalidInput);
         input.removeEventListener('input', clearInputError);
-        
+
         // Add new listeners
         input.addEventListener('invalid', handleInvalidInput);
         input.addEventListener('input', clearInputError);
@@ -498,13 +498,13 @@ function addCustomValidation() {
 
 function handleInvalidInput(event) {
     event.preventDefault();
-    
+
     const input = event.target;
     const fieldName = input.getAttribute('name');
     let errorMessage = '';
-    
+
     // Custom error messages for different fields
-    switch(fieldName) {
+    switch (fieldName) {
         case 'name':
             errorMessage = 'Please enter a link name';
             break;
@@ -517,13 +517,13 @@ function handleInvalidInput(event) {
         default:
             errorMessage = 'This field is required';
     }
-    
+
     // Show error in modal
     showModalError(errorMessage);
-    
+
     // Add visual error styling to the input
     input.classList.add('input-error');
-    
+
     // Focus on the problematic field
     input.focus();
 }
@@ -544,10 +544,10 @@ function clearAllInputErrors() {
 function hideAddWebsiteForm() {
     const modal = document.getElementById('add-website-modal');
     modal.style.display = 'none';
-    
+
     // Reset form
     document.getElementById('add-website-form').reset();
-    
+
     // Clear any error messages
     hideModalError();
 }
@@ -555,11 +555,11 @@ function hideAddWebsiteForm() {
 function showModalError(message) {
     const errorDiv = document.getElementById('modal-error-message');
     const errorText = document.getElementById('modal-error-text');
-    
+
     if (errorDiv && errorText) {
         errorText.textContent = message;
         errorDiv.style.display = 'block';
-        
+
         // Scroll to error message
         errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -574,11 +574,11 @@ function hideModalError() {
 
 async function submitWebsite(event) {
     event.preventDefault();
-    
+
     // Clear any existing errors
     hideModalError();
     clearAllInputErrors();
-    
+
     // Check if form is valid
     const form = event.target;
     if (!form.checkValidity()) {
@@ -586,19 +586,19 @@ async function submitWebsite(event) {
         const firstInvalid = form.querySelector(':invalid');
         if (firstInvalid) {
             firstInvalid.focus();
-            handleInvalidInput({ target: firstInvalid, preventDefault: () => {} });
+            handleInvalidInput({ target: firstInvalid, preventDefault: () => { } });
         }
         return;
     }
-    
+
     const submitBtn = document.getElementById('submit-btn');
     const originalText = submitBtn.textContent;
-    
+
     // Show loading state
     submitBtn.disabled = true;
     submitBtn.classList.add('btn-loading');
     submitBtn.textContent = 'Adding...';
-    
+
     try {
         const formData = new FormData(event.target);
         const websiteData = {
@@ -612,7 +612,7 @@ async function submitWebsite(event) {
             likesDesktop: 0,
             dislikesDesktop: 0
         };
-        
+
         const response = await fetch(`${CONFIG.API_BASE_URL}/addwebsite`, {
             method: 'POST',
             headers: {
@@ -620,14 +620,14 @@ async function submitWebsite(event) {
             },
             body: JSON.stringify(websiteData)
         });
-        
+
         const result = await response.json();
-        
+
         if (response.ok) {
             // Success
             showSuccessMessage('Website added successfully! 🎉');
             hideAddWebsiteForm();
-            
+
             // Reload websites to include the new one
             if (CONFIG.USE_API) {
                 await loadWebsitesFromAPI();
@@ -640,7 +640,7 @@ async function submitWebsite(event) {
                 showModalError(result.error || 'Failed to add website');
             }
         }
-        
+
     } catch (error) {
         console.error('Error submitting website:', error);
         showModalError('Failed to add website. Please try again.');
@@ -661,11 +661,11 @@ function showSuccessMessage(message) {
             <p style="color: #10b981; margin: 0;">${message}</p>
         </div>
     `;
-    
+
     // Insert after header
     const header = document.querySelector('.header');
     header.parentNode.insertBefore(successDiv, header.nextSibling);
-    
+
     // Remove after 3 seconds
     setTimeout(() => {
         if (successDiv.parentNode) {
@@ -675,7 +675,7 @@ function showSuccessMessage(message) {
 }
 
 // Close modal when clicking outside
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const modal = document.getElementById('add-website-modal');
     if (event.target === modal) {
         hideAddWebsiteForm();
@@ -683,7 +683,7 @@ document.addEventListener('click', function(event) {
 });
 
 // Close modal with Escape key
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         const modal = document.getElementById('add-website-modal');
         if (modal.style.display === 'flex') {

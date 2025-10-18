@@ -3,7 +3,7 @@ services:
   app:
     build: ./backend
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -23,7 +23,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: mydatabase
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     restart: unless-stopped
@@ -37,7 +37,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: password
     ports:
-      - "8080:80"
+      - "8081:80"
     depends_on:
       - db
     restart: unless-stopped

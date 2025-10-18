@@ -6,7 +6,7 @@ const CONFIG = {
     ENABLE_FALLBACK: true,
     ENABLE_VIEW_TRACKING: true,
     ERROR_MESSAGE: 'Unable to connect to the server. Please make sure your local backend is running.',
-    
+
     // Sample data for fallback
     SAMPLE_WEBSITES: [
         {

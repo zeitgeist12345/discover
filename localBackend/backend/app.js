@@ -26,11 +26,11 @@ app.post('/init', async (req, res) => {
       user: dbConfig.user,
       password: dbConfig.password
     });
-    
+
     // Create database if it doesn't exist (using simple query)
     await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database}`);
     await connection.query(`USE ${dbConfig.database}`);
-    
+
     // Create websites table (matching Azure structure)
     await connection.query(`
       CREATE TABLE IF NOT EXISTS websites (
@@ -48,7 +48,7 @@ app.post('/init', async (req, res) => {
         UNIQUE KEY unique_url (url(255))
       )
     `);
-    
+
     // Insert sample websites data
     await connection.query(`
       INSERT IGNORE INTO websites (name, url, description, category, views, likes, dislikes, likesDesktop, dislikesDesktop) VALUES
@@ -58,7 +58,7 @@ app.post('/init', async (req, res) => {
       ('Product Hunt', 'https://www.producthunt.com', 'Platform for sharing and discovering new products', 'curated', 95, 28, 2, 15, 0),
       ('Unsplash', 'https://unsplash.com', 'Beautiful, free images gifted by the world''s most generous community of photographers', 'tools', 180, 52, 4, 25, 1)
     `);
-    
+
     await connection.end();
     res.json({ message: 'Database initialized successfully with websites data' });
   } catch (error) {
@@ -74,7 +74,7 @@ app.get('/getWebsitesDesktop', async (req, res) => {
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
-    
+
     res.json(rows);
   } catch (error) {
     console.error('Get websites error:', error);
@@ -86,15 +86,15 @@ app.get('/getWebsitesDesktop', async (req, res) => {
 app.post('/incrementViewDesktop', async (req, res) => {
   try {
     const { id, url, category, action } = req.query;
-    
+
     if (!id && !url) {
       return res.status(400).json({ error: 'ID or URL parameter is required' });
     }
-    
+
     const connection = await mysql.createConnection(dbConfig);
     let query;
     let params;
-    
+
     // Determine which field to update based on action
     let fieldToUpdate;
     switch (action) {
@@ -112,7 +112,7 @@ app.post('/incrementViewDesktop', async (req, res) => {
       default:
         fieldToUpdate = 'views = views + 1';
     }
-    
+
     if (id) {
       query = `UPDATE websites SET ${fieldToUpdate} WHERE id = ?`;
       params = [id];
@@ -120,24 +120,24 @@ app.post('/incrementViewDesktop', async (req, res) => {
       query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
       params = [url];
     }
-    
+
     const [result] = await connection.execute(query, params);
-    
+
     if (result.affectedRows === 0) {
       // If website doesn't exist, create it first
       const insertQuery = 'INSERT INTO websites (name, url, category, views, likes, dislikes) VALUES (?, ?, ?, 1, 0, 0)';
       const domain = url.replace(/https?:\/\/(www\.)?/, '').split('/')[0];
       await connection.execute(insertQuery, [domain, url, category || 'curated']);
     }
-    
+
     // Get updated stats
     const [updatedRows] = await connection.execute(
       'SELECT views, likes, dislikes, likesDesktop, dislikesDesktop FROM websites WHERE id = ? OR url = ?',
       [id || null, url || null]
     );
-    
+
     await connection.end();
-    
+
     res.json(updatedRows[0] || { views: 1, likes: 0, dislikes: 0, likesDesktop: 0, dislikesDesktop: 0 });
   } catch (error) {
     console.error('Increment view error:', error);
@@ -149,32 +149,32 @@ app.post('/incrementViewDesktop', async (req, res) => {
 app.post('/addwebsite', async (req, res) => {
   try {
     const { name, url, description, category, views, likes, dislikes, likesDesktop, dislikesDesktop } = req.body;
-    
+
     if (!name || !url || !description) {
       return res.status(400).json({ error: 'Name, URL, and description are required' });
     }
-    
+
     const connection = await mysql.createConnection(dbConfig);
-    
+
     // Check if website already exists
     const [existing] = await connection.execute(
       'SELECT id FROM websites WHERE url = ?',
       [url]
     );
-    
+
     if (existing.length > 0) {
       await connection.end();
       return res.status(409).json({ error: 'Website already exists' });
     }
-    
+
     // Insert new website
     const [result] = await connection.execute(
       'INSERT INTO websites (name, url, description, category, views, likes, dislikes, likesDesktop, dislikesDesktop) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [name, url, description, category || 'user-submitted', views || 0, likes || 0, dislikes || 0, likesDesktop || 0, dislikesDesktop || 0]
     );
-    
+
     await connection.end();
-    
+
     res.json({
       id: result.insertId,
       message: 'Website added successfully',
@@ -197,13 +197,13 @@ app.get('/website/:id', async (req, res) => {
       'SELECT * FROM websites WHERE id = ?',
       [req.params.id]
     );
-    
+
     await connection.end();
-    
+
     if (rows.length === 0) {
       return res.status(404).json({ error: 'Website not found' });
     }
-    
+
     res.json(rows[0]);
   } catch (error) {
     console.error('Get website error:', error);
@@ -217,7 +217,7 @@ app.get('/health', async (req, res) => {
     const connection = await mysql.createConnection(dbConfig);
     await connection.execute('SELECT 1');
     await connection.end();
-    
+
     res.json({ status: 'OK', message: 'Database connection successful' });
   } catch (error) {
     res.status(500).json({ status: 'ERROR', error: error.message });
@@ -230,7 +230,7 @@ app.get('/', async (req, res) => {
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT COUNT(*) as count FROM websites');
     await connection.end();
-    
+
     res.json({
       message: 'Discover Backend API',
       totalWebsites: rows[0].count,
