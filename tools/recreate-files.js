@@ -149,21 +149,19 @@ function generateKotlin(websites) {
     );
     console.log(`🤖 Writing Kotlin static websites to ${kotlinPath}...`);
 
-    const kotlinEntries = websites.map((site, i) => {
-        const id = `website-${i + 1}`;
-        const name = escapeKotlin(site.name || '');
-        const url = escapeKotlin(site.url || '');
-        const desc = escapeKotlin(site.description || '');
-        const category = escapeKotlin(site.category || 'curated');
-        const views = site.views ?? 30 + i;
-        const likes = site.likes ?? 2;
-        const dislikes = site.dislikes ?? 0;
+    const kotlinEntries = websites
+        .filter(site => !needToIgnore(site.likes, site.dislikes))
+        .map((site, i) => {
+            const id = `website-${i + 1}`;
+            const name = escapeKotlin(site.name || '');
+            const url = escapeKotlin(site.url || '');
+            const desc = escapeKotlin(site.description || '');
+            const category = escapeKotlin(site.category || 'curated');
+            const views = site.views ?? 30 + i;
+            const likes = site.likes ?? 2;
+            const dislikes = site.dislikes ?? 0;
 
-        if (needToIgnore(likes, dislikes)) {
-            return;
-        }
-
-        return `        Link(
+            return `        Link(
             id = "${id}",
             name = "${name}",
             url = "${url}",
@@ -173,7 +171,7 @@ function generateKotlin(websites) {
             likes = ${likes},
             dislikes = ${dislikes}
         )`;
-    }).join(',\n\n');
+        }).join(',\n\n');
 
     const kotlinCode = `package com.example.discover.data
 
