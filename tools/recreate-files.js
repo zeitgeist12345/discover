@@ -16,6 +16,18 @@ function escapeKotlin(str = '') {
     return str.replace(/"/g, '\\"');
 }
 
+function needToIgnore(likes, dislikes) {
+    const total = likes + dislikes;
+    // If less votes, consider it okay
+    if (total <= 3) {
+        return false;
+    }
+
+    const undesirable_score = dislikes / Math.max(total, 1);
+
+    return undesirable_score > 0.8;
+}
+
 // 1️⃣ Generate init.sql
 function generateInitSQL(websites) {
     const sqlPath = path.join(PROJECT_ROOT, 'localBackend', 'backend', 'db', 'init.sql');
@@ -83,18 +95,20 @@ function generateConfigJS(websites) {
     const configPath = path.join(PROJECT_ROOT, 'config.js');
     console.log(`⚙️ Writing web config file to ${configPath}...`);
 
-    const sampleWebsites = websites.map((site, index) => ({
-        id: index + 1,
-        name: site.name,
-        url: site.url,
-        description: site.description,
-        category: site.category || 'curated',
-        views: site.views ?? 30 + index,
-        likes: site.likes ?? 2,
-        dislikes: site.dislikes ?? 0,
-        likesDesktop: site.likesDesktop ?? 1,
-        dislikesDesktop: site.dislikesDesktop ?? 0
-    }));
+    const sampleWebsites = websites
+        .filter(site => !needToIgnore(site.likesDesktop, site.dislikesDesktop))
+        .map((site, index) => ({
+            id: index + 1,
+            name: site.name,
+            url: site.url,
+            description: site.description,
+            category: site.category || 'curated',
+            views: site.views ?? 30 + index,
+            likes: site.likes ?? 2,
+            dislikes: site.dislikes ?? 0,
+            likesDesktop: site.likesDesktop ?? 1,
+            dislikesDesktop: site.dislikesDesktop ?? 0
+        }));
 
     const js = `// config.js
 const CONFIG = {
@@ -144,6 +158,10 @@ function generateKotlin(websites) {
         const views = site.views ?? 30 + i;
         const likes = site.likes ?? 2;
         const dislikes = site.dislikes ?? 0;
+
+        if (needToIgnore(likes, dislikes)) {
+            return;
+        }
 
         return `        Link(
             id = "${id}",
