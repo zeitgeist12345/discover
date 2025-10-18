@@ -10,9 +10,7 @@ object StaticWebsites {
             category = "curated",
             views = 120,
             likes = 35,
-            dislikes = 3,
-            likesDesktop = 18,
-            dislikesDesktop = 1
+            dislikes = 3
         ),
 
         Link(
@@ -23,9 +21,7 @@ object StaticWebsites {
             category = "curated",
             views = 95,
             likes = 28,
-            dislikes = 2,
-            likesDesktop = 15,
-            dislikesDesktop = 0
+            dislikes = 2
         ),
 
         Link(
@@ -36,9 +32,7 @@ object StaticWebsites {
             category = "tools",
             views = 180,
             likes = 52,
-            dislikes = 4,
-            likesDesktop = 25,
-            dislikesDesktop = 1
+            dislikes = 4
         ),
 
         Link(
@@ -49,9 +43,7 @@ object StaticWebsites {
             category = "curated",
             views = 30,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -62,9 +54,7 @@ object StaticWebsites {
             category = "curated",
             views = 31,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -75,9 +65,7 @@ object StaticWebsites {
             category = "curated",
             views = 32,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -88,9 +76,7 @@ object StaticWebsites {
             category = "curated",
             views = 33,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -101,9 +87,7 @@ object StaticWebsites {
             category = "curated",
             views = 34,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -114,9 +98,7 @@ object StaticWebsites {
             category = "curated",
             views = 35,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -127,9 +109,7 @@ object StaticWebsites {
             category = "curated",
             views = 36,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -140,9 +120,7 @@ object StaticWebsites {
             category = "curated",
             views = 39,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -153,9 +131,7 @@ object StaticWebsites {
             category = "curated",
             views = 40,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -166,9 +142,7 @@ object StaticWebsites {
             category = "curated",
             views = 41,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -179,9 +153,7 @@ object StaticWebsites {
             category = "curated",
             views = 42,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -192,9 +164,7 @@ object StaticWebsites {
             category = "curated",
             views = 43,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -205,9 +175,7 @@ object StaticWebsites {
             category = "curated",
             views = 44,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -218,9 +186,7 @@ object StaticWebsites {
             category = "curated",
             views = 45,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -231,9 +197,7 @@ object StaticWebsites {
             category = "curated",
             views = 46,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -244,9 +208,7 @@ object StaticWebsites {
             category = "curated",
             views = 47,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -257,9 +219,7 @@ object StaticWebsites {
             category = "curated",
             views = 48,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -270,9 +230,7 @@ object StaticWebsites {
             category = "curated",
             views = 49,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -283,9 +241,7 @@ object StaticWebsites {
             category = "curated",
             views = 50,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -296,9 +252,7 @@ object StaticWebsites {
             category = "curated",
             views = 51,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -309,9 +263,7 @@ object StaticWebsites {
             category = "curated",
             views = 52,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -322,9 +274,7 @@ object StaticWebsites {
             category = "curated",
             views = 53,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -335,9 +285,7 @@ object StaticWebsites {
             category = "curated",
             views = 54,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -348,9 +296,7 @@ object StaticWebsites {
             category = "curated",
             views = 55,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -361,9 +307,7 @@ object StaticWebsites {
             category = "curated",
             views = 56,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -374,9 +318,7 @@ object StaticWebsites {
             category = "curated",
             views = 57,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -387,9 +329,7 @@ object StaticWebsites {
             category = "curated",
             views = 58,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -400,9 +340,7 @@ object StaticWebsites {
             category = "curated",
             views = 59,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -413,9 +351,7 @@ object StaticWebsites {
             category = "curated",
             views = 60,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -426,9 +362,7 @@ object StaticWebsites {
             category = "curated",
             views = 61,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         ),
 
         Link(
@@ -439,9 +373,7 @@ object StaticWebsites {
             category = "curated",
             views = 62,
             likes = 2,
-            dislikes = 0,
-            likesDesktop = 1,
-            dislikesDesktop = 0
+            dislikes = 0
         )
     )
 }

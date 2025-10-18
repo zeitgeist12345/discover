@@ -144,8 +144,6 @@ function generateKotlin(websites) {
         const views = site.views ?? 30 + i;
         const likes = site.likes ?? 2;
         const dislikes = site.dislikes ?? 0;
-        const likesDesktop = site.likesDesktop ?? 1;
-        const dislikesDesktop = site.dislikesDesktop ?? 0;
 
         return `        Link(
             id = "${id}",
@@ -155,9 +153,7 @@ function generateKotlin(websites) {
             category = "${category}",
             views = ${views},
             likes = ${likes},
-            dislikes = ${dislikes},
-            likesDesktop = ${likesDesktop},
-            dislikesDesktop = ${dislikesDesktop}
+            dislikes = ${dislikes}
         )`;
     }).join(',\n\n');
 
