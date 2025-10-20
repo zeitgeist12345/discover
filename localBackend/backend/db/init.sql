@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS websites (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE KEY unique_url (url(255))
 );
-INSERT IGNORE INTO websites (
+INSERT INTO websites (
         name,
         url,
         description,
@@ -396,4 +396,5 @@ VALUES (
         0,
         1,
         0
-    );
+    ) ON DUPLICATE KEY
+UPDATE id = id;
