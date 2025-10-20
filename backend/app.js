@@ -1,8 +1,21 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// IP based rate limiting
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: {
+    status: 429,
+    error: 'Too many requests, please try again later.'
+  },
+  standardHeaders: true, // Return rate limit info in `RateLimit-*` headers
+  legacyHeaders: false // Disable the `X-RateLimit-*` headers
+});
 
 // Database connection
 const dbConfig = {
@@ -15,7 +28,14 @@ const dbConfig = {
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(apiLimiter);
+// For production, replace '*' with your frontend URL to restrict access:
+// origin: 'https://your-frontend-domain.com'
+app.use(cors({
+  origin: '*', // allow all origins (for testing)
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 
 // Get all websites (for desktop)
 app.get('/getWebsitesDesktop', async (req, res) => {
