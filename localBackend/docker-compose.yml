@@ -6,8 +6,6 @@ services:
       - DB_USER=root
       - DB_PASSWORD=password
       - DB_NAME=mydatabase
-    ports:
-      - "3001:3000"
     depends_on:
       - db
     volumes:
@@ -25,14 +23,14 @@ services:
     restart: unless-stopped
 
   cloudflared:
-    image: cloudflare/cloudflared:2025.8.1
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel run
+    volumes:
+      - ./backend/cloudflared/config.yml:/etc/cloudflared/config.yml
+      - ./backend/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json:/etc/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json
     depends_on:
       - app
-    restart: unless-stopped
-    command: tunnel --no-autoupdate run --config /etc/cloudflared/config.yml
-    volumes:
-      - ./backend/cloudflared/config.yml:/etc/cloudflared/config.yml:ro
-      - ./backend/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json:/etc/cloudflared/credentials.json:ro
 
 volumes:
   mysql_data:
