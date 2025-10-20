@@ -7,7 +7,8 @@ services:
       - DB_PASSWORD=password
       - DB_NAME=mydatabase
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - ./:/app
     restart: unless-stopped
@@ -21,6 +22,10 @@ services:
       - mysql_data:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
 
   cloudflared:
     image: cloudflare/cloudflared:latest
