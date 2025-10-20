@@ -1,10 +1,8 @@
 # 🌐 Local Backend Setup
-
 A containerized **Node.js backend** with a **MySQL database** for the Discover website.  
 The backend automatically creates the database and inserts sample data on first run.
 
 ## ⚙️ Prerequisites
-
 - Docker
 - Docker Compose
 
@@ -23,7 +21,6 @@ curl http://backend.discoverall.space/health
 ```
 
 ## 🔧 Management Commands
-
 ```bash
 # View logs
 sudo docker-compose logs app
