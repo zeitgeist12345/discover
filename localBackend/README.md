@@ -52,16 +52,3 @@ sudo docker-compose restart
 # Rebuild after code changes
 sudo docker-compose up -d --build
 ```
-
-## 🧩 Folder Structure
-
-```
-localBackend/
-├── backend/               # Node.js app source
-│   ├── package.json
-│   ├── server.js
-│   ├── routes/
-│   └── db/
-├── docker-compose.yml     # Docker Compose configuration
-└── README.md              # This file
-```

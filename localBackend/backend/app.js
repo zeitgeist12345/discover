@@ -196,7 +196,6 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`API endpoints available at http://localhost:${PORT}`);
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Server running on port 3000');
 });

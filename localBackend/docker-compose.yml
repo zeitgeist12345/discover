@@ -1,9 +1,9 @@
+version: "3.8"
+
 services:
-  # Node.js application
+  # Node.js backend
   app:
     build: ./backend
-    ports:
-      - "3001:3000"
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -25,17 +25,16 @@ services:
       - mysql_data:/var/lib/mysql
       - ./backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  # Optional: phpMyAdmin for database management
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
-      PMA_USER: root
-      PMA_PASSWORD: password
-    depends_on:
-      - db
+  # Cloudflare Tunnel
+  cloudflared:
+    image: cloudflare/cloudflared:2025.8.1
     restart: unless-stopped
+    depends_on:
+      - app
+    command: tunnel --no-autoupdate run --config /etc/cloudflared/config.yml
+    volumes:
+      - ./cloudflared/config.yml:/etc/cloudflared/config.yml:ro
+      - ./cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json:/etc/cloudflared/credentials.json:ro
 
 volumes:
   mysql_data:
