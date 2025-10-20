@@ -42,7 +42,7 @@ class ApiService {
     }
 
     private val gson = Gson()
-    private val baseUrl = "http://backend.discoverall.space/"
+    private val baseUrl = "https://backend.discoverall.space"
     private val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Specify charset
 
     suspend fun getWebsites(): List<Link> = withContext(Dispatchers.IO) {
