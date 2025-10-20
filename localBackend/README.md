@@ -12,7 +12,7 @@ The backend automatically creates the database and inserts sample data on first 
 
 ### 1. Start the containers
 ```bash
-cd discover/localBackend
+cd localBackend
 sudo docker-compose up -d --build
 ```
 
