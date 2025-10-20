@@ -23,9 +23,9 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -p$MYSQL_ROOT_PASSWORD"]
       interval: 5s
-      retries: 5
+      retries: 10
 
   cloudflared:
     image: cloudflare/cloudflared:latest
