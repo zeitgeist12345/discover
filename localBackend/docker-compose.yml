@@ -13,7 +13,6 @@ services:
       - db
     volumes:
       - ./backend:/app
-      - /app/node_modules
     restart: unless-stopped
 
   # MySQL database
@@ -22,8 +21,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: mydatabase
-    ports:
-      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -36,8 +33,6 @@ services:
       PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: password
-    ports:
-      - "8081:80"
     depends_on:
       - db
     restart: unless-stopped
