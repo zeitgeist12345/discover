@@ -1,7 +1,4 @@
-version: "3.8"
-
 services:
-  # Node.js backend
   app:
     build: ./backend
     environment:
@@ -9,13 +6,14 @@ services:
       - DB_USER=root
       - DB_PASSWORD=password
       - DB_NAME=mydatabase
+    ports:
+      - "3001:3000"
     depends_on:
       - db
     volumes:
       - ./backend:/app
     restart: unless-stopped
 
-  # MySQL database
   db:
     image: mysql:8.0
     environment:
@@ -24,17 +22,17 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
 
-  # Cloudflare Tunnel
   cloudflared:
     image: cloudflare/cloudflared:2025.8.1
-    restart: unless-stopped
     depends_on:
       - app
+    restart: unless-stopped
     command: tunnel --no-autoupdate run --config /etc/cloudflared/config.yml
     volumes:
-      - ./cloudflared/config.yml:/etc/cloudflared/config.yml:ro
-      - ./cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json:/etc/cloudflared/credentials.json:ro
+      - ./backend/cloudflared/config.yml:/etc/cloudflared/config.yml:ro
+      - ./backend/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json:/etc/cloudflared/credentials.json:ro
 
 volumes:
   mysql_data:
