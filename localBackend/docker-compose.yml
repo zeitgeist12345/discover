@@ -1,6 +1,6 @@
 services:
   app:
-    build: ./backend
+    build: ./
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./backend:/app
+      - ./:/app
     restart: unless-stopped
 
   db:
@@ -19,7 +19,7 @@ services:
       MYSQL_DATABASE: mydatabase
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
 
   cloudflared:
@@ -27,8 +27,8 @@ services:
     restart: unless-stopped
     command: tunnel run
     volumes:
-      - ./backend/cloudflared/config.yml:/etc/cloudflared/config.yml
-      - ./backend/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json:/etc/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json
+      - ./cloudflared/config.yml:/etc/cloudflared/config.yml
+      - ./cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json:/etc/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json
     depends_on:
       - app
 
