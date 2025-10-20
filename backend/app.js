@@ -51,6 +51,20 @@ app.get('/getWebsitesDesktop', async (req, res) => {
   }
 });
 
+// Get mobile websites
+app.get('/getWebsites', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
+    await connection.end();
+
+    res.json(rows);
+  } catch (error) {
+    console.error('Get websites error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Increment view/like/dislike counts
 app.post('/incrementViewDesktop', async (req, res) => {
   try {
@@ -92,13 +106,6 @@ app.post('/incrementViewDesktop', async (req, res) => {
 
     const [result] = await connection.execute(query, params);
 
-    if (result.affectedRows === 0) {
-      // If website doesn't exist, create it first
-      const insertQuery = 'INSERT INTO websites (name, url, category, views, likes, dislikes) VALUES (?, ?, ?, 1, 0, 0)';
-      const domain = url.replace(/https?:\/\/(www\.)?/, '').split('/')[0];
-      await connection.execute(insertQuery, [domain, url, category || 'curated']);
-    }
-
     // Get updated stats
     const [updatedRows] = await connection.execute(
       'SELECT views, likes, dislikes, likesDesktop, dislikesDesktop FROM websites WHERE id = ? OR url = ?',
@@ -107,9 +114,61 @@ app.post('/incrementViewDesktop', async (req, res) => {
 
     await connection.end();
 
-    res.json(updatedRows[0] || { views: 1, likes: 0, dislikes: 0, likesDesktop: 0, dislikesDesktop: 0 });
+    res.json(updatedRows[0]);
   } catch (error) {
     console.error('Increment view error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Increment view/like/dislike counts (for mobile)
+app.post('/incrementView', async (req, res) => {
+  try {
+    const { id, url, category, action } = req.query;
+
+    if (!id && !url) {
+      return res.status(400).json({ error: 'ID or URL parameter is required' });
+    }
+
+    const connection = await mysql.createConnection(dbConfig);
+    let query;
+    let params;
+
+    let fieldToUpdate;
+    switch (action) {
+      case 'view':
+        fieldToUpdate = 'views = views + 1';
+        break;
+      case 'like':
+        fieldToUpdate = 'likes = likes + 1';
+        break;
+      case 'dislike':
+        fieldToUpdate = 'dislikes = dislikes + 1';
+        break;
+      default:
+        fieldToUpdate = 'views = views + 1';
+    }
+
+    if (id) {
+      query = `UPDATE websites SET ${fieldToUpdate} WHERE id = ?`;
+      params = [id];
+    } else {
+      query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
+      params = [url];
+    }
+
+    const [result] = await connection.execute(query, params);
+
+    const [updatedRows] = await connection.execute(
+      'SELECT views, likes, dislikes FROM websites WHERE id = ? OR url = ?',
+      [id || null, url || null]
+    );
+
+    await connection.end();
+
+    res.json(updatedRows[0]);
+  } catch (error) {
+    console.error('Increment view (mobile) error:', error);
     res.status(500).json({ error: error.message });
   }
 });
