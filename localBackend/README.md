@@ -10,31 +10,17 @@ The backend automatically creates the database and inserts sample data on first 
 
 ## 🚀 Quick Start
 
-### 1. Clone and setup
+### 1. Start the containers
 ```bash
-git clone <your-repo>
 cd discover/localBackend
-```
-
-### 2. Start the containers
-```bash
 sudo docker-compose up -d --build
 ```
 
-### 4. Verify it's working
+### 2. Verify it's working
 ```bash
-curl http://localhost:3001/getWebsitesDesktop
-curl http://localhost:3001/health
+curl http://backend.discoverall.space/getWebsitesDesktop
+curl http://backend.discoverall.space/health
 ```
-
-## 🌐 API Endpoints
-
-- `GET /` — API info  
-- `GET /getWebsitesDesktop` — Get all websites  
-- `POST /incrementViewDesktop` — Update website stats  
-- `POST /addwebsite` — Add new website  
-- `POST /init` — Initialize database  
-- `GET /health` — Health check  
 
 ## 🔧 Management Commands
 
