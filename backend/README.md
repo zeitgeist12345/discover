@@ -11,7 +11,7 @@ Publicly exposed at https://backend.discoverall.space via Cloudflare Tunnel to f
 
 ### 1. Start the containers
 ```bash
-cd localBackend
+cd backend
 sudo docker-compose up -d --build
 ```
 
