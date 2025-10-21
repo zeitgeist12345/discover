@@ -170,8 +170,8 @@ async function updateWebsiteStats(websiteId, action) {
     // Optimistic update - update UI immediately
     const currentStats = {
         views: parseInt(document.getElementById('views-count').textContent) || 0,
-        likes: parseInt(document.getElementById('likes-count').textContent) || 0,
-        dislikes: parseInt(document.getElementById('dislikes-count').textContent) || 0
+        likesDesktop: parseInt(document.getElementById('likesDesktop-count').textContent) || 0,
+        dislikesDesktop: parseInt(document.getElementById('dislikesDesktop-count').textContent) || 0
     };
 
     // Increment the appropriate counter
@@ -179,11 +179,11 @@ async function updateWebsiteStats(websiteId, action) {
         case 'view':
             currentStats.views++;
             break;
-        case 'like':
-            currentStats.likes++;
+        case 'likesDesktop':
+            currentStats.likesDesktop++;
             break;
-        case 'dislike':
-            currentStats.dislikes++;
+        case 'dislikesDesktop':
+            currentStats.dislikesDesktop++;
             break;
     }
 
@@ -193,16 +193,14 @@ async function updateWebsiteStats(websiteId, action) {
     // Mark this action as performed to prevent duplicate clicks
     userActions.set(actionKey, true);
 
-    // Update button states for like/dislike
-    if (action === 'like' || action === 'dislike') {
+    // Update button states for likesDesktop/dislikesDesktop
+    if (action === 'likesDesktop' || action === 'dislikesDesktop') {
         updateButtonStates(action);
     }
 
     // Sync with server in the background
     try {
-        actionDesktop = action === 'like' ? 'likeDesktop' : action === 'dislike' ? 'dislikeDesktop' : 'view';
-
-        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementViewDesktop?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${actionDesktop}`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementViewDesktop?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${action}`, {
             method: 'POST'
         });
 
@@ -227,53 +225,53 @@ async function updateWebsiteStats(websiteId, action) {
 
 function updateStatsDisplay(stats, forceUpdate = false) {
     const viewsCount = document.getElementById('views-count');
-    const likesCount = document.getElementById('likes-count');
-    const dislikesCount = document.getElementById('dislikes-count');
+    const likesDesktopCount = document.getElementById('likesDesktop-count');
+    const dislikesDesktopCount = document.getElementById('dislikesDesktop-count');
 
     // Only update if forceUpdate is true or if the new value is higher (preserve optimistic updates)
     if (viewsCount && (forceUpdate || (stats.views || 0) > parseInt(viewsCount.textContent))) {
         viewsCount.textContent = stats.views || 0;
     }
-    if (likesCount && (forceUpdate || (stats.likes || 0) > parseInt(likesCount.textContent))) {
-        likesCount.textContent = stats.likes || 0;
+    if (likesDesktopCount && (forceUpdate || (stats.likesDesktop || 0) > parseInt(likesDesktopCount.textContent))) {
+        likesDesktopCount.textContent = stats.likesDesktop || 0;
     }
-    if (dislikesCount && (forceUpdate || (stats.dislikes || 0) > parseInt(dislikesCount.textContent))) {
-        dislikesCount.textContent = stats.dislikes || 0;
+    if (dislikesDesktopCount && (forceUpdate || (stats.dislikesDesktop || 0) > parseInt(dislikesDesktopCount.textContent))) {
+        dislikesDesktopCount.textContent = stats.dislikesDesktop || 0;
     }
 }
 
 function updateButtonStates(action) {
-    const likeBtn = document.getElementById('like-btn');
-    const dislikeBtn = document.getElementById('dislike-btn');
+    const likesDesktopBtn = document.getElementById('likesDesktop-btn');
+    const dislikesDesktopBtn = document.getElementById('dislikesDesktop-btn');
 
     // Check if buttons exist before manipulating them
-    if (!likeBtn || !dislikeBtn) {
-        console.error('Like or dislike buttons not found');
+    if (!likesDesktopBtn || !dislikesDesktopBtn) {
+        console.error('likesDesktop or dislikesDesktop buttons not found');
         return;
     }
 
-    if (action === 'like') {
-        likeBtn.classList.add('liked');
-        dislikeBtn.classList.remove('disliked');
-    } else if (action === 'dislike') {
-        dislikeBtn.classList.add('disliked');
-        likeBtn.classList.remove('liked');
+    if (action === 'likesDesktop') {
+        likesDesktopBtn.classList.add('likesDesktopd');
+        dislikesDesktopBtn.classList.remove('dislikesDesktopd');
+    } else if (action === 'dislikesDesktop') {
+        dislikesDesktopBtn.classList.add('dislikesDesktopd');
+        likesDesktopBtn.classList.remove('likesDesktopd');
     }
 }
 
-function likeWebsite() {
+function likesDesktopWebsite() {
     if (currentWebsiteId) {
-        updateWebsiteStats(currentWebsiteId, 'like');
+        updateWebsiteStats(currentWebsiteId, 'likesDesktop');
     } else {
-        console.error('No current website ID available for like action');
+        console.error('No current website ID available for likesDesktop action');
     }
 }
 
-function dislikeWebsite() {
+function dislikesDesktopWebsite() {
     if (currentWebsiteId) {
-        updateWebsiteStats(currentWebsiteId, 'dislike');
+        updateWebsiteStats(currentWebsiteId, 'dislikesDesktop');
     } else {
-        console.error('No current website ID available for dislike action');
+        console.error('No current website ID available for dislikesDesktop action');
     }
 }
 
@@ -394,8 +392,8 @@ function loadWebsite(index, addToHistory = true) {
 function updateCurrentSiteInfo(website) {
     const link = document.getElementById('current-site-link');
     const statsDiv = document.getElementById('website-stats');
-    const likeBtn = document.getElementById('like-btn');
-    const dislikeBtn = document.getElementById('dislike-btn');
+    const likesDesktopBtn = document.getElementById('likesDesktop-btn');
+    const dislikesDesktopBtn = document.getElementById('dislikesDesktop-btn');
 
     // Check if link element exists before accessing its properties
     if (link) {
@@ -418,14 +416,14 @@ function updateCurrentSiteInfo(website) {
     }
 
     // Reset button states
-    if (likeBtn) likeBtn.classList.remove('liked');
-    if (dislikeBtn) dislikeBtn.classList.remove('disliked');
+    if (likesDesktopBtn) likesDesktopBtn.classList.remove('likesDesktopd');
+    if (dislikesDesktopBtn) dislikesDesktopBtn.classList.remove('dislikesDesktopd');
 
     // Update stats with current data (force update for initial load)
     updateStatsDisplay({
         views: website.views || 0,
-        likes: website.likes || 0,
-        dislikes: website.dislikes || 0
+        likesDesktop: website.likesDesktop || 0,
+        dislikesDesktop: website.dislikesDesktop || 0
     }, true);
 }
 
@@ -572,8 +570,6 @@ async function submitWebsite(event) {
             description: formData.get('description'),
             category: formData.get('category'),
             views: 0,
-            likes: 0,
-            dislikes: 0,
             likesDesktop: 0,
             dislikesDesktop: 0
         };
