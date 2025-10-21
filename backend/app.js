@@ -37,6 +37,18 @@ app.use(cors({
   allowedHeaders: ['Content-Type']
 }));
 
+// Filtering criteria
+function needToIgnore(likes, dislikes) {
+  const total = likes + dislikes;
+  // If less votes, consider it okay
+  if (total <= 3) {
+    return false;
+  }
+  const undesirable_score = dislikes / Math.max(total, 1);
+
+  return undesirable_score > 0.8;
+}
+
 // Get all websites (for desktop)
 app.get('/getWebsitesDesktop', async (req, res) => {
   try {
@@ -44,7 +56,12 @@ app.get('/getWebsitesDesktop', async (req, res) => {
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
 
-    res.json(rows);
+    // Filter out undesirable websites
+    const filteredRows = rows.filter(website =>
+      !needToIgnore(website.likesDesktop, website.dislikesDesktop)
+    );
+
+    res.json(filteredRows);
   } catch (error) {
     console.error('Get websites error:', error);
     res.status(500).json({ error: error.message });
@@ -58,7 +75,12 @@ app.get('/getWebsites', async (req, res) => {
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
 
-    res.json(rows);
+    // Filter out undesirable websites
+    const filteredRows = rows.filter(website =>
+      !needToIgnore(website.likes, website.dislikes)
+    );
+
+    res.json(filteredRows);
   } catch (error) {
     console.error('Get websites error:', error);
     res.status(500).json({ error: error.message });
