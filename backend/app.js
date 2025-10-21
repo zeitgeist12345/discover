@@ -106,13 +106,11 @@ app.post('/incrementViewDesktop', async (req, res) => {
       case 'view':
         fieldToUpdate = 'views = views + 1';
         break;
-      case 'like':
       case 'likeDesktop':
-        fieldToUpdate = 'likes = likes + 1, likesDesktop = likesDesktop + 1';
+        fieldToUpdate = 'likesDesktop = likesDesktop + 1';
         break;
-      case 'dislike':
       case 'dislikeDesktop':
-        fieldToUpdate = 'dislikes = dislikes + 1, dislikesDesktop = dislikesDesktop + 1';
+        fieldToUpdate = 'dislikesDesktop = dislikesDesktop + 1';
         break;
       default:
         fieldToUpdate = 'views = views + 1';
@@ -130,7 +128,7 @@ app.post('/incrementViewDesktop', async (req, res) => {
 
     // Get updated stats
     const [updatedRows] = await connection.execute(
-      'SELECT views, likes, dislikes, likesDesktop, dislikesDesktop FROM websites WHERE id = ? OR url = ?',
+      'SELECT views, likesDesktop, dislikesDesktop FROM websites WHERE id = ? OR url = ?',
       [id || null, url || null]
     );
 
@@ -285,8 +283,10 @@ app.get('/', async (req, res) => {
       message: 'Discover Backend API',
       totalWebsites: rows[0].count,
       endpoints: {
-        '/getWebsitesDesktop': 'GET - Get all websites',
-        '/incrementViewDesktop': 'POST - Update website stats',
+        '/getWebsitesDesktop': 'GET - Get all links',
+        '/getWebsites': 'GET - Get mobile links',
+        '/incrementViewDesktop': 'POST - Update link stats',
+        '/incrementView': 'POST - Update mobile link stats',
         '/addwebsite': 'POST - Add new website',
         '/website/:id': 'GET - Get website by ID',
         '/health': 'GET - Health check'
