@@ -168,12 +168,12 @@ class DiscoverViewModel(
             return
         }
         // print all unvisitedWebsites
-        Log.d(TAG, "Unvisited websites: ${unvisitedWebsites.size}")
-        unvisitedWebsites.forEach {
-            Log.d(TAG, "Unvisited website: ${it.name}")
-            Log.d(TAG, "Unvisited website id: ${it.id}")
-            Log.d(TAG, "Unvisited website url: ${it.url}")
-        }
+//        Log.d(TAG, "Unvisited websites: ${unvisitedWebsites.size}")
+//        unvisitedWebsites.forEach {
+//            Log.d(TAG, "Unvisited website: ${it.name}")
+//            Log.d(TAG, "Unvisited website id: ${it.id}")
+//            Log.d(TAG, "Unvisited website url: ${it.url}")
+//        }
 
         val randomWebsite = unvisitedWebsites.random()
 
