@@ -83,7 +83,7 @@ fun TopDiscoverBar(
             }
             Button(
                 onClick = onClose, colors = ButtonDefaults.buttonColors(containerColor = ErrorColor)
-            ) { Text("Close") }
+            ) { Text("X") }
         }
     }
 }
