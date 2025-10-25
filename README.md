@@ -9,7 +9,7 @@ Ctrl+Shift+I
 ```
 
 ## Static websites list to update  
-Local backend: localBackend/db/init.sql  
+Local backend: backend/db/init.sql  
 Tools: tools/static-sites.js  
 Website: config.js  
 Android app: androidApp/app/src/main/java/com/example/discover/data/StaticWebsites.kt  

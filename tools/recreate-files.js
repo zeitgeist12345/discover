@@ -30,7 +30,7 @@ function needToIgnore(likes, dislikes) {
 
 // 1️⃣ Generate init.sql
 function generateInitSQL(websites) {
-    const sqlPath = path.join(PROJECT_ROOT, 'localBackend', 'db', 'init.sql');
+    const sqlPath = path.join(PROJECT_ROOT, 'backend', 'db', 'init.sql');
     console.log(`🧱 Writing SQL init file to ${sqlPath}...`);
 
     const header = `CREATE TABLE IF NOT EXISTS websites (
