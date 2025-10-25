@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -38,7 +39,7 @@ import com.example.discover.ui.theme.TextPrimary
 import com.example.discover.ui.theme.TextSecondary
 import com.example.discover.viewmodel.DiscoverViewModel
 import com.example.discover.viewmodel.UserInteractionState
-
+import android.webkit.WebView
 @Composable
 fun DiscoverScreen(
     viewModel: DiscoverViewModel
@@ -51,6 +52,9 @@ fun DiscoverScreen(
 
     val toastMessage by viewModel.toastMessage.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    val webView = remember {
+        WebView(context) // This block runs only once.
+    }
 
     LaunchedEffect(toastMessage) {
         toastMessage?.let { message ->
@@ -73,6 +77,7 @@ fun DiscoverScreen(
                 onClose = { viewModel.closeWebView() } // This closes the WebView view
             )
             WebViewArea(
+                webView = webView, // <-- Pass the persistent WebView instance down
                 url = currentWebViewUrl!!,
                 onCloseArea = { viewModel.closeWebView() },
                 onWebViewHistoryBack = { viewModel.updateNavigatedPreviousWebsite() } // BackHandler in WebViewArea will call this
