@@ -393,10 +393,12 @@ fun WebViewArea(
                 webViewInstanceFromFactory = this
                 this.webViewClient = localWebViewClient
                 this.webChromeClient = localWebChromeClient
-                // --- THIS IS THE FIX ---
                 // Add this line to make the WebView's background see-through
                 // until the actual web page content is rendered.
-                setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                // This is not good as the background has to remain white.
+                // It also causes flicker. Better to keep the webview below the top bar always.
+                // Then the WebView will not affect the top bar.
+                // setBackgroundColor(android.graphics.Color.TRANSPARENT)
                 // ---------------------
                 settings.apply {
                     javaScriptEnabled = true; domStorageEnabled = true; loadWithOverviewMode = true
