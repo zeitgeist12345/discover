@@ -12,7 +12,7 @@ Publicly exposed at https://backend.discoverall.space via Cloudflare Tunnel to f
 ### 1. Start the containers
 ```bash
 cd backend
-sudo docker-compose up -d --build
+docker-compose up -d --build
 ```
 
 ### 2. Verify it's working
@@ -24,16 +24,16 @@ curl http://backend.discoverall.space/health
 ## 🔧 Management Commands
 ```bash
 # View logs
-sudo docker-compose logs app
-sudo docker-compose logs db
-sudo docker-compose logs cloudflared
+docker-compose logs app
+docker-compose logs db
+docker-compose logs cloudflared
 
 # Stop containers
-sudo docker-compose down
+docker-compose down
 
 # Restart containers
-sudo docker-compose restart
+docker-compose restart
 
 # Rebuild after code changes
-sudo docker-compose up -d --build
+docker-compose up -d --build
 ```
