@@ -52,8 +52,23 @@ fun DiscoverScreen(
 
     val toastMessage by viewModel.toastMessage.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    // Configure the WebView with its settings ONE TIME during creation.
     val webView = remember {
-        WebView(context) // This block runs only once.
+        WebView(context).apply {
+            // Apply all settings here. They will persist for the lifetime of the WebView.
+            settings.apply {
+                javaScriptEnabled = true
+                domStorageEnabled = true
+                loadWithOverviewMode = true
+                useWideViewPort = true
+                setSupportZoom(true)
+                builtInZoomControls = true
+                displayZoomControls = false
+                allowFileAccess = false
+                javaScriptCanOpenWindowsAutomatically = false
+                mediaPlaybackRequiresUserGesture = true
+            }
+        }
     }
 
     LaunchedEffect(toastMessage) {
