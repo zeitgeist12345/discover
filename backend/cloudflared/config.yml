@@ -1,0 +1,8 @@
+tunnel: 6a9960c7-1fe2-4565-a583-6a0a3cd16d31
+credentials-file: /etc/cloudflared/6a9960c7-1fe2-4565-a583-6a0a3cd16d31.json
+no-autoupdate: true
+
+ingress:
+  - hostname: backend.discoverall.space
+    service: http://app:3000
+  - service: http_status:404
