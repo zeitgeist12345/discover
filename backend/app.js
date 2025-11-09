@@ -70,15 +70,22 @@ function needToIgnore(likesMobile, dislikesMobile) {
 
   return undesirable_score > 0.8;
 }
-
 // Get all websites
 app.get('/getWebsites', async (req, res) => {
   try {
+    const tagsFilter = req.query.tags ? req.query.tags.split(',').map(t => t.trim()) : [];
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
 
-    res.json(rows);
+    let filtered = rows;
+    if (tagsFilter.length > 0) {
+      filtered = rows.filter(w =>
+        tagsFilter.every(tag => JSON.parse(w.tags || '[]').includes(tag))
+      );
+    }
+
+    res.json(filtered);
   } catch (error) {
     console.error('Get websites error:', error);
     res.status(500).json({ error: error.message });
@@ -88,16 +95,22 @@ app.get('/getWebsites', async (req, res) => {
 // Get all websites (for desktop)
 app.get('/getWebsitesDesktop', async (req, res) => {
   try {
+    const tagsFilter = req.query.tags ? req.query.tags.split(',').map(t => t.trim()) : [];
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
 
-    // Filter out undesirable websites
-    const filteredRows = rows.filter(website =>
-      !needToIgnore(website.likesDesktop, website.dislikesDesktop)
+    let filtered = rows.filter(w =>
+      !needToIgnore(w.likesDesktop, w.dislikesDesktop)
     );
 
-    res.json(filteredRows);
+    if (tagsFilter.length > 0) {
+      filtered = filtered.filter(w =>
+        tagsFilter.every(tag => JSON.parse(w.tags || '[]').includes(tag))
+      );
+    }
+
+    res.json(filtered);
   } catch (error) {
     console.error('Get websites error:', error);
     res.status(500).json({ error: error.message });
@@ -107,16 +120,22 @@ app.get('/getWebsitesDesktop', async (req, res) => {
 // Get mobile websites
 app.get('/getWebsitesMobile', async (req, res) => {
   try {
+    const tagsFilter = req.query.tags ? req.query.tags.split(',').map(t => t.trim()) : [];
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
 
-    // Filter out undesirable websites
-    const filteredRows = rows.filter(website =>
-      !needToIgnore(website.likesMobile, website.dislikesMobile)
+    let filtered = rows.filter(w =>
+      !needToIgnore(w.likesMobile, w.dislikesMobile)
     );
 
-    res.json(filteredRows);
+    if (tagsFilter.length > 0) {
+      filtered = filtered.filter(w =>
+        tagsFilter.every(tag => JSON.parse(w.tags || '[]').includes(tag))
+      );
+    }
+
+    res.json(filtered);
   } catch (error) {
     console.error('Get websites error:', error);
     res.status(500).json({ error: error.message });
