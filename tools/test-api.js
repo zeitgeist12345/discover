@@ -29,7 +29,7 @@ async function testAPI() {
                 method: 'POST'
             });
             const likeResult = await likeResponse.json();
-            console.log(`✅ Like updated: ${likeResult.likes} likes`);
+            console.log(`✅ Like updated: ${likeResult.likesMobile} likesMobile`);
             
             // Test 4: Increment dislike
             console.log('\n4️⃣ Testing dislike increment...');
@@ -37,13 +37,13 @@ async function testAPI() {
                 method: 'POST'
             });
             const dislikeResult = await dislikeResponse.json();
-            console.log(`✅ Dislike updated: ${dislikeResult.dislikes} dislikes`);
+            console.log(`✅ Dislike updated: ${dislikeResult.dislikesMobile} dislikesMobile`);
             
             // Test 5: Final stats
             console.log('\n5️⃣ Final stats:');
             console.log(`   👁️ Views: ${viewResult.views}`);
-            console.log(`   👍 Likes: ${likeResult.likes}`);
-            console.log(`   👎 Dislikes: ${dislikeResult.dislikes}`);
+            console.log(`   👍 likesMobile: ${likeResult.likesMobile}`);
+            console.log(`   👎 dislikesMobile: ${dislikeResult.dislikesMobile}`);
             
         } else {
             console.log('❌ No websites found to test with');

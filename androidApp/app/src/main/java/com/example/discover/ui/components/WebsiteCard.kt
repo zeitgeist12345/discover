@@ -116,7 +116,7 @@ fun WebsiteCard(
                         containerColor = Color.Transparent, contentColor = TextPrimary
                     ), border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
                 ) {
-                    Text("👍 ${website.likes}")
+                    Text("👍 ${website.likesMobile}")
                 }
             }
         }

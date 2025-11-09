@@ -28,13 +28,13 @@ async function fetchWebsites() {
 
 
 // Filtering criteria
-function needToIgnore(likes, dislikes) {
-    const total = likes + dislikes;
+function needToIgnore(likesMobile, dislikesMobile) {
+    const total = likesMobile + dislikesMobile;
     // If less votes, consider it okay
     if (total <= 3) {
         return false;
     }
-    const undesirable_score = dislikes / Math.max(total, 1);
+    const undesirable_score = dislikesMobile / Math.max(total, 1);
 
     return undesirable_score > 0.8;
 }
@@ -65,16 +65,16 @@ function analyzeWebsites(websites) {
     };
 
     websites.forEach(website => {
-        const likes = website.likes || 0;
-        const dislikes = website.dislikes || 0;
+        const likesMobile = website.likesMobile || 0;
+        const dislikesMobile = website.dislikesMobile || 0;
         const likesDesktop = website.likesDesktop || 0;
         const dislikesDesktop = website.dislikesDesktop || 0;
 
-        const total = likes + dislikes;
-        const score = total > 0 ? (dislikes / total) * 100 : 0;
+        const total = likesMobile + dislikesMobile;
+        const score = total > 0 ? (dislikesMobile / total) * 100 : 0;
 
         // Apply filtering logic
-        if (needToIgnore(likes, dislikes)) {
+        if (needToIgnore(likesMobile, dislikesMobile)) {
             analysis.filteredMobile++;
         }
         if (needToIgnore(likesDesktop, dislikesDesktop)) {

@@ -102,7 +102,7 @@ class DiscoverViewModel(
                     )
 
                     // If there was a current website, try to find its updated version in the new list
-                    // to refresh its data (e.g., likes/dislikes) but keep it as the current one.
+                    // to refresh its data (e.g., likesMobile/dislikesMobile) but keep it as the current one.
                     val updatedCurrentWebsiteInstance =
                         originalCurrentWebsite?.id?.let { currentId ->
                             websitesList.find { it.id == currentId }
@@ -244,14 +244,14 @@ class DiscoverViewModel(
         when (currentInteraction) {
             UserInteractionState.LIKED -> {
                 _currentUserInteractionState.value = UserInteractionState.NONE
-                _currentWebsite.update { current -> current?.copy(likes = current.likes - 1) }
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile - 1) }
                 Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.DISLIKED -> {
                 _currentUserInteractionState.value = UserInteractionState.LIKED
                 _currentWebsite.update { current ->
-                    current?.copy(likes = current.likes + 1, dislikes = current.dislikes - 1)
+                    current?.copy(likesMobile = current.likesMobile + 1, dislikesMobile = current.dislikesMobile - 1)
                 }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
@@ -261,7 +261,7 @@ class DiscoverViewModel(
 
             UserInteractionState.NONE -> {
                 _currentUserInteractionState.value = UserInteractionState.LIKED
-                _currentWebsite.update { current -> current?.copy(likes = current.likes + 1) }
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile + 1) }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
                 }
@@ -277,14 +277,14 @@ class DiscoverViewModel(
         when (currentInteraction) {
             UserInteractionState.DISLIKED -> {
                 _currentUserInteractionState.value = UserInteractionState.NONE
-                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes - 1) }
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile - 1) }
                 Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.LIKED -> {
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
                 _currentWebsite.update { current ->
-                    current?.copy(dislikes = current.dislikes + 1, likes = current.likes - 1)
+                    current?.copy(dislikesMobile = current.dislikesMobile + 1, likesMobile = current.likesMobile - 1)
                 }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
@@ -294,7 +294,7 @@ class DiscoverViewModel(
 
             UserInteractionState.NONE -> {
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
-                _currentWebsite.update { current -> current?.copy(dislikes = current.dislikes + 1) }
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile + 1) }
                 viewModelScope.launch {
                     apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
                 }
