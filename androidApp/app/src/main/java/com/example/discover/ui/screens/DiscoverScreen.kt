@@ -206,8 +206,8 @@ fun DiscoverScreen(
                 if (showAddWebsiteDialog) {
                     AddWebsiteDialog(
                         onDismiss = { viewModel.hideAddWebsiteDialog() },
-                        onAddWebsite = { name, url, description ->
-                            viewModel.addWebsite(name, url, description)
+                        onAddWebsite = { name, url, description, tags ->
+                            viewModel.addWebsite(name, url, description, tags)
                         })
                 }
             }

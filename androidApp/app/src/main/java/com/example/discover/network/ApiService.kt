@@ -146,7 +146,9 @@ class ApiService {
         val endpointUrl = "$baseUrl/addWebsite"
         Log.d(TAG, "addWebsite | Attempting to add website to: $endpointUrl with data: $linkData")
 
+        Log.d("ApiService", "Incoming JSON: $linkData")
         val json = gson.toJson(linkData)
+        Log.d("ApiService", "Outgoing JSON: $json")
         val requestBody = json.toRequestBody(jsonMediaType)
 
         val httpRequest = Request.Builder().url(endpointUrl).post(requestBody)

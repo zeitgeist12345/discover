@@ -324,9 +324,9 @@ class DiscoverViewModel(
         _showAddWebsiteDialog.value = false
     }
 
-    fun addWebsite(name: String, url: String, description: String) {
+    fun addWebsite(name: String, url: String, description: String, tags: List<String>) {
         viewModelScope.launch {
-            val request = Link(name = name, url = url, description = description, tags = emptyList())
+            val request = Link(name = name, url = url, description = description, tags = tags)
             val result = apiService.addWebsite(request)
             val message = when (result) {
                 is AddWebsiteResult.Success -> {
