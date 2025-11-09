@@ -60,13 +60,13 @@ app.use(cors({
 }));
 
 // Filtering criteria
-function needToIgnore(likes, dislikes) {
-  const total = likes + dislikes;
+function needToIgnore(likesMobile, dislikesMobile) {
+  const total = likesMobile + dislikesMobile;
   // If less votes, consider it okay
   if (total <= 3) {
     return false;
   }
-  const undesirable_score = dislikes / Math.max(total, 1);
+  const undesirable_score = dislikesMobile / Math.max(total, 1);
 
   return undesirable_score > 0.8;
 }
@@ -113,7 +113,7 @@ app.get('/getWebsitesMobile', async (req, res) => {
 
     // Filter out undesirable websites
     const filteredRows = rows.filter(website =>
-      !needToIgnore(website.likes, website.dislikes)
+      !needToIgnore(website.likesMobile, website.dislikesMobile)
     );
 
     res.json(filteredRows);
@@ -142,10 +142,10 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
         fieldToUpdate = 'views = views + 1';
         break;
       case 'like':
-        fieldToUpdate = 'likes = likes + 1';
+        fieldToUpdate = 'likesMobile = likesMobile + 1';
         break;
       case 'dislike':
-        fieldToUpdate = 'dislikes = dislikes + 1';
+        fieldToUpdate = 'dislikesMobile = dislikesMobile + 1';
       case 'likeDesktop':
         fieldToUpdate = 'likesDesktop = likesDesktop + 1';
         break;
@@ -201,7 +201,7 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
     let fieldToUpdate;
     switch (action) {
       case 'dislike':
-        fieldToUpdate = 'dislikes = dislikes + 1000';
+        fieldToUpdate = 'dislikesMobile = dislikesMobile + 1000';
         break;
       case 'dislikeDesktop':
         fieldToUpdate = 'dislikesDesktop = dislikesDesktop + 1000';
@@ -241,7 +241,7 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
 // Add new website
 app.post('/addwebsite', async (req, res) => {
   try {
-    const { name, url, description, tags, views, likes, dislikes, likesDesktop, dislikesDesktop } = req.body;
+    const { name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop } = req.body;
 
     if (!name || !url || !description) {
       return res.status(400).json({ error: 'Name, URL, and description are required' });
@@ -262,8 +262,8 @@ app.post('/addwebsite', async (req, res) => {
 
     // Insert new website
     const [result] = await connection.execute(
-      'INSERT INTO websites (name, url, description, tags, views, likes, dislikes, likesDesktop, dislikesDesktop) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [name, url, description, tags, views || 0, likes || 0, dislikes || 0, likesDesktop || 0, dislikesDesktop || 0]
+      'INSERT INTO websites (name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [name, url, description, tags, views || 0, likesMobile || 0, dislikesMobile || 0, likesDesktop || 0, dislikesDesktop || 0]
     );
 
     await connection.end();

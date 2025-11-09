@@ -21,6 +21,21 @@ curl http://backend.discoverall.space/getWebsitesDesktop
 curl http://backend.discoverall.space/health
 ```
 
+### 3. Reinitialize the database
+
+Stop all containers
+
+docker compose down
+
+Remove the database volume (this deletes all MySQL data)
+
+docker volume rm $(basename $(pwd))_mysql_data
+
+Rebuild and restart containers
+
+docker compose up -d --build
+
+
 ## 🔧 Management Commands
 ```bash
 # View logs
