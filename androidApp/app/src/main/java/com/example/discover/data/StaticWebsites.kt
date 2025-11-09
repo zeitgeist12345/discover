@@ -7,10 +7,10 @@ object StaticWebsites {
             name = "Hacker News",
             url = "https://news.ycombinator.com",
             description = "Social news website focusing on computer science and entrepreneurship",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 120,
-            likes = 35,
-            dislikes = 3
+            likesMobile = 35,
+            dislikesMobile = 3
         ),
 
         Link(
@@ -18,10 +18,10 @@ object StaticWebsites {
             name = "Product Hunt",
             url = "https://www.producthunt.com",
             description = "Platform for sharing and discovering new products",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 95,
-            likes = 28,
-            dislikes = 2
+            likesMobile = 28,
+            dislikesMobile = 2
         ),
 
         Link(
@@ -29,10 +29,10 @@ object StaticWebsites {
             name = "Unsplash",
             url = "https://unsplash.com",
             description = "Beautiful, free images gifted by the world's most generous community of photographers",
-            category = "tools",
+            tags = listOf("curated", "sample"),
             views = 180,
-            likes = 52,
-            dislikes = 4
+            likesMobile = 52,
+            dislikesMobile = 4
         ),
 
         Link(
@@ -40,10 +40,10 @@ object StaticWebsites {
             name = "zeitgeist12345",
             url = "https://zeitgeist12345.github.io/",
             description = "The personal website of the creator of this project",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 31,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -51,10 +51,10 @@ object StaticWebsites {
             name = "Library Genesis",
             url = "https://libgen.li/",
             description = "Massive digital library of books, articles, and media",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 33,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -62,10 +62,10 @@ object StaticWebsites {
             name = "Internet Archive",
             url = "https://archive.org/",
             description = "Digital library of free & borrowable books, movies, music & Wayback Machine",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 34,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -73,10 +73,10 @@ object StaticWebsites {
             name = "The Useless Web",
             url = "https://theuselessweb.com/",
             description = "Random fun and bizarre websites with one click",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 35,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -84,10 +84,10 @@ object StaticWebsites {
             name = "The Longest Blockchain",
             url = "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
             description = "Interesting perspective on blockchain strength",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 40,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -95,10 +95,10 @@ object StaticWebsites {
             name = "The Pudding",
             url = "https://pudding.cool/",
             description = "Visual essays that explain ideas with data and visuals",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 44,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -106,10 +106,10 @@ object StaticWebsites {
             name = "xkcd",
             url = "https://xkcd.com/",
             description = "A webcomic of romance, sarcasm, math, and language",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 45,
-            likes = 12,
-            dislikes = 0
+            likesMobile = 12,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -117,10 +117,10 @@ object StaticWebsites {
             name = "Patatap",
             url = "https://patatap.com",
             description = "Turn your keyboard into a sound machine with colorful animations",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 47,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -128,10 +128,10 @@ object StaticWebsites {
             name = "Little Alchemy 2",
             url = "https://littlealchemy2.com",
             description = "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 48,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -139,10 +139,10 @@ object StaticWebsites {
             name = "Pointer Pointer",
             url = "https://pointerpointer.com",
             description = "Photos of people pointing at your cursor wherever you move it",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 49,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -150,10 +150,10 @@ object StaticWebsites {
             name = "Ncase.me",
             url = "https://ncase.me",
             description = "Interactive simulations about trust and human behavior",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 50,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -161,10 +161,10 @@ object StaticWebsites {
             name = "Connected Papers",
             url = "https://www.connectedpapers.com",
             description = "Visual tool to explore academic research connections",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 51,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -172,10 +172,10 @@ object StaticWebsites {
             name = "Don't Even Reply",
             url = "https://dontevenreply.com",
             description = "Hilarious fictional email exchanges",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 56,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -183,10 +183,10 @@ object StaticWebsites {
             name = "Al Jazeera",
             url = "https://www.aljazeera.com",
             description = "International news and current affairs network",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 60,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -194,10 +194,10 @@ object StaticWebsites {
             name = "In depth flow of computers",
             url = "https://github.com/alex/what-happens-when",
             description = "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together.",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 61,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         ),
 
         Link(
@@ -205,10 +205,10 @@ object StaticWebsites {
             name = "Software build systems",
             url = "https://bazel.build/basics",
             description = "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
-            category = "curated",
+            tags = listOf("curated", "sample"),
             views = 62,
-            likes = 2,
-            dislikes = 0
+            likesMobile = 2,
+            dislikesMobile = 0
         )
     )
 }

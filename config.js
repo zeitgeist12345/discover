@@ -14,10 +14,13 @@ const CONFIG = {
         "name": "Hacker News",
         "url": "https://news.ycombinator.com",
         "description": "Social news website focusing on computer science and entrepreneurship",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 120,
-        "likes": 35,
-        "dislikes": 3,
+        "likesMobile": 35,
+        "dislikesMobile": 3,
         "likesDesktop": 18,
         "dislikesDesktop": 0
     },
@@ -26,10 +29,13 @@ const CONFIG = {
         "name": "Product Hunt",
         "url": "https://www.producthunt.com",
         "description": "Platform for sharing and discovering new products",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 95,
-        "likes": 28,
-        "dislikes": 2,
+        "likesMobile": 28,
+        "dislikesMobile": 2,
         "likesDesktop": 15,
         "dislikesDesktop": 0
     },
@@ -38,10 +44,13 @@ const CONFIG = {
         "name": "Unsplash",
         "url": "https://unsplash.com",
         "description": "Beautiful, free images gifted by the world's most generous community of photographers",
-        "category": "tools",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 180,
-        "likes": 52,
-        "dislikes": 4,
+        "likesMobile": 52,
+        "dislikesMobile": 4,
         "likesDesktop": 25,
         "dislikesDesktop": 0
     },
@@ -50,10 +59,13 @@ const CONFIG = {
         "name": "skribbl.io",
         "url": "https://skribbl.io/",
         "description": "Free multiplayer drawing and guessing game",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 30,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -62,10 +74,13 @@ const CONFIG = {
         "name": "zeitgeist12345",
         "url": "https://zeitgeist12345.github.io/",
         "description": "The personal website of the creator of this project",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 31,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -74,10 +89,13 @@ const CONFIG = {
         "name": "Sci-Hub",
         "url": "https://sci-hub.se/",
         "description": "Removing barriers in the way of science by providing free access to research papers",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 32,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -86,10 +104,13 @@ const CONFIG = {
         "name": "Library Genesis",
         "url": "https://libgen.li/",
         "description": "Massive digital library of books, articles, and media",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 33,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -98,10 +119,13 @@ const CONFIG = {
         "name": "Internet Archive",
         "url": "https://archive.org/",
         "description": "Digital library of free & borrowable books, movies, music & Wayback Machine",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 34,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -110,10 +134,13 @@ const CONFIG = {
         "name": "The Useless Web",
         "url": "https://theuselessweb.com/",
         "description": "Random fun and bizarre websites with one click",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 35,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -122,10 +149,13 @@ const CONFIG = {
         "name": "Play Counter-Strike 1.6",
         "url": "https://play-cs.com/",
         "description": "Play classic CS 1.6 online without downloading",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 36,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -134,10 +164,13 @@ const CONFIG = {
         "name": "Overleaf",
         "url": "https://www.overleaf.com/",
         "description": "Online LaTeX editor with real-time collaboration",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 39,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -146,10 +179,13 @@ const CONFIG = {
         "name": "The Longest Blockchain",
         "url": "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
         "description": "Interesting perspective on blockchain strength",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 40,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -158,10 +194,13 @@ const CONFIG = {
         "name": "Bored Button",
         "url": "https://www.boredbutton.com/",
         "description": "Collection of random fun websites and games",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 41,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -170,10 +209,13 @@ const CONFIG = {
         "name": "Radio Garden",
         "url": "http://radio.garden/",
         "description": "Listen to live radio stations across the globe",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 42,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -182,10 +224,13 @@ const CONFIG = {
         "name": "Window Swap",
         "url": "https://window-swap.com/",
         "description": "See the view from someone else's window around the world",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 43,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -194,10 +239,13 @@ const CONFIG = {
         "name": "The Pudding",
         "url": "https://pudding.cool/",
         "description": "Visual essays that explain ideas with data and visuals",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 44,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -206,10 +254,13 @@ const CONFIG = {
         "name": "xkcd",
         "url": "https://xkcd.com/",
         "description": "A webcomic of romance, sarcasm, math, and language",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 45,
-        "likes": 12,
-        "dislikes": 0,
+        "likesMobile": 12,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -218,10 +269,13 @@ const CONFIG = {
         "name": "Stellarium Web",
         "url": "https://stellarium-web.org/",
         "description": "Real-time 3D simulation of space with planetarium view",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 46,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -230,10 +284,13 @@ const CONFIG = {
         "name": "Patatap",
         "url": "https://patatap.com",
         "description": "Turn your keyboard into a sound machine with colorful animations",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 47,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -242,10 +299,13 @@ const CONFIG = {
         "name": "Little Alchemy 2",
         "url": "https://littlealchemy2.com",
         "description": "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 48,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -254,10 +314,13 @@ const CONFIG = {
         "name": "Pointer Pointer",
         "url": "https://pointerpointer.com",
         "description": "Photos of people pointing at your cursor wherever you move it",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 49,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -266,10 +329,13 @@ const CONFIG = {
         "name": "Ncase.me",
         "url": "https://ncase.me",
         "description": "Interactive simulations about trust and human behavior",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 50,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -278,10 +344,13 @@ const CONFIG = {
         "name": "Connected Papers",
         "url": "https://www.connectedpapers.com",
         "description": "Visual tool to explore academic research connections",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 51,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -290,10 +359,13 @@ const CONFIG = {
         "name": "Quick, Draw!",
         "url": "https://quickdraw.withgoogle.com",
         "description": "AI game that guesses your doodles",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 52,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -302,10 +374,13 @@ const CONFIG = {
         "name": "A Soft Murmur",
         "url": "https://asoftmurmur.com",
         "description": "Mix ambient sounds (rain, waves) for focus",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 53,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -314,10 +389,13 @@ const CONFIG = {
         "name": "10 Minute Mail",
         "url": "https://10minutemail.com",
         "description": "Disposable email for spam-free signups",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 54,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -326,10 +404,13 @@ const CONFIG = {
         "name": "The Deep Sea",
         "url": "https://neal.fun/deep-sea",
         "description": "Interactive dive into ocean depths with fascinating facts",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 55,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -338,10 +419,13 @@ const CONFIG = {
         "name": "Don't Even Reply",
         "url": "https://dontevenreply.com",
         "description": "Hilarious fictional email exchanges",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 56,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -350,10 +434,13 @@ const CONFIG = {
         "name": "Scream Into the Void",
         "url": "https://screamintothevoid.com",
         "description": "Type your frustrations and hear a scream",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 57,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -362,10 +449,13 @@ const CONFIG = {
         "name": "This Is Sand",
         "url": "https://thisissand.com",
         "description": "Digital sand art creator",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 58,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -374,10 +464,13 @@ const CONFIG = {
         "name": "DeepSeek",
         "url": "https://www.deepseek.com/en",
         "description": "AI research and development company",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 59,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -386,10 +479,13 @@ const CONFIG = {
         "name": "DeepSeek",
         "url": "https://chat.deepseek.com/",
         "description": "Cutting edge open weight open research LLM.",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 59,
-        "likes": 2,
-        "dislikes": 1000,
+        "likesMobile": 2,
+        "dislikesMobile": 1000,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -398,10 +494,13 @@ const CONFIG = {
         "name": "Al Jazeera",
         "url": "https://www.aljazeera.com",
         "description": "International news and current affairs network",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 60,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -410,10 +509,13 @@ const CONFIG = {
         "name": "In depth flow of computers",
         "url": "https://github.com/alex/what-happens-when",
         "description": "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together.",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 61,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     },
@@ -422,10 +524,13 @@ const CONFIG = {
         "name": "Software build systems",
         "url": "https://bazel.build/basics",
         "description": "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
-        "category": "curated",
+        "tags": [
+            "curated",
+            "sample"
+        ],
         "views": 62,
-        "likes": 2,
-        "dislikes": 0,
+        "likesMobile": 2,
+        "dislikesMobile": 0,
         "likesDesktop": 1,
         "dislikesDesktop": 0
     }

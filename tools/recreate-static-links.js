@@ -1,7 +1,7 @@
 // tools/recreate-files.js
 const fs = require('fs');
 const path = require('path');
-const { WEBSITES_TO_KEEP } = require('./static-sites');
+const { WEBSITES_TO_KEEP } = require('./static-links');
 
 console.log('🚀 Starting regeneration of static website files...\n');
 
@@ -16,14 +16,21 @@ function escapeKotlin(str = '') {
     return str.replace(/"/g, '\\"');
 }
 
-function needToIgnore(likes, dislikes) {
-    const total = likes + dislikes;
+function formatTagsForSQL(tags) {
+    if (!Array.isArray(tags)) {
+        return '[]';
+    }
+    return JSON.stringify(tags);
+}
+
+function needToIgnore(likesMobile, dislikesMobile) {
+    const total = likesMobile + dislikesMobile;
     // If less votes, consider it okay
     if (total <= 3) {
         return false;
     }
 
-    const undesirable_score = dislikes / Math.max(total, 1);
+    const undesirable_score = dislikesMobile / Math.max(total, 1);
 
     return undesirable_score > 0.8;
 }
@@ -38,10 +45,10 @@ function generateInitSQL(websites) {
     name VARCHAR(255) NOT NULL,
     url VARCHAR(500) NOT NULL,
     description TEXT,
-    category VARCHAR(100) DEFAULT 'curated',
+    tags JSON DEFAULT ('[]'),
     views INT DEFAULT 0,
-    likes INT DEFAULT 0,
-    dislikes INT DEFAULT 0,
+    likesMobile INT DEFAULT 0,
+    dislikesMobile INT DEFAULT 0,
     likesDesktop INT DEFAULT 0,
     dislikesDesktop INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -51,10 +58,10 @@ INSERT INTO websites (
         name,
         url,
         description,
-        category,
+        tags,
         views,
-        likes,
-        dislikes,
+        likesMobile,
+        dislikesMobile,
         likesDesktop,
         dislikesDesktop
     )
@@ -64,10 +71,10 @@ VALUES `;
         const name = escapeSQL(site.name || '');
         const url = escapeSQL(site.url || '');
         const description = escapeSQL(site.description || '');
-        const category = escapeSQL(site.category || 'curated');
+        const tags = formatTagsForSQL(site.tags);
         const views = site.views ?? 30;
-        const likes = site.likes ?? 2;
-        const dislikes = site.dislikes ?? 0;
+        const likesMobile = site.likesMobile ?? 2;
+        const dislikesMobile = site.dislikesMobile ?? 0;
         const likesDesktop = site.likesDesktop ?? 1;
         const dislikesDesktop = site.dislikesDesktop ?? 0;
 
@@ -75,10 +82,10 @@ VALUES `;
         '${name}',
         '${url}',
         '${description}',
-        '${category}',
+        '${tags}',
         ${views},
-        ${likes},
-        ${dislikes},
+        ${likesMobile},
+        ${dislikesMobile},
         ${likesDesktop},
         ${dislikesDesktop}
     )`;
@@ -103,10 +110,10 @@ function generateConfigJS(websites) {
             name: site.name,
             url: site.url,
             description: site.description,
-            category: site.category || 'curated',
+            tags: site.tags || [],
             views: site.views ?? 30 + index,
-            likes: site.likes ?? 2,
-            dislikes: site.dislikes ?? 0,
+            likesMobile: site.likesMobile ?? 2,
+            dislikesMobile: site.dislikesMobile ?? 0,
             likesDesktop: site.likesDesktop ?? 1,
             dislikesDesktop: site.dislikesDesktop ?? 0
         }));
@@ -151,26 +158,26 @@ function generateKotlin(websites) {
     console.log(`🤖 Writing Kotlin static websites to ${kotlinPath}...`);
 
     const kotlinEntries = websites
-        .filter(site => !needToIgnore(site.likes, site.dislikes))
+        .filter(site => !needToIgnore(site.likesMobile, site.dislikesMobile))
         .map((site, i) => {
             const id = `website-${i + 1}`;
             const name = escapeKotlin(site.name || '');
             const url = escapeKotlin(site.url || '');
             const desc = escapeKotlin(site.description || '');
-            const category = escapeKotlin(site.category || 'curated');
+            const tags = site.tags || [];
             const views = site.views ?? 30 + i;
-            const likes = site.likes ?? 2;
-            const dislikes = site.dislikes ?? 0;
+            const likesMobile = site.likesMobile ?? 2;
+            const dislikesMobile = site.dislikesMobile ?? 0;
 
             return `        Link(
             id = "${id}",
             name = "${name}",
             url = "${url}",
             description = "${desc}",
-            category = "${category}",
+            tags = listOf(${tags.map(tag => `"${escapeKotlin(tag)}"`).join(', ')}),
             views = ${views},
-            likes = ${likes},
-            dislikes = ${dislikes}
+            likesMobile = ${likesMobile},
+            dislikesMobile = ${dislikesMobile}
         )`;
         }).join(',\n\n');
 
@@ -191,11 +198,11 @@ ${kotlinEntries}
 // 🧩 Main generator
 function main() {
     if (!Array.isArray(WEBSITES_TO_KEEP) || WEBSITES_TO_KEEP.length === 0) {
-        console.error('❌ No websites found in static-sites.js');
+        console.error('❌ No websites found in static-links.js');
         process.exit(1);
     }
 
-    console.log(`📦 Found ${WEBSITES_TO_KEEP.length} websites in static-sites.js`);
+    console.log(`📦 Found ${WEBSITES_TO_KEEP.length} websites in static-links.js`);
     generateInitSQL(WEBSITES_TO_KEEP);
     generateConfigJS(WEBSITES_TO_KEEP);
     generateKotlin(WEBSITES_TO_KEEP);

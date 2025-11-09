@@ -6,7 +6,7 @@ const readline = require('readline');
 const API_BASE_URL = 'https://backend.discoverall.space';
 
 // Import the static sites data
-const { WEBSITES_TO_KEEP } = require('./static-sites.js');
+const { WEBSITES_TO_KEEP } = require('./static-links.js');
 
 // URLs to keep (normalized for comparison)
 const URLS_TO_KEEP = WEBSITES_TO_KEEP.map(site => site.url);

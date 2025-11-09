@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Import the static sites data
-const { WEBSITES_TO_KEEP } = require('./static-sites.js');
+const { WEBSITES_TO_KEEP } = require('./static-links.js');
 
 // Read the dump data
 const data = JSON.parse(fs.readFileSync('./websites-dump.json', 'utf8'));
