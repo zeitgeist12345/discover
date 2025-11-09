@@ -719,9 +719,3 @@ body {
         transform: translateY(0);
     }
 }
-
-@supports (-moz-appearance: none) {
-    .settings-screen {
-        height: 100dvh;
-    }
-}
