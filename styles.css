@@ -721,7 +721,7 @@ body {
 }
 
 @supports (-moz-appearance: none) {
-  .settings-screen {
-    height: 100dvh;
-  }
+    .settings-screen {
+        height: 100dvh;
+    }
 }
