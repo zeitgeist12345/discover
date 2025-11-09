@@ -17,7 +17,7 @@ async function testAPI() {
             
             // Test 2: Increment view
             console.log('\n2️⃣ Testing view increment...');
-            const viewResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&category=curated&action=view`, {
+            const viewResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&action=view`, {
                 method: 'POST'
             });
             const viewResult = await viewResponse.json();
@@ -25,7 +25,7 @@ async function testAPI() {
             
             // Test 3: Increment like
             console.log('\n3️⃣ Testing like increment...');
-            const likeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&category=curated&action=like`, {
+            const likeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&action=like`, {
                 method: 'POST'
             });
             const likeResult = await likeResponse.json();
@@ -33,7 +33,7 @@ async function testAPI() {
             
             // Test 4: Increment dislike
             console.log('\n4️⃣ Testing dislike increment...');
-            const dislikeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&category=curated&action=dislike`, {
+            const dislikeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&action=dislike`, {
                 method: 'POST'
             });
             const dislikeResult = await dislikeResponse.json();

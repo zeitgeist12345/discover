@@ -203,7 +203,7 @@ async function updateWebsiteStats(websiteId, action) {
 
     // Sync with server in the background
     try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&url=${encodeURIComponent(website.url)}&category=curated&action=${action}`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&url=${encodeURIComponent(website.url)}&action=${action}`, {
             method: 'POST'
         });
 
@@ -438,6 +438,13 @@ function showAddWebsiteForm() {
     // Clear any existing error messages
     hideModalError();
 
+    // Initialize tags input
+    initTagsInput();
+    
+    // Clear any existing tags
+    selectedTags = [];
+    renderTags();
+
     // Add custom validation listeners
     addCustomValidation();
 
@@ -475,7 +482,13 @@ function handleInvalidInput(event) {
             errorMessage = 'Please enter a link name';
             break;
         case 'url':
-            errorMessage = 'Please enter a valid URL (e.g., https://example.com)';
+            // Check what specific validation error occurred
+            if (input.validity.valueMissing) {
+                errorMessage = 'Please enter a URL';
+            } else {
+                // For URL pattern validation, provide a clearer message
+                errorMessage = 'Please enter a valid URL (e.g., example.com or https://example.com)';
+            }
             break;
         case 'description':
             errorMessage = 'Please enter a description for the link';
@@ -514,6 +527,10 @@ function hideAddWebsiteForm() {
     // Reset form
     document.getElementById('add-website-form').reset();
 
+    // Reset tags
+    selectedTags = [];
+    renderTags();
+
     // Clear any error messages
     hideModalError();
 }
@@ -536,6 +553,16 @@ function hideModalError() {
     if (errorDiv) {
         errorDiv.style.display = 'none';
     }
+}
+
+function normalizeUrl(url) {
+    if (!url) return url;
+    
+    // If it doesn't start with http:// or https://, add https://
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        return 'https://' + url;
+    }
+    return url;
 }
 
 async function submitWebsite(event) {
@@ -569,9 +596,9 @@ async function submitWebsite(event) {
         const formData = new FormData(event.target);
         const websiteData = {
             name: formData.get('name'),
-            url: formData.get('url'),
+            url: normalizeUrl(formData.get('url')),
             description: formData.get('description'),
-            category: formData.get('category'),
+            tags: selectedTags.length > 0 ? selectedTags : ['user-submitted'],
             views: 0,
             likesDesktop: 0,
             dislikesDesktop: 0
@@ -591,6 +618,10 @@ async function submitWebsite(event) {
             // Success
             showSuccessMessage('Website added successfully! 🎉');
             hideAddWebsiteForm();
+
+            // Reset tags
+            selectedTags = [];
+            renderTags();
 
             // Reload websites to include the new one
             if (CONFIG.USE_API) {
@@ -701,3 +732,54 @@ document.getElementById('settings-toggle').addEventListener('click', () => {
         btn.textContent = '⚙️';
     }
 });
+
+// Tags management
+let selectedTags = [];
+
+function initTagsInput() {
+    const tagsInput = document.getElementById('website-tags');
+    const tagsDisplay = document.getElementById('tags-display');
+
+    tagsInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ',') {
+            e.preventDefault();
+            addTag(this.value.trim());
+            this.value = '';
+        }
+    });
+
+    tagsInput.addEventListener('blur', function() {
+        if (this.value.trim()) {
+            addTag(this.value.trim());
+            this.value = '';
+        }
+    });
+}
+
+function addTag(tagText) {
+    if (!tagText) return;
+    
+    // Clean the tag
+    const cleanTag = tagText.replace(/,/g, '').trim().toLowerCase();
+    if (!cleanTag || selectedTags.includes(cleanTag)) return;
+    
+    selectedTags.push(cleanTag);
+    renderTags();
+}
+
+function removeTag(tagToRemove) {
+    selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
+    renderTags();
+}
+
+function renderTags() {
+    const tagsDisplay = document.getElementById('tags-display');
+    if (tagsDisplay) {
+        tagsDisplay.innerHTML = selectedTags.map(tag => `
+            <span class="tag">
+                ${tag}
+                <button type="button" onclick="removeTag('${tag}')" class="tag-remove">×</button>
+            </span>
+        `).join('');
+    }
+}

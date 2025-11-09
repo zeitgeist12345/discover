@@ -125,7 +125,7 @@ app.get('/getWebsitesMobile', async (req, res) => {
 
 app.post('/incrementView', voteLimiter, async (req, res) => {
   try {
-    const { id, url, category, action } = req.query;
+    const { id, url, action } = req.query;
 
     if (!id && !url) {
       return res.status(400).json({ error: 'ID or URL parameter is required' });
@@ -187,7 +187,7 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
 
 app.post('/removeLink', voteLimiter, async (req, res) => {
   try {
-    const { id, url, category, action } = req.query;
+    const { id, url, action } = req.query;
 
     if (!id && !url) {
       return res.status(400).json({ error: 'ID or URL parameter is required' });
@@ -241,7 +241,7 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
 // Add new website
 app.post('/addwebsite', async (req, res) => {
   try {
-    const { name, url, description, category, views, likes, dislikes, likesDesktop, dislikesDesktop } = req.body;
+    const { name, url, description, tags, views, likes, dislikes, likesDesktop, dislikesDesktop } = req.body;
 
     if (!name || !url || !description) {
       return res.status(400).json({ error: 'Name, URL, and description are required' });
@@ -262,8 +262,8 @@ app.post('/addwebsite', async (req, res) => {
 
     // Insert new website
     const [result] = await connection.execute(
-      'INSERT INTO websites (name, url, description, category, views, likes, dislikes, likesDesktop, dislikesDesktop) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [name, url, description, category || 'user-submitted', views || 0, likes || 0, dislikes || 0, likesDesktop || 0, dislikesDesktop || 0]
+      'INSERT INTO websites (name, url, description, tags, views, likes, dislikes, likesDesktop, dislikesDesktop) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [name, url, description, tags, views || 0, likes || 0, dislikes || 0, likesDesktop || 0, dislikesDesktop || 0]
     );
 
     await connection.end();
@@ -274,7 +274,7 @@ app.post('/addwebsite', async (req, res) => {
       name,
       url,
       description,
-      category: category || 'user-submitted'
+      tags
     });
   } catch (error) {
     console.error('Add website error:', error);

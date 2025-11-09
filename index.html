@@ -92,7 +92,7 @@
                 </div>
                 <div class="form-group">
                     <label for="website-url">Link URL *</label>
-                    <input type="url" id="website-url" name="url" required placeholder="https://www.github.com">
+                    <input type="text" id="website-url" name="url" required placeholder="https://www.github.com">
                 </div>
                 <div class="form-group">
                     <label for="website-description">Description *</label>
@@ -100,14 +100,12 @@
                         placeholder="Brief description of the link..." rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="website-category">Category</label>
-                    <select id="website-category" name="category">
-                        <option value="curated">Curated</option>
-                        <option value="user-submitted">User Submitted</option>
-                        <option value="educational">Educational</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="tools">Tools</option>
-                    </select>
+                    <label for="website-tags">Tags</label>
+                    <div class="tags-input-container">
+                        <input type="text" id="website-tags" placeholder="Type a tag and press Enter or comma">
+                        <div id="tags-display" class="tags-display"></div>
+                    </div>
+                    <small class="form-text">Add multiple tags separated by commas or pressing Enter</small>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" onclick="hideAddWebsiteForm()">Cancel</button>
