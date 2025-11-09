@@ -4,11 +4,15 @@ import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.discover.ui.theme.*
@@ -78,7 +82,7 @@ fun AddWebsiteDialog(
                     value = tagInput,
                     onValueChange = {
                         tagInput = it
-                        // Automatically split tags when user types comma or space
+                        // Auto-split tags on comma or space
                         if (tagInput.endsWith(",") || tagInput.endsWith(" ")) {
                             val clean = tagInput.trim().trimEnd(',', ' ')
                             if (clean.isNotEmpty() && clean !in tags) {
@@ -87,19 +91,39 @@ fun AddWebsiteDialog(
                             tagInput = ""
                         }
                     },
-                    label = { Text("Tags (comma or space separated)") },
+                    label = { Text("Tags (comma, space or Enter)") },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
+                    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            val clean = tagInput.trim()
+                            if (clean.isNotEmpty() && clean !in tags) {
+                                tags = tags + clean
+                            }
+                            tagInput = ""
+                        }
+                    ),
                     colors = textFieldColors()
                 )
 
-                // Tag chips
+                // Tag chips with remove option
                 if (tags.isNotEmpty()) {
-                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    LazyRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.padding(top = 4.dp)
+                    ) {
                         items(tags) { tag ->
                             AssistChip(
                                 onClick = { tags = tags - tag },
                                 label = { Text(tag) },
+                                trailingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Close,
+                                        contentDescription = "Remove tag",
+                                        tint = TextSecondary
+                                    )
+                                },
                                 colors = AssistChipDefaults.assistChipColors(
                                     containerColor = SurfaceDark,
                                     labelColor = TextPrimary
