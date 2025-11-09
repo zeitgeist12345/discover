@@ -35,6 +35,7 @@ function initializeApp() {
 async function loadWebsitesFromAPI(tags = []) {
     try {
         isLoading = true;
+
         const query = tags.length > 0 ? `?tags=${encodeURIComponent(tags.join(','))}` : '';
         const response = await fetch(`${CONFIG.API_BASE_URL}/getWebsitesDesktop${query}`);
 
@@ -46,13 +47,20 @@ async function loadWebsitesFromAPI(tags = []) {
         websites.sort((a, b) => a.name.localeCompare(b.name));
 
         console.log(`Loaded ${websites.length} websites from API (tags: ${tags.join(', ')})`);
+
         enableControls();
         document.getElementById('api-status-indicator').classList.add('online');
+
+        // ✅ Return the count so it can be shown in the success message
+        return websites.length;
     } catch (error) {
         console.error('Failed to load websites from API:', error);
+
         if (CONFIG.ENABLE_FALLBACK) loadStaticWebsites();
         else showErrorMessage(CONFIG.ERROR_MESSAGE);
+
         document.getElementById('api-status-indicator').classList.add('offline');
+        return 0;
     } finally {
         isLoading = false;
     }
@@ -773,6 +781,7 @@ function renderTags() {
 async function applyTagFilter() {
     const tagInput = document.getElementById('filter-tags');
     const successBox = document.getElementById('filter-success');
+
     if (!tagInput) return;
 
     const tags = tagInput.value
@@ -784,21 +793,29 @@ async function applyTagFilter() {
 
     console.log('Applying tag filter:', tags);
 
-    await loadWebsitesFromAPI(tags);
+    // ✅ Wait for API and get website count
+    const websiteCount = await loadWebsitesFromAPI(tags);
 
-    // ✅ Show success message
-    if (successBox) {
-        if (tags.length > 0) {
-            successBox.textContent = `✅ Filter applied: ${tags.join(', ')}`;
-        } else {
-            successBox.textContent = `✅ Showing all websites (no filters applied)`;
-        }
-        successBox.style.display = 'inline-block';
-
-        // Auto-hide after 3 seconds
-        setTimeout(() => {
-            successBox.style.display = 'none';
-        }, 3000);
+    // ✅ Create success message box dynamically if missing
+    let messageBox = successBox;
+    if (!messageBox) {
+        messageBox = document.createElement('div');
+        messageBox.id = 'filter-success';
+        messageBox.className = 'success-box';
+        document.querySelector('.settings-section').appendChild(messageBox);
     }
+
+    if (tags.length > 0) {
+        messageBox.textContent = `✅ Filter applied: ${tags.join(', ')} — ${websiteCount} website${websiteCount !== 1 ? 's' : ''} found`;
+    } else {
+        messageBox.textContent = `✅ Showing all ${websiteCount} website${websiteCount !== 1 ? 's' : ''}`;
+    }
+
+    messageBox.style.display = 'inline-block';
+
+    // Auto-hide after 3 seconds
+    setTimeout(() => {
+        messageBox.style.display = 'none';
+    }, 3000);
 }
 
