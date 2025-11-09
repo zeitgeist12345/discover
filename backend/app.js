@@ -70,32 +70,54 @@ function needToIgnore(likesMobile, dislikesMobile) {
 
   return undesirable_score > 0.8;
 }
+
 // Get all websites
 app.get('/getWebsites', async (req, res) => {
   try {
-    const tagsFilter = req.query.tags ? req.query.tags.split(',').map(t => t.trim()) : [];
+    const tagsParam = req.query.tags;
+    const tagsFilter = typeof tagsParam === 'string'
+      ? tagsParam.split(',').map(t => t.trim()).filter(Boolean)
+      : [];
+
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
 
     let filtered = rows;
+
     if (tagsFilter.length > 0) {
-      filtered = rows.filter(w =>
-        tagsFilter.every(tag => JSON.parse(w.tags || '[]').includes(tag))
-      );
+      filtered = rows.filter(w => {
+        let tags = [];
+
+        // Safely parse tags field
+        try {
+          tags = Array.isArray(w.tags)
+            ? w.tags
+            : JSON.parse(w.tags || '[]');
+        } catch {
+          tags = [];
+        }
+
+        // Check if website includes *any* of the tags (OR logic)
+        return tags.some(tag => tagsFilter.includes(tag));
+      });
     }
 
     res.json(filtered);
   } catch (error) {
     console.error('Get websites error:', error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 // Get all websites (for desktop)
 app.get('/getWebsitesDesktop', async (req, res) => {
   try {
-    const tagsFilter = req.query.tags ? req.query.tags.split(',').map(t => t.trim()) : [];
+    const tagsParam = req.query.tags;
+    const tagsFilter = typeof tagsParam === 'string'
+      ? tagsParam.split(',').map(t => t.trim()).filter(Boolean)
+      : [];
+
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
@@ -105,22 +127,38 @@ app.get('/getWebsitesDesktop', async (req, res) => {
     );
 
     if (tagsFilter.length > 0) {
-      filtered = filtered.filter(w =>
-        tagsFilter.every(tag => JSON.parse(w.tags || '[]').includes(tag))
-      );
+      filtered = rows.filter(w => {
+        let tags = [];
+
+        // Safely parse tags field
+        try {
+          tags = Array.isArray(w.tags)
+            ? w.tags
+            : JSON.parse(w.tags || '[]');
+        } catch {
+          tags = [];
+        }
+
+        // Check if website includes *any* of the tags (OR logic)
+        return tags.some(tag => tagsFilter.includes(tag));
+      });
     }
 
     res.json(filtered);
   } catch (error) {
     console.error('Get websites error:', error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 // Get mobile websites
 app.get('/getWebsitesMobile', async (req, res) => {
   try {
-    const tagsFilter = req.query.tags ? req.query.tags.split(',').map(t => t.trim()) : [];
+    const tagsParam = req.query.tags;
+    const tagsFilter = typeof tagsParam === 'string'
+      ? tagsParam.split(',').map(t => t.trim()).filter(Boolean)
+      : [];
+
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
@@ -130,17 +168,30 @@ app.get('/getWebsitesMobile', async (req, res) => {
     );
 
     if (tagsFilter.length > 0) {
-      filtered = filtered.filter(w =>
-        tagsFilter.every(tag => JSON.parse(w.tags || '[]').includes(tag))
-      );
+      filtered = rows.filter(w => {
+        let tags = [];
+
+        // Safely parse tags field
+        try {
+          tags = Array.isArray(w.tags)
+            ? w.tags
+            : JSON.parse(w.tags || '[]');
+        } catch {
+          tags = [];
+        }
+
+        // Check if website includes *any* of the tags (OR logic)
+        return tags.some(tag => tagsFilter.includes(tag));
+      });
     }
 
     res.json(filtered);
   } catch (error) {
     console.error('Get websites error:', error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 app.post('/incrementView', voteLimiter, async (req, res) => {
   try {

@@ -6,6 +6,7 @@ let visitedWebsites = [];
 let isLoading = false;
 let currentWebsiteId = null;
 const userActions = new Map();
+let selectedFilterTags = [];
 
 const UI_ANIMATION_DELAY = 10;
 const FOCUS_DELAY = 100;
@@ -31,49 +32,29 @@ function initializeApp() {
     }
 }
 
-async function loadWebsitesFromAPI() {
+async function loadWebsitesFromAPI(tags = []) {
     try {
         isLoading = true;
-
-        // Create a timeout promise
-        const timeoutPromise = new Promise((_, reject) => {
-            setTimeout(() => reject(new Error('Request timeout')), CONFIG.API_TIMEOUT);
-        });
-
-        // Create the fetch promise
-        const fetchPromise = fetch(`${CONFIG.API_BASE_URL}/getWebsitesDesktop`);
-
-        // Race between fetch and timeout
-        const response = await Promise.race([fetchPromise, timeoutPromise]);
+        const query = tags.length > 0 ? `?tags=${encodeURIComponent(tags.join(','))}` : '';
+        const response = await fetch(`${CONFIG.API_BASE_URL}/getWebsitesDesktop${query}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         websites = await response.json();
-
-        // Sort websites by name for consistency
         websites.sort((a, b) => a.name.localeCompare(b.name));
 
-        console.log(`Loaded ${websites.length} websites from API`);
-        console.log('Websites list:', websites.map(w => `${w.name} (${w.url})`));
-
-        isLoading = false;
+        console.log(`Loaded ${websites.length} websites from API (tags: ${tags.join(', ')})`);
         enableControls();
-
         document.getElementById('api-status-indicator').classList.add('online');
     } catch (error) {
         console.error('Failed to load websites from API:', error);
-        isLoading = false;
-
-        if (CONFIG.ENABLE_FALLBACK) {
-            console.log('Attempting fallback to static websites...');
-            loadStaticWebsites();
-        } else {
-            showErrorMessage(CONFIG.ERROR_MESSAGE);
-        }
-
+        if (CONFIG.ENABLE_FALLBACK) loadStaticWebsites();
+        else showErrorMessage(CONFIG.ERROR_MESSAGE);
         document.getElementById('api-status-indicator').classList.add('offline');
+    } finally {
+        isLoading = false;
     }
 }
 
@@ -388,8 +369,13 @@ function loadWebsite(index, addToHistory = true) {
     }
 
     // Open the website in a new window/tab
-    console.log('Opening website:', website.url);
-    window.open(website.url, '_blank');
+    let urlToOpen = website.url;
+    if (!/^https?:\/\//i.test(urlToOpen)) {
+        urlToOpen = 'https://' + urlToOpen;
+    }
+
+    console.log('Opening website:', urlToOpen);
+    window.open(urlToOpen, '_blank');
 }
 
 function updateCurrentSiteInfo(website) {
@@ -440,7 +426,7 @@ function showAddWebsiteForm() {
 
     // Initialize tags input
     initTagsInput();
-    
+
     // Clear any existing tags
     selectedTags = [];
     renderTags();
@@ -557,7 +543,7 @@ function hideModalError() {
 
 function normalizeUrl(url) {
     if (!url) return url;
-    
+
     // If it doesn't start with http:// or https://, add https://
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
         return 'https://' + url;
@@ -740,7 +726,7 @@ function initTagsInput() {
     const tagsInput = document.getElementById('website-tags');
     const tagsDisplay = document.getElementById('tags-display');
 
-    tagsInput.addEventListener('keydown', function(e) {
+    tagsInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ',') {
             e.preventDefault();
             addTag(this.value.trim());
@@ -748,7 +734,7 @@ function initTagsInput() {
         }
     });
 
-    tagsInput.addEventListener('blur', function() {
+    tagsInput.addEventListener('blur', function () {
         if (this.value.trim()) {
             addTag(this.value.trim());
             this.value = '';
@@ -758,11 +744,11 @@ function initTagsInput() {
 
 function addTag(tagText) {
     if (!tagText) return;
-    
+
     // Clean the tag
     const cleanTag = tagText.replace(/,/g, '').trim().toLowerCase();
     if (!cleanTag || selectedTags.includes(cleanTag)) return;
-    
+
     selectedTags.push(cleanTag);
     renderTags();
 }
@@ -783,3 +769,36 @@ function renderTags() {
         `).join('');
     }
 }
+
+async function applyTagFilter() {
+    const tagInput = document.getElementById('filter-tags');
+    const successBox = document.getElementById('filter-success');
+    if (!tagInput) return;
+
+    const tags = tagInput.value
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => t.length > 0);
+
+    selectedFilterTags = tags;
+
+    console.log('Applying tag filter:', tags);
+
+    await loadWebsitesFromAPI(tags);
+
+    // ✅ Show success message
+    if (successBox) {
+        if (tags.length > 0) {
+            successBox.textContent = `✅ Filter applied: ${tags.join(', ')}`;
+        } else {
+            successBox.textContent = `✅ Showing all websites (no filters applied)`;
+        }
+        successBox.style.display = 'inline-block';
+
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+            successBox.style.display = 'none';
+        }, 3000);
+    }
+}
+

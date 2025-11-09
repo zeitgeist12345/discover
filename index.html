@@ -17,7 +17,12 @@
     <!-- Settings Screen -->
     <div id="settings-screen" class="settings-screen" style="display: none;">
         <h2>⚙️ Settings</h2>
-        <p>Configure your Discover experience here.</p>
+        <div class="settings-section">
+            <label for="filter-tags">Filter by Tags (comma separated):</label>
+            <input type="text" id="filter-tags" placeholder="e.g. ai, tools, productivity">
+            <button id="apply-filter-btn" class="btn" onclick="applyTagFilter()">Apply Filter</button>
+        </div>
+        <div id="filter-success" class="success-message" style="display: none;"></div>
     </div>
 
 

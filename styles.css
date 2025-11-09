@@ -653,3 +653,20 @@ body {
     justify-content: center;
     z-index: 999;
 }
+
+.success-message {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #1e4620;
+  color: #c7f5d9;
+  border: 1px solid #28a745;
+  border-radius: 8px;
+  font-size: 14px;
+  display: inline-block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
