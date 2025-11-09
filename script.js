@@ -685,4 +685,19 @@ document.querySelector('.header h1').addEventListener('click', function () {
             clickCount = 0;
         }, RESET_DELAY);
     }
-}); 
+});
+
+
+// Settings screen toggle
+document.getElementById('settings-toggle').addEventListener('click', () => {
+    const settingsScreen = document.getElementById('settings-screen');
+    const btn = document.getElementById('settings-toggle');
+
+    if (settingsScreen.style.display === 'none') {
+        settingsScreen.style.display = 'flex';
+        btn.textContent = '⬅️';
+    } else {
+        settingsScreen.style.display = 'none';
+        btn.textContent = '⚙️';
+    }
+});

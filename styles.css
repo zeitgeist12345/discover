@@ -626,3 +626,30 @@ body {
     background-color: #ef4444;
     /* Red when API failed */
 }
+
+/* Settings button and screen */
+.settings-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.settings-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0f0f0f;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
