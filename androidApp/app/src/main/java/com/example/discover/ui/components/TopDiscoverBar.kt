@@ -68,7 +68,7 @@ fun TopDiscoverBar(
                 IconButton(onClick = onDislikeClick) {
                     Icon(
                         Icons.Default.KeyboardArrowDown,
-                        "Dislike",
+                        "Dislikes",
                         tint = if (isDisliked) ErrorColor else TextSecondary,
                         modifier = Modifier.size(Spacing.large)
                     )
@@ -76,7 +76,7 @@ fun TopDiscoverBar(
                 IconButton(onClick = onLikeClick) {
                     Icon(
                         Icons.Default.KeyboardArrowUp,
-                        "Like",
+                        "Likes",
                         tint = if (isLiked) SuccessColor else TextSecondary,
                         modifier = Modifier.size(Spacing.large)
                     )

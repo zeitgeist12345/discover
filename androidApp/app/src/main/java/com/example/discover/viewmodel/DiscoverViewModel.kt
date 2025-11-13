@@ -110,7 +110,7 @@ class DiscoverViewModel(
 
                     if (updatedCurrentWebsiteInstance != null) {
                         // The current website still exists in the new list, update our local instance
-                        // to reflect any changes from the server (e.g., updated like count).
+                        // to reflect any changes from the server (e.g., updated likes count).
                         _currentWebsite.value = updatedCurrentWebsiteInstance
                     } else if (originalCurrentWebsite != null) {
                         // The original current website is NOT in the new list.
@@ -254,16 +254,16 @@ class DiscoverViewModel(
                     current?.copy(likesMobile = current.likesMobile + 1, dislikesMobile = current.dislikesMobile - 1)
                 }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "likes")
                 }
-                Log.d(TAG, "Website changed from dislike to like: ${websiteToUpdate.name}")
+                Log.d(TAG, "Website changed from dislikes to likes: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.NONE -> {
                 _currentUserInteractionState.value = UserInteractionState.LIKED
                 _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile + 1) }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "like")
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "likes")
                 }
                 Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
             }
@@ -287,16 +287,16 @@ class DiscoverViewModel(
                     current?.copy(dislikesMobile = current.dislikesMobile + 1, likesMobile = current.likesMobile - 1)
                 }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislikes")
                 }
-                Log.d(TAG, "Website changed from like to dislike: ${websiteToUpdate.name}")
+                Log.d(TAG, "Website changed from likes to dislikes: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.NONE -> {
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
                 _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile + 1) }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislike")
+                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislikes")
                 }
                 Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
             }

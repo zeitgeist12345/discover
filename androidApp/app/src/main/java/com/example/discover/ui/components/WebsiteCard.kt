@@ -83,7 +83,7 @@ fun WebsiteCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Dislike button
+                // Dislikes button
                 Button(
                     onClick = onDislikeClick, colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Transparent, contentColor = TextPrimary
@@ -110,7 +110,7 @@ fun WebsiteCard(
                     )
                 }
 
-                // Like button
+                // Likes button
                 Button(
                     onClick = onLikeClick, colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Transparent, contentColor = TextPrimary

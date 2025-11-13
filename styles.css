@@ -248,23 +248,23 @@ body {
     opacity: 0.6;
 }
 
-.like-btn:hover {
+.likes-btn:hover {
     background: #059669;
     border-color: #10b981;
 }
 
-.dislike-btn:hover {
+.dislikes-btn:hover {
     background: #dc2626;
     border-color: #ef4444;
 }
 
-.like-btn.liked {
+.likes-btn.liked {
     background: #059669;
     border-color: #10b981;
     color: #ffffff;
 }
 
-.dislike-btn.disliked {
+.dislikes-btn.disliked {
     background: #dc2626;
     border-color: #ef4444;
     color: #ffffff;

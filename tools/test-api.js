@@ -23,21 +23,21 @@ async function testAPI() {
             const viewResult = await viewResponse.json();
             console.log(`✅ View updated: ${viewResult.views} views`);
             
-            // Test 3: Increment like
-            console.log('\n3️⃣ Testing like increment...');
-            const likeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&action=like`, {
+            // Test 3: Increment likes
+            console.log('\n3️⃣ Testing likes increment...');
+            const likeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&action=likes`, {
                 method: 'POST'
             });
             const likeResult = await likeResponse.json();
-            console.log(`✅ Like updated: ${likeResult.likesMobile} likesMobile`);
+            console.log(`✅ Likes updated: ${likeResult.likesMobile} likesMobile`);
             
-            // Test 4: Increment dislike
-            console.log('\n4️⃣ Testing dislike increment...');
-            const dislikeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&action=dislike`, {
+            // Test 4: Increment dislikes
+            console.log('\n4️⃣ Testing dislikes increment...');
+            const dislikeResponse = await fetch(`${API_BASE_URL}/incrementView?id=${testWebsite.id}&action=dislikes`, {
                 method: 'POST'
             });
             const dislikeResult = await dislikeResponse.json();
-            console.log(`✅ Dislike updated: ${dislikeResult.dislikesMobile} dislikesMobile`);
+            console.log(`✅ Dislikes updated: ${dislikeResult.dislikesMobile} dislikesMobile`);
             
             // Test 5: Final stats
             console.log('\n5️⃣ Final stats:');

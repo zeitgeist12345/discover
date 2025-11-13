@@ -195,10 +195,10 @@ app.get('/getWebsitesMobile', async (req, res) => {
 
 app.post('/incrementView', voteLimiter, async (req, res) => {
   try {
-    const { id, url, action } = req.query;
+    const { url, action } = req.query;
 
-    if (!id && !url) {
-      return res.status(400).json({ error: 'ID or URL parameter is required' });
+    if (!url) {
+      return res.status(400).json({ error: 'URL parameter is required' });
     }
 
     const connection = await mysql.createConnection(dbConfig);
@@ -211,28 +211,23 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
       case 'view':
         fieldToUpdate = 'views = views + 1';
         break;
-      case 'like':
+      case 'likes':
         fieldToUpdate = 'likesMobile = likesMobile + 1';
         break;
-      case 'dislike':
+      case 'dislikes':
         fieldToUpdate = 'dislikesMobile = dislikesMobile + 1';
-      case 'likeDesktop':
+      case 'likesDesktop':
         fieldToUpdate = 'likesDesktop = likesDesktop + 1';
         break;
-      case 'dislikeDesktop':
+      case 'dislikesDesktop':
         fieldToUpdate = 'dislikesDesktop = dislikesDesktop + 1';
         break;
       default:
         return res.status(400).json({ success: false, error: 'Invalid action type' });
     }
 
-    if (id) {
-      query = `UPDATE websites SET ${fieldToUpdate} WHERE id = ?`;
-      params = [id];
-    } else {
-      query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
-      params = [url];
-    }
+    query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
+    params = [url];
 
     const [result] = await connection.execute(query, params);
 
@@ -270,10 +265,10 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
     // Determine which field to update based on action
     let fieldToUpdate;
     switch (action) {
-      case 'dislike':
+      case 'dislikesMobile':
         fieldToUpdate = 'dislikesMobile = dislikesMobile + 1000';
         break;
-      case 'dislikeDesktop':
+      case 'dislikesDesktop':
         fieldToUpdate = 'dislikesDesktop = dislikesDesktop + 1000';
         break;
       default:

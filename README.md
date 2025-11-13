@@ -1,6 +1,6 @@
 # 🌐 Discover - Random Links Discovery App  
 A modern web application that helps you discover amazing links.  
-Features include random link loading, view tracking, like/dislike functionality, and the ability to add new websites.  
+Features include random link loading, view tracking, likes/dislikes functionality, and the ability to add new websites.  
 We host the backend locally using reproducible containers.
 
 ![App interface](image.png)
