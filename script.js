@@ -192,7 +192,7 @@ async function updateWebsiteStats(websiteId, action) {
 
     // Sync with server in the background
     try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?id=${websiteId}&url=${encodeURIComponent(website.url)}&action=${action}`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?url=${encodeURIComponent(website.url)}&action=${action}`, {
             method: 'POST'
         });
 

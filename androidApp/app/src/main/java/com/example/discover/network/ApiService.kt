@@ -87,14 +87,14 @@ class ApiService {
         }
     }
 
-    suspend fun incrementView(websiteId: String, websiteUrl: String?, action: String): Boolean =
+    suspend fun incrementView(websiteUrl: String?, action: String): Boolean =
         withContext(Dispatchers.IO) {
             Log.d(
                 TAG,
-                "incrementView | Called with id: '$websiteId', url: '$websiteUrl', action: '$action'"
+                "incrementView | Called with url: '$websiteUrl', action: '$action'"
             )
             if (websiteUrl == null) {
-                Log.e(TAG, "incrementView | Failed: websiteUrl is null for id $websiteId")
+                Log.e(TAG, "incrementView | Failed: websiteUrl is null")
                 // Consider if you need a full stack trace here for a simple null check
                 // Log.d("myapp", Log.getStackTraceString(java.lang.Exception("Website URL is null trace")))
                 return@withContext false
@@ -107,7 +107,7 @@ class ApiService {
                 return@withContext false
             }
 
-            val fullUrl = "$baseUrl/incrementView?id=$websiteId&url=$encodedUrl&action=$action"
+            val fullUrl = "$baseUrl/incrementView?url=$encodedUrl&action=$action"
             Log.d(TAG, "incrementView | Attempting POST to: $fullUrl")
 
             val request = Request.Builder().url(fullUrl)

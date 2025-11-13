@@ -231,7 +231,7 @@ class DiscoverViewModel(
         visitedWebsites.add(website.id)
         _currentWebsite.value = website
         viewModelScope.launch {
-            apiService.incrementView(website.id, website.url, "view")
+            apiService.incrementView(website.url, "view")
         }
         _currentWebViewUrl.value = website.url
         _showWebView.value = true
@@ -254,7 +254,7 @@ class DiscoverViewModel(
                     current?.copy(likesMobile = current.likesMobile + 1, dislikesMobile = current.dislikesMobile - 1)
                 }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "likes")
+                    apiService.incrementView(websiteToUpdate.url, "likes")
                 }
                 Log.d(TAG, "Website changed from dislikes to likes: ${websiteToUpdate.name}")
             }
@@ -263,7 +263,7 @@ class DiscoverViewModel(
                 _currentUserInteractionState.value = UserInteractionState.LIKED
                 _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile + 1) }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "likes")
+                    apiService.incrementView(websiteToUpdate.url, "likes")
                 }
                 Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
             }
@@ -287,7 +287,7 @@ class DiscoverViewModel(
                     current?.copy(dislikesMobile = current.dislikesMobile + 1, likesMobile = current.likesMobile - 1)
                 }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislikes")
+                    apiService.incrementView(websiteToUpdate.url, "dislikes")
                 }
                 Log.d(TAG, "Website changed from likes to dislikes: ${websiteToUpdate.name}")
             }
@@ -296,7 +296,7 @@ class DiscoverViewModel(
                 _currentUserInteractionState.value = UserInteractionState.DISLIKED
                 _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile + 1) }
                 viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.id, websiteToUpdate.url, "dislikes")
+                    apiService.incrementView(websiteToUpdate.url, "dislikes")
                 }
                 Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
             }
