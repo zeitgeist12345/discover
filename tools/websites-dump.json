@@ -8,7 +8,7 @@
       "curated",
       "sample"
     ],
-    "views": 54,
+    "views": 58,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -24,7 +24,7 @@
       "curated",
       "sample"
     ],
-    "views": 53,
+    "views": 57,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -40,7 +40,7 @@
       "curated",
       "sample"
     ],
-    "views": 61,
+    "views": 67,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -56,12 +56,29 @@
       "curated",
       "sample"
     ],
-    "views": 41,
+    "views": 43,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 49,
+    "name": "BYD",
+    "url": "https://www.byd.com/",
+    "description": "Electric car company.",
+    "tags": [
+      "car",
+      "electric",
+      "company"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:38:20.000Z"
   },
   {
     "id": 42,
@@ -74,12 +91,30 @@
       "wow",
       "beautiful"
     ],
-    "views": 0,
+    "views": 12,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T15:29:10.000Z"
+  },
+  {
+    "id": 44,
+    "name": "Codeforces",
+    "url": "https://codeforces.com/problemset",
+    "description": "The top competitive programming platform.",
+    "tags": [
+      "code",
+      "learning",
+      "fun",
+      "poetic"
+    ],
+    "views": 6,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-10T04:57:32.000Z"
   },
   {
     "id": 23,
@@ -90,9 +125,25 @@
       "curated",
       "sample"
     ],
-    "views": 51,
+    "views": 56,
     "likesMobile": 2,
     "dislikesMobile": 0,
+    "likesDesktop": 4,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 31,
+    "name": "DeepSeek",
+    "url": "https://www.deepseek.com/en",
+    "description": "AI research and development company",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 62,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
@@ -106,23 +157,7 @@
       "curated",
       "sample"
     ],
-    "views": 59,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 31,
-    "name": "DeepSeek",
-    "url": "https://www.deepseek.com/en",
-    "description": "AI research and development company",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 59,
+    "views": 60,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -138,7 +173,7 @@
       "curated",
       "sample"
     ],
-    "views": 56,
+    "views": 62,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -154,10 +189,10 @@
       "beautiful",
       "gorgeous"
     ],
-    "views": 0,
+    "views": 7,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 3,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:35:08.000Z"
   },
@@ -167,10 +202,10 @@
     "url": "www.google.com",
     "description": "Search engine.",
     "tags": [],
-    "views": 0,
+    "views": 5,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 3,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:50:13.000Z"
   },
@@ -183,8 +218,8 @@
       "curated",
       "sample"
     ],
-    "views": 120,
-    "likesMobile": 35,
+    "views": 129,
+    "likesMobile": 36,
     "dislikesMobile": 3,
     "likesDesktop": 18,
     "dislikesDesktop": 0,
@@ -201,8 +236,8 @@
       "pretty",
       "poetic"
     ],
-    "views": 0,
-    "likesMobile": 0,
+    "views": 12,
+    "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
     "dislikesDesktop": 0,
@@ -217,7 +252,7 @@
       "curated",
       "sample"
     ],
-    "views": 62,
+    "views": 66,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -233,12 +268,30 @@
       "curated",
       "sample"
     ],
-    "views": 34,
+    "views": 39,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 45,
+    "name": "Interview Ready",
+    "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
+    "description": "Best backend engineering course.",
+    "tags": [
+      "learning",
+      "code",
+      "backend",
+      "course"
+    ],
+    "views": 10,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 3,
+    "dislikesDesktop": 2,
+    "created_at": "2025-11-10T04:59:07.000Z"
   },
   {
     "id": 41,
@@ -249,7 +302,7 @@
       "wesome",
       "wesome,gorgeous"
     ],
-    "views": 0,
+    "views": 6,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -265,7 +318,7 @@
       "curated",
       "sample"
     ],
-    "views": 33,
+    "views": 39,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -281,12 +334,46 @@
       "curated",
       "sample"
     ],
-    "views": 48,
+    "views": 55,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 50,
+    "name": "MediaTek",
+    "url": "https://www.mediatek.com/",
+    "description": "Silicon chips company.",
+    "tags": [
+      "silicon",
+      "chips",
+      "company"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:42:06.000Z"
+  },
+  {
+    "id": 51,
+    "name": "MSI",
+    "url": "https://msi.com",
+    "description": "Computer motherboard company.",
+    "tags": [
+      "computer",
+      "motherboard",
+      "company"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:44:55.000Z"
   },
   {
     "id": 22,
@@ -297,12 +384,28 @@
       "curated",
       "sample"
     ],
-    "views": 50,
+    "views": 55,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 52,
+    "name": "Nissan",
+    "url": "https://www.nissan-global.com/EN/",
+    "description": "Car company",
+    "tags": [
+      "car",
+      "company"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:48:44.000Z"
   },
   {
     "id": 11,
@@ -329,10 +432,10 @@
       "curated",
       "sample"
     ],
-    "views": 48,
-    "likesMobile": 2,
+    "views": 59,
+    "likesMobile": 4,
     "dislikesMobile": 0,
-    "likesDesktop": 1,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -345,7 +448,7 @@
       "curated",
       "sample"
     ],
-    "views": 37,
+    "views": 39,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -361,10 +464,10 @@
       "curated",
       "sample"
     ],
-    "views": 49,
+    "views": 56,
     "likesMobile": 2,
     "dislikesMobile": 0,
-    "likesDesktop": 1,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -377,12 +480,29 @@
       "curated",
       "sample"
     ],
-    "views": 96,
+    "views": 103,
     "likesMobile": 28,
     "dislikesMobile": 2,
     "likesDesktop": 15,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 48,
+    "name": "Project Euler",
+    "url": "https://projecteuler.net/",
+    "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
+    "tags": [
+      "math",
+      "cs",
+      "coding"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:27:12.000Z"
   },
   {
     "id": 24,
@@ -393,7 +513,7 @@
       "curated",
       "sample"
     ],
-    "views": 52,
+    "views": 54,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -409,12 +529,47 @@
       "curated",
       "sample"
     ],
-    "views": 42,
+    "views": 43,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 46,
+    "name": "Rekhta famous shayaris",
+    "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
+    "description": "Ponder and it might help clear blockers in the mind.",
+    "tags": [
+      "shayaris",
+      "cool",
+      "poetic",
+      "beautiful"
+    ],
+    "views": 3,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-10T08:54:33.000Z"
+  },
+  {
+    "id": 47,
+    "name": "sci net.",
+    "url": "https://sci-net.xyz/",
+    "description": "Open scientific papers submitted by paper authors.",
+    "tags": [
+      "science",
+      "research",
+      "cool"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:19:34.000Z"
   },
   {
     "id": 6,
@@ -425,7 +580,7 @@
       "curated",
       "sample"
     ],
-    "views": 32,
+    "views": 36,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -441,7 +596,7 @@
       "curated",
       "sample"
     ],
-    "views": 57,
+    "views": 59,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -457,7 +612,7 @@
       "curated",
       "sample"
     ],
-    "views": 30,
+    "views": 31,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -473,11 +628,11 @@
       "curated",
       "sample"
     ],
-    "views": 62,
+    "views": 70,
     "likesMobile": 2,
     "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 1,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
   {
@@ -486,10 +641,10 @@
     "url": "sony.com",
     "description": "Tech giant.",
     "tags": [],
-    "views": 0,
+    "views": 7,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T15:02:45.000Z"
   },
@@ -502,7 +657,7 @@
       "curated",
       "sample"
     ],
-    "views": 46,
+    "views": 48,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -518,7 +673,7 @@
       "curated",
       "sample"
     ],
-    "views": 55,
+    "views": 60,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -534,7 +689,7 @@
       "curated",
       "sample"
     ],
-    "views": 40,
+    "views": 46,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -550,7 +705,7 @@
       "curated",
       "sample"
     ],
-    "views": 44,
+    "views": 49,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -566,10 +721,10 @@
       "curated",
       "sample"
     ],
-    "views": 35,
+    "views": 40,
     "likesMobile": 2,
     "dislikesMobile": 0,
-    "likesDesktop": 1,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -582,7 +737,7 @@
       "curated",
       "sample"
     ],
-    "views": 58,
+    "views": 63,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -595,11 +750,11 @@
     "url": "twitter.com",
     "description": "twitter",
     "tags": [],
-    "views": 0,
+    "views": 7,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 1,
     "created_at": "2025-11-09T15:08:46.000Z"
   },
   {
@@ -611,10 +766,10 @@
       "curated",
       "sample"
     ],
-    "views": 180,
-    "likesMobile": 52,
+    "views": 185,
+    "likesMobile": 53,
     "dislikesMobile": 4,
-    "likesDesktop": 25,
+    "likesDesktop": 26,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -627,10 +782,10 @@
       "curated",
       "sample"
     ],
-    "views": 43,
+    "views": 46,
     "likesMobile": 2,
     "dislikesMobile": 1000,
-    "likesDesktop": 1,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -643,10 +798,10 @@
       "curated",
       "sample"
     ],
-    "views": 45,
+    "views": 49,
     "likesMobile": 12,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
+    "dislikesMobile": 1000,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -656,10 +811,10 @@
     "url": "www.yahoo.com",
     "description": "Search engine.",
     "tags": [],
-    "views": 0,
+    "views": 6,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 3,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T15:00:25.000Z"
   },
@@ -672,11 +827,11 @@
       "curated",
       "sample"
     ],
-    "views": 31,
+    "views": 36,
     "likesMobile": 2,
     "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 1,
     "created_at": "2025-11-09T14:31:53.000Z"
   }
 ]

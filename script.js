@@ -642,24 +642,26 @@ async function submitWebsite(event) {
 }
 
 function showSuccessMessage(message) {
-    // Create success message element
     const successDiv = document.createElement('div');
     successDiv.className = 'success-message';
-    successDiv.innerHTML = `
-        <div class="website-box" style="border-color: #10b981; background: rgba(16, 185, 129, 0.1);">
-            <p style="color: #10b981; margin: 0;">${message}</p>
-        </div>
-    `;
 
-    // Insert after header
+    const boxDiv = document.createElement('div');
+    boxDiv.className = 'website-box success-box';
+
+    const messagePara = document.createElement('p');
+    messagePara.className = 'success-text';
+    messagePara.textContent = message;
+
+    boxDiv.appendChild(messagePara);
+    successDiv.appendChild(boxDiv);
+
     const header = document.querySelector('.header');
-    header.parentNode.insertBefore(successDiv, header.nextSibling);
+    if (header) {
+        header.after(successDiv);
+    }
 
-    // Remove after RESET_DELAY
     setTimeout(() => {
-        if (successDiv.parentNode) {
-            successDiv.parentNode.removeChild(successDiv);
-        }
+        successDiv.remove();
     }, RESET_DELAY);
 }
 
