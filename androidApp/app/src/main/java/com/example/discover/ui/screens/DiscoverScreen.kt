@@ -178,7 +178,7 @@ fun DiscoverScreen(
                     )
                     Spacer(modifier = Modifier.height(Spacing.small))
                     Text(
-                        text = "Discover amazing links from around the web!\nNo more personalized recommendation algorithms!",
+                        text = "Discover amazing links from around the world!\nNo more personalized recommendation algorithms!",
                         style = MaterialTheme.typography.bodyLarge,
                         color = TextSecondary,
                         textAlign = TextAlign.Center
