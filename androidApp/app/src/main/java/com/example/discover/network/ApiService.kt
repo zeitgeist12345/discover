@@ -46,7 +46,7 @@ class ApiService {
     private val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Specify charset
 
     suspend fun getWebsites(): List<Link> = withContext(Dispatchers.IO) {
-        val endpointUrl = "$baseUrl/getWebsitesMobile"
+        val endpointUrl = "$baseUrl/getWebsites?platform=mobile"
         Log.d(TAG, "Attempting to fetch websites from: $endpointUrl")
 
         val request = Request.Builder().url(endpointUrl).get().build()
