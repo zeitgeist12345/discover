@@ -403,6 +403,11 @@ function updateCurrentSiteInfo(website) {
     if (description) {
         description.textContent = website.description;
     }
+    // Add tags as a separate element
+    const tags = document.getElementById('website-tags');
+    if (tags) {
+        tags.textContent = "Tags: " + website.tags;
+    }
 
     // Show stats and reset button states
     if (statsDiv) {

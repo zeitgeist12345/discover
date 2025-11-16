@@ -21,10 +21,10 @@
             <label for="filter-tags">Filter by Tags (comma separated):</label>
             <br>
             <span>Allowlist: <input type="text" id="filter-tags-allowlist" placeholder="e.g. ai, tools, productivity"
-                onkeydown="if (event.key === 'Enter') { event.preventDefault(); applyTagFilter(); }">
+                    onkeydown="if (event.key === 'Enter') { event.preventDefault(); applyTagFilter(); }">
             </span>
             <span>Blocklist: <input type="text" id="filter-tags-blocklist" placeholder="e.g. ai, tools, productivity"
-                onkeydown="if (event.key === 'Enter') { event.preventDefault(); applyTagFilter(); }">
+                    onkeydown="if (event.key === 'Enter') { event.preventDefault(); applyTagFilter(); }">
             </span>
             <br>
             <button id="apply-filter-btn" class="btn" onclick="applyTagFilter()">Apply Filter</button>
@@ -74,6 +74,7 @@
             <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Link" to discover amazing
                 links!<br>Links open in a new tab for the best experience.</a>
             <div id="website-description" class="website-description"></div>
+            <div id="website-tags" class="website-tags"></div>
 
             <!-- Stats and Action Buttons -->
             <div class="website-stats" id="website-stats" style="display: none;">

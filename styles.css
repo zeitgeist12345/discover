@@ -148,11 +148,14 @@ body {
 
 /* Style for the description text */
 .website-description {
+    color: #AAA;
+    text-align: center;
+    word-break: break-word;
+}
+
+/* Style for the description text */
+.website-tags {
     color: #888;
-    font-size: 0.8rem;
-    font-weight: 300;
-    margin-top: 0.5rem;
-    line-height: 1.3;
     text-align: center;
     word-break: break-word;
 }
