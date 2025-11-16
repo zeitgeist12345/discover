@@ -47,8 +47,16 @@ fun WebsiteCard(
             Text(
                 text = website.description,
                 style = MaterialTheme.typography.bodyMedium,
-                color = TextSecondary,
+                color = TextPrimary,
                 fontSize = 14.sp
+            )
+
+            // Tags
+            Text(
+                text = "Tags: " + website.tags.toString(),
+                style = MaterialTheme.typography.bodyMedium,
+                color = TextSecondary,
+                fontSize = 12.sp
             )
 
             Spacer(modifier = Modifier.height(12.dp))
