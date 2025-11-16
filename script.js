@@ -6,7 +6,6 @@ let visitedWebsites = [];
 let isLoading = false;
 let currentWebsiteId = null;
 const userActions = new Map();
-let selectedFilterTags = [];
 
 const UI_ANIMATION_DELAY = 10;
 const FOCUS_DELAY = 100;
@@ -32,21 +31,19 @@ function initializeApp() {
     }
 }
 
-async function loadWebsitesFromAPI(tags = []) {
+async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
     try {
         isLoading = true;
 
-        const query = tags.length > 0 ? `?tags=${encodeURIComponent(tags.join(','))}` : '';
-        const response = await fetch(`${CONFIG.API_BASE_URL}/getWebsitesDesktop${query}`);
+        const query = `&tagsAllowlist=${encodeURIComponent(tagsAllowlist.join(','))}&tagsBlocklist=${encodeURIComponent(tagsBlocklist.join(','))}`;
+        const response = await fetch(`${CONFIG.API_BASE_URL}/getWebsites?platform=desktop${query}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         websites = await response.json();
-        websites.sort((a, b) => a.name.localeCompare(b.name));
-
-        console.log(`Loaded ${websites.length} websites from API (tags: ${tags.join(', ')})`);
+        console.log(`Loaded ${websites.length} websites from API.`);
 
         enableControls();
         document.getElementById('api-status-indicator').classList.add('online');
@@ -781,22 +778,23 @@ function renderTags() {
 }
 
 async function applyTagFilter() {
-    const tagInput = document.getElementById('filter-tags');
+    const tagInputAllowlist = document.getElementById('filter-tags-allowlist');
+    const tagInputBlocklist = document.getElementById('filter-tags-blocklist');
     const successBox = document.getElementById('filter-success');
 
-    if (!tagInput) return;
-
-    const tags = tagInput.value
+    const tagsAllowlist = tagInputAllowlist.value
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => t.length > 0);
+    const tagsBlocklist = tagInputBlocklist.value
         .split(',')
         .map(t => t.trim())
         .filter(t => t.length > 0);
 
-    selectedFilterTags = tags;
-
-    console.log('Applying tag filter:', tags);
+    console.log('Applying tag filter:', tagsAllowlist, tagsBlocklist);
 
     // ✅ Wait for API and get website count
-    const websiteCount = await loadWebsitesFromAPI(tags);
+    const websiteCount = await loadWebsitesFromAPI(tagsAllowlist, tagsBlocklist);
 
     // ✅ Create success message box dynamically if missing
     let messageBox = successBox;
@@ -807,8 +805,8 @@ async function applyTagFilter() {
         document.querySelector('.settings-section').appendChild(messageBox);
     }
 
-    if (tags.length > 0) {
-        messageBox.textContent = `✅ Filter applied: ${tags.join(', ')} — ${websiteCount} website${websiteCount !== 1 ? 's' : ''} found`;
+    if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0) {
+        messageBox.textContent = `✅ Filter applied: ${websiteCount} website${websiteCount !== 1 ? 's' : ''} found`;
     } else {
         messageBox.textContent = `✅ Showing all ${websiteCount} website${websiteCount !== 1 ? 's' : ''}`;
     }

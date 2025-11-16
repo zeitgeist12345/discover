@@ -24,7 +24,7 @@
       "curated",
       "sample"
     ],
-    "views": 57,
+    "views": 58,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -40,8 +40,8 @@
       "curated",
       "sample"
     ],
-    "views": 67,
-    "likesMobile": 4,
+    "views": 69,
+    "likesMobile": 5,
     "dislikesMobile": 0,
     "likesDesktop": 2,
     "dislikesDesktop": 0,
@@ -73,10 +73,10 @@
       "electric",
       "company"
     ],
-    "views": 0,
+    "views": 3,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-13T12:38:20.000Z"
   },
@@ -109,7 +109,7 @@
       "fun",
       "poetic"
     ],
-    "views": 6,
+    "views": 9,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -202,11 +202,11 @@
     "url": "www.google.com",
     "description": "Search engine.",
     "tags": [],
-    "views": 5,
+    "views": 6,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 3,
-    "dislikesDesktop": 0,
+    "dislikesDesktop": 1,
     "created_at": "2025-11-09T14:50:13.000Z"
   },
   {
@@ -236,7 +236,7 @@
       "pretty",
       "poetic"
     ],
-    "views": 12,
+    "views": 13,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -252,7 +252,7 @@
       "curated",
       "sample"
     ],
-    "views": 66,
+    "views": 68,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -268,8 +268,8 @@
       "curated",
       "sample"
     ],
-    "views": 39,
-    "likesMobile": 2,
+    "views": 41,
+    "likesMobile": 3,
     "dislikesMobile": 0,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
@@ -286,7 +286,7 @@
       "backend",
       "course"
     ],
-    "views": 10,
+    "views": 12,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -302,7 +302,7 @@
       "wesome",
       "wesome,gorgeous"
     ],
-    "views": 6,
+    "views": 8,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -318,7 +318,7 @@
       "curated",
       "sample"
     ],
-    "views": 39,
+    "views": 40,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -334,7 +334,7 @@
       "curated",
       "sample"
     ],
-    "views": 55,
+    "views": 57,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -351,10 +351,10 @@
       "chips",
       "company"
     ],
-    "views": 0,
+    "views": 1,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-13T12:42:06.000Z"
   },
@@ -368,10 +368,10 @@
       "motherboard",
       "company"
     ],
-    "views": 0,
+    "views": 2,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-13T12:44:55.000Z"
   },
@@ -384,7 +384,7 @@
       "curated",
       "sample"
     ],
-    "views": 55,
+    "views": 56,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -400,11 +400,11 @@
       "car",
       "company"
     ],
-    "views": 0,
+    "views": 2,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
-    "dislikesDesktop": 0,
+    "dislikesDesktop": 1,
     "created_at": "2025-11-13T12:48:44.000Z"
   },
   {
@@ -432,7 +432,7 @@
       "curated",
       "sample"
     ],
-    "views": 59,
+    "views": 60,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -448,10 +448,10 @@
       "curated",
       "sample"
     ],
-    "views": 39,
+    "views": 40,
     "likesMobile": 2,
     "dislikesMobile": 1000,
-    "likesDesktop": 1,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -464,7 +464,7 @@
       "curated",
       "sample"
     ],
-    "views": 56,
+    "views": 58,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -497,8 +497,8 @@
       "cs",
       "coding"
     ],
-    "views": 0,
-    "likesMobile": 0,
+    "views": 1,
+    "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
     "dislikesDesktop": 0,
@@ -513,7 +513,7 @@
       "curated",
       "sample"
     ],
-    "views": 54,
+    "views": 55,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -547,10 +547,10 @@
       "poetic",
       "beautiful"
     ],
-    "views": 3,
+    "views": 5,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-10T08:54:33.000Z"
   },
@@ -612,7 +612,7 @@
       "curated",
       "sample"
     ],
-    "views": 31,
+    "views": 32,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -628,7 +628,7 @@
       "curated",
       "sample"
     ],
-    "views": 70,
+    "views": 71,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -641,7 +641,7 @@
     "url": "sony.com",
     "description": "Tech giant.",
     "tags": [],
-    "views": 7,
+    "views": 8,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -657,7 +657,7 @@
       "curated",
       "sample"
     ],
-    "views": 48,
+    "views": 50,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -705,7 +705,7 @@
       "curated",
       "sample"
     ],
-    "views": 49,
+    "views": 51,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -721,7 +721,7 @@
       "curated",
       "sample"
     ],
-    "views": 40,
+    "views": 41,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -811,11 +811,11 @@
     "url": "www.yahoo.com",
     "description": "Search engine.",
     "tags": [],
-    "views": 6,
+    "views": 8,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 3,
-    "dislikesDesktop": 0,
+    "likesDesktop": 4,
+    "dislikesDesktop": 1,
     "created_at": "2025-11-09T15:00:25.000Z"
   },
   {
@@ -827,7 +827,7 @@
       "curated",
       "sample"
     ],
-    "views": 36,
+    "views": 38,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 2,

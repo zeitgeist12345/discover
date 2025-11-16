@@ -20,8 +20,12 @@
         <div class="settings-section">
             <label for="filter-tags">Filter by Tags (comma separated):</label>
             <br>
-            <input type="text" id="filter-tags" placeholder="e.g. ai, tools, productivity"
+            <span>Allowlist: <input type="text" id="filter-tags-allowlist" placeholder="e.g. ai, tools, productivity"
                 onkeydown="if (event.key === 'Enter') { event.preventDefault(); applyTagFilter(); }">
+            </span>
+            <span>Blocklist: <input type="text" id="filter-tags-blocklist" placeholder="e.g. ai, tools, productivity"
+                onkeydown="if (event.key === 'Enter') { event.preventDefault(); applyTagFilter(); }">
+            </span>
             <br>
             <button id="apply-filter-btn" class="btn" onclick="applyTagFilter()">Apply Filter</button>
         </div>

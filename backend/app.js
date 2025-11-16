@@ -74,34 +74,46 @@ function needToIgnore(likesMobile, dislikesMobile) {
 // Get all websites
 app.get('/getWebsites', async (req, res) => {
   try {
-    const tagsParam = req.query.tags;
-    const tagsFilter = typeof tagsParam === 'string'
-      ? tagsParam.split(',').map(t => t.trim()).filter(Boolean)
-      : [];
+    const { platform } = req.query;
+
+    const tagsAllowlist = (req.query.tagsAllowlist || "")
+      .split(",")
+      .map(t => t.trim())
+      .filter(Boolean);
+
+    const tagsBlocklist = (req.query.tagsBlocklist || "")
+      .split(",")
+      .map(t => t.trim())
+      .filter(Boolean);
 
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
     await connection.end();
 
-    let filtered = rows;
+    const parsed = rows.map(w => {
+      try {
+        w.tags = Array.isArray(w.tags)
+          ? w.tags
+          : JSON.parse(w.tags || '[]');
+      } catch (err) {
+        console.warn("Failed to parse tags for website id:", w.id);
+        w.tags = [];
+      }
+      return w;
+    });
 
-    if (tagsFilter.length > 0) {
-      filtered = rows.filter(w => {
-        let tags = [];
+    let filtered = parsed.filter(w => {
+      const hasAllow = tagsAllowlist.length === 0 || w.tags.some(t => tagsAllowlist.includes(t));
+      const hasBlock = tagsBlocklist.length > 0 && w.tags.some(t => tagsBlocklist.includes(t));
 
-        // Safely parse tags field
-        try {
-          tags = Array.isArray(w.tags)
-            ? w.tags
-            : JSON.parse(w.tags || '[]');
-        } catch {
-          tags = [];
-        }
+      if (!hasAllow) return false;
+      if (hasBlock) return false;
 
-        // Check if website includes *any* of the tags (OR logic)
-        return tags.some(tag => tagsFilter.includes(tag));
-      });
-    }
+      if (platform === "desktop") return !needToIgnore(w.likesDesktop, w.dislikesDesktop);
+      if (platform === "mobile") return !needToIgnore(w.likesMobile, w.dislikesMobile);
+
+      return true;
+    });
 
     res.json(filtered);
   } catch (error) {
@@ -109,89 +121,6 @@ app.get('/getWebsites', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-// Get all websites (for desktop)
-app.get('/getWebsitesDesktop', async (req, res) => {
-  try {
-    const tagsParam = req.query.tags;
-    const tagsFilter = typeof tagsParam === 'string'
-      ? tagsParam.split(',').map(t => t.trim()).filter(Boolean)
-      : [];
-
-    const connection = await mysql.createConnection(dbConfig);
-    const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
-    await connection.end();
-
-    let filtered = rows.filter(w =>
-      !needToIgnore(w.likesDesktop, w.dislikesDesktop)
-    );
-
-    if (tagsFilter.length > 0) {
-      filtered = rows.filter(w => {
-        let tags = [];
-
-        // Safely parse tags field
-        try {
-          tags = Array.isArray(w.tags)
-            ? w.tags
-            : JSON.parse(w.tags || '[]');
-        } catch {
-          tags = [];
-        }
-
-        // Check if website includes *any* of the tags (OR logic)
-        return tags.some(tag => tagsFilter.includes(tag));
-      });
-    }
-
-    res.json(filtered);
-  } catch (error) {
-    console.error('Get websites error:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
-// Get mobile websites
-app.get('/getWebsitesMobile', async (req, res) => {
-  try {
-    const tagsParam = req.query.tags;
-    const tagsFilter = typeof tagsParam === 'string'
-      ? tagsParam.split(',').map(t => t.trim()).filter(Boolean)
-      : [];
-
-    const connection = await mysql.createConnection(dbConfig);
-    const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
-    await connection.end();
-
-    let filtered = rows.filter(w =>
-      !needToIgnore(w.likesMobile, w.dislikesMobile)
-    );
-
-    if (tagsFilter.length > 0) {
-      filtered = rows.filter(w => {
-        let tags = [];
-
-        // Safely parse tags field
-        try {
-          tags = Array.isArray(w.tags)
-            ? w.tags
-            : JSON.parse(w.tags || '[]');
-        } catch {
-          tags = [];
-        }
-
-        // Check if website includes *any* of the tags (OR logic)
-        return tags.some(tag => tagsFilter.includes(tag));
-      });
-    }
-
-    res.json(filtered);
-  } catch (error) {
-    console.error('Get websites error:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
 
 app.post('/incrementView', voteLimiter, async (req, res) => {
   try {
@@ -393,9 +322,7 @@ app.get('/', async (req, res) => {
       message: 'Discover Backend API',
       totalWebsites: rows[0].count,
       endpoints: {
-        '/getWebsites': 'GET - Get all links',
-        '/getWebsitesDesktop': 'GET - Get desktop links',
-        '/getWebsitesMobile': 'GET - Get mobile links',
+        '/getWebsites': 'GET - Get links',
         '/incrementView': 'POST - Update link stats',
         '/addwebsite': 'POST - Add new website',
         '/removeLink': 'POST - Remove link',
