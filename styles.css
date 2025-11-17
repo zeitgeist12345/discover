@@ -39,7 +39,7 @@ body {
 }
 
 .controls {
-    padding: 1.875rem 1.25rem;
+    padding: 1rem;
     text-align: center;
     background: #0f0f0f;
     width: 100%;
@@ -86,7 +86,6 @@ body {
 .current-site {
     background: #0f0f0f;
     padding: 1.25rem;
-    margin: 1.25rem auto;
     width: 100%;
     max-width: 50rem;
     text-align: center;
@@ -94,7 +93,7 @@ body {
 
 .current-site h3 {
     color: #888;
-    margin-bottom: 0.9375rem;
+    margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: 400;
     text-transform: uppercase;
@@ -284,7 +283,7 @@ body {
     }
 
     .controls {
-        padding: 1.25rem 0.9375rem;
+        padding: 1rem;
     }
 
     .btn {
@@ -293,8 +292,7 @@ body {
     }
 
     .current-site {
-        padding: 0.9375rem;
-        margin: 0.9375rem auto;
+        padding: 1rem;
     }
 
     .stats-row {
@@ -326,8 +324,8 @@ body {
     }
 
     .current-site a {
-        font-size: 0.9rem;
-        line-height: 1.4;
+        font-size: 1rem;
+        line-height: 1.5;
     }
 
     .website-description {
