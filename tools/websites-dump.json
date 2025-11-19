@@ -1,215 +1,5 @@
 [
   {
-    "id": 26,
-    "name": "10 Minute Mail",
-    "url": "https://10minutemail.com",
-    "description": "Disposable email for spam-free signups",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 58,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 25,
-    "name": "A Soft Murmur",
-    "url": "https://asoftmurmur.com",
-    "description": "Mix ambient sounds (rain, waves) for focus",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 58,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 33,
-    "name": "Al Jazeera",
-    "url": "https://www.aljazeera.com",
-    "description": "International news and current affairs network",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 69,
-    "likesMobile": 5,
-    "dislikesMobile": 0,
-    "likesDesktop": 2,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 13,
-    "name": "Bored Button",
-    "url": "https://www.boredbutton.com/",
-    "description": "Collection of random fun websites and games",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 43,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 49,
-    "name": "BYD",
-    "url": "https://www.byd.com/",
-    "description": "Electric car company.",
-    "tags": [
-      "car",
-      "electric",
-      "company"
-    ],
-    "views": 3,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-13T12:38:20.000Z"
-  },
-  {
-    "id": 42,
-    "name": "Canon",
-    "url": "canon.com",
-    "description": "Tech company.",
-    "tags": [
-      "cool",
-      "awesome",
-      "wow",
-      "beautiful"
-    ],
-    "views": 12,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T15:29:10.000Z"
-  },
-  {
-    "id": 44,
-    "name": "Codeforces",
-    "url": "https://codeforces.com/problemset",
-    "description": "The top competitive programming platform.",
-    "tags": [
-      "code",
-      "learning",
-      "fun",
-      "poetic"
-    ],
-    "views": 9,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-10T04:57:32.000Z"
-  },
-  {
-    "id": 23,
-    "name": "Connected Papers",
-    "url": "https://www.connectedpapers.com",
-    "description": "Visual tool to explore academic research connections",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 56,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 4,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 31,
-    "name": "DeepSeek",
-    "url": "https://www.deepseek.com/en",
-    "description": "AI research and development company",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 62,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 32,
-    "name": "DeepSeek",
-    "url": "https://chat.deepseek.com/",
-    "description": "Cutting edge open weight open research LLM.",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 60,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 28,
-    "name": "Don't Even Reply",
-    "url": "https://dontevenreply.com",
-    "description": "Hilarious fictional email exchanges",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 62,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 36,
-    "name": "Examples website",
-    "url": "https://www.example.com",
-    "description": "Example website",
-    "tags": [
-      "beautiful",
-      "gorgeous"
-    ],
-    "views": 7,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 3,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:35:08.000Z"
-  },
-  {
-    "id": 37,
-    "name": "google",
-    "url": "www.google.com",
-    "description": "Search engine.",
-    "tags": [],
-    "views": 6,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 3,
-    "dislikesDesktop": 1,
-    "created_at": "2025-11-09T14:50:13.000Z"
-  },
-  {
     "id": 1,
     "name": "Hacker News",
     "url": "https://news.ycombinator.com",
@@ -218,42 +8,104 @@
       "curated",
       "sample"
     ],
-    "views": 129,
-    "likesMobile": 36,
+    "views": 132,
+    "likesMobile": 38,
     "dislikesMobile": 3,
     "likesDesktop": 18,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
   {
-    "id": 43,
-    "name": "Honda",
-    "url": "honda.com",
-    "description": "Hardware company.",
-    "tags": [
-      "brilliant",
-      "good",
-      "pretty",
-      "poetic"
-    ],
-    "views": 13,
-    "likesMobile": 1,
-    "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T15:30:53.000Z"
-  },
-  {
-    "id": 34,
-    "name": "In depth flow of computers",
-    "url": "https://github.com/alex/what-happens-when",
-    "description": "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together.",
+    "id": 2,
+    "name": "Product Hunt",
+    "url": "https://www.producthunt.com",
+    "description": "Platform for sharing and discovering new products",
     "tags": [
       "curated",
       "sample"
     ],
-    "views": 68,
+    "views": 113,
+    "likesMobile": 29,
+    "dislikesMobile": 2,
+    "likesDesktop": 15,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Unsplash",
+    "url": "https://unsplash.com",
+    "description": "Beautiful, free images gifted by the world's most generous community of photographers",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 192,
+    "likesMobile": 53,
+    "dislikesMobile": 4,
+    "likesDesktop": 26,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 4,
+    "name": "skribbl.io",
+    "url": "https://skribbl.io/",
+    "description": "Free multiplayer drawing and guessing game",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 35,
     "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 5,
+    "name": "zeitgeist12345",
+    "url": "https://zeitgeist12345.github.io/",
+    "description": "The personal website of the creator of this project",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 44,
+    "likesMobile": 3,
+    "dislikesMobile": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 1,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 6,
+    "name": "Sci-Hub",
+    "url": "https://sci-hub.se/",
+    "description": "Removing barriers in the way of science by providing free access to research papers",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 37,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 7,
+    "name": "Library Genesis",
+    "url": "https://libgen.li/",
+    "description": "Massive digital library of books, articles, and media",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 47,
+    "likesMobile": 3,
     "dislikesMobile": 0,
     "likesDesktop": 1,
     "dislikesDesktop": 0,
@@ -268,172 +120,24 @@
       "curated",
       "sample"
     ],
-    "views": 41,
-    "likesMobile": 3,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 45,
-    "name": "Interview Ready",
-    "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
-    "description": "Best backend engineering course.",
-    "tags": [
-      "learning",
-      "code",
-      "backend",
-      "course"
-    ],
-    "views": 12,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 3,
-    "dislikesDesktop": 2,
-    "created_at": "2025-11-10T04:59:07.000Z"
-  },
-  {
-    "id": 41,
-    "name": "lg",
-    "url": "lg.com",
-    "description": "lg",
-    "tags": [
-      "wesome",
-      "wesome,gorgeous"
-    ],
-    "views": 8,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T15:11:00.000Z"
-  },
-  {
-    "id": 7,
-    "name": "Library Genesis",
-    "url": "https://libgen.li/",
-    "description": "Massive digital library of books, articles, and media",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 40,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 20,
-    "name": "Little Alchemy 2",
-    "url": "https://littlealchemy2.com",
-    "description": "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 57,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 50,
-    "name": "MediaTek",
-    "url": "https://www.mediatek.com/",
-    "description": "Silicon chips company.",
-    "tags": [
-      "silicon",
-      "chips",
-      "company"
-    ],
-    "views": 1,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-13T12:42:06.000Z"
-  },
-  {
-    "id": 51,
-    "name": "MSI",
-    "url": "https://msi.com",
-    "description": "Computer motherboard company.",
-    "tags": [
-      "computer",
-      "motherboard",
-      "company"
-    ],
-    "views": 2,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-13T12:44:55.000Z"
-  },
-  {
-    "id": 22,
-    "name": "Ncase.me",
-    "url": "https://ncase.me",
-    "description": "Interactive simulations about trust and human behavior",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 56,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 52,
-    "name": "Nissan",
-    "url": "https://www.nissan-global.com/EN/",
-    "description": "Car company",
-    "tags": [
-      "car",
-      "company"
-    ],
-    "views": 2,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 1,
-    "created_at": "2025-11-13T12:48:44.000Z"
-  },
-  {
-    "id": 11,
-    "name": "Overleaf",
-    "url": "https://www.overleaf.com/",
-    "description": "Online LaTeX editor with real-time collaboration",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 39,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 19,
-    "name": "Patatap",
-    "url": "https://patatap.com",
-    "description": "Turn your keyboard into a sound machine with colorful animations",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 60,
+    "views": 52,
     "likesMobile": 4,
+    "dislikesMobile": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 9,
+    "name": "The Useless Web",
+    "url": "https://theuselessweb.com/",
+    "description": "Random fun and bizarre websites with one click",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 50,
+    "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 2,
     "dislikesDesktop": 0,
@@ -448,232 +152,23 @@
       "curated",
       "sample"
     ],
-    "views": 40,
+    "views": 42,
     "likesMobile": 2,
     "dislikesMobile": 1000,
-    "likesDesktop": 2,
+    "likesDesktop": 3,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
   {
-    "id": 21,
-    "name": "Pointer Pointer",
-    "url": "https://pointerpointer.com",
-    "description": "Photos of people pointing at your cursor wherever you move it",
+    "id": 11,
+    "name": "Overleaf",
+    "url": "https://www.overleaf.com/",
+    "description": "Online LaTeX editor with real-time collaboration",
     "tags": [
       "curated",
       "sample"
     ],
-    "views": 58,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 2,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 2,
-    "name": "Product Hunt",
-    "url": "https://www.producthunt.com",
-    "description": "Platform for sharing and discovering new products",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 103,
-    "likesMobile": 28,
-    "dislikesMobile": 2,
-    "likesDesktop": 15,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 48,
-    "name": "Project Euler",
-    "url": "https://projecteuler.net/",
-    "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
-    "tags": [
-      "math",
-      "cs",
-      "coding"
-    ],
-    "views": 1,
-    "likesMobile": 1,
-    "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-13T12:27:12.000Z"
-  },
-  {
-    "id": 24,
-    "name": "Quick, Draw!",
-    "url": "https://quickdraw.withgoogle.com",
-    "description": "AI game that guesses your doodles",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 55,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 14,
-    "name": "Radio Garden",
-    "url": "http://radio.garden/",
-    "description": "Listen to live radio stations across the globe",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 43,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 46,
-    "name": "Rekhta famous shayaris",
-    "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
-    "description": "Ponder and it might help clear blockers in the mind.",
-    "tags": [
-      "shayaris",
-      "cool",
-      "poetic",
-      "beautiful"
-    ],
-    "views": 5,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-10T08:54:33.000Z"
-  },
-  {
-    "id": 47,
-    "name": "sci net.",
-    "url": "https://sci-net.xyz/",
-    "description": "Open scientific papers submitted by paper authors.",
-    "tags": [
-      "science",
-      "research",
-      "cool"
-    ],
-    "views": 0,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-13T12:19:34.000Z"
-  },
-  {
-    "id": 6,
-    "name": "Sci-Hub",
-    "url": "https://sci-hub.se/",
-    "description": "Removing barriers in the way of science by providing free access to research papers",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 36,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 29,
-    "name": "Scream Into the Void",
-    "url": "https://screamintothevoid.com",
-    "description": "Type your frustrations and hear a scream",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 59,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 4,
-    "name": "skribbl.io",
-    "url": "https://skribbl.io/",
-    "description": "Free multiplayer drawing and guessing game",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 32,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 35,
-    "name": "Software build systems",
-    "url": "https://bazel.build/basics",
-    "description": "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 71,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 2,
-    "dislikesDesktop": 1,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 39,
-    "name": "Sony",
-    "url": "sony.com",
-    "description": "Tech giant.",
-    "tags": [],
-    "views": 8,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 2,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T15:02:45.000Z"
-  },
-  {
-    "id": 18,
-    "name": "Stellarium Web",
-    "url": "https://stellarium-web.org/",
-    "description": "Real-time 3D simulation of space with planetarium view",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 50,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 27,
-    "name": "The Deep Sea",
-    "url": "https://neal.fun/deep-sea",
-    "description": "Interactive dive into ocean depths with fascinating facts",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 60,
+    "views": 42,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -689,7 +184,7 @@
       "curated",
       "sample"
     ],
-    "views": 46,
+    "views": 56,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -697,47 +192,15 @@
     "created_at": "2025-11-09T14:31:53.000Z"
   },
   {
-    "id": 16,
-    "name": "The Pudding",
-    "url": "https://pudding.cool/",
-    "description": "Visual essays that explain ideas with data and visuals",
+    "id": 13,
+    "name": "Bored Button",
+    "url": "https://www.boredbutton.com/",
+    "description": "Collection of random fun websites and games",
     "tags": [
       "curated",
       "sample"
     ],
-    "views": 51,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 9,
-    "name": "The Useless Web",
-    "url": "https://theuselessweb.com/",
-    "description": "Random fun and bizarre websites with one click",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 41,
-    "likesMobile": 2,
-    "dislikesMobile": 0,
-    "likesDesktop": 2,
-    "dislikesDesktop": 0,
-    "created_at": "2025-11-09T14:31:53.000Z"
-  },
-  {
-    "id": 30,
-    "name": "This Is Sand",
-    "url": "https://thisissand.com",
-    "description": "Digital sand art creator",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 63,
+    "views": 44,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -745,31 +208,18 @@
     "created_at": "2025-11-09T14:31:53.000Z"
   },
   {
-    "id": 40,
-    "name": "twitte",
-    "url": "twitter.com",
-    "description": "twitter",
-    "tags": [],
-    "views": 7,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 2,
-    "dislikesDesktop": 1,
-    "created_at": "2025-11-09T15:08:46.000Z"
-  },
-  {
-    "id": 3,
-    "name": "Unsplash",
-    "url": "https://unsplash.com",
-    "description": "Beautiful, free images gifted by the world's most generous community of photographers",
+    "id": 14,
+    "name": "Radio Garden",
+    "url": "http://radio.garden/",
+    "description": "Listen to live radio stations across the globe",
     "tags": [
       "curated",
       "sample"
     ],
-    "views": 185,
-    "likesMobile": 53,
-    "dislikesMobile": 4,
-    "likesDesktop": 26,
+    "views": 44,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
   },
@@ -782,9 +232,25 @@
       "curated",
       "sample"
     ],
-    "views": 46,
+    "views": 50,
     "likesMobile": 2,
     "dislikesMobile": 1000,
+    "likesDesktop": 3,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 16,
+    "name": "The Pudding",
+    "url": "https://pudding.cool/",
+    "description": "Visual essays that explain ideas with data and visuals",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 62,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
     "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
@@ -798,12 +264,329 @@
       "curated",
       "sample"
     ],
-    "views": 49,
+    "views": 55,
     "likesMobile": 12,
+    "dislikesMobile": 1000,
+    "likesDesktop": 3,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 18,
+    "name": "Stellarium Web",
+    "url": "https://stellarium-web.org/",
+    "description": "Real-time 3D simulation of space with planetarium view",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 51,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 19,
+    "name": "Patatap",
+    "url": "https://patatap.com",
+    "description": "Turn your keyboard into a sound machine with colorful animations",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 69,
+    "likesMobile": 4,
+    "dislikesMobile": 0,
+    "likesDesktop": 3,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 20,
+    "name": "Little Alchemy 2",
+    "url": "https://littlealchemy2.com",
+    "description": "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 67,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 21,
+    "name": "Pointer Pointer",
+    "url": "https://pointerpointer.com",
+    "description": "Photos of people pointing at your cursor wherever you move it",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 65,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 22,
+    "name": "Ncase.me",
+    "url": "https://ncase.me",
+    "description": "Interactive simulations about trust and human behavior",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 68,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 23,
+    "name": "Connected Papers",
+    "url": "https://www.connectedpapers.com",
+    "description": "Visual tool to explore academic research connections",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 63,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 8,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 24,
+    "name": "Quick, Draw!",
+    "url": "https://quickdraw.withgoogle.com",
+    "description": "AI game that guesses your doodles",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 59,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 25,
+    "name": "A Soft Murmur",
+    "url": "https://asoftmurmur.com",
+    "description": "Mix ambient sounds (rain, waves) for focus",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 60,
+    "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 2,
     "dislikesDesktop": 0,
     "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 26,
+    "name": "10 Minute Mail",
+    "url": "https://10minutemail.com",
+    "description": "Disposable email for spam-free signups",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 59,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 27,
+    "name": "The Deep Sea",
+    "url": "https://neal.fun/deep-sea",
+    "description": "Interactive dive into ocean depths with fascinating facts",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 61,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 28,
+    "name": "Don't Even Reply",
+    "url": "https://dontevenreply.com",
+    "description": "Hilarious fictional email exchanges",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 73,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 4,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 29,
+    "name": "Scream Into the Void",
+    "url": "https://screamintothevoid.com",
+    "description": "Type your frustrations and hear a scream",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 60,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 30,
+    "name": "This Is Sand",
+    "url": "https://thisissand.com",
+    "description": "Digital sand art creator",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 66,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 31,
+    "name": "DeepSeek",
+    "url": "https://www.deepseek.com/en",
+    "description": "AI research and development company",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 65,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 32,
+    "name": "DeepSeek",
+    "url": "https://chat.deepseek.com/",
+    "description": "Cutting edge open weight open research LLM.",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 62,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 33,
+    "name": "Al Jazeera",
+    "url": "https://www.aljazeera.com",
+    "description": "International news and current affairs network",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 78,
+    "likesMobile": 6,
+    "dislikesMobile": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 34,
+    "name": "In depth flow of computers",
+    "url": "https://github.com/alex/what-happens-when",
+    "description": "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together.",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 83,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 3,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 35,
+    "name": "Software build systems",
+    "url": "https://bazel.build/basics",
+    "description": "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 77,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 4,
+    "dislikesDesktop": 1,
+    "created_at": "2025-11-09T14:31:53.000Z"
+  },
+  {
+    "id": 36,
+    "name": "Examples website",
+    "url": "https://www.example.com",
+    "description": "Example website",
+    "tags": [
+      "beautiful",
+      "gorgeous"
+    ],
+    "views": 16,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 3,
+    "dislikesDesktop": 1,
+    "created_at": "2025-11-09T14:35:08.000Z"
+  },
+  {
+    "id": 37,
+    "name": "google",
+    "url": "www.google.com",
+    "description": "Search engine.",
+    "tags": [],
+    "views": 14,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 5,
+    "dislikesDesktop": 2,
+    "created_at": "2025-11-09T14:50:13.000Z"
   },
   {
     "id": 38,
@@ -811,27 +594,414 @@
     "url": "www.yahoo.com",
     "description": "Search engine.",
     "tags": [],
-    "views": 8,
+    "views": 13,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 4,
-    "dislikesDesktop": 1,
+    "likesDesktop": 6,
+    "dislikesDesktop": 3,
     "created_at": "2025-11-09T15:00:25.000Z"
   },
   {
-    "id": 5,
-    "name": "zeitgeist12345",
-    "url": "https://zeitgeist12345.github.io/",
-    "description": "The personal website of the creator of this project",
+    "id": 39,
+    "name": "Sony",
+    "url": "sony.com",
+    "description": "Tech giant.",
+    "tags": [],
+    "views": 13,
+    "likesMobile": 1,
+    "dislikesMobile": 0,
+    "likesDesktop": 3,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T15:02:45.000Z"
+  },
+  {
+    "id": 40,
+    "name": "twitte",
+    "url": "twitter.com",
+    "description": "twitter",
+    "tags": [],
+    "views": 13,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 5,
+    "dislikesDesktop": 3,
+    "created_at": "2025-11-09T15:08:46.000Z"
+  },
+  {
+    "id": 41,
+    "name": "lg",
+    "url": "lg.com",
+    "description": "lg",
     "tags": [
-      "curated",
-      "sample"
+      "wesome",
+      "wesome,gorgeous"
     ],
-    "views": 38,
+    "views": 15,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T15:11:00.000Z"
+  },
+  {
+    "id": 42,
+    "name": "Canon",
+    "url": "canon.com",
+    "description": "Tech company.",
+    "tags": [
+      "cool",
+      "awesome",
+      "wow",
+      "beautiful"
+    ],
+    "views": 21,
     "likesMobile": 2,
     "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T15:29:10.000Z"
+  },
+  {
+    "id": 43,
+    "name": "Honda",
+    "url": "honda.com",
+    "description": "Hardware company.",
+    "tags": [
+      "brilliant",
+      "good",
+      "pretty",
+      "poetic"
+    ],
+    "views": 19,
+    "likesMobile": 2,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-09T15:30:53.000Z"
+  },
+  {
+    "id": 44,
+    "name": "Codeforces",
+    "url": "https://codeforces.com/problemset",
+    "description": "The top competitive programming platform.",
+    "tags": [
+      "code",
+      "learning",
+      "fun",
+      "poetic"
+    ],
+    "views": 14,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
     "likesDesktop": 2,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-10T04:57:32.000Z"
+  },
+  {
+    "id": 45,
+    "name": "Interview Ready",
+    "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
+    "description": "Best backend engineering course.",
+    "tags": [
+      "learning",
+      "code",
+      "backend",
+      "course"
+    ],
+    "views": 17,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 4,
+    "dislikesDesktop": 2,
+    "created_at": "2025-11-10T04:59:07.000Z"
+  },
+  {
+    "id": 46,
+    "name": "Rekhta famous shayaris",
+    "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
+    "description": "Ponder and it might help clear blockers in the mind.",
+    "tags": [
+      "shayaris",
+      "cool",
+      "poetic",
+      "beautiful"
+    ],
+    "views": 12,
+    "likesMobile": 1,
+    "dislikesMobile": 0,
+    "likesDesktop": 3,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-10T08:54:33.000Z"
+  },
+  {
+    "id": 47,
+    "name": "sci net.",
+    "url": "https://sci-net.xyz/",
+    "description": "Open scientific papers submitted by paper authors.",
+    "tags": [
+      "science",
+      "research",
+      "cool"
+    ],
+    "views": 7,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:19:34.000Z"
+  },
+  {
+    "id": 48,
+    "name": "Project Euler",
+    "url": "https://projecteuler.net/",
+    "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
+    "tags": [
+      "math",
+      "cs",
+      "coding"
+    ],
+    "views": 10,
+    "likesMobile": 4,
+    "dislikesMobile": 0,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:27:12.000Z"
+  },
+  {
+    "id": 49,
+    "name": "BYD",
+    "url": "https://www.byd.com/",
+    "description": "Electric car company.",
+    "tags": [
+      "car",
+      "electric",
+      "company"
+    ],
+    "views": 7,
+    "likesMobile": 1,
+    "dislikesMobile": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:38:20.000Z"
+  },
+  {
+    "id": 50,
+    "name": "MediaTek",
+    "url": "https://www.mediatek.com/",
+    "description": "Silicon chips company.",
+    "tags": [
+      "silicon",
+      "chips",
+      "company"
+    ],
+    "views": 5,
+    "likesMobile": 1,
+    "dislikesMobile": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:42:06.000Z"
+  },
+  {
+    "id": 51,
+    "name": "MSI",
+    "url": "https://msi.com",
+    "description": "Computer motherboard company.",
+    "tags": [
+      "computer",
+      "motherboard",
+      "company"
+    ],
+    "views": 8,
+    "likesMobile": 1,
+    "dislikesMobile": 0,
+    "likesDesktop": 2,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-13T12:44:55.000Z"
+  },
+  {
+    "id": 52,
+    "name": "Nissan",
+    "url": "https://www.nissan-global.com/EN/",
+    "description": "Car company",
+    "tags": [
+      "car",
+      "company"
+    ],
+    "views": 9,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
     "dislikesDesktop": 1,
-    "created_at": "2025-11-09T14:31:53.000Z"
+    "created_at": "2025-11-13T12:48:44.000Z"
+  },
+  {
+    "id": 53,
+    "name": "YouTube",
+    "url": "https://m.youtube.com/feed/subscriptions",
+    "description": "The subscriptions feed does not have implicit personalized recommendations.",
+    "tags": [
+      "video",
+      "social",
+      "good",
+      "dynamic",
+      "regular",
+      "repeat"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T14:39:19.000Z"
+  },
+  {
+    "id": 54,
+    "name": "High Scalability",
+    "url": "https://highscalability.com/",
+    "description": "System Design Blogs",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:09:24.000Z"
+  },
+  {
+    "id": 55,
+    "name": "Compiler Explorer",
+    "url": "https://godbolt.org/",
+    "description": "Test different computer programming language compilers.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:11:58.000Z"
+  },
+  {
+    "id": 56,
+    "name": "Competitive Programmer's Handbook",
+    "url": "https://github.com/pllk/cphb/",
+    "description": "Best competitive programming book.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:19:41.000Z"
+  },
+  {
+    "id": 57,
+    "name": "GeeksforGeeks",
+    "url": "https://www.geeksforgeeks.org/",
+    "description": "Computer Science learning platform.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:21:08.000Z"
+  },
+  {
+    "id": 58,
+    "name": "hashnode",
+    "url": "https://hashnode.com/featured",
+    "description": "Developer blog platform.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:26:23.000Z"
+  },
+  {
+    "id": 59,
+    "name": "The DeepSeek Series: A Technical Overview",
+    "url": "https://martinfowler.com/articles/deepseek-papers.html",
+    "description": "This article provides an overview of the DeepSeek papers, highlighting three main arcs in this research: a focus on improving cost and memory efficiency, the use of HPC Co-Design to train large models on limited hardware, and the development of emergent reasoning from large-scale reinforcement learning.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:27:55.000Z"
+  },
+  {
+    "id": 60,
+    "name": "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
+    "url": "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
+    "description": "Short play on the British rule in India",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:31:24.000Z"
+  },
+  {
+    "id": 61,
+    "name": "Fatiha ka tarika",
+    "url": "https://namazein.com/fatiha-ka-tarika/",
+    "description": "How to do fatiha follow through guide.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:32:23.000Z"
+  },
+  {
+    "id": 62,
+    "name": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
+    "url": "https://www.youtube.com/watch?v=jxLsiOflofk",
+    "description": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:33:23.000Z"
+  },
+  {
+    "id": 63,
+    "name": "draw.io",
+    "url": "https://app.diagrams.net/#",
+    "description": "Diagram making software which includes UML diagrams in software engineering.",
+    "tags": [
+      "user-submitted"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "created_at": "2025-11-19T16:34:31.000Z"
   }
 ]

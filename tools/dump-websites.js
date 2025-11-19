@@ -131,6 +131,8 @@ async function main() {
         // First, try to get all websites (including filtered ones)
         let allWebsites = await fetchWebsites();
 
+        allWebsites.sort((a, b) => (a.id || 0) - (b.id || 0));
+
         // Analyze the websites
         const analysis = analyzeWebsites(allWebsites);
 
