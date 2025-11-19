@@ -52,9 +52,9 @@ async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
         return websites.length;
     } catch (error) {
         console.error('Failed to load websites from API:', error);
+        showErrorMessage("Failed to load websites from API: Cannot reach backend server: " + error + "\nFallback to static list.");
 
         if (CONFIG.ENABLE_FALLBACK) loadStaticWebsites();
-        else showErrorMessage(CONFIG.ERROR_MESSAGE);
 
         document.getElementById('api-status-indicator').classList.add('offline');
         return 0;
@@ -64,18 +64,13 @@ async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
 }
 
 async function loadStaticWebsites() {
-    try {
-        // Use CONFIG.SAMPLE_WEBSITES directly
-        if (CONFIG.SAMPLE_WEBSITES && CONFIG.SAMPLE_WEBSITES.length > 0) {
-            websites = CONFIG.SAMPLE_WEBSITES;
-            console.log(`Loaded ${websites.length} websites from config.js fallback`);
-            enableControls();
-        } else {
-            showErrorMessage('No static websites available. Please check your config.js file.');
-        }
-    } catch (error) {
-        console.error('Failed to load static websites:', error);
-        showErrorMessage('No websites available. Please check your config.js file.');
+    // Use CONFIG.SAMPLE_WEBSITES directly
+    if (CONFIG.SAMPLE_WEBSITES && CONFIG.SAMPLE_WEBSITES.length > 0) {
+        websites = CONFIG.SAMPLE_WEBSITES;
+        console.log(`Loaded ${websites.length} websites from config.js fallback`);
+        enableControls();
+    } else {
+        showErrorMessage('No static websites available. Please check your config.js file.');
     }
 }
 
@@ -115,27 +110,28 @@ function enableControls() {
     }
 }
 
+
 function showErrorMessage(message) {
-    // Create error message element
+
+    // If an error box already exists, just update the text.
+    const existing = document.querySelector('.error-message');
+    if (existing) {
+        existing.querySelector('p').textContent = message;
+        return;
+    }
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.innerHTML = `
-        <div class="website-box" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.1);">
-            <p style="color: #ef4444; margin: 0;">${message}</p>
+        <div class="website-box" style="border-color:#ef4444; background:rgba(239,68,68,0.1);">
+            <p style="color:#ef4444; margin:0;">${message}</p>
         </div>
     `;
 
-    // Insert after header
-    const header = document.querySelector('.header');
-    header.parentNode.insertBefore(errorDiv, header.nextSibling);
-
-    // Remove after 5 seconds
-    setTimeout(() => {
-        if (errorDiv.parentNode) {
-            errorDiv.parentNode.removeChild(errorDiv);
-        }
-    }, RESET_DELAY);
+    document.body.appendChild(errorDiv);
 }
+
+
 
 async function updateWebsiteStats(websiteId, action) {
     if (!CONFIG.ENABLE_VIEW_TRACKING) {
@@ -207,6 +203,7 @@ async function updateWebsiteStats(websiteId, action) {
         }
     } catch (error) {
         console.error(`Failed to sync ${action} for ${websiteId}:`, error);
+        showErrorMessage(action + " action failed due to backend server unreachable: " + error.message);
         // Optionally revert the optimistic update on error
         // For now, we'll keep the optimistic update for better UX
     }
@@ -672,6 +669,9 @@ document.addEventListener('click', function (event) {
     const modal = document.getElementById('add-website-modal');
     if (event.target === modal) {
         hideAddWebsiteForm();
+    }
+    if (event.target.classList.contains("btn")) {
+        document.querySelectorAll(".error-message").forEach(el => el.remove());
     }
 });
 
