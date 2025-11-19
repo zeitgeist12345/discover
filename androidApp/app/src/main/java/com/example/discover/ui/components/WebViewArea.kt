@@ -10,7 +10,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient // Required for onPageStarted, onPageFinished
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -59,25 +59,24 @@ fun WebViewArea(
                 bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
             )
     ) {
-        // --- THIS IS THE FIX ---
-        // We removed the unnecessary Box wrapper.
-        // AnimatedVisibility is now a direct child of Column.
-        // We give it a fixed height so it always occupies the same space,
-        // preventing the layout from shifting when it appears or disappears.
-        AnimatedVisibility(
-            visible = webViewProgress in 1..99,
+
+        // 1. Create a Box with a fixed height to reserve the space.
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(4.dp) // This ensures the space is always reserved
+                .height(4.dp)
         ) {
-            LinearProgressIndicator(
-                progress = { webViewProgress / 100f },
-                modifier = Modifier.fillMaxWidth(),
-                color = PrimaryGreen,
-                trackColor = SurfaceDark.copy(alpha = 0.3f)
-            )
+            // 2. The AnimatedVisibility now lives inside the Box.
+            //    It no longer needs a height modifier itself.
+            androidx.compose.animation.AnimatedVisibility(visible = webViewProgress in 1..99) {
+                LinearProgressIndicator(
+                    progress = { webViewProgress / 100f },
+                    modifier = Modifier.fillMaxWidth(),
+                    color = PrimaryGreen,
+                    trackColor = SurfaceDark.copy(alpha = 0.3f)
+                )
+            }
         }
-        // --- END OF FIX ---
 
         // The AndroidView now simply PLACES the existing WebView.
         AndroidView(factory = { webView }, modifier = Modifier.weight(1f), update = { view ->
