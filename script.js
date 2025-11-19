@@ -52,7 +52,7 @@ async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
         return websites.length;
     } catch (error) {
         console.error('Failed to load websites from API:', error);
-        showErrorMessage("Failed to load websites from API: Cannot reach backend server: " + error + "\nFallback to static list.");
+        showErrorMessage("Failed to load links from API.<br>Cannot reach backend server: " + error + "<br>Fallback to static list.");
 
         if (CONFIG.ENABLE_FALLBACK) loadStaticWebsites();
 
