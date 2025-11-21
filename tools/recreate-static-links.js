@@ -1,9 +1,13 @@
 // tools/recreate-files.js
-const fs = require('fs');
-const path = require('path');
-const { WEBSITES_TO_KEEP } = require('./static-links');
+import WEBSITES_TO_KEEP from './websites-dump-to-keep.json' assert { type: 'json' };
+import { fileURLToPath } from 'url';
+import path from 'path';
+import fs from 'fs';
 
-console.log('🚀 Starting regeneration of static website files...\n');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 
 const PROJECT_ROOT = path.join(__dirname, '..');
 
@@ -98,9 +102,9 @@ UPDATE id = id;`;
     console.log(`✅ init.sql regenerated (${websites.length} entries)\n`);
 }
 
-// 2️⃣ Generate config.js
+// 2️⃣ Generate static.js
 function generateConfigJS(websites) {
-    const configPath = path.join(PROJECT_ROOT, 'config.js');
+    const configPath = path.join(PROJECT_ROOT, 'static.js');
     console.log(`⚙️ Writing web config file to ${configPath}...`);
 
     const sampleWebsites = websites
@@ -117,27 +121,23 @@ function generateConfigJS(websites) {
             likesDesktop: site.likesDesktop ?? 1,
             dislikesDesktop: site.dislikesDesktop ?? 0
         }));
-
-    const js = `// config.js
-const CONFIG = {
-    USE_API: true,
-    API_BASE_URL: 'https://backend.discoverall.space',
-    API_TIMEOUT: 3000,
-    ENABLE_FALLBACK: true,
-    ENABLE_VIEW_TRACKING: true,
-    ERROR_MESSAGE: 'Unable to connect to the server. Please make sure your local backend is running.',
-
+    const jsonIndented = JSON.stringify(sampleWebsites, null, 4)
+        .split('\n')
+        .map((line, index) => (index < 1 ? line : '    ' + line)) // Skip first 4
+        .join('\n');
+    const js = `// static.js
+const STATIC = {
     // Auto-generated sample websites
-    SAMPLE_WEBSITES: ${JSON.stringify(sampleWebsites, null, 4)}
+    SAMPLE_WEBSITES: ${jsonIndented}
 };
 
 if (typeof module !== 'undefined') {
-    module.exports = { CONFIG };
+    module.exports = { STATIC };
 }
 `;
 
     fs.writeFileSync(configPath, js.trim() + '\n');
-    console.log(`✅ config.js regenerated (${sampleWebsites.length} sample sites)\n`);
+    console.log(`✅ static.js regenerated (${sampleWebsites.length} sample sites)\n`);
 }
 
 // 3️⃣ Generate StaticWebsites.kt
@@ -197,6 +197,7 @@ ${kotlinEntries}
 
 // 🧩 Main generator
 function main() {
+    console.log('🚀 Starting regeneration of static website files...\n');
     if (!Array.isArray(WEBSITES_TO_KEEP) || WEBSITES_TO_KEEP.length === 0) {
         console.error('❌ No websites found in static-links.js');
         process.exit(1);

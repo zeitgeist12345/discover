@@ -11,8 +11,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 120,
-            "likesMobile": 35,
+            "views": 142,
+            "likesMobile": 39,
             "dislikesMobile": 3,
             "likesDesktop": 18,
             "dislikesDesktop": 0
@@ -26,8 +26,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 95,
-            "likesMobile": 28,
+            "views": 122,
+            "likesMobile": 29,
             "dislikesMobile": 2,
             "likesDesktop": 15,
             "dislikesDesktop": 0
@@ -41,10 +41,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 180,
-            "likesMobile": 52,
+            "views": 198,
+            "likesMobile": 53,
             "dislikesMobile": 4,
-            "likesDesktop": 25,
+            "likesDesktop": 26,
             "dislikesDesktop": 0
         },
         {
@@ -56,7 +56,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 30,
+            "views": 37,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -71,11 +71,11 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 31,
-            "likesMobile": 2,
+            "views": 48,
+            "likesMobile": 3,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
-            "dislikesDesktop": 0
+            "likesDesktop": 2,
+            "dislikesDesktop": 1
         },
         {
             "id": 6,
@@ -86,7 +86,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 32,
+            "views": 38,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -101,11 +101,11 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 33,
-            "likesMobile": 2,
+            "views": 52,
+            "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 1,
-            "dislikesDesktop": 0
+            "dislikesDesktop": 1
         },
         {
             "id": 8,
@@ -116,10 +116,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 34,
-            "likesMobile": 2,
+            "views": 57,
+            "likesMobile": 4,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 5,
             "dislikesDesktop": 0
         },
         {
@@ -131,10 +131,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 35,
+            "views": 56,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -146,10 +146,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 36,
+            "views": 43,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 1,
+            "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
@@ -161,7 +161,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 39,
+            "views": 43,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -176,10 +176,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 40,
+            "views": 64,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -191,7 +191,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 41,
+            "views": 45,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -206,10 +206,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 42,
+            "views": 45,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -221,10 +221,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 43,
+            "views": 51,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 1,
+            "likesDesktop": 4,
             "dislikesDesktop": 0
         },
         {
@@ -236,10 +236,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 44,
+            "views": 69,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
@@ -251,10 +251,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 45,
+            "views": 57,
             "likesMobile": 12,
-            "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "dislikesMobile": 1000,
+            "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
@@ -266,7 +266,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 46,
+            "views": 53,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -281,10 +281,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 47,
-            "likesMobile": 2,
+            "views": 74,
+            "likesMobile": 4,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
@@ -296,7 +296,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 48,
+            "views": 74,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -311,11 +311,11 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 49,
+            "views": 70,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
-            "dislikesDesktop": 0
+            "likesDesktop": 2,
+            "dislikesDesktop": 1
         },
         {
             "id": 22,
@@ -326,7 +326,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 50,
+            "views": 75,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -341,10 +341,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 51,
+            "views": 70,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 10,
             "dislikesDesktop": 0
         },
         {
@@ -356,7 +356,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 52,
+            "views": 60,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -371,10 +371,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 53,
+            "views": 61,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -386,7 +386,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 54,
+            "views": 61,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -401,7 +401,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 55,
+            "views": 63,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -416,10 +416,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 56,
+            "views": 83,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 8,
             "dislikesDesktop": 0
         },
         {
@@ -431,11 +431,11 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 57,
+            "views": 61,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
-            "dislikesDesktop": 0
+            "dislikesDesktop": 1
         },
         {
             "id": 30,
@@ -446,10 +446,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 58,
+            "views": 67,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -461,7 +461,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 59,
+            "views": 66,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -476,10 +476,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 59,
+            "views": 63,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -491,10 +491,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 60,
-            "likesMobile": 2,
+            "views": 86,
+            "likesMobile": 7,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 4,
             "dislikesDesktop": 0
         },
         {
@@ -506,10 +506,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 61,
+            "views": 89,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 5,
             "dislikesDesktop": 0
         },
         {
@@ -521,10 +521,553 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 62,
+            "views": 81,
+            "likesMobile": 2,
+            "dislikesMobile": 0,
+            "likesDesktop": 4,
+            "dislikesDesktop": 1
+        },
+        {
+            "id": 36,
+            "name": "Examples website",
+            "url": "https://www.example.com",
+            "description": "Example website",
+            "tags": [
+                "beautiful",
+                "gorgeous"
+            ],
+            "views": 21,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 5,
+            "dislikesDesktop": 2
+        },
+        {
+            "id": 37,
+            "name": "google",
+            "url": "www.google.com",
+            "description": "Search engine.",
+            "tags": [],
+            "views": 22,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 11,
+            "dislikesDesktop": 3
+        },
+        {
+            "id": 38,
+            "name": "Yahoo",
+            "url": "www.yahoo.com",
+            "description": "Search engine.",
+            "tags": [],
+            "views": 19,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 10,
+            "dislikesDesktop": 4
+        },
+        {
+            "id": 39,
+            "name": "Sony",
+            "url": "sony.com",
+            "description": "Tech giant.",
+            "tags": [],
+            "views": 22,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 40,
+            "name": "twitte",
+            "url": "twitter.com",
+            "description": "twitter",
+            "tags": [],
+            "views": 19,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 9,
+            "dislikesDesktop": 5
+        },
+        {
+            "id": 41,
+            "name": "lg",
+            "url": "lg.com",
+            "description": "lg",
+            "tags": [
+                "wesome",
+                "wesome,gorgeous"
+            ],
+            "views": 21,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 42,
+            "name": "Canon",
+            "url": "canon.com",
+            "description": "Tech company.",
+            "tags": [
+                "cool",
+                "awesome",
+                "wow",
+                "beautiful"
+            ],
+            "views": 26,
+            "likesMobile": 2,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 1
+        },
+        {
+            "id": 43,
+            "name": "Honda",
+            "url": "honda.com",
+            "description": "Hardware company.",
+            "tags": [
+                "brilliant",
+                "good",
+                "pretty",
+                "poetic"
+            ],
+            "views": 26,
+            "likesMobile": 4,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 44,
+            "name": "Codeforces",
+            "url": "https://codeforces.com/problemset",
+            "description": "The top competitive programming platform.",
+            "tags": [
+                "code",
+                "learning",
+                "fun",
+                "poetic"
+            ],
+            "views": 21,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 45,
+            "name": "Interview Ready",
+            "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
+            "description": "Best backend engineering course.",
+            "tags": [
+                "learning",
+                "code",
+                "backend",
+                "course"
+            ],
+            "views": 24,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 5,
+            "dislikesDesktop": 2
+        },
+        {
+            "id": 46,
+            "name": "Rekhta famous shayaris",
+            "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
+            "description": "Ponder and it might help clear blockers in the mind.",
+            "tags": [
+                "shayaris",
+                "cool",
+                "poetic",
+                "beautiful"
+            ],
+            "views": 18,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 47,
+            "name": "sci net.",
+            "url": "https://sci-net.xyz/",
+            "description": "Open scientific papers submitted by paper authors.",
+            "tags": [
+                "science",
+                "research",
+                "cool"
+            ],
+            "views": 13,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 48,
+            "name": "Project Euler",
+            "url": "https://projecteuler.net/",
+            "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
+            "tags": [
+                "math",
+                "cs",
+                "coding"
+            ],
+            "views": 13,
+            "likesMobile": 5,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 49,
+            "name": "BYD",
+            "url": "https://www.byd.com/",
+            "description": "Electric car company.",
+            "tags": [
+                "car",
+                "electric",
+                "company"
+            ],
+            "views": 15,
+            "likesMobile": 2,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 50,
+            "name": "MediaTek",
+            "url": "https://www.mediatek.com/",
+            "description": "Silicon chips company.",
+            "tags": [
+                "silicon",
+                "chips",
+                "company"
+            ],
+            "views": 15,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 51,
+            "name": "MSI",
+            "url": "https://msi.com",
+            "description": "Computer motherboard company.",
+            "tags": [
+                "computer",
+                "motherboard",
+                "company"
+            ],
+            "views": 14,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 52,
+            "name": "Nissan",
+            "url": "https://www.nissan-global.com/EN/",
+            "description": "Car company",
+            "tags": [
+                "car",
+                "company"
+            ],
+            "views": 15,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 1
+        },
+        {
+            "id": 53,
+            "name": "YouTube",
+            "url": "https://m.youtube.com/feed/subscriptions",
+            "description": "The subscriptions feed does not have implicit personalized recommendations.",
+            "tags": [
+                "video",
+                "social",
+                "good",
+                "dynamic",
+                "regular",
+                "repeat"
+            ],
+            "views": 5,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 54,
+            "name": "High Scalability",
+            "url": "https://highscalability.com/",
+            "description": "System Design Blogs",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 6,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 55,
+            "name": "Compiler Explorer",
+            "url": "https://godbolt.org/",
+            "description": "Test different computer programming language compilers.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 8,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 56,
+            "name": "Competitive Programmer's Handbook",
+            "url": "https://github.com/pllk/cphb/",
+            "description": "Best competitive programming book.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 4,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 57,
+            "name": "GeeksforGeeks",
+            "url": "https://www.geeksforgeeks.org/",
+            "description": "Computer Science learning platform.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 6,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 58,
+            "name": "hashnode",
+            "url": "https://hashnode.com/featured",
+            "description": "Developer blog platform.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 7,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 59,
+            "name": "The DeepSeek Series: A Technical Overview",
+            "url": "https://martinfowler.com/articles/deepseek-papers.html",
+            "description": "This article provides an overview of the DeepSeek papers, highlighting three main arcs in this research: a focus on improving cost and memory efficiency, the use of HPC Co-Design to train large models on limited hardware, and the development of emergent reasoning from large-scale reinforcement learning.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 9,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 60,
+            "name": "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
+            "url": "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
+            "description": "Short play on the British rule in India",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 7,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 61,
+            "name": "Fatiha ka tarika",
+            "url": "https://namazein.com/fatiha-ka-tarika/",
+            "description": "How to do fatiha follow through guide.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 7,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 62,
+            "name": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
+            "url": "https://www.youtube.com/watch?v=jxLsiOflofk",
+            "description": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 5,
+            "likesMobile": 3,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 63,
+            "name": "draw.io",
+            "url": "https://app.diagrams.net/#",
+            "description": "Diagram making software which includes UML diagrams in software engineering.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 6,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 4,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 64,
+            "name": "4chan",
+            "url": "https://4chan.org/",
+            "description": "Free speech social media platform.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 9,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 65,
+            "name": "Blind",
+            "url": "https://www.teamblind.com/",
+            "description": "Social media.",
+            "tags": [
+                "social",
+                "media"
+            ],
+            "views": 4,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 66,
+            "name": "Blind recent sort",
+            "url": "https://www.teamblind.com/?sort=id",
+            "description": "Social media.",
+            "tags": [
+                "social",
+                "media"
+            ],
+            "views": 2,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 67,
+            "name": "Group trivia game",
+            "url": "https://crowdparty.app/",
+            "description": "Group online trivia game.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 68,
+            "name": "Group puzzle game",
+            "url": "https://codenames.game/",
+            "description": "Group online puzzle game.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 69,
+            "name": "Moj",
+            "url": "https://mojapp.in",
+            "description": "TikTok alternative.",
+            "tags": [
+                "tiktok",
+                "moj",
+                "social",
+                "media",
+                "socialmedia",
+                "app"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 70,
+            "name": "Oppo",
+            "url": "https://www.oppo.com",
+            "description": "Mobile phone company.",
+            "tags": [
+                "mobile",
+                "mobile phone",
+                "company",
+                "mobilephonecompany",
+                "poetic"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 71,
+            "name": "OnePlus",
+            "url": "https://www.oneplus.com",
+            "description": "Phone company",
+            "tags": [
+                "phone",
+                "phonecompany",
+                "mobilephonecompany",
+                "poetic"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
             "dislikesDesktop": 0
         }
     ]
