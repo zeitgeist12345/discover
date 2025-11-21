@@ -6,6 +6,7 @@ let websiteHistory = [];
 let visitedWebsites = [];
 let isLoading = false;
 let currentWebsiteId = null;
+let selectedTags = [];
 const userActions = new Map();
 
 const UI_ANIMATION_DELAY = 10;
@@ -429,12 +430,8 @@ function showAddWebsiteForm() {
     // Clear any existing error messages
     hideModalError();
 
-    // Initialize tags input
-    initTagsInput();
-
     // Clear any existing tags
     selectedTags = [];
-    renderTags();
 
     // Add custom validation listeners
     addCustomValidation();
@@ -520,7 +517,6 @@ function hideAddWebsiteForm() {
 
     // Reset tags
     selectedTags = [];
-    renderTags();
 
     // Clear any error messages
     hideModalError();
@@ -583,6 +579,11 @@ async function submitWebsite(event) {
     submitBtn.classList.add('btn-loading');
     submitBtn.textContent = 'Adding...';
 
+    const tagsInput = document.getElementById('add-website-tags');
+    selectedTags = tagsInput.value.split(",")
+        .map(tag => tag.trim().replace(/\s+/g, "")) // remove internal spaces
+        .filter(tag => tag.length > 0);
+
     try {
         const formData = new FormData(event.target);
         const websiteData = {
@@ -612,7 +613,6 @@ async function submitWebsite(event) {
 
             // Reset tags
             selectedTags = [];
-            renderTags();
 
             // Reload websites to include the new one
             await loadWebsitesFromAPI();
@@ -726,57 +726,6 @@ document.getElementById('settings-toggle').addEventListener('click', () => {
         btn.textContent = '⚙️';
     }
 });
-
-// Tags management
-let selectedTags = [];
-
-function initTagsInput() {
-    const tagsInput = document.getElementById('website-tags');
-    const tagsDisplay = document.getElementById('tags-display');
-
-    tagsInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ',') {
-            e.preventDefault();
-            addTag(this.value.trim());
-            this.value = '';
-        }
-    });
-
-    tagsInput.addEventListener('blur', function () {
-        if (this.value.trim()) {
-            addTag(this.value.trim());
-            this.value = '';
-        }
-    });
-}
-
-function addTag(tagText) {
-    if (!tagText) return;
-
-    // Clean the tag
-    const cleanTag = tagText.replace(/,/g, '').trim().toLowerCase();
-    if (!cleanTag || selectedTags.includes(cleanTag)) return;
-
-    selectedTags.push(cleanTag);
-    renderTags();
-}
-
-function removeTag(tagToRemove) {
-    selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
-    renderTags();
-}
-
-function renderTags() {
-    const tagsDisplay = document.getElementById('tags-display');
-    if (tagsDisplay) {
-        tagsDisplay.innerHTML = selectedTags.map(tag => `
-            <span class="tag">
-                ${tag}
-                <button type="button" onclick="removeTag('${tag}')" class="tag-remove">×</button>
-            </span>
-        `).join('');
-    }
-}
 
 async function applyTagFilter() {
     const tagInputAllowlist = document.getElementById('filter-tags-allowlist');
