@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2025-11-21T11:26:29.659Z",
+    "generatedAt": "2025-11-21T11:57:06.116Z",
     "apiUrl": "https://backend.discoverall.space",
     "totalWebsites": 71
   },
@@ -8,6 +8,26 @@
     "total": 71,
     "filteredMobile": 17,
     "filteredDesktop": 0,
+    "blockedMobileUrls": [
+      "https://skribbl.io/",
+      "https://sci-hub.se/",
+      "https://play-cs.com/",
+      "https://www.overleaf.com/",
+      "https://www.boredbutton.com/",
+      "http://radio.garden/",
+      "https://window-swap.com/",
+      "https://xkcd.com/",
+      "https://stellarium-web.org/",
+      "https://quickdraw.withgoogle.com",
+      "https://asoftmurmur.com",
+      "https://10minutemail.com",
+      "https://neal.fun/deep-sea",
+      "https://screamintothevoid.com",
+      "https://thisissand.com",
+      "https://www.deepseek.com/en",
+      "https://chat.deepseek.com/"
+    ],
+    "blockedDesktopUrls": [],
     "byReason": {},
     "byScore": {
       "0%": 51,

@@ -46,6 +46,8 @@ function analyzeWebsites(websites) {
         total: websites.length,
         filteredMobile: 0,
         filteredDesktop: 0,
+        blockedMobileUrls: [],
+        blockedDesktopUrls: [],
         byReason: {},
         byScore: {
             '0%': 0,
@@ -76,9 +78,11 @@ function analyzeWebsites(websites) {
         // Apply filtering logic
         if (needToIgnore(likesMobile, dislikesMobile)) {
             analysis.filteredMobile++;
+            analysis.blockedMobileUrls.push(website.url);
         }
         if (needToIgnore(likesDesktop, dislikesDesktop)) {
             analysis.filteredDesktop++;
+            analysis.blockedDesktopUrls.push(website.url);
         }
 
         // Count by score
