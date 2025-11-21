@@ -1,12 +1,5 @@
-// config.js
-const CONFIG = {
-    USE_API: true,
-    API_BASE_URL: 'https://backend.discoverall.space',
-    API_TIMEOUT: 3000,
-    ENABLE_FALLBACK: true,
-    ENABLE_VIEW_TRACKING: true,
-    ERROR_MESSAGE: 'Unable to connect to the server. Please make sure your local backend is running.',
-
+// static.js
+const STATIC = {
     // Auto-generated sample websites
     SAMPLE_WEBSITES: [
         {
@@ -538,5 +531,5 @@ const CONFIG = {
 };
 
 if (typeof module !== 'undefined') {
-    module.exports = { CONFIG };
+    module.exports = { STATIC };
 }

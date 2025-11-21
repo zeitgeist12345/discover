@@ -1,3 +1,4 @@
+// script.js
 // Global variables
 let websites = [];
 let currentIndex = -1;
@@ -11,6 +12,11 @@ const UI_ANIMATION_DELAY = 10;
 const FOCUS_DELAY = 100;
 const RESET_DELAY = 2000;
 
+const API_BASE_URL = 'https://backend.discoverall.space';
+const API_TIMEOUT = 3000;
+const ENABLE_FALLBACK = true;
+const ENABLE_VIEW_TRACKING = true;
+const ERROR_MESSAGE = 'Unable to connect to the server. Please make sure your local backend is running.';
 console.log('Script.js loaded successfully');
 
 // Initialize the app when the page loads
@@ -21,14 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function initializeApp() {
     console.log('Initializing app...');
-    // Load websites based on configuration
-    if (CONFIG.USE_API) {
-        console.log('Using API mode');
-        loadWebsitesFromAPI();
-    } else {
-        console.log('Using static mode');
-        loadStaticWebsites();
-    }
+    console.log('Using API mode');
+    loadWebsitesFromAPI();
 }
 
 async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
@@ -36,7 +36,7 @@ async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
         isLoading = true;
 
         const query = `&tagsAllowlist=${encodeURIComponent(tagsAllowlist.join(','))}&tagsBlocklist=${encodeURIComponent(tagsBlocklist.join(','))}`;
-        const response = await fetch(`${CONFIG.API_BASE_URL}/getWebsites?platform=desktop${query}`);
+        const response = await fetch(`${API_BASE_URL}/getWebsites?platform=desktop${query}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -54,7 +54,7 @@ async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
         console.error('Failed to load websites from API:', error);
         showErrorMessage("Failed to load links from API.<br>Cannot reach backend server: " + error + "<br>Fallback to static list.");
 
-        if (CONFIG.ENABLE_FALLBACK) loadStaticWebsites();
+        if (ENABLE_FALLBACK) loadStaticWebsites();
 
         document.getElementById('api-status-indicator').classList.add('offline');
         return 0;
@@ -64,13 +64,12 @@ async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
 }
 
 async function loadStaticWebsites() {
-    // Use CONFIG.SAMPLE_WEBSITES directly
-    if (CONFIG.SAMPLE_WEBSITES && CONFIG.SAMPLE_WEBSITES.length > 0) {
-        websites = CONFIG.SAMPLE_WEBSITES;
-        console.log(`Loaded ${websites.length} websites from config.js fallback`);
+    if (STATIC.SAMPLE_WEBSITES && STATIC.SAMPLE_WEBSITES.length > 0) {
+        websites = STATIC.SAMPLE_WEBSITES;
+        console.log(`Loaded ${websites.length} websites from static.js fallback`);
         enableControls();
     } else {
-        showErrorMessage('No static websites available. Please check your config.js file.');
+        showErrorMessage('No static websites available. Please check your static.js file.');
     }
 }
 
@@ -134,7 +133,7 @@ function showErrorMessage(message) {
 
 
 async function updateWebsiteStats(websiteId, action) {
-    if (!CONFIG.ENABLE_VIEW_TRACKING) {
+    if (!ENABLE_VIEW_TRACKING) {
         return;
     }
 
@@ -185,7 +184,7 @@ async function updateWebsiteStats(websiteId, action) {
 
     // Sync with server in the background
     try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/incrementView?url=${encodeURIComponent(website.url)}&action=${action}`, {
+        const response = await fetch(`${API_BASE_URL}/incrementView?url=${encodeURIComponent(website.url)}&action=${action}`, {
             method: 'POST'
         });
 
@@ -359,7 +358,7 @@ function loadWebsite(index, addToHistory = true) {
     updateCurrentSiteInfo(website);
 
     // Optimistically increment views immediately
-    if (website.id && CONFIG.ENABLE_VIEW_TRACKING) {
+    if (website.id && ENABLE_VIEW_TRACKING) {
         const viewsElement = document.getElementById('views-count');
         if (viewsElement) {
             const currentViews = parseInt(viewsElement.textContent) || 0;
@@ -597,7 +596,7 @@ async function submitWebsite(event) {
             dislikesDesktop: 0
         };
 
-        const response = await fetch(`${CONFIG.API_BASE_URL}/addwebsite`, {
+        const response = await fetch(`${API_BASE_URL}/addwebsite`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -617,9 +616,7 @@ async function submitWebsite(event) {
             renderTags();
 
             // Reload websites to include the new one
-            if (CONFIG.USE_API) {
-                await loadWebsitesFromAPI();
-            }
+            await loadWebsitesFromAPI();
         } else {
             // Handle specific error cases
             if (response.status === 409) {
