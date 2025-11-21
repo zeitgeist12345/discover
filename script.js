@@ -17,7 +17,6 @@ const API_TIMEOUT = 3000;
 const ENABLE_FALLBACK = true;
 const ENABLE_VIEW_TRACKING = true;
 const ERROR_MESSAGE = 'Unable to connect to the server. Please make sure your local backend is running.';
-console.log('Script.js loaded successfully');
 
 // Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', function () {
