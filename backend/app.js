@@ -5,6 +5,9 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configure Express to trust proxies (important for Docker + Cloudflare)
+app.set('trust proxy', 1);
+
 // IP based rate limiting
 const apiLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
