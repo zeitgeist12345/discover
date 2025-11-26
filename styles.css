@@ -56,8 +56,10 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     margin: 0.5rem;
-    font-weight: 400;
-    min-width: 7.5rem;
+}
+
+.direction-btn {
+    width: 13rem
 }
 
 .btn:hover {
@@ -284,11 +286,6 @@ body {
 
     .controls {
         padding: 1rem;
-    }
-
-    .btn {
-        margin: 0.5rem;
-        min-width: 6rem;
     }
 
     .current-site {
