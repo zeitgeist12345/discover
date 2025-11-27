@@ -29,10 +29,10 @@ const voteLimiter = rateLimit({
     error: 'You are voting too quickly for this website. Please wait a few seconds.'
   },
   keyGenerator: (req, res) => {
-    // Combine IP + website identifier (id or url)
+    // Combine IP + website identifier (url)
     const ip = req.ip || req.headers['x-forwarded-for'] || 'unknown';
-    const websiteId = req.query.id || req.query.url || 'unknown';
-    return `${ip}_${websiteId}`;
+    const websiteUrl = req.query.url || 'unknown';
+    return `${ip}_${websiteUrl}`;
   },
   standardHeaders: true,
   legacyHeaders: false
@@ -99,7 +99,7 @@ app.get('/getWebsites', async (req, res) => {
           ? w.tags
           : JSON.parse(w.tags || '[]');
       } catch (err) {
-        console.warn("Failed to parse tags for website id:", w.id);
+        console.warn("Failed to parse tags for website url:", w.url);
         w.tags = [];
       }
       return w;
@@ -197,10 +197,10 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
 
 app.post('/removeLink', voteLimiter, async (req, res) => {
   try {
-    const { id, url, action } = req.query;
+    const { url, action } = req.query;
 
-    if (!id && !url) {
-      return res.status(400).json({ error: 'ID or URL parameter is required' });
+    if (!url) {
+      return res.status(400).json({ error: 'URL parameter is required' });
     }
 
     const connection = await mysql.createConnection(dbConfig);
@@ -220,13 +220,8 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
         return res.status(400).json({ success: false, error: 'Invalid action type' });
     }
 
-    if (id) {
-      query = `UPDATE websites SET ${fieldToUpdate} WHERE id = ?`;
-      params = [id];
-    } else {
-      query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
-      params = [url];
-    }
+    query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
+    params = [url];
 
     const [result] = await connection.execute(query, params);
 
@@ -261,7 +256,7 @@ app.post('/addwebsite', async (req, res) => {
 
     // Check if website already exists
     const [existing] = await connection.execute(
-      'SELECT id FROM websites WHERE url = ?',
+      'SELECT url FROM websites WHERE url = ?',
       [url]
     );
 
@@ -279,7 +274,6 @@ app.post('/addwebsite', async (req, res) => {
     await connection.end();
 
     res.json({
-      id: result.insertId,
       message: 'Website added successfully',
       name,
       url,
