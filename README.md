@@ -5,11 +5,6 @@ We host the backend locally using reproducible containers.
 
 ![App interface](image.png)
 
-## Format code in VS Codium  
-```
-Ctrl+Shift+I
-```
-
 ## Avoid Implicit Personalized Recommendation Algorithms
 
 A social media website with no personalized recommendation algorithms. So no more echo chamber radicalization.
@@ -32,3 +27,13 @@ Completely self reliant and you can share links with the whole world, upvote the
 This is my contribution so you don't use personalized recommendation algorithms social media. They cause echo chamber radicalization.
 
 Let's go back to before 2005, before EdgeRank was released. 
+
+## Local testing
+```
+npx serve . -l 44631
+```
+
+## Format code in VS Codium  
+```
+Ctrl+Shift+I
+```

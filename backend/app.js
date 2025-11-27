@@ -50,16 +50,10 @@ const dbConfig = {
 // Middleware
 app.use(express.json());
 app.use(apiLimiter);
-// For production, replace '*' with your frontend URL to restrict access:
-// origin: 'https://your-frontend-domain.com'
+
+// Cors
 app.use(cors({
-  origin: '*', // allow all origins (for testing)
-  // origin: [
-  //   'https://discoverall.space',
-  //   'https://backend.discoverall.space'
-  // ],
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
+  origin: ['https://discoverall.space', 'http://localhost:44631']
 }));
 
 // Filtering criteria
@@ -76,6 +70,9 @@ function needToIgnore(likesMobile, dislikesMobile) {
 
 // Get all websites
 app.get('/getWebsites', async (req, res) => {
+
+  console.log('Request origin:', req.headers.origin);
+  console.log('Request query:', req.query);
   try {
     const { platform } = req.query;
 
