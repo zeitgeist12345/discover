@@ -1,7 +1,7 @@
 [
   {
-    "name": "10 Minute Mail",
     "url": "https://10minutemail.com",
+    "name": "10 Minute Mail",
     "description": "Disposable email for spam-free signups",
     "tags": [
       "curated",
@@ -14,8 +14,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "4chan",
     "url": "https://4chan.org/",
+    "name": "4chan",
     "description": "Free speech social media platform.",
     "tags": [
       "user-submitted"
@@ -27,8 +27,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "A Soft Murmur",
     "url": "https://asoftmurmur.com",
+    "name": "A Soft Murmur",
     "description": "Mix ambient sounds (rain, waves) for focus",
     "tags": [
       "curated",
@@ -41,8 +41,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Al Jazeera",
     "url": "https://www.aljazeera.com",
+    "name": "Al Jazeera",
     "description": "International news and current affairs network",
     "tags": [
       "curated",
@@ -55,8 +55,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
     "url": "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
+    "name": "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
     "description": "Short play on the British rule in India",
     "tags": [
       "user-submitted"
@@ -68,8 +68,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Anna's archive",
     "url": "https://annas-archive.se/",
+    "name": "Anna's archive",
     "description": "Open library.",
     "tags": [
       "open",
@@ -83,8 +83,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Blind",
     "url": "https://www.teamblind.com/",
+    "name": "Blind",
     "description": "Social media.",
     "tags": [
       "social",
@@ -97,8 +97,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Blind recent sort",
     "url": "https://www.teamblind.com/?sort=id",
+    "name": "Blind recent sort",
     "description": "Social media.",
     "tags": [
       "social",
@@ -111,8 +111,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Bored Button",
     "url": "https://www.boredbutton.com/",
+    "name": "Bored Button",
     "description": "Collection of random fun websites and games",
     "tags": [
       "curated",
@@ -125,8 +125,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "BYD",
     "url": "https://www.byd.com/",
+    "name": "BYD",
     "description": "Electric car company.",
     "tags": [
       "car",
@@ -140,8 +140,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Canon",
     "url": "canon.com",
+    "name": "Canon",
     "description": "Tech company.",
     "tags": [
       "cool",
@@ -156,8 +156,8 @@
     "dislikesDesktop": 1
   },
   {
-    "name": "Codeforces",
     "url": "https://codeforces.com/problemset",
+    "name": "Codeforces",
     "description": "The top competitive programming platform.",
     "tags": [
       "code",
@@ -172,8 +172,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Competitive Programmer's Handbook",
     "url": "https://github.com/pllk/cphb/",
+    "name": "Competitive Programmer's Handbook",
     "description": "Best competitive programming book.",
     "tags": [
       "user-submitted"
@@ -185,8 +185,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Compiler Explorer",
     "url": "https://godbolt.org/",
+    "name": "Compiler Explorer",
     "description": "Test different computer programming language compilers.",
     "tags": [
       "user-submitted"
@@ -198,8 +198,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Connected Papers",
     "url": "https://www.connectedpapers.com",
+    "name": "Connected Papers",
     "description": "Visual tool to explore academic research connections",
     "tags": [
       "curated",
@@ -212,22 +212,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "DeepSeek",
-    "url": "https://www.deepseek.com/en",
-    "description": "AI research and development company",
-    "tags": [
-      "curated",
-      "sample"
-    ],
-    "views": 68,
-    "likesMobile": 2,
-    "dislikesMobile": 1000,
-    "likesDesktop": 1,
-    "dislikesDesktop": 0
-  },
-  {
-    "name": "DeepSeek",
     "url": "https://chat.deepseek.com/",
+    "name": "DeepSeek",
     "description": "Cutting edge open weight open research LLM.",
     "tags": [
       "curated",
@@ -240,8 +226,22 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Don't Even Reply",
+    "url": "https://www.deepseek.com/en",
+    "name": "DeepSeek",
+    "description": "AI research and development company",
+    "tags": [
+      "curated",
+      "sample"
+    ],
+    "views": 68,
+    "likesMobile": 2,
+    "dislikesMobile": 1000,
+    "likesDesktop": 1,
+    "dislikesDesktop": 0
+  },
+  {
     "url": "https://dontevenreply.com",
+    "name": "Don't Even Reply",
     "description": "Hilarious fictional email exchanges",
     "tags": [
       "curated",
@@ -254,8 +254,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "draw.io",
     "url": "https://app.diagrams.net/",
+    "name": "draw.io",
     "description": "Diagram making software which includes UML diagrams in software engineering.",
     "tags": [
       "user-submitted"
@@ -267,8 +267,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Examples website",
     "url": "https://www.example.com",
+    "name": "Examples website",
     "description": "Example website",
     "tags": [
       "beautiful",
@@ -281,8 +281,8 @@
     "dislikesDesktop": 2
   },
   {
-    "name": "Fatiha ka tarika",
     "url": "https://namazein.com/fatiha-ka-tarika/",
+    "name": "Fatiha ka tarika",
     "description": "How to do fatiha follow through guide.",
     "tags": [
       "user-submitted"
@@ -294,8 +294,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "GeeksforGeeks",
     "url": "https://www.geeksforgeeks.org/",
+    "name": "GeeksforGeeks",
     "description": "Computer Science learning platform.",
     "tags": [
       "user-submitted"
@@ -307,8 +307,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Group puzzle game",
     "url": "https://codenames.game/",
+    "name": "Group puzzle game",
     "description": "Group online puzzle game.",
     "tags": [
       "user-submitted"
@@ -320,8 +320,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Group trivia game",
     "url": "https://crowdparty.app/",
+    "name": "Group trivia game",
     "description": "Group online trivia game.",
     "tags": [
       "user-submitted"
@@ -333,8 +333,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Hacker News",
     "url": "https://news.ycombinator.com",
+    "name": "Hacker News",
     "description": "Social news website focusing on computer science and entrepreneurship",
     "tags": [
       "curated",
@@ -347,8 +347,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "hashnode",
     "url": "https://hashnode.com/featured",
+    "name": "hashnode",
     "description": "Developer blog platform.",
     "tags": [
       "user-submitted"
@@ -360,8 +360,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "High Scalability",
     "url": "https://highscalability.com/",
+    "name": "High Scalability",
     "description": "System Design Blogs",
     "tags": [
       "user-submitted"
@@ -373,8 +373,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Honda",
     "url": "honda.com",
+    "name": "Honda",
     "description": "Hardware company.",
     "tags": [
       "brilliant",
@@ -389,8 +389,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "In depth flow of computers",
     "url": "https://github.com/alex/what-happens-when",
+    "name": "In depth flow of computers",
     "description": "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together.",
     "tags": [
       "curated",
@@ -403,8 +403,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Internet Archive",
     "url": "https://archive.org/",
+    "name": "Internet Archive",
     "description": "Digital library of free & borrowable books, movies, music & Wayback Machine",
     "tags": [
       "curated",
@@ -417,8 +417,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Interview Ready",
     "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
+    "name": "Interview Ready",
     "description": "Best backend engineering course.",
     "tags": [
       "learning",
@@ -433,8 +433,8 @@
     "dislikesDesktop": 2
   },
   {
-    "name": "Interview Ready - System Design",
     "url": "https://interviewready.io/learn/system-design-course/how-do-i-use-this-course/what-do-we-offer?tab=chapters",
+    "name": "Interview Ready - System Design",
     "description": "Best System Design course.",
     "tags": [
       "systemdesign",
@@ -448,8 +448,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "lg",
     "url": "lg.com",
+    "name": "lg",
     "description": "lg",
     "tags": [
       "wesome",
@@ -462,8 +462,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Library Genesis",
     "url": "https://libgen.li/",
+    "name": "Library Genesis",
     "description": "Massive digital library of books, articles, and media",
     "tags": [
       "curated",
@@ -476,8 +476,8 @@
     "dislikesDesktop": 1
   },
   {
-    "name": "Linux Kernel Explorer",
     "url": "https://reverser.dev/linux-kernel-explorer",
+    "name": "Linux Kernel Explorer",
     "description": "A portal to study the Linux Kernel.",
     "tags": [
       "linux",
@@ -490,8 +490,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Little Alchemy 2",
     "url": "https://littlealchemy2.com",
+    "name": "Little Alchemy 2",
     "description": "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
     "tags": [
       "curated",
@@ -504,8 +504,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "LLM Embeddings Explained",
     "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
+    "name": "LLM Embeddings Explained",
     "description": "LLM Embeddings Explained:\nA Visual and Intuitive Guide",
     "tags": [
       "llm",
@@ -519,8 +519,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "MediaTek",
     "url": "https://www.mediatek.com/",
+    "name": "MediaTek",
     "description": "Silicon chips company.",
     "tags": [
       "silicon",
@@ -534,8 +534,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Moj",
     "url": "https://mojapp.in",
+    "name": "Moj",
     "description": "TikTok alternative.",
     "tags": [
       "tiktok",
@@ -552,8 +552,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "MSI",
     "url": "https://msi.com",
+    "name": "MSI",
     "description": "Computer motherboard company.",
     "tags": [
       "computer",
@@ -567,8 +567,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
     "url": "https://www.youtube.com/watch?v=jxLsiOflofk",
+    "name": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
     "description": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",
     "tags": [
       "user-submitted"
@@ -580,8 +580,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Ncase.me",
     "url": "https://ncase.me",
+    "name": "Ncase.me",
     "description": "Interactive simulations about trust and human behavior",
     "tags": [
       "curated",
@@ -594,8 +594,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Nissan",
     "url": "https://www.nissan-global.com/EN/",
+    "name": "Nissan",
     "description": "Car company",
     "tags": [
       "car",
@@ -608,8 +608,8 @@
     "dislikesDesktop": 1
   },
   {
-    "name": "OnePlus",
     "url": "https://www.oneplus.com",
+    "name": "OnePlus",
     "description": "Phone company",
     "tags": [
       "phone",
@@ -624,8 +624,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Oppo",
     "url": "https://www.oppo.com",
+    "name": "Oppo",
     "description": "Mobile phone company.",
     "tags": [
       "mobile",
@@ -641,8 +641,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Overleaf",
     "url": "https://www.overleaf.com/",
+    "name": "Overleaf",
     "description": "Online LaTeX editor with real-time collaboration",
     "tags": [
       "curated",
@@ -655,8 +655,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Patatap",
     "url": "https://patatap.com",
+    "name": "Patatap",
     "description": "Turn your keyboard into a sound machine with colorful animations",
     "tags": [
       "curated",
@@ -669,8 +669,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Play Counter-Strike 1.6",
     "url": "https://play-cs.com/",
+    "name": "Play Counter-Strike 1.6",
     "description": "Play classic CS 1.6 online without downloading",
     "tags": [
       "curated",
@@ -683,8 +683,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Pointer Pointer",
     "url": "https://pointerpointer.com",
+    "name": "Pointer Pointer",
     "description": "Photos of people pointing at your cursor wherever you move it",
     "tags": [
       "curated",
@@ -697,8 +697,8 @@
     "dislikesDesktop": 1
   },
   {
-    "name": "Product Hunt",
     "url": "https://www.producthunt.com",
+    "name": "Product Hunt",
     "description": "Platform for sharing and discovering new products",
     "tags": [
       "curated",
@@ -711,8 +711,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Project Euler",
     "url": "https://projecteuler.net/",
+    "name": "Project Euler",
     "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
     "tags": [
       "math",
@@ -726,8 +726,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Quick, Draw!",
     "url": "https://quickdraw.withgoogle.com",
+    "name": "Quick, Draw!",
     "description": "AI game that guesses your doodles",
     "tags": [
       "curated",
@@ -740,8 +740,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Radio Garden",
     "url": "http://radio.garden/",
+    "name": "Radio Garden",
     "description": "Listen to live radio stations across the globe",
     "tags": [
       "curated",
@@ -754,8 +754,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Rekhta famous shayaris",
     "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
+    "name": "Rekhta famous shayaris",
     "description": "Ponder and it might help clear blockers in the mind.",
     "tags": [
       "shayaris",
@@ -770,8 +770,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "sci net.",
     "url": "https://sci-net.xyz/",
+    "name": "sci net.",
     "description": "Open scientific papers submitted by paper authors.",
     "tags": [
       "science",
@@ -785,8 +785,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Sci-Hub",
     "url": "https://sci-hub.se/",
+    "name": "Sci-Hub",
     "description": "Removing barriers in the way of science by providing free access to research papers",
     "tags": [
       "curated",
@@ -799,8 +799,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Scream Into the Void",
     "url": "https://screamintothevoid.com",
+    "name": "Scream Into the Void",
     "description": "Type your frustrations and hear a scream",
     "tags": [
       "curated",
@@ -813,22 +813,22 @@
     "dislikesDesktop": 1
   },
   {
-    "name": "skribbl.io",
     "url": "https://skribbl.io/",
+    "name": "skribbl.io",
     "description": "Free multiplayer drawing and guessing game",
     "tags": [
       "curated",
       "sample"
     ],
-    "views": 38,
+    "views": 39,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
     "dislikesDesktop": 0
   },
   {
-    "name": "Software build systems",
     "url": "https://bazel.build/basics",
+    "name": "Software build systems",
     "description": "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
     "tags": [
       "curated",
@@ -841,8 +841,8 @@
     "dislikesDesktop": 1
   },
   {
-    "name": "Sony",
     "url": "sony.com",
+    "name": "Sony",
     "description": "Tech giant.",
     "tags": [],
     "views": 27,
@@ -852,8 +852,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Stellarium Web",
     "url": "https://stellarium-web.org/",
+    "name": "Stellarium Web",
     "description": "Real-time 3D simulation of space with planetarium view",
     "tags": [
       "curated",
@@ -866,8 +866,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Tails",
     "url": "https://tails.net",
+    "name": "Tails",
     "description": "Secure OS.",
     "tags": [
       "secure",
@@ -881,8 +881,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "test",
     "url": "https://test.com",
+    "name": "test",
     "description": "Test",
     "tags": [
       "test",
@@ -896,8 +896,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Test2",
     "url": "https://test2.com",
+    "name": "Test2",
     "description": "Testing 2",
     "tags": [
       "test",
@@ -911,8 +911,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "The Deep Sea",
     "url": "https://neal.fun/deep-sea",
+    "name": "The Deep Sea",
     "description": "Interactive dive into ocean depths with fascinating facts",
     "tags": [
       "curated",
@@ -925,8 +925,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "The DeepSeek Series: A Technical Overview",
     "url": "https://martinfowler.com/articles/deepseek-papers.html",
+    "name": "The DeepSeek Series: A Technical Overview",
     "description": "This article provides an overview of the DeepSeek papers, highlighting three main arcs in this research: a focus on improving cost and memory efficiency, the use of HPC Co-Design to train large models on limited hardware, and the development of emergent reasoning from large-scale reinforcement learning.",
     "tags": [
       "user-submitted"
@@ -938,8 +938,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "The Longest Blockchain",
     "url": "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
+    "name": "The Longest Blockchain",
     "description": "Interesting perspective on blockchain strength",
     "tags": [
       "curated",
@@ -952,8 +952,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "The Pudding",
     "url": "https://pudding.cool/",
+    "name": "The Pudding",
     "description": "Visual essays that explain ideas with data and visuals",
     "tags": [
       "curated",
@@ -966,8 +966,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "The Useless Web",
     "url": "https://theuselessweb.com/",
+    "name": "The Useless Web",
     "description": "Random fun and bizarre websites with one click",
     "tags": [
       "curated",
@@ -980,8 +980,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "This Is Sand",
     "url": "https://thisissand.com",
+    "name": "This Is Sand",
     "description": "Digital sand art creator",
     "tags": [
       "curated",
@@ -994,8 +994,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "twitte",
     "url": "twitter.com",
+    "name": "twitte",
     "description": "twitter",
     "tags": [],
     "views": 20,
@@ -1005,8 +1005,8 @@
     "dislikesDesktop": 5
   },
   {
-    "name": "Unsplash",
     "url": "https://unsplash.com",
+    "name": "Unsplash",
     "description": "Beautiful, free images gifted by the world's most generous community of photographers",
     "tags": [
       "curated",
@@ -1019,8 +1019,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "Window Swap",
     "url": "https://window-swap.com/",
+    "name": "Window Swap",
     "description": "See the view from someone else's window around the world",
     "tags": [
       "curated",
@@ -1033,8 +1033,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "xkcd",
     "url": "https://xkcd.com/",
+    "name": "xkcd",
     "description": "A webcomic of romance, sarcasm, math, and language",
     "tags": [
       "curated",
@@ -1047,8 +1047,8 @@
     "dislikesDesktop": 0
   },
   {
-    "name": "YouTube",
     "url": "https://m.youtube.com/feed/subscriptions",
+    "name": "YouTube",
     "description": "The subscriptions feed does not have implicit personalized recommendations.",
     "tags": [
       "video",
@@ -1058,15 +1058,15 @@
       "regular",
       "repeat"
     ],
-    "views": 9,
+    "views": 10,
     "likesMobile": 2,
     "dislikesMobile": 0,
-    "likesDesktop": 2,
-    "dislikesDesktop": 0
+    "likesDesktop": 3,
+    "dislikesDesktop": 1
   },
   {
-    "name": "zeitgeist12345",
     "url": "https://zeitgeist12345.github.io/",
+    "name": "zeitgeist12345",
     "description": "The personal website of the creator of this project",
     "tags": [
       "curated",

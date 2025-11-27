@@ -143,6 +143,10 @@ async function main() {
         // Analyze the websites
         const analysis = analyzeWebsites(allWebsites);
 
+        // 🔥 Sort blocked lists alphabetically by URL
+        analysis.blockedMobileUrls.sort();
+        analysis.blockedDesktopUrls.sort();
+
         // Save to file
         saveToFile({ websites: allWebsites, analysis });
 
