@@ -3,7 +3,6 @@ package com.example.discover.data
 object StaticWebsites {
     val websites = listOf(
         Link(
-            id = "website-1",
             name = "Hacker News",
             url = "https://news.ycombinator.com",
             description = "Social news website focusing on computer science and entrepreneurship",
@@ -14,7 +13,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-2",
             name = "Product Hunt",
             url = "https://www.producthunt.com",
             description = "Platform for sharing and discovering new products",
@@ -25,7 +23,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-3",
             name = "Unsplash",
             url = "https://unsplash.com",
             description = "Beautiful, free images gifted by the world's most generous community of photographers",
@@ -36,7 +33,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-4",
             name = "zeitgeist12345",
             url = "https://zeitgeist12345.github.io/",
             description = "The personal website of the creator of this project",
@@ -47,7 +43,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-5",
             name = "Library Genesis",
             url = "https://libgen.li/",
             description = "Massive digital library of books, articles, and media",
@@ -58,7 +53,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-6",
             name = "The Useless Web",
             url = "https://theuselessweb.com/",
             description = "Random fun and bizarre websites with one click",
@@ -69,7 +63,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-7",
             name = "The Pudding",
             url = "https://pudding.cool/",
             description = "Visual essays that explain ideas with data and visuals",
@@ -80,7 +73,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-8",
             name = "Patatap",
             url = "https://patatap.com",
             description = "Turn your keyboard into a sound machine with colorful animations",
@@ -91,7 +83,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-9",
             name = "Little Alchemy 2",
             url = "https://littlealchemy2.com",
             description = "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
@@ -102,7 +93,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-10",
             name = "Pointer Pointer",
             url = "https://pointerpointer.com",
             description = "Photos of people pointing at your cursor wherever you move it",
@@ -113,7 +103,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-11",
             name = "Ncase.me",
             url = "https://ncase.me",
             description = "Interactive simulations about trust and human behavior",
@@ -124,7 +113,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-12",
             name = "Al Jazeera",
             url = "https://www.aljazeera.com",
             description = "International news and current affairs network",
@@ -135,7 +123,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-13",
             name = "Software build systems",
             url = "https://bazel.build/basics",
             description = "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
@@ -146,7 +133,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-14",
             name = "lg",
             url = "lg.com",
             description = "lg",
@@ -157,7 +143,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-15",
             name = "Canon",
             url = "canon.com",
             description = "Tech company.",
@@ -168,7 +153,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-16",
             name = "Honda",
             url = "honda.com",
             description = "Hardware company.",
@@ -179,7 +163,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-17",
             name = "Codeforces",
             url = "https://codeforces.com/problemset",
             description = "The top competitive programming platform.",
@@ -190,7 +173,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-18",
             name = "Rekhta famous shayaris",
             url = "https://www.rekhta.org/tags/famous-shayari/couplets",
             description = "Ponder and it might help clear blockers in the mind.",
@@ -201,7 +183,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-19",
             name = "sci net.",
             url = "https://sci-net.xyz/",
             description = "Open scientific papers submitted by paper authors.",
@@ -212,7 +193,6 @@ object StaticWebsites {
         ),
 
         Link(
-            id = "website-20",
             name = "Project Euler",
             url = "https://projecteuler.net/",
             description = "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. 
@@ -224,7 +204,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-21",
             name = "BYD",
             url = "https://www.byd.com/",
             description = "Electric car company.",
@@ -235,7 +214,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-22",
             name = "MediaTek",
             url = "https://www.mediatek.com/",
             description = "Silicon chips company.",
@@ -246,7 +224,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-23",
             name = "MSI",
             url = "https://msi.com",
             description = "Computer motherboard company.",
@@ -257,7 +234,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-24",
             name = "Nissan",
             url = "https://www.nissan-global.com/EN/",
             description = "Car company",
@@ -268,7 +244,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-25",
             name = "YouTube",
             url = "https://m.youtube.com/feed/subscriptions",
             description = "The subscriptions feed does not have implicit personalized recommendations.",
@@ -279,7 +254,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-26",
             name = "High Scalability",
             url = "https://highscalability.com/",
             description = "System Design Blogs",
@@ -290,7 +264,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-27",
             name = "GeeksforGeeks",
             url = "https://www.geeksforgeeks.org/",
             description = "Computer Science learning platform.",
@@ -301,7 +274,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-28",
             name = "hashnode",
             url = "https://hashnode.com/featured",
             description = "Developer blog platform.",
@@ -312,7 +284,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-29",
             name = "The DeepSeek Series: A Technical Overview",
             url = "https://martinfowler.com/articles/deepseek-papers.html",
             description = "This article provides an overview of the DeepSeek papers, highlighting three main arcs in this research: a focus on improving cost and memory efficiency, the use of HPC Co-Design to train large models on limited hardware, and the development of emergent reasoning from large-scale reinforcement learning.",
@@ -323,7 +294,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-30",
             name = "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
             url = "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
             description = "Short play on the British rule in India",
@@ -334,7 +304,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-31",
             name = "Fatiha ka tarika",
             url = "https://namazein.com/fatiha-ka-tarika/",
             description = "How to do fatiha follow through guide.",
@@ -345,7 +314,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-32",
             name = "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
             url = "https://www.youtube.com/watch?v=jxLsiOflofk",
             description = "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",
@@ -356,7 +324,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-33",
             name = "4chan",
             url = "https://4chan.org/",
             description = "Free speech social media platform.",
@@ -367,7 +334,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-34",
             name = "Blind",
             url = "https://www.teamblind.com/",
             description = "Social media.",
@@ -378,7 +344,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-35",
             name = "Blind recent sort",
             url = "https://www.teamblind.com/?sort=id",
             description = "Social media.",
@@ -389,7 +354,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-36",
             name = "Oppo",
             url = "https://www.oppo.com",
             description = "Mobile phone company.",
@@ -400,7 +364,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-37",
             name = "OnePlus",
             url = "https://www.oneplus.com",
             description = "Phone company",
@@ -411,7 +374,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-38",
             name = "Anna's archive",
             url = "https://annas-archive.se/",
             description = "Open library.",
@@ -422,7 +384,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-39",
             name = "Tails",
             url = "https://tails.net",
             description = "Secure OS.",
@@ -433,7 +394,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-40",
             name = "Interview Ready - System Design",
             url = "https://interviewready.io/learn/system-design-course/how-do-i-use-this-course/what-do-we-offer?tab=chapters",
             description = "Best System Design course.",
@@ -444,7 +404,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         ),
 
         Link(
-            id = "website-41",
             name = "LLM Embeddings Explained",
             url = "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
             description = "LLM Embeddings Explained:
@@ -456,7 +415,6 @@ A Visual and Intuitive Guide",
         ),
 
         Link(
-            id = "website-42",
             name = "Linux Kernel Explorer",
             url = "https://reverser.dev/linux-kernel-explorer",
             description = "A portal to study the Linux Kernel.",

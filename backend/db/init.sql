@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS websites (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    url VARCHAR(500) NOT NULL,
     description TEXT,
     tags JSON DEFAULT ('[]'),
     views INT DEFAULT 0,
@@ -861,4 +860,4 @@ A Visual and Intuitive Guide',
         0,
         0
     ) ON DUPLICATE KEY
-UPDATE id = id;
+UPDATE url = url;

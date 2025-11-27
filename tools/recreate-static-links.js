@@ -45,9 +45,8 @@ function generateInitSQL(websites) {
     console.log(`🧱 Writing SQL init file to ${sqlPath}...`);
 
     const header = `CREATE TABLE IF NOT EXISTS websites (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    url VARCHAR(500) NOT NULL,
     description TEXT,
     tags JSON DEFAULT ('[]'),
     views INT DEFAULT 0,
@@ -96,7 +95,7 @@ VALUES `;
     }).join(',\n    ');
 
     const content = `${header}${values} ON DUPLICATE KEY
-UPDATE id = id;`;
+UPDATE url = url;`;
     fs.mkdirSync(path.dirname(sqlPath), { recursive: true });
     fs.writeFileSync(sqlPath, content);
     console.log(`✅ init.sql regenerated (${websites.length} entries)\n`);
@@ -110,7 +109,6 @@ function generateConfigJS(websites) {
     const sampleWebsites = websites
         .filter(site => !needToIgnore(site.likesDesktop, site.dislikesDesktop))
         .map((site, index) => ({
-            id: index + 1,
             name: site.name,
             url: site.url,
             description: site.description,
@@ -160,7 +158,6 @@ function generateKotlin(websites) {
     const kotlinEntries = websites
         .filter(site => !needToIgnore(site.likesMobile, site.dislikesMobile))
         .map((site, i) => {
-            const id = `website-${i + 1}`;
             const name = escapeKotlin(site.name || '');
             const url = escapeKotlin(site.url || '');
             const desc = escapeKotlin(site.description || '');
@@ -170,7 +167,6 @@ function generateKotlin(websites) {
             const dislikesMobile = site.dislikesMobile ?? 0;
 
             return `        Link(
-            id = "${id}",
             name = "${name}",
             url = "${url}",
             description = "${desc}",

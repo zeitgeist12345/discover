@@ -5,7 +5,7 @@ let currentIndex = -1;
 let websiteHistory = [];
 let visitedWebsites = [];
 let isLoading = false;
-let currentWebsiteId = null;
+let currentWebsiteUrl = null;
 let selectedTags = [];
 const userActions = new Map();
 
@@ -132,22 +132,22 @@ function showErrorMessage(message) {
 
 
 
-async function updateWebsiteStats(websiteId, action) {
+async function updateWebsiteStats(websiteUrl, action) {
     if (!ENABLE_VIEW_TRACKING) {
         return;
     }
 
     // Check if user has already performed this action for this website
-    const actionKey = `${websiteId}-${action}`;
+    const actionKey = `${websiteUrl}-${action}`;
     if (userActions.has(actionKey)) {
-        console.log(`User already performed ${action} for ${websiteId}`);
+        console.log(`User already performed ${action} for ${websiteUrl}`);
         return;
     }
 
     // Find the website to get its URL
-    const website = websites.find(w => w.id === websiteId);
+    const website = websites.find(w => w.url === websiteUrl);
     if (!website) {
-        console.error(`Website not found with id: ${websiteId}`);
+        console.error(`Website not found with url: ${websiteUrl}`);
         return;
     }
 
@@ -190,18 +190,18 @@ async function updateWebsiteStats(websiteId, action) {
 
         if (response.ok) {
             const result = await response.json();
-            console.log(`Synced ${action} for ${websiteId}:`, result);
+            console.log(`Synced ${action} for ${websiteUrl}:`, result);
 
             // Update UI with actual server response (in case there were any server-side adjustments)
             updateStatsDisplay(result);
 
         } else {
-            console.error(`Failed to sync ${action} for ${websiteId}:`, response.status);
+            console.error(`Failed to sync ${action} for ${websiteUrl}:`, response.status);
             // Optionally revert the optimistic update on error
             // For now, we'll keep the optimistic update for better UX
         }
     } catch (error) {
-        console.error(`Failed to sync ${action} for ${websiteId}:`, error);
+        console.error(`Failed to sync ${action} for ${websiteUrl}:`, error);
         showErrorMessage(action + " action failed due to backend server unreachable: " + error.message);
         // Optionally revert the optimistic update on error
         // For now, we'll keep the optimistic update for better UX
@@ -245,16 +245,16 @@ function updateButtonStates(action) {
 }
 
 function likesDesktopWebsite() {
-    if (currentWebsiteId) {
-        updateWebsiteStats(currentWebsiteId, 'likesDesktop');
+    if (currentWebsiteUrl) {
+        updateWebsiteStats(currentWebsiteUrl, 'likesDesktop');
     } else {
         console.error('No current website ID available for likesDesktop action');
     }
 }
 
 function dislikesDesktopWebsite() {
-    if (currentWebsiteId) {
-        updateWebsiteStats(currentWebsiteId, 'dislikesDesktop');
+    if (currentWebsiteUrl) {
+        updateWebsiteStats(currentWebsiteUrl, 'dislikesDesktop');
     } else {
         console.error('No current website ID available for dislikesDesktop action');
     }
@@ -351,21 +351,21 @@ function loadWebsite(index, addToHistory = true) {
         visitedWebsites.push(index);
     }
 
-    // Track the current website ID for stats
-    currentWebsiteId = website.id;
+    // Track the current website url for stats
+    currentWebsiteUrl = website.url;
 
     // Update UI first
     updateCurrentSiteInfo(website);
 
     // Optimistically increment views immediately
-    if (website.id && ENABLE_VIEW_TRACKING) {
+    if (website.url && ENABLE_VIEW_TRACKING) {
         const viewsElement = document.getElementById('views-count');
         if (viewsElement) {
             const currentViews = parseInt(viewsElement.textContent) || 0;
             viewsElement.textContent = currentViews + 1;
 
             // Sync with server in the background
-            updateWebsiteStats(website.id, 'view');
+            updateWebsiteStats(website.url, 'view');
         }
     }
 
@@ -745,26 +745,17 @@ async function applyTagFilter() {
     // ✅ Wait for API and get website count
     const websiteCount = await loadWebsitesFromAPI(tagsAllowlist, tagsBlocklist);
 
-    // ✅ Create success message box dynamically if missing
-    let messageBox = successBox;
-    if (!messageBox) {
-        messageBox = document.createElement('div');
-        messageBox.id = 'filter-success';
-        messageBox.className = 'success-box';
-        document.querySelector('.settings-section').appendChild(messageBox);
-    }
-
     if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0) {
-        messageBox.textContent = `✅ Filter applied: ${websiteCount} website${websiteCount !== 1 ? 's' : ''} found`;
+        successBox.textContent = `✅ Filter applied: ${websiteCount} website${websiteCount !== 1 ? 's' : ''} found`;
     } else {
-        messageBox.textContent = `✅ Showing all ${websiteCount} website${websiteCount !== 1 ? 's' : ''}`;
+        successBox.textContent = `✅ Showing all ${websiteCount} website${websiteCount !== 1 ? 's' : ''}`;
     }
 
-    messageBox.style.display = 'inline-block';
+    successBox.style.display = 'inline-block';
 
     // Auto-hide after 3 seconds
     setTimeout(() => {
-        messageBox.style.display = 'none';
+        successBox.style.display = 'none';
     }, 3000);
 }
 

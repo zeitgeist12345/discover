@@ -107,7 +107,7 @@ function analyzeWebsites(websites) {
 function saveToFile(data) {
     try {
         // 🔥 Remove created_at from each website object
-        const cleanedWebsites = data.websites.map(({ created_at, ...rest }) => rest);
+        const cleanedWebsites = data.websites.map(({ created_at, id, ...rest }) => rest);
 
         // Save raw website data only
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(cleanedWebsites, null, 2));
@@ -138,7 +138,7 @@ async function main() {
         // First, try to get all websites (including filtered ones)
         let allWebsites = await fetchWebsites();
 
-        allWebsites.sort((a, b) => (a.id || 0) - (b.id || 0));
+        allWebsites.sort((a, b) => (a.url || 0) - (b.url || 0));
 
         // Analyze the websites
         const analysis = analyzeWebsites(allWebsites);

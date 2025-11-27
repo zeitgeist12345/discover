@@ -3,7 +3,6 @@ const STATIC = {
     // Auto-generated sample websites
     SAMPLE_WEBSITES: [
         {
-            "id": 1,
             "name": "Hacker News",
             "url": "https://news.ycombinator.com",
             "description": "Social news website focusing on computer science and entrepreneurship",
@@ -18,7 +17,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 2,
             "name": "Product Hunt",
             "url": "https://www.producthunt.com",
             "description": "Platform for sharing and discovering new products",
@@ -33,7 +31,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 3,
             "name": "Unsplash",
             "url": "https://unsplash.com",
             "description": "Beautiful, free images gifted by the world's most generous community of photographers",
@@ -48,7 +45,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 4,
             "name": "skribbl.io",
             "url": "https://skribbl.io/",
             "description": "Free multiplayer drawing and guessing game",
@@ -63,7 +59,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 5,
             "name": "zeitgeist12345",
             "url": "https://zeitgeist12345.github.io/",
             "description": "The personal website of the creator of this project",
@@ -78,7 +73,6 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
-            "id": 6,
             "name": "Sci-Hub",
             "url": "https://sci-hub.se/",
             "description": "Removing barriers in the way of science by providing free access to research papers",
@@ -93,7 +87,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 7,
             "name": "Library Genesis",
             "url": "https://libgen.li/",
             "description": "Massive digital library of books, articles, and media",
@@ -108,7 +101,6 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
-            "id": 8,
             "name": "Internet Archive",
             "url": "https://archive.org/",
             "description": "Digital library of free & borrowable books, movies, music & Wayback Machine",
@@ -123,7 +115,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 9,
             "name": "The Useless Web",
             "url": "https://theuselessweb.com/",
             "description": "Random fun and bizarre websites with one click",
@@ -138,7 +129,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 10,
             "name": "Play Counter-Strike 1.6",
             "url": "https://play-cs.com/",
             "description": "Play classic CS 1.6 online without downloading",
@@ -153,7 +143,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 11,
             "name": "Overleaf",
             "url": "https://www.overleaf.com/",
             "description": "Online LaTeX editor with real-time collaboration",
@@ -168,7 +157,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 12,
             "name": "The Longest Blockchain",
             "url": "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
             "description": "Interesting perspective on blockchain strength",
@@ -183,7 +171,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 13,
             "name": "Bored Button",
             "url": "https://www.boredbutton.com/",
             "description": "Collection of random fun websites and games",
@@ -198,7 +185,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 14,
             "name": "Radio Garden",
             "url": "http://radio.garden/",
             "description": "Listen to live radio stations across the globe",
@@ -213,7 +199,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 15,
             "name": "Window Swap",
             "url": "https://window-swap.com/",
             "description": "See the view from someone else's window around the world",
@@ -228,7 +213,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 16,
             "name": "The Pudding",
             "url": "https://pudding.cool/",
             "description": "Visual essays that explain ideas with data and visuals",
@@ -243,7 +227,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 17,
             "name": "xkcd",
             "url": "https://xkcd.com/",
             "description": "A webcomic of romance, sarcasm, math, and language",
@@ -258,7 +241,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 18,
             "name": "Stellarium Web",
             "url": "https://stellarium-web.org/",
             "description": "Real-time 3D simulation of space with planetarium view",
@@ -273,7 +255,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 19,
             "name": "Patatap",
             "url": "https://patatap.com",
             "description": "Turn your keyboard into a sound machine with colorful animations",
@@ -288,7 +269,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 20,
             "name": "Little Alchemy 2",
             "url": "https://littlealchemy2.com",
             "description": "Combine elements to discover new objects (e.g., Earth + Fire = Lava)",
@@ -303,7 +283,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 21,
             "name": "Pointer Pointer",
             "url": "https://pointerpointer.com",
             "description": "Photos of people pointing at your cursor wherever you move it",
@@ -318,7 +297,6 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
-            "id": 22,
             "name": "Ncase.me",
             "url": "https://ncase.me",
             "description": "Interactive simulations about trust and human behavior",
@@ -333,7 +311,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 23,
             "name": "Connected Papers",
             "url": "https://www.connectedpapers.com",
             "description": "Visual tool to explore academic research connections",
@@ -348,7 +325,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 24,
             "name": "Quick, Draw!",
             "url": "https://quickdraw.withgoogle.com",
             "description": "AI game that guesses your doodles",
@@ -363,7 +339,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 25,
             "name": "A Soft Murmur",
             "url": "https://asoftmurmur.com",
             "description": "Mix ambient sounds (rain, waves) for focus",
@@ -378,7 +353,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 26,
             "name": "10 Minute Mail",
             "url": "https://10minutemail.com",
             "description": "Disposable email for spam-free signups",
@@ -393,7 +367,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 27,
             "name": "The Deep Sea",
             "url": "https://neal.fun/deep-sea",
             "description": "Interactive dive into ocean depths with fascinating facts",
@@ -408,7 +381,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 28,
             "name": "Don't Even Reply",
             "url": "https://dontevenreply.com",
             "description": "Hilarious fictional email exchanges",
@@ -423,7 +395,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 29,
             "name": "Scream Into the Void",
             "url": "https://screamintothevoid.com",
             "description": "Type your frustrations and hear a scream",
@@ -438,7 +409,6 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
-            "id": 30,
             "name": "This Is Sand",
             "url": "https://thisissand.com",
             "description": "Digital sand art creator",
@@ -453,7 +423,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 31,
             "name": "DeepSeek",
             "url": "https://www.deepseek.com/en",
             "description": "AI research and development company",
@@ -468,7 +437,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 32,
             "name": "DeepSeek",
             "url": "https://chat.deepseek.com/",
             "description": "Cutting edge open weight open research LLM.",
@@ -483,7 +451,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 33,
             "name": "Al Jazeera",
             "url": "https://www.aljazeera.com",
             "description": "International news and current affairs network",
@@ -498,7 +465,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 34,
             "name": "In depth flow of computers",
             "url": "https://github.com/alex/what-happens-when",
             "description": "An attempt to answer the age old interview question - What happens when you type google.com into your browser and press enter? This page explains how the computer systems work together.",
@@ -513,7 +479,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 35,
             "name": "Software build systems",
             "url": "https://bazel.build/basics",
             "description": "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
@@ -528,7 +493,6 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
-            "id": 36,
             "name": "Examples website",
             "url": "https://www.example.com",
             "description": "Example website",
@@ -543,7 +507,6 @@ const STATIC = {
             "dislikesDesktop": 2
         },
         {
-            "id": 37,
             "name": "Sony",
             "url": "sony.com",
             "description": "Tech giant.",
@@ -555,7 +518,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 38,
             "name": "twitte",
             "url": "twitter.com",
             "description": "twitter",
@@ -567,7 +529,6 @@ const STATIC = {
             "dislikesDesktop": 5
         },
         {
-            "id": 39,
             "name": "lg",
             "url": "lg.com",
             "description": "lg",
@@ -582,7 +543,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 40,
             "name": "Canon",
             "url": "canon.com",
             "description": "Tech company.",
@@ -599,7 +559,6 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
-            "id": 41,
             "name": "Honda",
             "url": "honda.com",
             "description": "Hardware company.",
@@ -616,7 +575,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 42,
             "name": "Codeforces",
             "url": "https://codeforces.com/problemset",
             "description": "The top competitive programming platform.",
@@ -633,7 +591,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 43,
             "name": "Interview Ready",
             "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
             "description": "Best backend engineering course.",
@@ -650,7 +607,6 @@ const STATIC = {
             "dislikesDesktop": 2
         },
         {
-            "id": 44,
             "name": "Rekhta famous shayaris",
             "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
             "description": "Ponder and it might help clear blockers in the mind.",
@@ -667,7 +623,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 45,
             "name": "sci net.",
             "url": "https://sci-net.xyz/",
             "description": "Open scientific papers submitted by paper authors.",
@@ -683,7 +638,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 46,
             "name": "Project Euler",
             "url": "https://projecteuler.net/",
             "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
@@ -699,7 +653,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 47,
             "name": "BYD",
             "url": "https://www.byd.com/",
             "description": "Electric car company.",
@@ -715,7 +668,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 48,
             "name": "MediaTek",
             "url": "https://www.mediatek.com/",
             "description": "Silicon chips company.",
@@ -731,7 +683,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 49,
             "name": "MSI",
             "url": "https://msi.com",
             "description": "Computer motherboard company.",
@@ -747,7 +698,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 50,
             "name": "Nissan",
             "url": "https://www.nissan-global.com/EN/",
             "description": "Car company",
@@ -762,7 +712,6 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
-            "id": 51,
             "name": "YouTube",
             "url": "https://m.youtube.com/feed/subscriptions",
             "description": "The subscriptions feed does not have implicit personalized recommendations.",
@@ -781,7 +730,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 52,
             "name": "High Scalability",
             "url": "https://highscalability.com/",
             "description": "System Design Blogs",
@@ -795,7 +743,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 53,
             "name": "Compiler Explorer",
             "url": "https://godbolt.org/",
             "description": "Test different computer programming language compilers.",
@@ -809,7 +756,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 54,
             "name": "Competitive Programmer's Handbook",
             "url": "https://github.com/pllk/cphb/",
             "description": "Best competitive programming book.",
@@ -823,7 +769,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 55,
             "name": "GeeksforGeeks",
             "url": "https://www.geeksforgeeks.org/",
             "description": "Computer Science learning platform.",
@@ -837,7 +782,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 56,
             "name": "hashnode",
             "url": "https://hashnode.com/featured",
             "description": "Developer blog platform.",
@@ -851,7 +795,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 57,
             "name": "The DeepSeek Series: A Technical Overview",
             "url": "https://martinfowler.com/articles/deepseek-papers.html",
             "description": "This article provides an overview of the DeepSeek papers, highlighting three main arcs in this research: a focus on improving cost and memory efficiency, the use of HPC Co-Design to train large models on limited hardware, and the development of emergent reasoning from large-scale reinforcement learning.",
@@ -865,7 +808,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 58,
             "name": "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
             "url": "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
             "description": "Short play on the British rule in India",
@@ -879,7 +821,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 59,
             "name": "Fatiha ka tarika",
             "url": "https://namazein.com/fatiha-ka-tarika/",
             "description": "How to do fatiha follow through guide.",
@@ -893,7 +834,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 60,
             "name": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
             "url": "https://www.youtube.com/watch?v=jxLsiOflofk",
             "description": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",
@@ -907,7 +847,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 61,
             "name": "draw.io",
             "url": "https://app.diagrams.net/",
             "description": "Diagram making software which includes UML diagrams in software engineering.",
@@ -921,7 +860,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 62,
             "name": "4chan",
             "url": "https://4chan.org/",
             "description": "Free speech social media platform.",
@@ -935,7 +873,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 63,
             "name": "Blind",
             "url": "https://www.teamblind.com/",
             "description": "Social media.",
@@ -950,7 +887,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 64,
             "name": "Blind recent sort",
             "url": "https://www.teamblind.com/?sort=id",
             "description": "Social media.",
@@ -965,7 +901,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 65,
             "name": "Group trivia game",
             "url": "https://crowdparty.app/",
             "description": "Group online trivia game.",
@@ -979,7 +914,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 66,
             "name": "Group puzzle game",
             "url": "https://codenames.game/",
             "description": "Group online puzzle game.",
@@ -993,7 +927,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 67,
             "name": "Moj",
             "url": "https://mojapp.in",
             "description": "TikTok alternative.",
@@ -1012,7 +945,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 68,
             "name": "Oppo",
             "url": "https://www.oppo.com",
             "description": "Mobile phone company.",
@@ -1030,7 +962,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 69,
             "name": "OnePlus",
             "url": "https://www.oneplus.com",
             "description": "Phone company",
@@ -1047,7 +978,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 70,
             "name": "test",
             "url": "https://test.com",
             "description": "Test",
@@ -1063,7 +993,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 71,
             "name": "Test2",
             "url": "https://test2.com",
             "description": "Testing 2",
@@ -1079,7 +1008,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 72,
             "name": "Anna's archive",
             "url": "https://annas-archive.se/",
             "description": "Open library.",
@@ -1095,7 +1023,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 73,
             "name": "Tails",
             "url": "https://tails.net",
             "description": "Secure OS.",
@@ -1111,7 +1038,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 74,
             "name": "Interview Ready - System Design",
             "url": "https://interviewready.io/learn/system-design-course/how-do-i-use-this-course/what-do-we-offer?tab=chapters",
             "description": "Best System Design course.",
@@ -1127,7 +1053,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 75,
             "name": "LLM Embeddings Explained",
             "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
             "description": "LLM Embeddings Explained:\nA Visual and Intuitive Guide",
@@ -1143,7 +1068,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 76,
             "name": "Linux Kernel Explorer",
             "url": "https://reverser.dev/linux-kernel-explorer",
             "description": "A portal to study the Linux Kernel.",
