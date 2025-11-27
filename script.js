@@ -401,9 +401,8 @@ function updateCurrentSiteInfo(website) {
     }
     // Add tags as a separate element
     const tags = document.getElementById('website-tags');
-    if (tags) {
-        tags.textContent = "Tags: " + website.tags;
-    }
+    tags.textContent = `Tags: [${website.tags.join(', ')}]`;
+
 
     // Show stats and reset button states
     if (statsDiv) {
