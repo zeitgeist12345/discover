@@ -243,20 +243,11 @@ class DiscoverViewModel(
 
         when (currentInteraction) {
             UserInteractionState.LIKED -> {
-                _currentUserInteractionState.value = UserInteractionState.NONE
-                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile - 1) }
                 Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.DISLIKED -> {
-                _currentUserInteractionState.value = UserInteractionState.LIKED
-                _currentWebsite.update { current ->
-                    current?.copy(likesMobile = current.likesMobile + 1, dislikesMobile = current.dislikesMobile - 1)
-                }
-                viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.url, "likes")
-                }
-                Log.d(TAG, "Website changed from dislikes to likes: ${websiteToUpdate.name}")
+                Log.d(TAG, "No operation on like when already disliked")
             }
 
             UserInteractionState.NONE -> {
@@ -276,20 +267,11 @@ class DiscoverViewModel(
 
         when (currentInteraction) {
             UserInteractionState.DISLIKED -> {
-                _currentUserInteractionState.value = UserInteractionState.NONE
-                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile - 1) }
                 Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.LIKED -> {
-                _currentUserInteractionState.value = UserInteractionState.DISLIKED
-                _currentWebsite.update { current ->
-                    current?.copy(dislikesMobile = current.dislikesMobile + 1, likesMobile = current.likesMobile - 1)
-                }
-                viewModelScope.launch {
-                    apiService.incrementView(websiteToUpdate.url, "dislikes")
-                }
-                Log.d(TAG, "Website changed from likes to dislikes: ${websiteToUpdate.name}")
+                Log.d(TAG, "No operation on dislike when already liked")
             }
 
             UserInteractionState.NONE -> {
