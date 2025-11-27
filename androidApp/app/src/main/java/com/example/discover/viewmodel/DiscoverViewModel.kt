@@ -243,11 +243,30 @@ class DiscoverViewModel(
 
         when (currentInteraction) {
             UserInteractionState.LIKED -> {
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "unlikes")
+                }
                 Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.DISLIKED -> {
-                Log.d(TAG, "No operation on like when already disliked")
+                // Undislike
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "undislikes")
+                }
+                Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
+
+                // Like
+                _currentUserInteractionState.value = UserInteractionState.LIKED
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile + 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "likes")
+                }
+                Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.NONE -> {
@@ -267,11 +286,30 @@ class DiscoverViewModel(
 
         when (currentInteraction) {
             UserInteractionState.DISLIKED -> {
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "undislikes")
+                }
                 Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.LIKED -> {
-                Log.d(TAG, "No operation on dislike when already liked")
+                // Unlike
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "unlikes")
+                }
+                Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
+
+                // DisLike
+                _currentUserInteractionState.value = UserInteractionState.DISLIKED
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile + 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "dislikes")
+                }
+                Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
             }
 
             UserInteractionState.NONE -> {
