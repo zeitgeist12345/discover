@@ -92,20 +92,20 @@ class DiscoverViewModel(
                     _isApiAvailable.value = 1
                     Log.d(
                         TAG,
-                        "API returned ${websitesList.size} items. First item from API before assigning: ID=${websitesList.firstOrNull()?.id}, Name=${websitesList.firstOrNull()?.name}"
+                        "API returned ${websitesList.size} items. First item from API before assigning: URL=${websitesList.firstOrNull()?.url}, Name=${websitesList.firstOrNull()?.name}"
                     )
                     // Update the main list of websites
                     _websites.value = websitesList
                     Log.d(
                         TAG,
-                        "_websites.value updated. Size: ${_websites.value.size}. First item ID: ${_websites.value.firstOrNull()?.id}, Name: ${_websites.value.firstOrNull()?.name}"
+                        "_websites.value updated. Size: ${_websites.value.size}. First item URL: ${_websites.value.firstOrNull()?.url}, Name: ${_websites.value.firstOrNull()?.name}"
                     )
 
                     // If there was a current website, try to find its updated version in the new list
                     // to refresh its data (e.g., likesMobile/dislikesMobile) but keep it as the current one.
                     val updatedCurrentWebsiteInstance =
-                        originalCurrentWebsite?.id?.let { currentId ->
-                            websitesList.find { it.id == currentId }
+                        originalCurrentWebsite?.url?.let { currentUrl ->
+                            websitesList.find { it.url == currentUrl }
                         }
 
                     if (updatedCurrentWebsiteInstance != null) {
@@ -160,10 +160,10 @@ class DiscoverViewModel(
         websites.value.take(3).forEachIndexed { index, link ->
             Log.d(
                 TAG,
-                "LRW - Initial Website $index from _websites.value: ID='${link.id}', Name='${link.name}', URL='${link.url}'"
+                "LRW - Initial Website $index from _websites.value: URL='${link.url}', Name='${link.name}', URL='${link.url}'"
             )
         }
-        val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.id) }
+        val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.url) }
         if (unvisitedWebsites.isEmpty()) {
             visitedWebsites.clear()
             websiteHistory.clear()
@@ -228,7 +228,7 @@ class DiscoverViewModel(
             websiteHistory.add(website)
             currentIndex = websiteHistory.size - 1
         }
-        visitedWebsites.add(website.id)
+        visitedWebsites.add(website.url)
         _currentWebsite.value = website
         viewModelScope.launch {
             apiService.incrementView(website.url, "view")
