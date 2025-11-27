@@ -11,8 +11,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 144,
-            "likesMobile": 39,
+            "views": 150,
+            "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
             "dislikesDesktop": 0
@@ -26,8 +26,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 124,
-            "likesMobile": 29,
+            "views": 127,
+            "likesMobile": 30,
             "dislikesMobile": 2,
             "likesDesktop": 16,
             "dislikesDesktop": 0
@@ -41,7 +41,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 199,
+            "views": 205,
             "likesMobile": 53,
             "dislikesMobile": 4,
             "likesDesktop": 26,
@@ -56,7 +56,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 37,
+            "views": 38,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -71,8 +71,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 49,
-            "likesMobile": 3,
+            "views": 54,
+            "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 1
@@ -101,7 +101,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 53,
+            "views": 58,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -116,7 +116,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 59,
+            "views": 60,
             "likesMobile": 4,
             "dislikesMobile": 1000,
             "likesDesktop": 5,
@@ -131,7 +131,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 58,
+            "views": 65,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -146,7 +146,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 43,
+            "views": 45,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 3,
@@ -206,7 +206,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 45,
+            "views": 46,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -236,7 +236,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 72,
+            "views": 79,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -251,7 +251,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 57,
+            "views": 58,
             "likesMobile": 12,
             "dislikesMobile": 3000,
             "likesDesktop": 3,
@@ -266,7 +266,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 53,
+            "views": 55,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -281,7 +281,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 75,
+            "views": 79,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -296,7 +296,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 75,
+            "views": 82,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -311,7 +311,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 72,
+            "views": 75,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -326,8 +326,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 77,
-            "likesMobile": 2,
+            "views": 81,
+            "likesMobile": 3,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
@@ -341,7 +341,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 72,
+            "views": 73,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 10,
@@ -356,7 +356,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 60,
+            "views": 61,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -386,7 +386,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 61,
+            "views": 62,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -401,7 +401,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 63,
+            "views": 66,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -416,7 +416,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 84,
+            "views": 85,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 9,
@@ -446,7 +446,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 67,
+            "views": 69,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -461,7 +461,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 66,
+            "views": 68,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -476,7 +476,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 63,
+            "views": 65,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -491,8 +491,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 87,
-            "likesMobile": 7,
+            "views": 94,
+            "likesMobile": 8,
             "dislikesMobile": 0,
             "likesDesktop": 4,
             "dislikesDesktop": 0
@@ -521,10 +521,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 83,
+            "views": 90,
             "likesMobile": 2,
             "dislikesMobile": 0,
-            "likesDesktop": 4,
+            "likesDesktop": 5,
             "dislikesDesktop": 1
         },
         {
@@ -536,50 +536,26 @@ const STATIC = {
                 "beautiful",
                 "gorgeous"
             ],
-            "views": 21,
+            "views": 22,
             "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 5,
+            "dislikesMobile": 1000,
+            "likesDesktop": 6,
             "dislikesDesktop": 2
         },
         {
             "id": 37,
-            "name": "google",
-            "url": "www.google.com",
-            "description": "Search engine.",
-            "tags": [],
-            "views": 22,
-            "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 11,
-            "dislikesDesktop": 3
-        },
-        {
-            "id": 38,
-            "name": "Yahoo",
-            "url": "www.yahoo.com",
-            "description": "Search engine.",
-            "tags": [],
-            "views": 20,
-            "likesMobile": 0,
-            "dislikesMobile": 1000,
-            "likesDesktop": 10,
-            "dislikesDesktop": 4
-        },
-        {
-            "id": 39,
             "name": "Sony",
             "url": "sony.com",
             "description": "Tech giant.",
             "tags": [],
-            "views": 25,
+            "views": 27,
             "likesMobile": 1,
-            "dislikesMobile": 0,
+            "dislikesMobile": 1000,
             "likesDesktop": 4,
             "dislikesDesktop": 0
         },
         {
-            "id": 40,
+            "id": 38,
             "name": "twitte",
             "url": "twitter.com",
             "description": "twitter",
@@ -591,7 +567,7 @@ const STATIC = {
             "dislikesDesktop": 5
         },
         {
-            "id": 41,
+            "id": 39,
             "name": "lg",
             "url": "lg.com",
             "description": "lg",
@@ -599,14 +575,14 @@ const STATIC = {
                 "wesome",
                 "wesome,gorgeous"
             ],
-            "views": 22,
-            "likesMobile": 0,
+            "views": 28,
+            "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 42,
+            "id": 40,
             "name": "Canon",
             "url": "canon.com",
             "description": "Tech company.",
@@ -616,14 +592,14 @@ const STATIC = {
                 "wow",
                 "beautiful"
             ],
-            "views": 27,
-            "likesMobile": 2,
+            "views": 33,
+            "likesMobile": 3,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 1
         },
         {
-            "id": 43,
+            "id": 41,
             "name": "Honda",
             "url": "honda.com",
             "description": "Hardware company.",
@@ -633,14 +609,14 @@ const STATIC = {
                 "pretty",
                 "poetic"
             ],
-            "views": 27,
-            "likesMobile": 4,
+            "views": 31,
+            "likesMobile": 5,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 44,
+            "id": 42,
             "name": "Codeforces",
             "url": "https://codeforces.com/problemset",
             "description": "The top competitive programming platform.",
@@ -650,14 +626,14 @@ const STATIC = {
                 "fun",
                 "poetic"
             ],
-            "views": 23,
+            "views": 30,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
-            "id": 45,
+            "id": 43,
             "name": "Interview Ready",
             "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
             "description": "Best backend engineering course.",
@@ -667,14 +643,14 @@ const STATIC = {
                 "backend",
                 "course"
             ],
-            "views": 25,
+            "views": 26,
             "likesMobile": 0,
             "dislikesMobile": 1000,
             "likesDesktop": 5,
             "dislikesDesktop": 2
         },
         {
-            "id": 46,
+            "id": 44,
             "name": "Rekhta famous shayaris",
             "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
             "description": "Ponder and it might help clear blockers in the mind.",
@@ -684,14 +660,14 @@ const STATIC = {
                 "poetic",
                 "beautiful"
             ],
-            "views": 18,
+            "views": 25,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
-            "id": 47,
+            "id": 45,
             "name": "sci net.",
             "url": "https://sci-net.xyz/",
             "description": "Open scientific papers submitted by paper authors.",
@@ -700,14 +676,14 @@ const STATIC = {
                 "research",
                 "cool"
             ],
-            "views": 14,
+            "views": 17,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 48,
+            "id": 46,
             "name": "Project Euler",
             "url": "https://projecteuler.net/",
             "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
@@ -716,14 +692,14 @@ const STATIC = {
                 "cs",
                 "coding"
             ],
-            "views": 14,
+            "views": 16,
             "likesMobile": 5,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 49,
+            "id": 47,
             "name": "BYD",
             "url": "https://www.byd.com/",
             "description": "Electric car company.",
@@ -732,14 +708,14 @@ const STATIC = {
                 "electric",
                 "company"
             ],
-            "views": 16,
-            "likesMobile": 2,
+            "views": 19,
+            "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
-            "id": 50,
+            "id": 48,
             "name": "MediaTek",
             "url": "https://www.mediatek.com/",
             "description": "Silicon chips company.",
@@ -748,14 +724,14 @@ const STATIC = {
                 "chips",
                 "company"
             ],
-            "views": 16,
+            "views": 17,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
-            "id": 51,
+            "id": 49,
             "name": "MSI",
             "url": "https://msi.com",
             "description": "Computer motherboard company.",
@@ -764,14 +740,14 @@ const STATIC = {
                 "motherboard",
                 "company"
             ],
-            "views": 14,
+            "views": 19,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
-            "id": 52,
+            "id": 50,
             "name": "Nissan",
             "url": "https://www.nissan-global.com/EN/",
             "description": "Car company",
@@ -779,14 +755,14 @@ const STATIC = {
                 "car",
                 "company"
             ],
-            "views": 16,
+            "views": 19,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 1
         },
         {
-            "id": 53,
+            "id": 51,
             "name": "YouTube",
             "url": "https://m.youtube.com/feed/subscriptions",
             "description": "The subscriptions feed does not have implicit personalized recommendations.",
@@ -798,28 +774,28 @@ const STATIC = {
                 "regular",
                 "repeat"
             ],
-            "views": 5,
-            "likesMobile": 1,
+            "views": 9,
+            "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
-            "id": 54,
+            "id": 52,
             "name": "High Scalability",
             "url": "https://highscalability.com/",
             "description": "System Design Blogs",
             "tags": [
                 "user-submitted"
             ],
-            "views": 6,
-            "likesMobile": 0,
+            "views": 10,
+            "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
-            "id": 55,
+            "id": 53,
             "name": "Compiler Explorer",
             "url": "https://godbolt.org/",
             "description": "Test different computer programming language compilers.",
@@ -833,105 +809,105 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 56,
+            "id": 54,
             "name": "Competitive Programmer's Handbook",
             "url": "https://github.com/pllk/cphb/",
             "description": "Best competitive programming book.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 4,
+            "views": 8,
             "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "dislikesMobile": 1000,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
-            "id": 57,
+            "id": 55,
             "name": "GeeksforGeeks",
             "url": "https://www.geeksforgeeks.org/",
             "description": "Computer Science learning platform.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 7,
+            "views": 10,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 58,
+            "id": 56,
             "name": "hashnode",
             "url": "https://hashnode.com/featured",
             "description": "Developer blog platform.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 8,
+            "views": 12,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 59,
+            "id": 57,
             "name": "The DeepSeek Series: A Technical Overview",
             "url": "https://martinfowler.com/articles/deepseek-papers.html",
             "description": "This article provides an overview of the DeepSeek papers, highlighting three main arcs in this research: a focus on improving cost and memory efficiency, the use of HPC Co-Design to train large models on limited hardware, and the development of emergent reasoning from large-scale reinforcement learning.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 10,
+            "views": 12,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 60,
+            "id": 58,
             "name": "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
             "url": "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
             "description": "Short play on the British rule in India",
             "tags": [
                 "user-submitted"
             ],
-            "views": 8,
+            "views": 19,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
-            "id": 61,
+            "id": 59,
             "name": "Fatiha ka tarika",
             "url": "https://namazein.com/fatiha-ka-tarika/",
             "description": "How to do fatiha follow through guide.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 9,
+            "views": 15,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
-            "id": 62,
+            "id": 60,
             "name": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
             "url": "https://www.youtube.com/watch?v=jxLsiOflofk",
             "description": "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 7,
-            "likesMobile": 5,
+            "views": 11,
+            "likesMobile": 6,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 63,
+            "id": 61,
             "name": "draw.io",
             "url": "https://app.diagrams.net/",
             "description": "Diagram making software which includes UML diagrams in software engineering.",
@@ -945,21 +921,21 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 64,
+            "id": 62,
             "name": "4chan",
             "url": "https://4chan.org/",
             "description": "Free speech social media platform.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 9,
+            "views": 15,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
-            "id": 65,
+            "id": 63,
             "name": "Blind",
             "url": "https://www.teamblind.com/",
             "description": "Social media.",
@@ -967,14 +943,14 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 4,
+            "views": 9,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
-            "id": 66,
+            "id": 64,
             "name": "Blind recent sort",
             "url": "https://www.teamblind.com/?sort=id",
             "description": "Social media.",
@@ -982,42 +958,42 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 3,
+            "views": 9,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
-            "id": 67,
+            "id": 65,
             "name": "Group trivia game",
             "url": "https://crowdparty.app/",
             "description": "Group online trivia game.",
             "tags": [
                 "user-submitted"
             ],
-            "views": 0,
-            "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 0,
-            "dislikesDesktop": 0
-        },
-        {
-            "id": 68,
-            "name": "Group puzzle game",
-            "url": "https://codenames.game/",
-            "description": "Group online puzzle game.",
-            "tags": [
-                "user-submitted"
-            ],
-            "views": 1,
+            "views": 2,
             "likesMobile": 0,
             "dislikesMobile": 1000,
             "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
-            "id": 69,
+            "id": 66,
+            "name": "Group puzzle game",
+            "url": "https://codenames.game/",
+            "description": "Group online puzzle game.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 2,
+            "likesMobile": 0,
+            "dislikesMobile": 1000,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 67,
             "name": "Moj",
             "url": "https://mojapp.in",
             "description": "TikTok alternative.",
@@ -1036,7 +1012,7 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "id": 70,
+            "id": 68,
             "name": "Oppo",
             "url": "https://www.oppo.com",
             "description": "Mobile phone company.",
@@ -1047,14 +1023,14 @@ const STATIC = {
                 "mobilephonecompany",
                 "poetic"
             ],
-            "views": 1,
+            "views": 3,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
-            "id": 71,
+            "id": 69,
             "name": "OnePlus",
             "url": "https://www.oneplus.com",
             "description": "Phone company",
@@ -1063,6 +1039,117 @@ const STATIC = {
                 "phonecompany",
                 "mobilephonecompany",
                 "poetic"
+            ],
+            "views": 2,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 70,
+            "name": "test",
+            "url": "https://test.com",
+            "description": "Test",
+            "tags": [
+                "test",
+                "testingalot",
+                "good"
+            ],
+            "views": 2,
+            "likesMobile": 0,
+            "dislikesMobile": 1000,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 71,
+            "name": "Test2",
+            "url": "https://test2.com",
+            "description": "Testing 2",
+            "tags": [
+                "test",
+                "testingalot",
+                "cool"
+            ],
+            "views": 1,
+            "likesMobile": 0,
+            "dislikesMobile": 1000,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 72,
+            "name": "Anna's archive",
+            "url": "https://annas-archive.se/",
+            "description": "Open library.",
+            "tags": [
+                "open",
+                "library",
+                "books"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 73,
+            "name": "Tails",
+            "url": "https://tails.net",
+            "description": "Secure OS.",
+            "tags": [
+                "secure",
+                "os",
+                "privacy"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 74,
+            "name": "Interview Ready - System Design",
+            "url": "https://interviewready.io/learn/system-design-course/how-do-i-use-this-course/what-do-we-offer?tab=chapters",
+            "description": "Best System Design course.",
+            "tags": [
+                "systemdesign",
+                "course",
+                "learning"
+            ],
+            "views": 1,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 75,
+            "name": "LLM Embeddings Explained",
+            "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
+            "description": "LLM Embeddings Explained:\nA Visual and Intuitive Guide",
+            "tags": [
+                "llm",
+                "ai",
+                "explained"
+            ],
+            "views": 1,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "id": 76,
+            "name": "Linux Kernel Explorer",
+            "url": "https://reverser.dev/linux-kernel-explorer",
+            "description": "A portal to study the Linux Kernel.",
+            "tags": [
+                "linux",
+                "kernel"
             ],
             "views": 0,
             "likesMobile": 0,

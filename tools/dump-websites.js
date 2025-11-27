@@ -106,8 +106,11 @@ function analyzeWebsites(websites) {
 
 function saveToFile(data) {
     try {
+        // 🔥 Remove created_at from each website object
+        const cleanedWebsites = data.websites.map(({ created_at, ...rest }) => rest);
+
         // Save raw website data only
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(data.websites, null, 2));
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(cleanedWebsites, null, 2));
         console.log(`💾 Raw data saved to: ${OUTPUT_FILE}`);
 
         // Save comprehensive summary with metadata
