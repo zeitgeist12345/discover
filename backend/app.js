@@ -146,13 +146,26 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
       case 'likes':
         fieldToUpdate = 'likesMobile = likesMobile + 1';
         break;
+      case 'unlikes':
+        fieldToUpdate = 'likesMobile = likesMobile - 1';
+        break;
       case 'dislikes':
         fieldToUpdate = 'dislikesMobile = dislikesMobile + 1';
+        break;
+      case 'undislikes':
+        fieldToUpdate = 'dislikesMobile = dislikesMobile - 1';
+        break;
       case 'likesDesktop':
         fieldToUpdate = 'likesDesktop = likesDesktop + 1';
         break;
+      case 'unlikesDesktop':
+        fieldToUpdate = 'likesDesktop = likesDesktop - 1';
+        break;
       case 'dislikesDesktop':
         fieldToUpdate = 'dislikesDesktop = dislikesDesktop + 1';
+        break;
+      case 'undislikesDesktop':
+        fieldToUpdate = 'dislikesDesktop = dislikesDesktop - 1';
         break;
       default:
         return res.status(400).json({ success: false, error: 'Invalid action type' });
@@ -279,28 +292,6 @@ app.post('/addwebsite', async (req, res) => {
   }
 });
 
-// Get website by ID
-app.get('/website/:id', async (req, res) => {
-  try {
-    const connection = await mysql.createConnection(dbConfig);
-    const [rows] = await connection.execute(
-      'SELECT * FROM websites WHERE id = ?',
-      [req.params.id]
-    );
-
-    await connection.end();
-
-    if (rows.length === 0) {
-      return res.status(404).json({ error: 'Website not found' });
-    }
-
-    res.json(rows[0]);
-  } catch (error) {
-    console.error('Get website error:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
 // Health check endpoint
 app.get('/health', async (req, res) => {
   try {
@@ -329,7 +320,6 @@ app.get('/', async (req, res) => {
         '/incrementView': 'POST - Update link stats',
         '/addwebsite': 'POST - Add new website',
         '/removeLink': 'POST - Remove link',
-        '/website/:id': 'GET - Get website by ID',
         '/health': 'GET - Health check'
       }
     });
