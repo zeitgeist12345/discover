@@ -43,6 +43,9 @@ class DiscoverViewModel(
     private val _showWebView = MutableStateFlow(false)
     val showWebView: StateFlow<Boolean> = _showWebView.asStateFlow()
 
+    private val _isWebViewLoading = MutableStateFlow(true)
+    val isWebViewLoading: StateFlow<Boolean> = _isWebViewLoading.asStateFlow()
+
     private val _currentWebViewUrl = MutableStateFlow<String?>(null)
     val currentWebViewUrl: StateFlow<String?> = _currentWebViewUrl.asStateFlow()
 
@@ -235,6 +238,10 @@ class DiscoverViewModel(
         }
         _currentWebViewUrl.value = website.url
         _showWebView.value = true
+    }
+
+    fun onWebViewPageVisible() {
+        _isWebViewLoading.value = false
     }
 
     fun likeWebsite() {

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
+import android.view.View
 import android.webkit.WebChromeClient // Required for onProgressChanged
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -30,25 +31,46 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.discover.ui.theme.PrimaryGreen
 import com.example.discover.ui.theme.SurfaceDark
+import com.example.discover.viewmodel.DiscoverViewModel
 
 @SuppressLint("SetJavaScriptEnabled", "QueryPermissionsNeeded")
 @Composable
 fun WebViewArea(
+    viewModel: DiscoverViewModel,
     webView: WebView,
     url: String,
     onUrlChanged: (String) -> Unit,
     onCloseArea: () -> Unit,
     onWebViewHistoryBack: () -> Unit
 ) {
+    val isWebViewLoading by viewModel.isWebViewLoading.collectAsStateWithLifecycle()
     var webViewProgress by remember { mutableIntStateOf(0) }
     val context = LocalContext.current
 
     LaunchedEffect(webView, url) {
         val targetUrl = url.ifBlank { "about:blank" }
         if (webView.url != targetUrl) {
+            if (isWebViewLoading) {
+                webView.visibility = View.INVISIBLE
+            }
+            val visualStateCallback = object : WebView.VisualStateCallback() {
+                override fun onComplete(requestId: Long) {
+                    // Check if this is the response to our specific request.
+                    if (requestId == 257L) {
+                        // The WebView has finished a draw pass, so it's safe to make it visible.
+                        if (isWebViewLoading) {
+                            viewModel.onWebViewPageVisible()
+                            webView.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
             webView.loadUrl(targetUrl)
+            // AFTER telling it to load, ask it to notify us when it's ready to be drawn.
+            webView.postVisualStateCallback(257L, visualStateCallback)
         }
     }
 

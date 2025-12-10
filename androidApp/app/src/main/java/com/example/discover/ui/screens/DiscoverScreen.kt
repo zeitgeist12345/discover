@@ -115,6 +115,7 @@ fun DiscoverScreen(
                 onClose = { viewModel.closeWebView() } // This closes the WebView view
             )
             WebViewArea(
+                viewModel = viewModel,
                 webView = webView, // <-- Pass the persistent WebView instance down
                 url = initialWebViewUrl!!,
                 onUrlChanged = { newUrl ->
