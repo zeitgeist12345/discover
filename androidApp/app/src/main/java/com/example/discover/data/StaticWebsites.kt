@@ -5,9 +5,7 @@ object StaticWebsites {
         Link(
             name = "12 Rules for Life - Jordan Bernt Peterson",
             url = "https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF",
-            description = "The bridge between European ideas and Islam.
-Beyond Order: 12 More Rules for Life is also a required read after this book.
-Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of â€œtell the truth, or atleast don't lieâ€ and the holy Quran's do not mix truth with falsehood, nor knowingly conceal the truth - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
+            description = "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's do not mix truth with falsehood, nor knowingly conceal the truth - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
             tags = listOf("book", "learning", "12rulesforlife"),
             views = 1,
             likesMobile = 0,
@@ -317,8 +315,7 @@ Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. 
         Link(
             name = "Project Euler",
             url = "https://projecteuler.net/",
-            description = "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. 
-The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
+            description = "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
             tags = listOf("math", "cs", "coding"),
             views = 24,
             likesMobile = 5,

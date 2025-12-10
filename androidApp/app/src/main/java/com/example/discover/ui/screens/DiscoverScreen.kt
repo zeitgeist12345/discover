@@ -72,6 +72,7 @@ fun DiscoverScreen(
     val webView = remember {
         WebView(context).apply {
             // Apply all settings here. They will persist for the lifetime of the WebView.
+//            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
             settings.apply {
                 javaScriptEnabled = true
                 domStorageEnabled = true
