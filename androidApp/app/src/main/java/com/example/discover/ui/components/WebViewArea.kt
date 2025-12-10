@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
-import android.view.View
+//import android.view.View
 import android.webkit.WebChromeClient // Required for onProgressChanged
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -53,9 +53,10 @@ fun WebViewArea(
     LaunchedEffect(webView, url) {
         val targetUrl = url.ifBlank { "about:blank" }
         if (webView.url != targetUrl) {
-            if (isWebViewLoading) {
-                webView.visibility = View.INVISIBLE
-            }
+//            if (isWebViewLoading) {
+//                // Flicker is very annoying. It was better before.
+//                webView.visibility = View.INVISIBLE
+//            }
             val visualStateCallback = object : WebView.VisualStateCallback() {
                 override fun onComplete(requestId: Long) {
                     // Check if this is the response to our specific request.
@@ -63,7 +64,8 @@ fun WebViewArea(
                         // The WebView has finished a draw pass, so it's safe to make it visible.
                         if (isWebViewLoading) {
                             viewModel.onWebViewPageVisible()
-                            webView.visibility = View.VISIBLE
+                            // Flicker is very annoying. It was better before.
+//                            webView.visibility = View.VISIBLE
                         }
                     }
                 }
