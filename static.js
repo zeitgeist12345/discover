@@ -1063,7 +1063,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 52,
+            "views": 53,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 4,

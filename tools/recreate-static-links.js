@@ -21,10 +21,15 @@ function escapeKotlin(str = '') {
 }
 
 function formatTagsForSQL(tags) {
-    if (!Array.isArray(tags)) {
-        return '[]';
+    if (!tags || !Array.isArray(tags) || tags.length === 0) {
+        return "JSON_ARRAY()";
     }
-    return JSON.stringify(tags);
+
+    const escapedTags = tags.map(tag => {
+        return `'${escapeSQL(tag)}'`;
+    });
+
+    return `JSON_ARRAY(${escapedTags.join(', ')})`;
 }
 
 function needToIgnore(likesMobile, dislikesMobile) {
@@ -48,14 +53,14 @@ function generateInitSQL(websites) {
     url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
-    tags JSON DEFAULT ('[]'),
+    tags JSON DEFAULT (JSON_ARRAY()),
     views INT DEFAULT 0,
     likesMobile INT DEFAULT 0,
     dislikesMobile INT DEFAULT 0,
     likesDesktop INT DEFAULT 0,
     dislikesDesktop INT DEFAULT 0,
     reviewStatus INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO websites (
         name,
@@ -87,7 +92,7 @@ VALUES `;
         '${name}',
         '${url}',
         '${description}',
-        '${tags}',
+        ${tags},
         ${views},
         ${likesMobile},
         ${dislikesMobile},
