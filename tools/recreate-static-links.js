@@ -56,7 +56,6 @@ function generateInitSQL(websites) {
     dislikesDesktop INT DEFAULT 0,
     reviewStatus INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE KEY unique_url (url(255))
 );
 INSERT INTO websites (
         name,
