@@ -17,7 +17,7 @@
   {
     "url": "https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF",
     "name": "12 Rules for Life - Jordan Bernt Peterson",
-    "description": "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
+    "description": "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
     "tags": [
       "book",
       "learning",
@@ -114,10 +114,10 @@
       "library",
       "books"
     ],
-    "views": 15,
+    "views": 16,
     "likesMobile": 1,
     "dislikesMobile": 0,
-    "likesDesktop": 0,
+    "likesDesktop": 1,
     "dislikesDesktop": 1,
     "reviewStatus": 1
   },
@@ -175,7 +175,7 @@
       "electric",
       "company"
     ],
-    "views": 32,
+    "views": 33,
     "likesMobile": 5,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -328,9 +328,9 @@
     ],
     "views": 25,
     "likesMobile": 0,
-    "dislikesMobile": 1000,
+    "dislikesMobile": 2000,
     "likesDesktop": 6,
-    "dislikesDesktop": 4,
+    "dislikesDesktop": 1004,
     "reviewStatus": 1
   },
   {
@@ -397,7 +397,7 @@
       "curated",
       "sample"
     ],
-    "views": 165,
+    "views": 166,
     "likesMobile": 41,
     "dislikesMobile": 3,
     "likesDesktop": 18,
@@ -958,7 +958,7 @@
       "curated",
       "sample"
     ],
-    "views": 44,
+    "views": 45,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -1048,11 +1048,11 @@
       "\"quotes\"",
       "test"
     ],
-    "views": 0,
+    "views": 1,
     "likesMobile": 0,
-    "dislikesMobile": 0,
+    "dislikesMobile": 1000,
     "likesDesktop": 0,
-    "dislikesDesktop": 0,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {

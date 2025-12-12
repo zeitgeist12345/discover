@@ -5,7 +5,7 @@ object StaticWebsites {
         Link(
             name = "12 Rules for Life - Jordan Bernt Peterson",
             url = "https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF",
-            description = "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
+            description = "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
             tags = listOf("book", "learning", "12rulesforlife"),
             views = 5,
             likesMobile = 2,
@@ -57,7 +57,7 @@ object StaticWebsites {
             url = "https://annas-archive.se/",
             description = "Open library.",
             tags = listOf("open", "library", "books"),
-            views = 15,
+            views = 16,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -87,7 +87,7 @@ object StaticWebsites {
             url = "https://www.byd.com/",
             description = "Electric car company.",
             tags = listOf("car", "electric", "company"),
-            views = 32,
+            views = 33,
             likesMobile = 5,
             dislikesMobile = 0
         ),
@@ -127,7 +127,7 @@ object StaticWebsites {
             url = "https://news.ycombinator.com/",
             description = "Social news website focusing on computer science and entrepreneurship",
             tags = listOf("curated", "sample"),
-            views = 165,
+            views = 166,
             likesMobile = 41,
             dislikesMobile = 3
         ),
@@ -350,16 +350,6 @@ The motivation for starting Project Euler, and its continuation, is to provide a
             tags = listOf("curated", "sample"),
             views = 104,
             likesMobile = 2,
-            dislikesMobile = 0
-        ),
-
-        Link(
-            name = "test10",
-            url = "https://test10.com/",
-            description = "Testing escaping of \"quotes\".",
-            tags = listOf("quotes", "\"quotes\"", "test"),
-            views = 0,
-            likesMobile = 0,
             dislikesMobile = 0
         ),
 

@@ -19,7 +19,7 @@ const STATIC = {
         {
             "name": "12 Rules for Life - Jordan Bernt Peterson",
             "url": "https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF",
-            "description": "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
+            "description": "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
             "tags": [
                 "book",
                 "learning",
@@ -110,10 +110,10 @@ const STATIC = {
                 "library",
                 "books"
             ],
-            "views": 15,
+            "views": 16,
             "likesMobile": 1,
             "dislikesMobile": 0,
-            "likesDesktop": 0,
+            "likesDesktop": 1,
             "dislikesDesktop": 1
         },
         {
@@ -167,7 +167,7 @@ const STATIC = {
                 "electric",
                 "company"
             ],
-            "views": 32,
+            "views": 33,
             "likesMobile": 5,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -285,20 +285,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "name": "Examples website",
-            "url": "https://www.example.com/",
-            "description": "Example website",
-            "tags": [
-                "beautiful",
-                "gorgeous"
-            ],
-            "views": 25,
-            "likesMobile": 0,
-            "dislikesMobile": 1000,
-            "likesDesktop": 6,
-            "dislikesDesktop": 4
-        },
-        {
             "name": "Fatiha ka tarika",
             "url": "https://namazein.com/fatiha-ka-tarika/",
             "description": "How to do fatiha follow through guide.",
@@ -358,7 +344,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 165,
+            "views": 166,
             "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
@@ -883,7 +869,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 44,
+            "views": 45,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -941,21 +927,6 @@ const STATIC = {
             "likesMobile": 3,
             "dislikesMobile": 1002,
             "likesDesktop": 6,
-            "dislikesDesktop": 0
-        },
-        {
-            "name": "test10",
-            "url": "https://test10.com/",
-            "description": "Testing escaping of \"quotes\".",
-            "tags": [
-                "quotes",
-                "\"quotes\"",
-                "test"
-            ],
-            "views": 0,
-            "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
