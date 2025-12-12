@@ -2,14 +2,14 @@ CREATE TABLE IF NOT EXISTS websites (
     url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
-    tags JSON DEFAULT ('[]'),
+    tags JSON DEFAULT (JSON_ARRAY()),
     views INT DEFAULT 0,
     likesMobile INT DEFAULT 0,
     dislikesMobile INT DEFAULT 0,
     likesDesktop INT DEFAULT 0,
     dislikesDesktop INT DEFAULT 0,
     reviewStatus INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO websites (
         name,
@@ -845,7 +845,7 @@ The motivation for starting Project Euler, and its continuation, is to provide a
         'test10',
         'https://test10.com/',
         'Testing escaping of "quotes".',
-        '["quotes","\"quotes\"","test"]',
+        '["quotes","\\"quotes\\"","test"]',
         0,
         0,
         0,
