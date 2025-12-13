@@ -69,7 +69,15 @@ class DiscoverViewModel(
 
     init {
         startWithFastestData()
-        loadRandomWebsite()
+        // Due to flicker, load the approved flicker free website initially.
+        val initialWebsite = _websites.value.find { it.url == "https://news.ycombinator.com/" }
+        if (initialWebsite != null) {
+            // If we found it, load it.
+            loadWebsite(initialWebsite, addToHistory = true)
+        } else {
+            // As a fallback in case the URL changes, load any random website.
+            loadRandomWebsite()
+        }
         updateWebsitesInBackground()
     }
 
@@ -158,14 +166,6 @@ class DiscoverViewModel(
 
     fun loadRandomWebsite() {
         Log.d(TAG, "Start Loading random website")
-        Log.d(TAG, "visitedWebsites: ${visitedWebsites.size}")
-        Log.d(TAG, "websites.value size: ${websites.value.size}")
-        websites.value.take(3).forEachIndexed { index, link ->
-            Log.d(
-                TAG,
-                "LRW - Initial Website $index from _websites.value: URL='${link.url}', Name='${link.name}', URL='${link.url}'"
-            )
-        }
         val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.url) }
         if (unvisitedWebsites.isEmpty()) {
             visitedWebsites.clear()
