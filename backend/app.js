@@ -245,7 +245,13 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
 // Add new website
 app.post('/addwebsite', async (req, res) => {
   try {
-    const { name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop } = req.body;
+    let { name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop } = req.body;
+
+    // Remove all types of newlines (including \r)
+    name = name?.replace(/[\r\n]+/g, '') || name;
+    url = url?.replace(/[\r\n]+/g, '') || url;
+    description = description?.replace(/[\r\n]+/g, '') || description;
+    tags = tags?.replace(/[\r\n]+/g, '') || tags;
 
     if (!name || !url || !description) {
       return res.status(400).json({ error: 'Name, URL, and description are required' });
@@ -253,25 +259,23 @@ app.post('/addwebsite', async (req, res) => {
 
     /////////////////////////////////////////////////
 
-    let fixedUrl = url.trim();
+    url = url.trim();
     // Remove any extra whitespace
-    fixedUrl = fixedUrl.replace(/\s+/g, '');
+    url = url.replace(/\s+/g, '');
     // Check if URL has a protocol, add https:// if not
-    if (!fixedUrl.match(/^https?:\/\//i)) {
-      fixedUrl = 'https://' + fixedUrl;
+    if (!url.match(/^https?:\/\//i)) {
+      url = 'https://' + url;
     }
-
-    let validatedUrl;
     try {
       // Use URL constructor to validate
-      const urlObj = new URL(fixedUrl);
+      const urlObj = new URL(url);
 
       // Ensure it's a valid web URL (http or https)
       if (!['http:', 'https:'].includes(urlObj.protocol)) {
         throw new Error('Invalid protocol');
       }
 
-      validatedUrl = urlObj.href;
+      url = urlObj.href;
     } catch (error) {
       throw new Error('Invalid URL format');
     }

@@ -506,8 +506,7 @@ VALUES (
     (
         'LLM Embeddings Explained',
         'https://huggingface.co/spaces/hesamation/primer-llm-embedding',
-        'LLM Embeddings Explained:
-A Visual and Intuitive Guide',
+        'LLM Embeddings Explained: A Visual and Intuitive Guide',
         JSON_ARRAY('llm', 'ai', 'explained'),
         4,
         0,
@@ -687,8 +686,7 @@ A Visual and Intuitive Guide',
     (
         'Project Euler',
         'https://projecteuler.net/',
-        'Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. 
-The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.',
+        'Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.',
         JSON_ARRAY('math', 'cs', 'coding'),
         31,
         5,

@@ -608,7 +608,7 @@
   {
     "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
     "name": "LLM Embeddings Explained",
-    "description": "LLM Embeddings Explained:\nA Visual and Intuitive Guide",
+    "description": "LLM Embeddings Explained: A Visual and Intuitive Guide",
     "tags": [
       "llm",
       "ai",
@@ -844,7 +844,7 @@
   {
     "url": "https://projecteuler.net/",
     "name": "Project Euler",
-    "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
+    "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
     "tags": [
       "math",
       "cs",

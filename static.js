@@ -541,7 +541,7 @@ const STATIC = {
         {
             "name": "LLM Embeddings Explained",
             "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
-            "description": "LLM Embeddings Explained:\nA Visual and Intuitive Guide",
+            "description": "LLM Embeddings Explained: A Visual and Intuitive Guide",
             "tags": [
                 "llm",
                 "ai",
@@ -762,7 +762,7 @@ const STATIC = {
         {
             "name": "Project Euler",
             "url": "https://projecteuler.net/",
-            "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. \nThe motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
+            "description": "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
             "tags": [
                 "math",
                 "cs",
