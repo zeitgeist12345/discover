@@ -69,8 +69,16 @@ class DiscoverViewModel(
 
     init {
         startWithFastestData()
-        // Due to flicker, load the approved flicker free website initially.
-        val initialWebsite = _websites.value.find { it.url == "https://news.ycombinator.com/" }
+        // Due to flicker, load an approved flicker-free website initially.
+        val flickerFreeUrls = listOf(
+            "https://news.ycombinator.com/",
+            "https://www.aljazeera.com/",
+            "https://www.byd.com/",
+            "https://zeitgeist12345.github.io/",
+        )
+        // Find the first website from our flicker-free list that exists in the loaded websites.
+        val initialWebsite =
+            flickerFreeUrls.firstNotNullOfOrNull { url -> _websites.value.find { it.url == url } }
         if (initialWebsite != null) {
             // If we found it, load it.
             loadWebsite(initialWebsite, addToHistory = true)
