@@ -106,7 +106,7 @@ fun WebViewArea(
             // The update block ensures the clients are correctly set.
             view.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(v: WebView?, newProgress: Int) {
-                    if (!isWebViewLoading) {
+                    if (!isWebViewLoading || webView.url != "about:blank") {
                         webViewProgress = newProgress
                     }
                 }
