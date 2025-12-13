@@ -315,8 +315,7 @@ object StaticWebsites {
         Link(
             name = "Project Euler",
             url = "https://projecteuler.net/",
-            description = "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. 
-The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
+            description = "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.",
             tags = listOf("math", "cs", "coding"),
             views = 31,
             likesMobile = 5,
