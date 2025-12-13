@@ -99,7 +99,7 @@ fun DiscoverScreen(
 
     // This Column will be the root for either the main content or the WebView structure
     Column(modifier = Modifier.fillMaxSize()) {
-        if (showWebView && initialWebViewUrl != null) {
+        if (showWebView) {
             // When showing WebView, display the TopDiscoverBar and then the WebViewArea
             TopDiscoverBar(
                 isLiked = userInteractionState == UserInteractionState.LIKED,
@@ -119,7 +119,7 @@ fun DiscoverScreen(
             WebViewArea(
                 viewModel = viewModel,
                 webView = webView, // <-- Pass the persistent WebView instance down
-                url = initialWebViewUrl!!,
+                url = initialWebViewUrl,
                 onUrlChanged = { newUrl ->
                     liveWebViewUrl = newUrl
                 },

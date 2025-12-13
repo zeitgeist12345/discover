@@ -42,7 +42,7 @@ import com.example.discover.viewmodel.DiscoverViewModel
 fun WebViewArea(
     viewModel: DiscoverViewModel,
     webView: WebView,
-    url: String,
+    url: String?,
     onUrlChanged: (String) -> Unit,
     onCloseArea: () -> Unit,
     onWebViewHistoryBack: () -> Unit
@@ -52,7 +52,7 @@ fun WebViewArea(
     val context = LocalContext.current
 
     LaunchedEffect(webView, url) {
-        val targetUrl = url.ifBlank { "about:blank" }
+        val targetUrl = url ?: "about:blank"
         if (webView.url != targetUrl) {
             val visualStateCallback = object : WebView.VisualStateCallback() {
                 override fun onComplete(requestId: Long) {
@@ -106,7 +106,9 @@ fun WebViewArea(
             // The update block ensures the clients are correctly set.
             view.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(v: WebView?, newProgress: Int) {
-                    webViewProgress = newProgress
+                    if (!isWebViewLoading) {
+                        webViewProgress = newProgress
+                    }
                 }
 
                 override fun onReceivedTitle(view: WebView?, title: String?) {
