@@ -72,9 +72,8 @@ class DiscoverViewModel(
 
         // Due to flicker, load an approved flicker-free website initially.
         val flickerFreeUrls = listOf(
-            "https://news.ycombinator.com/",
-            "https://www.aljazeera.com/",
             "https://www.byd.com/",
+            "https://www.aljazeera.com/",
             "https://zeitgeist12345.github.io/",
         )
         // Find the first website from our flicker-free list that exists in the loaded websites.
