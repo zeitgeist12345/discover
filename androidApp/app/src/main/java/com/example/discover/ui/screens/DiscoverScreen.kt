@@ -32,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -72,8 +73,9 @@ fun DiscoverScreen(
     val webView = remember {
         WebView(context).apply {
             // Apply all settings here. They will persist for the lifetime of the WebView.
-//            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
             settings.apply {
+//                setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+                setBackgroundColor(Color.Transparent.toArgb())
                 javaScriptEnabled = true
                 domStorageEnabled = true
                 loadWithOverviewMode = true

@@ -27,6 +27,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -52,11 +54,6 @@ fun WebViewArea(
     LaunchedEffect(webView, url) {
         val targetUrl = url.ifBlank { "about:blank" }
         if (webView.url != targetUrl) {
-            if (isWebViewLoading) {
-                // Flicker is very annoying. It was better before.
-//                webView.visibility = View.INVISIBLE
-                webView.setBackgroundColor(0)
-            }
             val visualStateCallback = object : WebView.VisualStateCallback() {
                 override fun onComplete(requestId: Long) {
                     // Check if this is the response to our specific request.
@@ -65,15 +62,16 @@ fun WebViewArea(
                         if (isWebViewLoading) {
                             viewModel.onWebViewPageVisible()
                             // Flicker is very annoying. It was better before.
-//                            webView.visibility = View.VISIBLE
-                            webView.setBackgroundColor(0xFFFFFFFF.toInt())
+                            webView.setBackgroundColor(Color.White.toArgb())
                         }
                     }
                 }
             }
             webView.loadUrl(targetUrl)
             // AFTER telling it to load, ask it to notify us when it's ready to be drawn.
-            webView.postVisualStateCallback(257L, visualStateCallback)
+            if (isWebViewLoading) {
+                webView.postVisualStateCallback(257L, visualStateCallback)
+            }
         }
     }
 
