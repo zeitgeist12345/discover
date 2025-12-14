@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "generatedAt": "2025-12-12T15:45:08.133Z",
+    "apiUrl": "https://backend.discoverall.space",
+    "totalWebsites": 83
+  },
+  "analysis": {
+    "total": 83,
+    "filteredMobile": 42,
+    "filteredDesktop": 7,
+    "blockedMobileUrls": [
+      "http://radio.garden/",
+      "https://10minutemail.com/",
+      "https://app.diagrams.net/",
+      "https://archive.org/",
+      "https://asoftmurmur.com/",
+      "https://canon.com/",
+      "https://chat.deepseek.com/",
+      "https://codenames.game/",
+      "https://crowdparty.app/",
+      "https://cryptoservices.github.io/blockchain/consensus/2019/05/21/bitcoin-length-weight-confusion.html",
+      "https://dontevenreply.com/",
+      "https://github.com/alex/what-happens-when",
+      "https://github.com/pllk/cphb/",
+      "https://godbolt.org/",
+      "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
+      "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
+      "https://interviewready.io/learn/system-design-course/how-do-i-use-this-course/what-do-we-offer?tab=chapters",
+      "https://libgen.li/",
+      "https://mojapp.in/",
+      "https://neal.fun/deep-sea",
+      "https://play-cs.com/",
+      "https://quickdraw.withgoogle.com/",
+      "https://reverser.dev/linux-kernel-explorer",
+      "https://sci-hub.se/",
+      "https://screamintothevoid.com/",
+      "https://skribbl.io/",
+      "https://sony.com/",
+      "https://stellarium-web.org/",
+      "https://tails.net/",
+      "https://test.com/",
+      "https://test10.com/",
+      "https://test2.com/",
+      "https://test3.com/",
+      "https://thisissand.com/",
+      "https://twitter.com/",
+      "https://window-swap.com/",
+      "https://www.boredbutton.com/",
+      "https://www.connectedpapers.com/",
+      "https://www.deepseek.com/en",
+      "https://www.example.com/",
+      "https://www.overleaf.com/",
+      "https://xkcd.com/"
+    ],
+    "blockedDesktopUrls": [
+      "https://canon.com/",
+      "https://test.com/",
+      "https://test10.com/",
+      "https://test2.com/",
+      "https://test3.com/",
+      "https://twitter.com/",
+      "https://www.example.com/"
+    ],
+    "byReason": {},
+    "byScore": {
+      "0%": 34,
+      "1-25%": 4,
+      "26-50%": 1,
+      "51-75%": 0,
+      "76-79%": 0,
+      "80-100%": 44
+    },
+    "byVoteCount": {
+      "0 votes": 4,
+      "1-3 votes": 27,
+      "4-10 votes": 7,
+      "11-50 votes": 2,
+      "50+ votes": 43
+    }
+  }
+}

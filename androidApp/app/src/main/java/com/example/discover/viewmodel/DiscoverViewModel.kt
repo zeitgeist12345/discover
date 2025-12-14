@@ -1,0 +1,384 @@
+package com.example.discover.viewmodel
+
+// import android.content.Context // No longer directly needed in constructor
+// import android.widget.Toast // Remove this, ViewModel won't show Toasts directly
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.discover.data.Link
+import com.example.discover.data.StaticWebsites
+import com.example.discover.network.AddWebsiteResult
+import com.example.discover.network.ApiService
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+
+// Enum to represent user interaction
+enum class UserInteractionState {
+    NONE, LIKED, DISLIKED
+}
+
+class DiscoverViewModel(
+    application: Application // Change to Application
+) : AndroidViewModel(application) { // Extend AndroidViewModel
+    private companion object {
+        private const val TAG = "DiscoverViewModel"
+    }
+
+    private val apiService = ApiService()
+
+    // ... (all your existing StateFlows for UI data remain the same)
+    private val _websites = MutableStateFlow<List<Link>>(emptyList())
+    val websites: StateFlow<List<Link>> = _websites.asStateFlow()
+
+    private val _currentWebsite = MutableStateFlow<Link?>(null)
+    val currentWebsite: StateFlow<Link?> = _currentWebsite.asStateFlow()
+
+    private val _showAddWebsiteDialog = MutableStateFlow(false)
+    val showAddWebsiteDialog: StateFlow<Boolean> = _showAddWebsiteDialog.asStateFlow()
+
+    private val _showWebView = MutableStateFlow(true)
+    val showWebView: StateFlow<Boolean> = _showWebView.asStateFlow()
+
+    private val _isWebViewLoading = MutableStateFlow(true)
+    val isWebViewLoading: StateFlow<Boolean> = _isWebViewLoading.asStateFlow()
+
+    private val _currentWebViewUrl = MutableStateFlow<String?>(null)
+    val currentWebViewUrl: StateFlow<String?> = _currentWebViewUrl.asStateFlow()
+
+    private val _currentUserInteractionState = MutableStateFlow(UserInteractionState.NONE)
+    val currentUserInteractionState: StateFlow<UserInteractionState> =
+        _currentUserInteractionState.asStateFlow()
+
+    // New StateFlow for Toast messages
+    private val _toastMessage = MutableStateFlow<String?>(null)
+    val toastMessage: StateFlow<String?> = _toastMessage.asStateFlow()
+
+
+    // --- ADD THIS ---
+    private val _isApiAvailable = MutableStateFlow(0) // Default to true or false as you see fit
+    val isApiAvailable: StateFlow<Int> = _isApiAvailable.asStateFlow()
+    // --- END OF ADDITION ---
+
+    private val visitedWebsites = mutableSetOf<String>()
+    private val websiteHistory = mutableListOf<Link>()
+    private var currentIndex = -1
+
+    init {
+        startWithFastestData()
+
+        // Due to flicker, load an approved flicker-free website initially.
+        val flickerFreeUrls = listOf(
+            "https://www.byd.com/",
+            "https://www.aljazeera.com/",
+            "https://abirusabil123.github.io/",
+        )
+        // Find the first website from our flicker-free list that exists in the loaded websites.
+        val initialWebsite =
+            flickerFreeUrls.firstNotNullOfOrNull { url -> _websites.value.find { it.url == url } }
+        if (initialWebsite != null) {
+            // If we found it, load it.
+            loadWebsite(initialWebsite, addToHistory = true)
+        } else {
+            // As a fallback in case the URL changes, load any random website.
+            loadRandomWebsite()
+        }
+    }
+
+    private fun startWithFastestData() {
+        Log.d(TAG, "Begin Start with fastest data")
+        Log.d(TAG, "Websites: ${_websites.value.size}")
+        Log.d(TAG, "Static websites: ${StaticWebsites.websites.size}")
+        if (_websites.value.isEmpty()) {
+            Log.d(TAG, "Starting with static websites")
+            _websites.value = StaticWebsites.websites
+        }
+        Log.d(TAG, "End Start with fastest data")
+    }
+
+    private fun updateWebsitesInBackground() {
+        viewModelScope.launch {
+            val originalCurrentWebsite =
+                _currentWebsite.value // Keep a reference to the original current website object
+
+            try {
+                val websitesList = apiService.getWebsites()
+                if (websitesList.isNotEmpty()) {
+                    _isApiAvailable.value = 1
+                    Log.d(
+                        TAG,
+                        "API returned ${websitesList.size} items. First item from API before assigning: URL=${websitesList.firstOrNull()?.url}, Name=${websitesList.firstOrNull()?.name}"
+                    )
+                    // Update the main list of websites
+                    _websites.value = websitesList
+                    Log.d(
+                        TAG,
+                        "_websites.value updated. Size: ${_websites.value.size}. First item URL: ${_websites.value.firstOrNull()?.url}, Name: ${_websites.value.firstOrNull()?.name}"
+                    )
+
+                    // If there was a current website, try to find its updated version in the new list
+                    // to refresh its data (e.g., likesMobile/dislikesMobile) but keep it as the current one.
+                    val updatedCurrentWebsiteInstance =
+                        originalCurrentWebsite?.url?.let { currentUrl ->
+                            websitesList.find { it.url == currentUrl }
+                        }
+
+                    if (updatedCurrentWebsiteInstance != null) {
+                        // The current website still exists in the new list, update our local instance
+                        // to reflect any changes from the server (e.g., updated likes count).
+                        _currentWebsite.value = updatedCurrentWebsiteInstance
+                    } else if (originalCurrentWebsite != null) {
+                        // The original current website is NOT in the new list.
+                        // Per your requirement, we do nothing and keep 'originalCurrentWebsite'
+                        // as '_currentWebsite.value'. It's already set.
+                        // The user can continue interacting with this "stale" website data
+                        // until they navigate away.
+                        // '_websites.value' is updated, so 'next'/'random' will pick from the new list.
+                    } else {
+                        // There was no originalCurrentWebsite (it was null), so load a random one
+                        // from the new list. This handles initial load or scenarios where no site was active.
+                        // Also, reset history as we are picking a fresh start.
+                        visitedWebsites.clear()
+                        websiteHistory.clear()
+                        currentIndex = -1
+                        loadRandomWebsite()
+                    }
+
+                } else {
+                    // If fetching fails, the API might be down
+                    _isApiAvailable.value = -1
+                    // If API returned empty, _websites.value is unchanged (or from cache/static).
+                    // _currentWebsite.value also remains as it was.
+                    // If _currentWebsite was null and we have some websites, load one.
+                    if (_currentWebsite.value == null && _websites.value.isNotEmpty()) {
+                        loadRandomWebsite() // Potentially reset history here too if needed
+                    }
+                }
+            } catch (e: Exception) {
+                // If fetching fails, the API might be down
+                _isApiAvailable.value = -1
+                e.printStackTrace()
+                // On error, _websites.value is unchanged (or from cache/static).
+                // _currentWebsite.value also remains as it was.
+                // If _currentWebsite was null and we have some websites, load one.
+                if (_currentWebsite.value == null && _websites.value.isNotEmpty()) {
+                    loadRandomWebsite() // Potentially reset history here too if needed
+                }
+            }
+        }
+    }
+
+    fun loadRandomWebsite() {
+        Log.d(TAG, "Start Loading random website")
+        val unvisitedWebsites = websites.value.filter { !visitedWebsites.contains(it.url) }
+        if (unvisitedWebsites.isEmpty()) {
+            visitedWebsites.clear()
+            websiteHistory.clear()
+            currentIndex = -1
+            val allWebsites = websites.value
+            if (allWebsites.isNotEmpty()) {
+                val randomWebsite = allWebsites.random()
+                loadWebsite(randomWebsite, addToHistory = true)
+            } else {
+                Log.d(TAG, "No websites available. Please try again.")
+            }
+            return
+        }
+        val randomWebsite = unvisitedWebsites.random()
+
+        Log.d(TAG, "Random website: ${randomWebsite.name}")
+        loadWebsite(randomWebsite, addToHistory = true)
+        Log.d(TAG, "End Loading random website")
+    }
+
+    fun loadNextWebsite() {
+        if (websiteHistory.isEmpty()) {
+            loadRandomWebsite()
+            return
+        }
+        if (currentIndex < websiteHistory.size - 1) {
+            currentIndex++
+            val website = websiteHistory[currentIndex]
+            loadWebsite(website, addToHistory = false)
+        } else {
+            loadRandomWebsite()
+        }
+    }
+
+    fun updateNavigatedPreviousWebsite() {
+        if (websiteHistory.isEmpty() || currentIndex <= 0) {
+            return
+        }
+        currentIndex--
+    }
+
+    fun loadPreviousWebsite() {
+        if (websiteHistory.isEmpty() || currentIndex <= 0) {
+            return
+        }
+        currentIndex--
+        val website = websiteHistory[currentIndex]
+        loadWebsite(website, addToHistory = false)
+    }
+
+    private fun loadWebsite(website: Link, addToHistory: Boolean) {
+        _currentUserInteractionState.value =
+            UserInteractionState.NONE // Reset interaction state for new website
+
+        if (addToHistory) {
+            if (currentIndex < websiteHistory.size - 1) {
+                val newSize = currentIndex + 1
+                while (websiteHistory.size > newSize) {
+                    websiteHistory.removeAt(websiteHistory.size - 1)
+                }
+            }
+            websiteHistory.add(website)
+            currentIndex = websiteHistory.size - 1
+        }
+        visitedWebsites.add(website.url)
+        _currentWebsite.value = website
+        viewModelScope.launch {
+            apiService.incrementView(website.url, "view")
+        }
+        _currentWebViewUrl.value = website.url
+        _showWebView.value = true
+    }
+
+    fun onWebViewPageVisible() {
+        _isWebViewLoading.value = false
+        updateWebsitesInBackground()
+    }
+
+    fun likeWebsite() {
+        val currentInteraction = _currentUserInteractionState.value
+        val websiteToUpdate = currentWebsite.value ?: return
+
+        when (currentInteraction) {
+            UserInteractionState.LIKED -> {
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "unlikes")
+                }
+                Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
+            }
+
+            UserInteractionState.DISLIKED -> {
+                // Undislike
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "undislikes")
+                }
+                Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
+
+                // Like
+                _currentUserInteractionState.value = UserInteractionState.LIKED
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile + 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "likes")
+                }
+                Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
+            }
+
+            UserInteractionState.NONE -> {
+                _currentUserInteractionState.value = UserInteractionState.LIKED
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile + 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "likes")
+                }
+                Log.d(TAG, "Website liked: ${websiteToUpdate.name}")
+            }
+        }
+    }
+
+    fun dislikeWebsite() {
+        val currentInteraction = _currentUserInteractionState.value
+        val websiteToUpdate = currentWebsite.value ?: return
+
+        when (currentInteraction) {
+            UserInteractionState.DISLIKED -> {
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "undislikes")
+                }
+                Log.d(TAG, "Website undisliked: ${websiteToUpdate.name}")
+            }
+
+            UserInteractionState.LIKED -> {
+                // Unlike
+                _currentUserInteractionState.value = UserInteractionState.NONE
+                _currentWebsite.update { current -> current?.copy(likesMobile = current.likesMobile - 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "unlikes")
+                }
+                Log.d(TAG, "Website unliked: ${websiteToUpdate.name}")
+
+                // DisLike
+                _currentUserInteractionState.value = UserInteractionState.DISLIKED
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile + 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "dislikes")
+                }
+                Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
+            }
+
+            UserInteractionState.NONE -> {
+                _currentUserInteractionState.value = UserInteractionState.DISLIKED
+                _currentWebsite.update { current -> current?.copy(dislikesMobile = current.dislikesMobile + 1) }
+                viewModelScope.launch {
+                    apiService.incrementView(websiteToUpdate.url, "dislikes")
+                }
+                Log.d(TAG, "Website disliked: ${websiteToUpdate.name}")
+            }
+        }
+    }
+
+
+    fun openWebsite() {
+        currentWebsite.value?.let { website ->
+            _currentWebViewUrl.value = website.url
+            _showWebView.value = true
+        }
+    }
+
+    fun closeWebView() {
+        _showWebView.value = false
+        _currentWebViewUrl.value = null
+    }
+
+    fun showAddWebsiteDialog() {
+        _showAddWebsiteDialog.value = true
+    }
+
+    fun hideAddWebsiteDialog() {
+        _showAddWebsiteDialog.value = false
+    }
+
+    fun addWebsite(name: String, url: String, description: String, tags: List<String>) {
+        viewModelScope.launch {
+            val request = Link(name = name, url = url, description = description, tags = tags)
+            val result = apiService.addWebsite(request)
+            val message = when (result) {
+                is AddWebsiteResult.Success -> {
+                    hideAddWebsiteDialog() // Hide dialog on success
+                    "Link submitted for spam review successfully! The link will be live globally after review approval 🎉"
+                }
+
+                is AddWebsiteResult.Duplicate -> "This website already exists."
+                is AddWebsiteResult.NetworkError -> "Network error. Please check your connection."
+                is AddWebsiteResult.Error -> result.message
+            }
+            _toastMessage.value = message // Set the message for the UI to observe
+        }
+    }
+
+    // Call this from the UI after the toast is shown
+    fun toastMessageShown() {
+        _toastMessage.value = null
+    }
+}
