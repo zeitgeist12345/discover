@@ -66,7 +66,6 @@ class DiscoverViewModel(
     val timeStats: StateFlow<TimeStats> = _timeStats.asStateFlow()
 
     init {
-        startWithFastestData()
         loadTimeStats()
     }
 
@@ -202,6 +201,7 @@ class DiscoverViewModel(
 
     fun onWebViewPageVisible() {
         _isWebViewLoading.value = false
+        startWithFastestData()
         updateWebsitesInBackground()
     }
 
