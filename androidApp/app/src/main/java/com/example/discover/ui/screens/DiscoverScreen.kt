@@ -51,6 +51,12 @@ import com.example.discover.ui.theme.TextSecondary
 import com.example.discover.viewmodel.DiscoverViewModel
 import com.example.discover.viewmodel.UserInteractionState
 
+@Composable
+fun formatTime(ms: Long): String {
+    return if (ms < 60000) "${ms / 1000}s"
+    else if (ms < 3600000) "${ms / 60000}m"
+    else "${ms / 3600000}h ${(ms % 3600000) / 60000}m"
+}
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun DiscoverScreen(
@@ -66,9 +72,15 @@ fun DiscoverScreen(
         liveWebViewUrl = initialWebViewUrl
     }
     val isApiAvailable by viewModel.isApiAvailable.collectAsStateWithLifecycle()
-
+    val timeStats by viewModel.timeStats.collectAsStateWithLifecycle()
     val toastMessage by viewModel.toastMessage.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    val dailyTime = formatTime(timeStats.daily)
+    val weeklyTime = formatTime(timeStats.weekly)
+    val monthlyTime = formatTime(timeStats.monthly)
+    val yearlyTime = formatTime(timeStats.yearly)
+    val totalTime = formatTime(timeStats.total)
+
     // Configure the WebView with its settings ONE TIME during creation.
     val webView = remember {
         WebView(context).apply {
@@ -87,48 +99,111 @@ fun DiscoverScreen(
                 javaScriptCanOpenWindowsAutomatically = false
                 mediaPlaybackRequiresUserGesture = true
 
-                // Load static splash page immediately
+                // Load static HTML with CURRENT stats
+                val initialHtml = """
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 20px;
+                        background: rgba(0, 0, 0, 1);
+                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                        min-height: 100vh;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                    }
+                    .container {
+                        max-width: 600px;
+                        text-align: center;
+                    }
+                    .stats-container {
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 16px;
+                        padding: 24px;
+                        margin-top: 24px;
+                        backdrop-filter: blur(10px);
+                    }
+                    .stat-item {
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 12px 0;
+                        font-size: 1.1rem;
+                    }
+                    .stat-value {
+                        font-weight: 600;
+                    }
+                    h1 {
+                        font-size: 2.5rem;
+                        margin-bottom: 8px;
+                    }
+                    p {
+                        font-size: 1.2rem;
+                        opacity: 0.9;
+                        margin-bottom: 24px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>🌐 Discover</h1>
+                    <p>Press Discover to explore amazing websites!</p>
+                    
+                    <div class="stats-container" id="statsContainer">
+                        <div class="stat-item">
+                            <span>Today:</span>
+                            <span class="stat-value" id="dailyStat">${dailyTime}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>This Week:</span>
+                            <span class="stat-value" id="weeklyStat">${weeklyTime}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>This Month:</span>
+                            <span class="stat-value" id="monthlyStat">${monthlyTime}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>This Year:</span>
+                            <span class="stat-value" id="yearlyStat">${yearlyTime}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>All Time:</span>
+                            <span class="stat-value" id="totalStat">${totalTime}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    function updateStats(daily, weekly, monthly, yearly, total) {
+                        function formatTime(ms) {
+                            if (ms < 60000) return Math.floor(ms / 1000) + "s";
+                            const minutes = Math.floor(ms / 60000);
+                            const seconds = Math.floor((ms % 60000) / 1000);
+                            if (minutes < 60) return minutes + "m " + seconds + "s";
+                            const hours = Math.floor(minutes / 60);
+                            const remainingMinutes = minutes % 60;
+                            return hours + "h " + remainingMinutes + "m";
+                        }
+                        
+                        document.getElementById('dailyStat').textContent = formatTime(daily);
+                        document.getElementById('weeklyStat').textContent = formatTime(weekly);
+                        document.getElementById('monthlyStat').textContent = formatTime(monthly);
+                        document.getElementById('yearlyStat').textContent = formatTime(yearly);
+                        document.getElementById('totalStat').textContent = formatTime(total);
+                    }
+                </script>
+            </body>
+            </html>
+        """.trimIndent()
+
                 loadDataWithBaseURL(
                     null,
-                    """
-<!doctype html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <style>
-            body {
-                margin: 0;
-                padding: 20px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            }
-            .container {
-                text-align: center;
-                color: white;
-                max-width: 600px;
-            }
-            h1 {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-            }
-            p {
-                font-size: 1.2rem;
-                opacity: 0.9;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Welcome</h1>
-            <p>Press Discover.</p>
-        </div>
-    </body>
-</html>
-            """.trimIndent(),
+                    initialHtml,
                     "text/html",
                     "UTF-8",
                     null

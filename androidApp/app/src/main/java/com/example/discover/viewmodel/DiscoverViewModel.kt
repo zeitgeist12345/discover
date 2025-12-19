@@ -10,6 +10,8 @@ import com.example.discover.data.Link
 import com.example.discover.data.StaticWebsites
 import com.example.discover.network.AddWebsiteResult
 import com.example.discover.network.ApiService
+import com.example.discover.utils.TimeStats
+import com.example.discover.utils.TimeTrackingManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -59,9 +61,30 @@ class DiscoverViewModel(
     private val visitedWebsites = mutableSetOf<String>()
     private val websiteHistory = mutableListOf<Link>()
     private var currentIndex = -1
+    private val timeTrackingManager = TimeTrackingManager(application)
+    private val _timeStats = MutableStateFlow(TimeStats(0, 0, 0, 0, 0))
+    val timeStats: StateFlow<TimeStats> = _timeStats.asStateFlow()
 
     init {
         startWithFastestData()
+        loadTimeStats()
+    }
+
+    // Call when app becomes visible
+    fun onAppForeground() {
+        timeTrackingManager.startSession()
+    }
+
+    // Call when app goes to background
+    fun onAppBackground() {
+        timeTrackingManager.endSession()
+        loadTimeStats() // Refresh stats
+    }
+
+    fun loadTimeStats() {
+        viewModelScope.launch {
+            _timeStats.value = timeTrackingManager.getTimeStats()
+        }
     }
 
     private fun startWithFastestData() {
