@@ -116,7 +116,7 @@ fun DiscoverScreen(
                         settings.apply {
 //                            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
                             setBackgroundColor(Color.Transparent.toArgb())
-                            visibility = View.INVISIBLE
+                            visibility = View.GONE
                             javaScriptEnabled = true
                             domStorageEnabled = true
                             loadWithOverviewMode = true
