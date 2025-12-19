@@ -138,7 +138,7 @@ fun DiscoverScreen(
                     body {
                         margin: 0;
                         padding: 20px;
-                        background: rgba(0, 0, 0, 1);
+                        background: rgba(0.1, 0.1, 0.1, 1);
                         min-height: 100vh;
                         display: flex;
                         flex-direction: column;
