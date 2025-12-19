@@ -107,26 +107,27 @@ fun DiscoverScreen(
                 onClose = { viewModel.closeWebView() } // This closes the WebView view
             )
 
-            // Configure the WebView with its settings ONE TIME during creation.
-            val webView = remember {
-                WebView(context).apply {
-                    // Apply all settings here. They will persist for the lifetime of the WebView.
-                    settings.apply {
+            WebViewArea(
+                viewModel = viewModel,
+                webView = remember {
+                    WebView(context).apply {
+                        // Apply all settings here. They will persist for the lifetime of the WebView.
+                        settings.apply {
 //                setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-                        setBackgroundColor(Color.Transparent.toArgb())
-                        javaScriptEnabled = true
-                        domStorageEnabled = true
-                        loadWithOverviewMode = true
-                        useWideViewPort = true
-                        setSupportZoom(true)
-                        builtInZoomControls = true
-                        displayZoomControls = false
-                        allowFileAccess = false
-                        javaScriptCanOpenWindowsAutomatically = false
-                        mediaPlaybackRequiresUserGesture = true
+                            setBackgroundColor(Color.Transparent.toArgb())
+                            javaScriptEnabled = true
+                            domStorageEnabled = true
+                            loadWithOverviewMode = true
+                            useWideViewPort = true
+                            setSupportZoom(true)
+                            builtInZoomControls = true
+                            displayZoomControls = false
+                            allowFileAccess = false
+                            javaScriptCanOpenWindowsAutomatically = false
+                            mediaPlaybackRequiresUserGesture = true
 
-                        // Load static HTML with CURRENT stats
-                        val initialHtml = """
+                            // Load static HTML with CURRENT stats
+                            val initialHtml = """
             <!DOCTYPE html>
             <html>
             <head>
@@ -205,19 +206,16 @@ fun DiscoverScreen(
             </html>
         """.trimIndent()
 
-                        loadDataWithBaseURL(
-                            null,
-                            initialHtml,
-                            "text/html",
-                            "UTF-8",
-                            null
-                        )
+                            loadDataWithBaseURL(
+                                null,
+                                initialHtml,
+                                "text/html",
+                                "UTF-8",
+                                null
+                            )
+                        }
                     }
-                }
-            }
-            WebViewArea(
-                viewModel = viewModel,
-                webView = webView, // <-- Pass the persistent WebView instance down
+                },
                 url = initialWebViewUrl,
                 onUrlChanged = { newUrl ->
                     liveWebViewUrl = newUrl
