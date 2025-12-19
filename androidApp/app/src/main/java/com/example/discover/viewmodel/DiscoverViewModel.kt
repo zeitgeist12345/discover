@@ -52,40 +52,16 @@ class DiscoverViewModel(
     private val _currentUserInteractionState = MutableStateFlow(UserInteractionState.NONE)
     val currentUserInteractionState: StateFlow<UserInteractionState> =
         _currentUserInteractionState.asStateFlow()
-
-    // New StateFlow for Toast messages
     private val _toastMessage = MutableStateFlow<String?>(null)
     val toastMessage: StateFlow<String?> = _toastMessage.asStateFlow()
-
-
-    // --- ADD THIS ---
     private val _isApiAvailable = MutableStateFlow(0) // Default to true or false as you see fit
     val isApiAvailable: StateFlow<Int> = _isApiAvailable.asStateFlow()
-    // --- END OF ADDITION ---
-
     private val visitedWebsites = mutableSetOf<String>()
     private val websiteHistory = mutableListOf<Link>()
     private var currentIndex = -1
 
     init {
         startWithFastestData()
-
-        // Due to flicker, load an approved flicker-free website initially.
-        val flickerFreeUrls = listOf(
-            "https://www.byd.com/",
-            "https://www.aljazeera.com/",
-            "https://abirusabil123.github.io/",
-        )
-        // Find the first website from our flicker-free list that exists in the loaded websites.
-        val initialWebsite =
-            flickerFreeUrls.firstNotNullOfOrNull { url -> _websites.value.find { it.url == url } }
-        if (initialWebsite != null) {
-            // If we found it, load it.
-            loadWebsite(initialWebsite, addToHistory = true)
-        } else {
-            // As a fallback in case the URL changes, load any random website.
-            loadRandomWebsite()
-        }
     }
 
     private fun startWithFastestData() {
@@ -101,9 +77,6 @@ class DiscoverViewModel(
 
     private fun updateWebsitesInBackground() {
         viewModelScope.launch {
-            val originalCurrentWebsite =
-                _currentWebsite.value // Keep a reference to the original current website object
-
             try {
                 val websitesList = apiService.getWebsites()
                 if (websitesList.isNotEmpty()) {
@@ -118,55 +91,12 @@ class DiscoverViewModel(
                         TAG,
                         "_websites.value updated. Size: ${_websites.value.size}. First item URL: ${_websites.value.firstOrNull()?.url}, Name: ${_websites.value.firstOrNull()?.name}"
                     )
-
-                    // If there was a current website, try to find its updated version in the new list
-                    // to refresh its data (e.g., likesMobile/dislikesMobile) but keep it as the current one.
-                    val updatedCurrentWebsiteInstance =
-                        originalCurrentWebsite?.url?.let { currentUrl ->
-                            websitesList.find { it.url == currentUrl }
-                        }
-
-                    if (updatedCurrentWebsiteInstance != null) {
-                        // The current website still exists in the new list, update our local instance
-                        // to reflect any changes from the server (e.g., updated likes count).
-                        _currentWebsite.value = updatedCurrentWebsiteInstance
-                    } else if (originalCurrentWebsite != null) {
-                        // The original current website is NOT in the new list.
-                        // Per your requirement, we do nothing and keep 'originalCurrentWebsite'
-                        // as '_currentWebsite.value'. It's already set.
-                        // The user can continue interacting with this "stale" website data
-                        // until they navigate away.
-                        // '_websites.value' is updated, so 'next'/'random' will pick from the new list.
-                    } else {
-                        // There was no originalCurrentWebsite (it was null), so load a random one
-                        // from the new list. This handles initial load or scenarios where no site was active.
-                        // Also, reset history as we are picking a fresh start.
-                        visitedWebsites.clear()
-                        websiteHistory.clear()
-                        currentIndex = -1
-                        loadRandomWebsite()
-                    }
-
                 } else {
-                    // If fetching fails, the API might be down
                     _isApiAvailable.value = -1
-                    // If API returned empty, _websites.value is unchanged (or from cache/static).
-                    // _currentWebsite.value also remains as it was.
-                    // If _currentWebsite was null and we have some websites, load one.
-                    if (_currentWebsite.value == null && _websites.value.isNotEmpty()) {
-                        loadRandomWebsite() // Potentially reset history here too if needed
-                    }
                 }
             } catch (e: Exception) {
-                // If fetching fails, the API might be down
                 _isApiAvailable.value = -1
                 e.printStackTrace()
-                // On error, _websites.value is unchanged (or from cache/static).
-                // _currentWebsite.value also remains as it was.
-                // If _currentWebsite was null and we have some websites, load one.
-                if (_currentWebsite.value == null && _websites.value.isNotEmpty()) {
-                    loadRandomWebsite() // Potentially reset history here too if needed
-                }
             }
         }
     }
