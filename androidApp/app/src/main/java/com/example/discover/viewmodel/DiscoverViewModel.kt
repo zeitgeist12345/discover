@@ -162,7 +162,7 @@ class DiscoverViewModel(
     }
 
     fun updateNavigatedPreviousWebsite() {
-        if (websiteHistory.isEmpty() || currentIndex <= 0) {
+        if (websiteHistory.isEmpty() || currentIndex < 0) {
             return
         }
         currentIndex--
