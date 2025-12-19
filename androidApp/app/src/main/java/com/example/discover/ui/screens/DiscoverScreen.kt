@@ -81,55 +81,26 @@ fun DiscoverScreen(
     val yearlyTime = formatTime(timeStats.yearly)
     val totalTime = formatTime(timeStats.total)
 
-    LaunchedEffect(toastMessage) {
-        toastMessage?.let { message ->
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            viewModel.toastMessageShown()
-        }
-    }
-
-    // This Column will be the root for either the main content or the WebView structure
-    Column(modifier = Modifier.fillMaxSize()) {
-        if (showWebView) {
-            // When showing WebView, display the TopDiscoverBar and then the WebViewArea
-            TopDiscoverBar(
-                isLiked = userInteractionState == UserInteractionState.LIKED,
-                isDisliked = userInteractionState == UserInteractionState.DISLIKED,
-                // Assuming onDiscoverClick in the context of the WebView means loading a new random site
-                onDiscoverClick = { viewModel.loadRandomWebsite() },
-                onDislikeClick = { viewModel.dislikeWebsite() },
-                onLikeClick = { viewModel.likeWebsite() },
-                onOpenInBrowser = {
-                    liveWebViewUrl?.let { url ->
-                        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-                        context.startActivity(intent)
-                    }
-                },
-                onClose = { viewModel.closeWebView() } // This closes the WebView view
-            )
-
-            WebViewArea(
-                viewModel = viewModel,
-                webView = remember {
-                    WebView(context).apply {
-                        // Apply all settings here. They will persist for the lifetime of the WebView.
-                        settings.apply {
+    val webView = remember {
+        WebView(context).apply {
+            // Apply all settings here. They will persist for the lifetime of the WebView.
+            settings.apply {
 //                            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-                            setBackgroundColor(Color.Transparent.toArgb())
-                            visibility = View.GONE
-                            javaScriptEnabled = true
-                            domStorageEnabled = true
-                            loadWithOverviewMode = true
-                            useWideViewPort = true
-                            setSupportZoom(true)
-                            builtInZoomControls = true
-                            displayZoomControls = false
-                            allowFileAccess = false
-                            javaScriptCanOpenWindowsAutomatically = false
-                            mediaPlaybackRequiresUserGesture = true
+                setBackgroundColor(Color.Transparent.toArgb())
+                visibility = View.GONE
+                javaScriptEnabled = true
+                domStorageEnabled = true
+                loadWithOverviewMode = true
+                useWideViewPort = true
+                setSupportZoom(true)
+                builtInZoomControls = true
+                displayZoomControls = false
+                allowFileAccess = false
+                javaScriptCanOpenWindowsAutomatically = false
+                mediaPlaybackRequiresUserGesture = true
 
-                            // Load static HTML with CURRENT stats
-                            val initialHtml = """
+                // Load static HTML with CURRENT stats
+                val initialHtml = """
             <!DOCTYPE html>
             <html>
             <head>
@@ -208,16 +179,47 @@ fun DiscoverScreen(
             </html>
         """.trimIndent()
 
-                            loadDataWithBaseURL(
-                                null,
-                                initialHtml,
-                                "text/html",
-                                "UTF-8",
-                                null
-                            )
-                        }
+                loadDataWithBaseURL(
+                    null,
+                    initialHtml,
+                    "text/html",
+                    "UTF-8",
+                    null
+                )
+            }
+        }
+    }
+
+    LaunchedEffect(toastMessage) {
+        toastMessage?.let { message ->
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            viewModel.toastMessageShown()
+        }
+    }
+
+    // This Column will be the root for either the main content or the WebView structure
+    Column(modifier = Modifier.fillMaxSize()) {
+        if (showWebView) {
+            // When showing WebView, display the TopDiscoverBar and then the WebViewArea
+            TopDiscoverBar(
+                isLiked = userInteractionState == UserInteractionState.LIKED,
+                isDisliked = userInteractionState == UserInteractionState.DISLIKED,
+                // Assuming onDiscoverClick in the context of the WebView means loading a new random site
+                onDiscoverClick = { viewModel.loadRandomWebsite() },
+                onDislikeClick = { viewModel.dislikeWebsite() },
+                onLikeClick = { viewModel.likeWebsite() },
+                onOpenInBrowser = {
+                    liveWebViewUrl?.let { url ->
+                        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                        context.startActivity(intent)
                     }
                 },
+                onClose = { viewModel.closeWebView() } // This closes the WebView view
+            )
+
+            WebViewArea(
+                viewModel = viewModel,
+                webView = webView,
                 url = initialWebViewUrl,
                 onUrlChanged = { newUrl ->
                     liveWebViewUrl = newUrl
