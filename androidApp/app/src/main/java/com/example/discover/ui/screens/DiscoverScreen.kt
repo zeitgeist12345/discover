@@ -53,8 +53,7 @@ import com.example.discover.viewmodel.UserInteractionState
 
 @Composable
 fun formatTime(ms: Long): String {
-    return if (ms < 60000) "${ms / 1000}s"
-    else if (ms < 3600000) "${ms / 60000}m"
+    return if (ms < 3600000) "${ms / 60000}m"
     else "${ms / 3600000}h ${(ms % 3600000) / 60000}m"
 }
 @SuppressLint("SetJavaScriptEnabled")
@@ -175,26 +174,6 @@ fun DiscoverScreen(
                         </div>
                     </div>
                 </div>
-                
-                <script>
-                    function updateStats(daily, weekly, monthly, yearly, total) {
-                        function formatTime(ms) {
-                            if (ms < 60000) return Math.floor(ms / 1000) + "s";
-                            const minutes = Math.floor(ms / 60000);
-                            const seconds = Math.floor((ms % 60000) / 1000);
-                            if (minutes < 60) return minutes + "m " + seconds + "s";
-                            const hours = Math.floor(minutes / 60);
-                            const remainingMinutes = minutes % 60;
-                            return hours + "h " + remainingMinutes + "m";
-                        }
-                        
-                        document.getElementById('dailyStat').textContent = formatTime(daily);
-                        document.getElementById('weeklyStat').textContent = formatTime(weekly);
-                        document.getElementById('monthlyStat').textContent = formatTime(monthly);
-                        document.getElementById('yearlyStat').textContent = formatTime(yearly);
-                        document.getElementById('totalStat').textContent = formatTime(total);
-                    }
-                </script>
             </body>
             </html>
         """.trimIndent()
