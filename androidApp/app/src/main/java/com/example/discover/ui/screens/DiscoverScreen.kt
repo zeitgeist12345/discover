@@ -110,7 +110,6 @@ fun DiscoverScreen(
                         margin: 0;
                         padding: 20px;
                         background: rgba(0, 0, 0, 1);
-                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
                         min-height: 100vh;
                         display: flex;
                         flex-direction: column;
@@ -151,8 +150,7 @@ fun DiscoverScreen(
             </head>
             <body>
                 <div class="container">
-                    <h1>🌐 Discover</h1>
-                    <p>Press Discover to explore amazing websites!</p>
+                    <p>Press 🌐 Discover to explore amazing websites!</p>
                     
                     <div class="stats-container" id="statsContainer">
                         <div class="stat-item">
