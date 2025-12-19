@@ -91,19 +91,43 @@ fun DiscoverScreen(
                 loadDataWithBaseURL(
                     null,
                     """
-            <!DOCTYPE html>
-            <html><head><meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <style>body{margin:0;padding:20px;display:flex;justify-content:center;align-items:center;
-            min-height:100vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-            font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}
-            .container{text-align:center;color:white;max-width:600px;}
-            h1{font-size:2.5rem;margin-bottom:1rem;}
-            p{font-size:1.2rem;opacity:0.9;}
-            .loader{display:inline-block;width:50px;height:50px;margin:20px auto;
-            border:3px solid rgba(255,255,255,.3);border-radius:50%;
-            border-top-color:white;animation:spin 1s ease-in-out infinite;}
-            @keyframes spin{to{transform:rotate(360deg);}}</style></head>
-            <body><div class="container"><h1>Welcome</h1></body></html>
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            body {
+                margin: 0;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            }
+            .container {
+                text-align: center;
+                color: white;
+                max-width: 600px;
+            }
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome</h1>
+            <p>Press Discover.</p>
+        </div>
+    </body>
+</html>
             """.trimIndent(),
                     "text/html",
                     "UTF-8",
