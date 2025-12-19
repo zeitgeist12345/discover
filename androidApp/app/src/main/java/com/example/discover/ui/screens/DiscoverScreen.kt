@@ -3,6 +3,7 @@ package com.example.discover.ui.screens
 // Import your new components
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.view.View
 import android.webkit.WebView
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -32,7 +33,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -113,8 +113,9 @@ fun DiscoverScreen(
                     WebView(context).apply {
                         // Apply all settings here. They will persist for the lifetime of the WebView.
                         settings.apply {
-//                setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-                            setBackgroundColor(Color.Transparent.toArgb())
+//                            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+//                            setBackgroundColor(Color.Transparent.toArgb())
+                            visibility = View.INVISIBLE
                             javaScriptEnabled = true
                             domStorageEnabled = true
                             loadWithOverviewMode = true

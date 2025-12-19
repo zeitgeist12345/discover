@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
+import android.view.View
 import android.webkit.WebChromeClient // Required for onProgressChanged
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -27,8 +28,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -54,24 +53,7 @@ fun WebViewArea(
     LaunchedEffect(webView, url) {
         val targetUrl = url ?: "about:blank"
         if (webView.url != targetUrl) {
-            val visualStateCallback = object : WebView.VisualStateCallback() {
-                override fun onComplete(requestId: Long) {
-                    // Check if this is the response to our specific request.
-                    if (requestId == 257L) {
-                        // The WebView has finished a draw pass, so it's safe to make it visible.
-                        if (isWebViewLoading) {
-                            viewModel.onWebViewPageVisible()
-                            // Flicker is very annoying. It was better before.
-                            webView.setBackgroundColor(Color.White.toArgb())
-                        }
-                    }
-                }
-            }
             webView.loadUrl(targetUrl)
-            // AFTER telling it to load, ask it to notify us when it's ready to be drawn.
-            if (isWebViewLoading) {
-                webView.postVisualStateCallback(257L, visualStateCallback)
-            }
         }
     }
 
@@ -134,6 +116,13 @@ fun WebViewArea(
                     // Also report the URL when the page finishes loading.
                     // This captures the final URL after any redirects.
                     url?.let { onUrlChanged(it) }
+
+                    // The WebView has finished a draw pass, so it's safe to make it visible.
+                    if (isWebViewLoading) {
+                        viewModel.onWebViewPageVisible()
+                        // Flicker is very annoying. It was better before.
+                        webView.visibility = View.VISIBLE
+                    }
                 }
 
                 override fun shouldOverrideUrlLoading(
