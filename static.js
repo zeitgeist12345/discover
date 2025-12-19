@@ -59,6 +59,20 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "abirusabil123",
+            "url": "https://abirusabil123.github.io/",
+            "description": "The personal website of the creator of this project",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 66,
+            "likesMobile": 4,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 1
+        },
+        {
             "name": "Al Jazeera",
             "url": "https://www.aljazeera.com/",
             "description": "International news and current affairs network",
@@ -84,6 +98,21 @@ const STATIC = {
             ],
             "views": 9,
             "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Aljazeera flips",
+            "url": "https://www.aljazeera.com/#flips-6386599316112",
+            "description": "Short clips from Aljazeera.",
+            "tags": [
+                "aljazeera",
+                "flips",
+                "learning"
+            ],
+            "views": 0,
+            "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
@@ -1070,20 +1099,6 @@ const STATIC = {
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 4,
-            "dislikesDesktop": 1
-        },
-        {
-            "name": "abirusabil123",
-            "url": "https://abirusabil123.github.io/",
-            "description": "The personal website of the creator of this project",
-            "tags": [
-                "curated",
-                "sample"
-            ],
-            "views": 66,
-            "likesMobile": 4,
-            "dislikesMobile": 0,
-            "likesDesktop": 2,
             "dislikesDesktop": 1
         }
     ]

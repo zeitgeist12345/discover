@@ -72,6 +72,18 @@ VALUES (
         1
     ),
     (
+        'abirusabil123',
+        'https://abirusabil123.github.io/',
+        'The personal website of the creator of this project',
+        JSON_ARRAY('curated', 'sample'),
+        66,
+        4,
+        0,
+        2,
+        1,
+        1
+    ),
+    (
         'Al Jazeera',
         'https://www.aljazeera.com/',
         'International news and current affairs network',
@@ -90,6 +102,18 @@ VALUES (
         JSON_ARRAY('aljazeeraflips', 'aljazeera', 'flips', 'learning'),
         9,
         1,
+        0,
+        0,
+        0,
+        1
+    ),
+    (
+        'Aljazeera flips',
+        'https://www.aljazeera.com/#flips-6386599316112',
+        'Short clips from Aljazeera.',
+        JSON_ARRAY('aljazeera', 'flips', 'learning'),
+        0,
+        0,
         0,
         0,
         0,
@@ -1004,18 +1028,6 @@ VALUES (
         2,
         0,
         4,
-        1,
-        1
-    ),
-    (
-        'abirusabil123',
-        'https://abirusabil123.github.io/',
-        'The personal website of the creator of this project',
-        JSON_ARRAY('curated', 'sample'),
-        66,
-        4,
-        0,
-        2,
         1,
         1
     ) ON DUPLICATE KEY

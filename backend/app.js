@@ -251,7 +251,11 @@ app.post('/addwebsite', async (req, res) => {
     name = name?.replace(/[\r\n]+/g, '') || name;
     url = url?.replace(/[\r\n]+/g, '') || url;
     description = description?.replace(/[\r\n]+/g, '') || description;
-    tags = tags?.replace(/[\r\n]+/g, '') || tags;
+    tags = tags
+      .map(tag => tag.trim())
+      .map(tag => tag.replace(/[\r\n]+/g, '')) // Remove special characters
+      .map(tag => tag.toLowerCase()) // Convert to lowercase
+      .filter((tag, index, array) => array.indexOf(tag) === index); // Remove duplicates
 
     if (!name || !url || !description) {
       return res.status(400).json({ error: 'Name, URL, and description are required' });

@@ -23,6 +23,16 @@ object StaticWebsites {
         ),
 
         Link(
+            name = "abirusabil123",
+            url = "https://abirusabil123.github.io/",
+            description = "The personal website of the creator of this project",
+            tags = listOf("curated", "sample"),
+            views = 66,
+            likesMobile = 4,
+            dislikesMobile = 0
+        ),
+
+        Link(
             name = "Al Jazeera",
             url = "https://www.aljazeera.com/",
             description = "International news and current affairs network",
@@ -39,6 +49,16 @@ object StaticWebsites {
             tags = listOf("aljazeeraflips", "aljazeera", "flips", "learning"),
             views = 9,
             likesMobile = 1,
+            dislikesMobile = 0
+        ),
+
+        Link(
+            name = "Aljazeera flips",
+            url = "https://www.aljazeera.com/#flips-6386599316112",
+            description = "Short clips from Aljazeera.",
+            tags = listOf("aljazeera", "flips", "learning"),
+            views = 0,
+            likesMobile = 0,
             dislikesMobile = 0
         ),
 
@@ -399,16 +419,6 @@ object StaticWebsites {
             tags = listOf("video", "social", "good", "dynamic", "regular", "repeat"),
             views = 27,
             likesMobile = 2,
-            dislikesMobile = 0
-        ),
-
-        Link(
-            name = "abirusabil123",
-            url = "https://abirusabil123.github.io/",
-            description = "The personal website of the creator of this project",
-            tags = listOf("curated", "sample"),
-            views = 66,
-            likesMobile = 4,
             dislikesMobile = 0
         )
     )
