@@ -301,6 +301,8 @@ class DiscoverViewModel(
 
     fun closeWebView() {
         _showWebView.value = false
+        // FIX: Set the current website to the one we were just viewing.
+        _currentWebsite.value = websiteHistory.getOrNull(currentIndex)
         _currentWebViewUrl.value = null
     }
 
