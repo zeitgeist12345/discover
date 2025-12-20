@@ -17,7 +17,8 @@ class TimeTrackingManager(context: Context) {
         private const val KEY_YEARLY_TIME = "yearly_time_"
     }
 
-    private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    private val prefs: SharedPreferences =
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     fun startSession() {
         val currentTime = System.currentTimeMillis()
@@ -44,17 +45,20 @@ class TimeTrackingManager(context: Context) {
         prefs.edit { putLong(KEY_TOTAL_TIME, totalTime) }
 
         // Update daily time
-        val dayKey = "${KEY_DAILY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.DAY_OF_YEAR)}"
+        val dayKey =
+            "${KEY_DAILY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.DAY_OF_YEAR)}"
         val dailyTime = prefs.getLong(dayKey, 0L) + duration
         prefs.edit { putLong(dayKey, dailyTime) }
 
         // Update weekly time
-        val weekKey = "${KEY_WEEKLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.WEEK_OF_YEAR)}"
+        val weekKey =
+            "${KEY_WEEKLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.WEEK_OF_YEAR)}"
         val weeklyTime = prefs.getLong(weekKey, 0L) + duration
         prefs.edit { putLong(weekKey, weeklyTime) }
 
         // Update monthly time
-        val monthKey = "${KEY_MONTHLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.MONTH)}"
+        val monthKey =
+            "${KEY_MONTHLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.MONTH)}"
         val monthlyTime = prefs.getLong(monthKey, 0L) + duration
         prefs.edit { putLong(monthKey, monthlyTime) }
 
@@ -68,17 +72,28 @@ class TimeTrackingManager(context: Context) {
         val calendar = Calendar.getInstance()
 
         // Current period keys
-        val currentDayKey = "${KEY_DAILY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.DAY_OF_YEAR)}"
-        val currentWeekKey = "${KEY_WEEKLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.WEEK_OF_YEAR)}"
-        val currentMonthKey = "${KEY_MONTHLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.MONTH)}"
+        val currentDayKey =
+            "${KEY_DAILY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.DAY_OF_YEAR)}"
+
+        // Get yesterday
+        calendar.add(Calendar.DAY_OF_YEAR, -1) // Move to yesterday
+        val yesterdayDayKey =
+            "${KEY_DAILY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.DAY_OF_YEAR)}"
+        calendar.add(Calendar.DAY_OF_YEAR, 1) // Reset back to today
+
+        val currentWeekKey =
+            "${KEY_WEEKLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.WEEK_OF_YEAR)}"
+        val currentMonthKey =
+            "${KEY_MONTHLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.MONTH)}"
         val currentYearKey = "${KEY_YEARLY_TIME}${calendar.get(Calendar.YEAR)}"
 
         return TimeStats(
             daily = prefs.getLong(currentDayKey, 0L),
+            yesterday = prefs.getLong(yesterdayDayKey, 0L),
             weekly = prefs.getLong(currentWeekKey, 0L),
             monthly = prefs.getLong(currentMonthKey, 0L),
             yearly = prefs.getLong(currentYearKey, 0L),
-            total = prefs.getLong(KEY_TOTAL_TIME, 0L)
+            total = prefs.getLong(KEY_TOTAL_TIME, 0L),
         )
     }
 
@@ -86,8 +101,9 @@ class TimeTrackingManager(context: Context) {
 
 data class TimeStats(
     val daily: Long,
+    val yesterday: Long,
     val weekly: Long,
     val monthly: Long,
     val yearly: Long,
-    val total: Long
+    val total: Long,
 )

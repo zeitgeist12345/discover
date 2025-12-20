@@ -76,6 +76,7 @@ fun DiscoverScreen(
     val toastMessage by viewModel.toastMessage.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val dailyTime = formatTime(timeStats.daily)
+    val yesterdayTime = formatTime(timeStats.yesterday)
     val weeklyTime = formatTime(timeStats.weekly)
     val monthlyTime = formatTime(timeStats.monthly)
     val yearlyTime = formatTime(timeStats.yearly)
@@ -156,6 +157,10 @@ fun DiscoverScreen(
                         <div class="stat-item">
                             <span>Today:</span>
                             <span class="stat-value" id="dailyStat">${dailyTime}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Yesterday:</span>
+                            <span class="stat-value" id="yesterdayStat">${yesterdayTime}</span>
                         </div>
                         <div class="stat-item">
                             <span>This Week:</span>
