@@ -2,10 +2,6 @@ package com.example.discover.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.Calendar
 import androidx.core.content.edit
 
@@ -22,7 +18,6 @@ class TimeTrackingManager(context: Context) {
     }
 
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     fun startSession() {
         val currentTime = System.currentTimeMillis()
@@ -34,9 +29,7 @@ class TimeTrackingManager(context: Context) {
         if (startTime > 0) {
             val sessionDuration = System.currentTimeMillis() - startTime
 
-            coroutineScope.launch {
-                updateAllTimeStats(sessionDuration)
-            }
+            updateAllTimeStats(sessionDuration)
 
             // Reset start time
             prefs.edit { putLong(KEY_LAST_START_TIME, 0L) }
@@ -71,7 +64,7 @@ class TimeTrackingManager(context: Context) {
         prefs.edit { putLong(yearKey, yearlyTime) }
     }
 
-    suspend fun getTimeStats(): TimeStats = withContext(Dispatchers.IO) {
+    fun getTimeStats(): TimeStats {
         val calendar = Calendar.getInstance()
 
         // Current period keys
@@ -80,7 +73,7 @@ class TimeTrackingManager(context: Context) {
         val currentMonthKey = "${KEY_MONTHLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.MONTH)}"
         val currentYearKey = "${KEY_YEARLY_TIME}${calendar.get(Calendar.YEAR)}"
 
-        TimeStats(
+        return TimeStats(
             daily = prefs.getLong(currentDayKey, 0L),
             weekly = prefs.getLong(currentWeekKey, 0L),
             monthly = prefs.getLong(currentMonthKey, 0L),

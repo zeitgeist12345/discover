@@ -81,9 +81,7 @@ class DiscoverViewModel(
     }
 
     fun loadTimeStats() {
-        viewModelScope.launch {
-            _timeStats.value = timeTrackingManager.getTimeStats()
-        }
+        _timeStats.value = timeTrackingManager.getTimeStats()
     }
 
     private fun startWithFastestData() {
