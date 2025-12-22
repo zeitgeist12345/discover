@@ -243,6 +243,16 @@ object StaticWebsites {
         ),
 
         Link(
+            name = "MSI",
+            url = "https://msi.com/",
+            description = "Computer motherboard company.",
+            tags = listOf("computer", "motherboard", "company"),
+            views = 40,
+            likesMobile = 1,
+            dislikesMobile = 0
+        ),
+
+        Link(
             name = "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer",
             url = "https://www.youtube.com/watch?v=jxLsiOflofk",
             description = "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",

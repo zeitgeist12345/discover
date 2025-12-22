@@ -594,7 +594,7 @@ VALUES (
         JSON_ARRAY('computer', 'motherboard', 'company'),
         40,
         1,
-        1001,
+        0,
         3,
         0,
         1
