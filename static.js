@@ -25,7 +25,7 @@ const STATIC = {
                 "learning",
                 "12rulesforlife"
             ],
-            "views": 5,
+            "views": 17,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -38,7 +38,7 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 33,
+            "views": 40,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -66,7 +66,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 66,
+            "views": 79,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -80,7 +80,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 107,
+            "views": 117,
             "likesMobile": 8,
             "dislikesMobile": 0,
             "likesDesktop": 4,
@@ -88,23 +88,7 @@ const STATIC = {
         },
         {
             "name": "Aljazeera flips",
-            "url": "https://www.aljazeera.com/#flips",
-            "description": "Aljazeera flips",
-            "tags": [
-                "aljazeeraflips",
-                "aljazeera",
-                "flips",
-                "learning"
-            ],
-            "views": 9,
-            "likesMobile": 1,
-            "dislikesMobile": 0,
-            "likesDesktop": 0,
-            "dislikesDesktop": 0
-        },
-        {
-            "name": "Aljazeera flips",
-            "url": "https://www.aljazeera.com/#flips-6386599316112",
+            "url": "https://www.aljazeera.com/#flips-6386609485112",
             "description": "Short clips from Aljazeera.",
             "tags": [
                 "aljazeera",
@@ -118,16 +102,62 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "Aljazeera flips",
+            "url": "https://www.aljazeera.com/#flips-6386599316112",
+            "description": "Short clips from Aljazeera.",
+            "tags": [
+                "aljazeera",
+                "flips",
+                "learning"
+            ],
+            "views": 11,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Aljazeera flips",
+            "url": "https://www.aljazeera.com/#flips",
+            "description": "Aljazeera flips",
+            "tags": [
+                "aljazeeraflips",
+                "aljazeera",
+                "flips",
+                "learning"
+            ],
+            "views": 22,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Andher Nagri Chaupat Raja : Bharatendu Harishchandra",
             "url": "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
             "description": "Short play on the British rule in India",
             "tags": [
                 "user-submitted"
             ],
-            "views": 32,
+            "views": 40,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Anna's Archive",
+            "url": "https://annas-archive.org/",
+            "description": "Open library",
+            "tags": [
+                "open",
+                "library",
+                "learning"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
@@ -139,7 +169,7 @@ const STATIC = {
                 "library",
                 "books"
             ],
-            "views": 16,
+            "views": 22,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -153,7 +183,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 24,
+            "views": 36,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -167,8 +197,8 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 22,
-            "likesMobile": 2,
+            "views": 35,
+            "likesMobile": 3,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
@@ -181,7 +211,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 48,
+            "views": 49,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -196,7 +226,7 @@ const STATIC = {
                 "electric",
                 "company"
             ],
-            "views": 33,
+            "views": 41,
             "likesMobile": 5,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -212,7 +242,7 @@ const STATIC = {
                 "fun",
                 "poetic"
             ],
-            "views": 42,
+            "views": 52,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -280,7 +310,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 71,
+            "views": 72,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -307,7 +337,7 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 9,
+            "views": 10,
             "likesMobile": 0,
             "dislikesMobile": 1000,
             "likesDesktop": 7,
@@ -320,7 +350,7 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 23,
+            "views": 31,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -333,7 +363,7 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 19,
+            "views": 30,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -359,7 +389,7 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 4,
+            "views": 5,
             "likesMobile": 0,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -373,7 +403,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 166,
+            "views": 177,
             "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
@@ -386,8 +416,8 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 23,
-            "likesMobile": 3,
+            "views": 31,
+            "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
@@ -401,7 +431,7 @@ const STATIC = {
                 "blog",
                 "learning"
             ],
-            "views": 5,
+            "views": 15,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -414,7 +444,7 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 20,
+            "views": 32,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -430,7 +460,7 @@ const STATIC = {
                 "pretty",
                 "poetic"
             ],
-            "views": 43,
+            "views": 50,
             "likesMobile": 5,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -458,7 +488,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 62,
+            "views": 63,
             "likesMobile": 4,
             "dislikesMobile": 1000,
             "likesDesktop": 5,
@@ -505,9 +535,9 @@ const STATIC = {
                 "compete",
                 "learning"
             ],
-            "views": 6,
+            "views": 12,
             "likesMobile": 0,
-            "dislikesMobile": 2,
+            "dislikesMobile": 2002,
             "likesDesktop": 0,
             "dislikesDesktop": 0
         },
@@ -519,9 +549,9 @@ const STATIC = {
                 "wesome",
                 "wesome,gorgeous"
             ],
-            "views": 43,
-            "likesMobile": 2,
-            "dislikesMobile": -1,
+            "views": 53,
+            "likesMobile": 3,
+            "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
@@ -561,7 +591,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 100,
+            "views": 113,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -576,7 +606,7 @@ const STATIC = {
                 "ai",
                 "explained"
             ],
-            "views": 4,
+            "views": 5,
             "likesMobile": 0,
             "dislikesMobile": 1001,
             "likesDesktop": 1,
@@ -591,28 +621,10 @@ const STATIC = {
                 "chips",
                 "company"
             ],
-            "views": 30,
+            "views": 38,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 4,
-            "dislikesDesktop": 0
-        },
-        {
-            "name": "Moj",
-            "url": "https://mojapp.in/",
-            "description": "TikTok alternative.",
-            "tags": [
-                "tiktok",
-                "moj",
-                "social",
-                "media",
-                "socialmedia",
-                "app"
-            ],
-            "views": 3,
-            "likesMobile": 0,
-            "dislikesMobile": 1000,
-            "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
@@ -624,9 +636,9 @@ const STATIC = {
                 "motherboard",
                 "company"
             ],
-            "views": 35,
+            "views": 40,
             "likesMobile": 1,
-            "dislikesMobile": 1,
+            "dislikesMobile": 1001,
             "likesDesktop": 3,
             "dislikesDesktop": 0
         },
@@ -637,7 +649,7 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 25,
+            "views": 37,
             "likesMobile": 7,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -651,7 +663,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 97,
+            "views": 106,
             "likesMobile": 3,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -665,8 +677,8 @@ const STATIC = {
                 "car",
                 "company"
             ],
-            "views": 33,
-            "likesMobile": 1,
+            "views": 45,
+            "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 1
@@ -681,7 +693,7 @@ const STATIC = {
                 "mobilephonecompany",
                 "poetic"
             ],
-            "views": 18,
+            "views": 32,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -698,9 +710,9 @@ const STATIC = {
                 "mobilephonecompany",
                 "poetic"
             ],
-            "views": 22,
+            "views": 30,
             "likesMobile": 0,
-            "dislikesMobile": 1,
+            "dislikesMobile": 2,
             "likesDesktop": 2,
             "dislikesDesktop": 0
         },
@@ -726,7 +738,7 @@ const STATIC = {
                 "urdu",
                 "music"
             ],
-            "views": 13,
+            "views": 21,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -740,7 +752,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 98,
+            "views": 107,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -768,8 +780,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 89,
-            "likesMobile": 3,
+            "views": 99,
+            "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 2,
             "dislikesDesktop": 1
@@ -782,7 +794,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 141,
+            "views": 151,
             "likesMobile": 30,
             "dislikesMobile": 3,
             "likesDesktop": 16,
@@ -797,7 +809,7 @@ const STATIC = {
                 "cs",
                 "coding"
             ],
-            "views": 31,
+            "views": 40,
             "likesMobile": 5,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -825,7 +837,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 49,
+            "views": 50,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 3,
@@ -841,7 +853,7 @@ const STATIC = {
                 "poetic",
                 "beautiful"
             ],
-            "views": 42,
+            "views": 49,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -856,9 +868,9 @@ const STATIC = {
                 "research",
                 "cool"
             ],
-            "views": 34,
+            "views": 41,
             "likesMobile": 2,
-            "dislikesMobile": 0,
+            "dislikesMobile": 1000,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
@@ -912,7 +924,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 104,
+            "views": 113,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 5,
@@ -937,7 +949,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 57,
+            "views": 58,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -952,7 +964,7 @@ const STATIC = {
                 "os",
                 "privacy"
             ],
-            "views": 5,
+            "views": 6,
             "likesMobile": 3,
             "dislikesMobile": 1002,
             "likesDesktop": 6,
@@ -966,7 +978,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 70,
+            "views": 71,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -979,9 +991,9 @@ const STATIC = {
             "tags": [
                 "user-submitted"
             ],
-            "views": 23,
+            "views": 31,
             "likesMobile": 2,
-            "dislikesMobile": 0,
+            "dislikesMobile": 1000,
             "likesDesktop": 1,
             "dislikesDesktop": 0
         },
@@ -1007,7 +1019,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 95,
+            "views": 105,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -1021,8 +1033,8 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 80,
-            "likesMobile": 2,
+            "views": 95,
+            "likesMobile": 3,
             "dislikesMobile": 0,
             "likesDesktop": 3,
             "dislikesDesktop": 0
@@ -1049,7 +1061,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 217,
+            "views": 231,
             "likesMobile": 54,
             "dislikesMobile": 4,
             "likesDesktop": 26,
@@ -1077,9 +1089,9 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 59,
+            "views": 60,
             "likesMobile": 12,
-            "dislikesMobile": 5000,
+            "dislikesMobile": 6000,
             "likesDesktop": 3,
             "dislikesDesktop": 0
         },
@@ -1095,7 +1107,7 @@ const STATIC = {
                 "regular",
                 "repeat"
             ],
-            "views": 27,
+            "views": 36,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 4,
