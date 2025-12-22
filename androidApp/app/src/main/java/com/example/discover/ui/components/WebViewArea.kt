@@ -54,7 +54,16 @@ fun WebViewArea(
 
     LaunchedEffect(webView, url) {
         val targetUrl = url ?: "about:blank"
-        if (webView.url != targetUrl) {
+
+        // Check if it's a PDF and handle it BEFORE loading
+        if (targetUrl.endsWith(".pdf", ignoreCase = true) ||
+            targetUrl.contains(".pdf?", ignoreCase = true)) {
+
+            // Use Google Docs viewer for PDFs
+            val googleDocsUrl = "https://docs.google.com/gview?embedded=true&url=" +
+                    java.net.URLEncoder.encode(targetUrl, "UTF-8")
+            webView.loadUrl(googleDocsUrl)
+        } else if (webView.url != targetUrl) {
             webView.loadUrl(targetUrl)
         }
     }
