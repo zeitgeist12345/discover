@@ -3,24 +3,24 @@ const path = require('path');
 
 // Configuration
 const API_BASE_URL = 'https://backend.discoverall.space';
-const OUTPUT_FILE = path.join(__dirname, 'websites-dump.json');
+const OUTPUT_FILE = path.join(__dirname, 'links-dump.json');
 
-async function fetchWebsites() {
+async function fetchLinks() {
     try {
-        console.log('🔍 Fetching websites from API...');
+        console.log('🔍 Fetching links from API...');
 
-        const response = await fetch(`${API_BASE_URL}/getWebsites?reviewStatusEnable=1`);
+        const response = await fetch(`${API_BASE_URL}/getLinks?reviewStatusEnable=1`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const websites = await response.json();
-        console.log(`✅ Fetched ${websites.length} websites from API`);
+        const links = await response.json();
+        console.log(`✅ Fetched ${links.length} links from API`);
 
-        return websites;
+        return links;
     } catch (error) {
-        console.error('❌ Error fetching websites:', error.message);
+        console.error('❌ Error fetching links:', error.message);
         throw error;
     }
 }
@@ -39,11 +39,11 @@ function needToIgnore(likesMobile, dislikesMobile) {
     return undesirable_score > 0.8;
 }
 
-function analyzeWebsites(websites) {
-    console.log('📊 Analyzing websites...');
+function analyzeLinks(links) {
+    console.log('📊 Analyzing links...');
 
     const analysis = {
-        total: websites.length,
+        total: links.length,
         filteredMobile: 0,
         filteredDesktop: 0,
         blockedMobileUrls: [],
@@ -66,11 +66,11 @@ function analyzeWebsites(websites) {
         }
     };
 
-    websites.forEach(website => {
-        const likesMobile = website.likesMobile || 0;
-        const dislikesMobile = website.dislikesMobile || 0;
-        const likesDesktop = website.likesDesktop || 0;
-        const dislikesDesktop = website.dislikesDesktop || 0;
+    links.forEach(link => {
+        const likesMobile = link.likesMobile || 0;
+        const dislikesMobile = link.dislikesMobile || 0;
+        const likesDesktop = link.likesDesktop || 0;
+        const dislikesDesktop = link.dislikesDesktop || 0;
 
         const total = likesMobile + dislikesMobile;
         const score = total > 0 ? (dislikesMobile / total) * 100 : 0;
@@ -78,11 +78,11 @@ function analyzeWebsites(websites) {
         // Apply filtering logic
         if (needToIgnore(likesMobile, dislikesMobile)) {
             analysis.filteredMobile++;
-            analysis.blockedMobileUrls.push(website.url);
+            analysis.blockedMobileUrls.push(link.url);
         }
         if (needToIgnore(likesDesktop, dislikesDesktop)) {
             analysis.filteredDesktop++;
-            analysis.blockedDesktopUrls.push(website.url);
+            analysis.blockedDesktopUrls.push(link.url);
         }
 
         // Count by score
@@ -131,23 +131,23 @@ function fixUrl(url) {
 
 function saveToFile(data) {
     try {
-        // 🔥 Remove created_at from each website object
-        const cleanedWebsites = data.websites.map(({ created_at, ...rest }) => ({
+        // 🔥 Remove created_at from each link object
+        const cleanedLinks = data.links.map(({ created_at, ...rest }) => ({
             ...rest,
             url: fixUrl(rest.url) // Fix the URL here
         }));
 
-        // Save raw website data only
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(cleanedWebsites, null, 2));
+        // Save raw link data only
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(cleanedLinks, null, 2));
         console.log(`💾 Raw data saved to: ${OUTPUT_FILE}`);
 
         // Save comprehensive summary with metadata
-        const summaryFile = path.join(__dirname, 'websites-summary.json');
+        const summaryFile = path.join(__dirname, 'links-summary.json');
         fs.writeFileSync(summaryFile, JSON.stringify({
             metadata: {
                 generatedAt: new Date().toISOString(),
                 apiUrl: API_BASE_URL,
-                totalWebsites: data.websites.length
+                totalLinks: data.links.length
             },
             analysis: data.analysis
         }, null, 2));
@@ -161,24 +161,24 @@ function saveToFile(data) {
 
 async function main() {
     try {
-        console.log('🚀 Starting website data dump...\n');
+        console.log('🚀 Starting link data dump...\n');
 
-        // First, try to get all websites (including filtered ones)
-        let allWebsites = await fetchWebsites();
+        // First, try to get all links (including filtered ones)
+        let allLinks = await fetchLinks();
 
-        allWebsites.sort((a, b) => (a.url || 0) - (b.url || 0));
+        allLinks.sort((a, b) => (a.url || 0) - (b.url || 0));
 
-        // Analyze the websites
-        const analysis = analyzeWebsites(allWebsites);
+        // Analyze the links
+        const analysis = analyzeLinks(allLinks);
 
         // 🔥 Sort blocked lists alphabetically by URL
         analysis.blockedMobileUrls.sort();
         analysis.blockedDesktopUrls.sort();
 
         // Save to file
-        saveToFile({ websites: allWebsites, analysis });
+        saveToFile({ links: allLinks, analysis });
 
-        console.log('\n✅ Website data dump completed successfully!');
+        console.log('\n✅ Link data dump completed successfully!');
 
     } catch (error) {
         console.error('\n❌ Error in main process:', error.message);
@@ -192,7 +192,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-    fetchWebsites,
-    analyzeWebsites,
+    fetchLinks,
+    analyzeLinks,
     needToIgnore
 }; 

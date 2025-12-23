@@ -40,11 +40,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.discover.ui.components.AddWebsiteDialog
+import com.example.discover.ui.components.AddLinkDialog
 import com.example.discover.ui.components.ControlButtons
 import com.example.discover.ui.components.TopDiscoverBar
 import com.example.discover.ui.components.WebViewArea
-import com.example.discover.ui.components.WebsiteCard
+import com.example.discover.ui.components.LinkCard
 import com.example.discover.ui.theme.BackgroundDark
 import com.example.discover.ui.theme.Spacing
 import com.example.discover.ui.theme.TextPrimary
@@ -62,8 +62,8 @@ fun formatTime(ms: Long): String {
 fun DiscoverScreen(
     viewModel: DiscoverViewModel
 ) {
-    val currentWebsite by viewModel.currentWebsite.collectAsStateWithLifecycle()
-    val showAddWebsiteDialog by viewModel.showAddWebsiteDialog.collectAsStateWithLifecycle()
+    val currentLink by viewModel.currentLink.collectAsStateWithLifecycle()
+    val showAddLinkDialog by viewModel.showAddLinkDialog.collectAsStateWithLifecycle()
     val showWebView by viewModel.showWebView.collectAsStateWithLifecycle()
     val initialWebViewUrl by viewModel.currentWebViewUrl.collectAsStateWithLifecycle()
     val userInteractionState by viewModel.currentUserInteractionState.collectAsStateWithLifecycle()
@@ -151,7 +151,7 @@ fun DiscoverScreen(
             </head>
             <body>
                 <div class="container">
-                    <p>Press 🌐 Discover to explore amazing websites!</p>
+                    <p>Press 🌐 Discover to explore amazing links!</p>
                     
                     <div class="stats-container" id="statsContainer">
                         <div class="stat-item">
@@ -210,9 +210,9 @@ fun DiscoverScreen(
                 isLiked = userInteractionState == UserInteractionState.LIKED,
                 isDisliked = userInteractionState == UserInteractionState.DISLIKED,
                 // Assuming onDiscoverClick in the context of the WebView means loading a new random site
-                onDiscoverClick = { viewModel.loadRandomWebsite() },
-                onDislikeClick = { viewModel.dislikeWebsite() },
-                onLikeClick = { viewModel.likeWebsite() },
+                onDiscoverClick = { viewModel.loadRandomLink() },
+                onDislikeClick = { viewModel.dislikeLink() },
+                onLikeClick = { viewModel.likeLink() },
                 onOpenInBrowser = {
                     liveWebViewUrl?.let { url ->
                         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
@@ -230,7 +230,7 @@ fun DiscoverScreen(
                     liveWebViewUrl = newUrl
                 },
                 onCloseArea = { viewModel.closeWebView() },
-                onWebViewHistoryBack = { viewModel.updateNavigatedPreviousWebsite() } // BackHandler in WebViewArea will call this
+                onWebViewHistoryBack = { viewModel.updateNavigatedPreviousLink() } // BackHandler in WebViewArea will call this
             )
         } else {
             // Main content (when WebView is not shown)
@@ -296,28 +296,28 @@ fun DiscoverScreen(
                     Spacer(modifier = Modifier.height(Spacing.medium))
 
                     ControlButtons(
-                        onPreviousClick = { viewModel.loadPreviousWebsite() },
-                        onRandomClick = { viewModel.loadRandomWebsite() },
-                        onNextClick = { viewModel.loadNextWebsite() },
-                        onAddWebsiteClick = { viewModel.showAddWebsiteDialog() })
+                        onPreviousClick = { viewModel.loadPreviousLink() },
+                        onRandomClick = { viewModel.loadRandomLink() },
+                        onNextClick = { viewModel.loadNextLink() },
+                        onAddLinkClick = { viewModel.showAddLinkDialog() })
 
-                    // Show current website card only if there is a current website and WebView is not shown
-                    currentWebsite?.let {
-                        WebsiteCard(
-                            website = it,
-                            onLikeClick = { viewModel.likeWebsite() },
-                            onDislikeClick = { viewModel.dislikeWebsite() },
-                            onWebsiteClick = { viewModel.openWebsite() } // This will set showWebView = true
+                    // Show current link card only if there is a current link and WebView is not shown
+                    currentLink?.let {
+                        LinkCard(
+                            link = it,
+                            onLikeClick = { viewModel.likeLink() },
+                            onDislikeClick = { viewModel.dislikeLink() },
+                            onLinkClick = { viewModel.openLink() } // This will set showWebView = true
                         )
                     }
                 }
 
-                // Add website dialog - positioned within the Box to overlay content
-                if (showAddWebsiteDialog) {
-                    AddWebsiteDialog(
-                        onDismiss = { viewModel.hideAddWebsiteDialog() },
-                        onAddWebsite = { name, url, description, tags ->
-                            viewModel.addWebsite(name, url, description, tags)
+                // Add link dialog - positioned within the Box to overlay content
+                if (showAddLinkDialog) {
+                    AddLinkDialog(
+                        onDismiss = { viewModel.hideAddLinkDialog() },
+                        onAddLink = { name, url, description, tags ->
+                            viewModel.addLink(name, url, description, tags)
                         })
                 }
             }

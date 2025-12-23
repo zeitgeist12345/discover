@@ -18,8 +18,8 @@ import com.example.discover.data.Link
 import com.example.discover.ui.theme.*
 
 @Composable
-fun WebsiteCard(
-    website: Link, onLikeClick: () -> Unit, onDislikeClick: () -> Unit, onWebsiteClick: () -> Unit
+fun LinkCard(
+    link: Link, onLikeClick: () -> Unit, onDislikeClick: () -> Unit, onLinkClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -31,9 +31,9 @@ fun WebsiteCard(
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            // Website name
+            // Link name
             Text(
-                text = website.name,
+                text = link.name,
                 style = MaterialTheme.typography.headlineSmall,
                 color = TextPrimary,
                 fontWeight = FontWeight.Bold
@@ -45,7 +45,7 @@ fun WebsiteCard(
 
             // Description
             Text(
-                text = website.description,
+                text = link.description,
                 style = MaterialTheme.typography.bodyMedium,
                 color = TextPrimary,
                 fontSize = 14.sp
@@ -53,7 +53,7 @@ fun WebsiteCard(
 
             // Tags
             Text(
-                text = "Tags: " + website.tags.toString(),
+                text = "Tags: " + link.tags.toString(),
                 style = MaterialTheme.typography.bodyMedium,
                 color = TextSecondary,
                 fontSize = 12.sp
@@ -65,7 +65,7 @@ fun WebsiteCard(
 
             SelectionContainer {
                 Text(
-                    text = website.url,
+                    text = link.url,
                     style = MaterialTheme.typography.bodySmall,
                     color = PrimaryGreen,
                     fontSize = 12.sp,
@@ -78,7 +78,7 @@ fun WebsiteCard(
                         )
                         .padding(4.dp)
                         .clickable(
-                            onClick = onWebsiteClick // Use the passed-in onWebsiteClick lambda
+                            onClick = onLinkClick // Use the passed-in onLinkClick lambda
                         )
                 )
             }
@@ -97,7 +97,7 @@ fun WebsiteCard(
                         containerColor = Color.Transparent, contentColor = TextPrimary
                     ), border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
                 ) {
-                    Text("👎 ${website.dislikesMobile}")
+                    Text("👎 ${link.dislikesMobile}")
                 }
 
                 // Views count
@@ -105,7 +105,7 @@ fun WebsiteCard(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "${website.views + 1}",
+                        text = "${link.views + 1}",
                         style = MaterialTheme.typography.headlineSmall,
                         color = PrimaryGreen,
                         fontWeight = FontWeight.Bold
@@ -124,7 +124,7 @@ fun WebsiteCard(
                         containerColor = Color.Transparent, contentColor = TextPrimary
                     ), border = androidx.compose.foundation.BorderStroke(1.dp, BorderColor)
                 ) {
-                    Text("👍 ${website.likesMobile}")
+                    Text("👍 ${link.likesMobile}")
                 }
             }
         }

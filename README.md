@@ -1,20 +1,20 @@
 # 🌐 Discover - Open source no implicit personalized recommendation algorithm social media
 A modern web application that helps you discover amazing links.  
-Features include random link loading, view tracking, likes/dislikes functionality, and the ability to add new websites.  
+Features include random link loading, view tracking, likes/dislikes functionality, and the ability to add new links.  
 We host the backend locally using reproducible containers.
 
 ![App interface](image.png)
 
 ## Avoid Implicit Personalized Recommendation Algorithms
 
-A social media website with no personalized recommendation algorithms. So no more echo chamber radicalization.
+A social media link with no personalized recommendation algorithms. So no more echo chamber radicalization.
 
 There are two ways to end personalized recommendation algorithms:
 
 1. Block user data. No user data means no user personalization.
 2. No recommendation algorithm. User data is not used for implicit (without user choice like in subscriptions) personalization.
 
-Any of the two is sufficient. My discover website does both.
+Any of the two is sufficient. My discover link does both.
 
 Discover something new everyday. Good mood and learning ahead! 
 

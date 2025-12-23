@@ -62,7 +62,7 @@
   {
     "url": "https://abirusabil123.github.io/",
     "name": "abirusabil123",
-    "description": "The personal website of the creator of this project",
+    "description": "The personal link of the creator of this project",
     "tags": [
       "curated",
       "sample"
@@ -217,7 +217,7 @@
   {
     "url": "https://www.boredbutton.com/",
     "name": "Bored Button",
-    "description": "Collection of random fun websites and games",
+    "description": "Collection of random fun links and games",
     "tags": [
       "curated",
       "sample"
@@ -383,8 +383,8 @@
   },
   {
     "url": "https://www.example.com/",
-    "name": "Examples website",
-    "description": "Example website",
+    "name": "Examples link",
+    "description": "Example link",
     "tags": [
       "beautiful",
       "gorgeous"
@@ -455,7 +455,7 @@
   {
     "url": "https://news.ycombinator.com/",
     "name": "Hacker News",
-    "description": "Social news website focusing on computer science and entrepreneurship",
+    "description": "Social news link focusing on computer science and entrepreneurship",
     "tags": [
       "curated",
       "sample"
@@ -1208,7 +1208,7 @@
   {
     "url": "https://theuselessweb.com/",
     "name": "The Useless Web",
-    "description": "Random fun and bizarre websites with one click",
+    "description": "Random fun and bizarre links with one click",
     "tags": [
       "curated",
       "sample"

@@ -1,7 +1,7 @@
 // static.js
 const STATIC = {
-    // Auto-generated sample websites
-    SAMPLE_WEBSITES: [
+    // Auto-generated sample links
+    SAMPLE_LINKS: [
         {
             "name": "10 Minute Mail",
             "url": "https://10minutemail.com/",
@@ -61,7 +61,7 @@ const STATIC = {
         {
             "name": "abirusabil123",
             "url": "https://abirusabil123.github.io/",
-            "description": "The personal website of the creator of this project",
+            "description": "The personal link of the creator of this project",
             "tags": [
                 "curated",
                 "sample"
@@ -206,7 +206,7 @@ const STATIC = {
         {
             "name": "Bored Button",
             "url": "https://www.boredbutton.com/",
-            "description": "Collection of random fun websites and games",
+            "description": "Collection of random fun links and games",
             "tags": [
                 "curated",
                 "sample"
@@ -398,7 +398,7 @@ const STATIC = {
         {
             "name": "Hacker News",
             "url": "https://news.ycombinator.com/",
-            "description": "Social news website focusing on computer science and entrepreneurship",
+            "description": "Social news link focusing on computer science and entrepreneurship",
             "tags": [
                 "curated",
                 "sample"
@@ -1028,7 +1028,7 @@ const STATIC = {
         {
             "name": "The Useless Web",
             "url": "https://theuselessweb.com/",
-            "description": "Random fun and bizarre websites with one click",
+            "description": "Random fun and bizarre links with one click",
             "tags": [
                 "curated",
                 "sample"

@@ -1,10 +1,10 @@
 # Tools
 
-## Static websites list to update  
+## Static links list to update  
 Local backend: backend/db/init.sql  
 Tools: tools/static-links.js  
-Website: config.js  
-Android app: androidApp/app/src/main/java/com/example/discover/data/StaticWebsites.kt  
+Link: config.js  
+Android app: androidApp/app/src/main/java/com/example/discover/data/StaticLinks.kt  
 
 Run
 ```

@@ -1,11 +1,11 @@
 // script.js
 // Global variables
-let websites = [];
+let links = [];
 let currentIndex = -1;
-let websiteHistory = [];
-let visitedWebsites = [];
+let linkHistory = [];
+let visitedLinks = [];
 let isLoading = false;
-let currentWebsiteUrl = null;
+let currentLinkUrl = null;
 let selectedTags = [];
 const userActions = new Map();
 
@@ -29,33 +29,33 @@ document.addEventListener('DOMContentLoaded', function () {
 function initializeApp() {
     console.log('Initializing app...');
     console.log('Using API mode');
-    loadWebsitesFromAPI();
+    loadLinksFromAPI();
 }
 
-async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
+async function loadLinksFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
     try {
         isLoading = true;
 
         const query = `&tagsAllowlist=${encodeURIComponent(tagsAllowlist.join(','))}&tagsBlocklist=${encodeURIComponent(tagsBlocklist.join(','))}`;
-        const response = await fetch(`${API_BASE_URL}/getWebsites?platform=desktop${query}`);
+        const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop${query}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        websites = await response.json();
-        console.log(`Loaded ${websites.length} websites from API.`);
+        links = await response.json();
+        console.log(`Loaded ${links.length} links from API.`);
 
         enableControls();
         document.getElementById('api-status-indicator').classList.add('online');
 
         // ✅ Return the count so it can be shown in the success message
-        return websites.length;
+        return links.length;
     } catch (error) {
-        console.error('Failed to load websites from API:', error);
+        console.error('Failed to load links from API:', error);
         showErrorMessage("Failed to load links from API.<br>Cannot reach backend server: " + error + "<br>Fallback to static list.");
 
-        if (ENABLE_FALLBACK) loadStaticWebsites();
+        if (ENABLE_FALLBACK) loadStaticLinks();
 
         document.getElementById('api-status-indicator').classList.add('offline');
         return 0;
@@ -64,13 +64,13 @@ async function loadWebsitesFromAPI(tagsAllowlist = [], tagsBlocklist = []) {
     }
 }
 
-async function loadStaticWebsites() {
-    if (STATIC.SAMPLE_WEBSITES && STATIC.SAMPLE_WEBSITES.length > 0) {
-        websites = STATIC.SAMPLE_WEBSITES;
-        console.log(`Loaded ${websites.length} websites from static.js fallback`);
+async function loadStaticLinks() {
+    if (STATIC.SAMPLE_LINKS && STATIC.SAMPLE_LINKS.length > 0) {
+        links = STATIC.SAMPLE_LINKS;
+        console.log(`Loaded ${links.length} links from static.js fallback`);
         enableControls();
     } else {
-        showErrorMessage('No static websites available. Please check your static.js file.');
+        showErrorMessage('No static links available. Please check your static.js file.');
     }
 }
 
@@ -123,7 +123,7 @@ function showErrorMessage(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.innerHTML = `
-        <div class="website-box" style="border-color:#ef4444; background:rgba(239,68,68,0.1);">
+        <div class="link-box" style="border-color:#ef4444; background:rgba(239,68,68,0.1);">
             <p style="color:#ef4444; margin:0;">${message}</p>
         </div>
     `;
@@ -133,22 +133,22 @@ function showErrorMessage(message) {
 
 
 
-async function updateWebsiteStats(websiteUrl, action) {
+async function updateLinkStats(linkUrl, action) {
     if (!ENABLE_VIEW_TRACKING) {
         return;
     }
 
-    // Check if user has already performed this action for this website
-    const actionKey = `${websiteUrl}-${action}`;
+    // Check if user has already performed this action for this link
+    const actionKey = `${linkUrl}-${action}`;
     if (userActions.has(actionKey)) {
-        console.log(`User already performed ${action} for ${websiteUrl}`);
+        console.log(`User already performed ${action} for ${linkUrl}`);
         return;
     }
 
-    // Find the website to get its URL
-    const website = websites.find(w => w.url === websiteUrl);
-    if (!website) {
-        console.error(`Website not found with url: ${websiteUrl}`);
+    // Find the link to get its URL
+    const link = links.find(w => w.url === linkUrl);
+    if (!link) {
+        console.error(`Link not found with url: ${linkUrl}`);
         return;
     }
 
@@ -185,24 +185,24 @@ async function updateWebsiteStats(websiteUrl, action) {
 
     // Sync with server in the background
     try {
-        const response = await fetch(`${API_BASE_URL}/incrementView?url=${encodeURIComponent(website.url)}&action=${action}`, {
+        const response = await fetch(`${API_BASE_URL}/incrementView?url=${encodeURIComponent(link.url)}&action=${action}`, {
             method: 'POST'
         });
 
         if (response.ok) {
             const result = await response.json();
-            console.log(`Synced ${action} for ${websiteUrl}:`, result);
+            console.log(`Synced ${action} for ${linkUrl}:`, result);
 
             // Update UI with actual server response (in case there were any server-side adjustments)
             updateStatsDisplay(result);
 
         } else {
-            console.error(`Failed to sync ${action} for ${websiteUrl}:`, response.status);
+            console.error(`Failed to sync ${action} for ${linkUrl}:`, response.status);
             // Optionally revert the optimistic update on error
             // For now, we'll keep the optimistic update for better UX
         }
     } catch (error) {
-        console.error(`Failed to sync ${action} for ${websiteUrl}:`, error);
+        console.error(`Failed to sync ${action} for ${linkUrl}:`, error);
         showErrorMessage(action + " action failed due to backend server unreachable: " + error.message);
         // Optionally revert the optimistic update on error
         // For now, we'll keep the optimistic update for better UX
@@ -245,164 +245,164 @@ function updateButtonStates(action) {
     }
 }
 
-function likesDesktopWebsite() {
-    if (currentWebsiteUrl) {
-        updateWebsiteStats(currentWebsiteUrl, 'likesDesktop');
+function likesDesktopLink() {
+    if (currentLinkUrl) {
+        updateLinkStats(currentLinkUrl, 'likesDesktop');
     } else {
-        console.error('No current website ID available for likesDesktop action');
+        console.error('No current link ID available for likesDesktop action');
     }
 }
 
-function dislikesDesktopWebsite() {
-    if (currentWebsiteUrl) {
-        updateWebsiteStats(currentWebsiteUrl, 'dislikesDesktop');
+function dislikesDesktopLink() {
+    if (currentLinkUrl) {
+        updateLinkStats(currentLinkUrl, 'dislikesDesktop');
     } else {
-        console.error('No current website ID available for dislikesDesktop action');
+        console.error('No current link ID available for dislikesDesktop action');
     }
 }
 
-function loadRandomWebsite() {
-    console.log('loadRandomWebsite called');
+function loadRandomLink() {
+    console.log('loadRandomLink called');
     console.log('isLoading:', isLoading);
-    console.log('websites.length:', websites.length);
-    console.log('visitedWebsites:', visitedWebsites);
+    console.log('links.length:', links.length);
+    console.log('visitedLinks:', visitedLinks);
 
-    if (isLoading || websites.length === 0) {
-        console.log('Cannot load random website - loading or no websites');
+    if (isLoading || links.length === 0) {
+        console.log('Cannot load random link - loading or no links');
         return;
     }
 
-    // Get a random website that hasn't been visited yet
-    const unvisitedWebsites = websites.filter((_, index) => !visitedWebsites.includes(index));
-    console.log('unvisitedWebsites.length:', unvisitedWebsites.length);
+    // Get a random link that hasn't been visited yet
+    const unvisitedLinks = links.filter((_, index) => !visitedLinks.includes(index));
+    console.log('unvisitedLinks.length:', unvisitedLinks.length);
 
-    if (unvisitedWebsites.length === 0) {
-        // All websites have been visited, reset
-        console.log('All websites visited, resetting...');
-        visitedWebsites = [];
-        websiteHistory = [];
+    if (unvisitedLinks.length === 0) {
+        // All links have been visited, reset
+        console.log('All links visited, resetting...');
+        visitedLinks = [];
+        linkHistory = [];
         currentIndex = -1;
-        setTimeout(loadRandomWebsite, RESET_DELAY);
+        setTimeout(loadRandomLink, RESET_DELAY);
         return;
     }
 
-    const randomIndex = Math.floor(Math.random() * unvisitedWebsites.length);
-    const website = unvisitedWebsites[randomIndex];
-    const originalIndex = websites.indexOf(website);
+    const randomIndex = Math.floor(Math.random() * unvisitedLinks.length);
+    const link = unvisitedLinks[randomIndex];
+    const originalIndex = links.indexOf(link);
 
-    console.log('Selected random website:', website.name, 'at index:', originalIndex);
+    console.log('Selected random link:', link.name, 'at index:', originalIndex);
 
-    loadWebsite(originalIndex);
+    loadLink(originalIndex);
 }
 
-function loadNextWebsite() {
-    if (websiteHistory.length === 0) {
-        loadRandomWebsite();
+function loadNextLink() {
+    if (linkHistory.length === 0) {
+        loadRandomLink();
         return;
     }
 
-    if (currentIndex < websiteHistory.length - 1) {
+    if (currentIndex < linkHistory.length - 1) {
         currentIndex++;
-        const websiteIndex = websiteHistory[currentIndex];
-        loadWebsite(websiteIndex, false);
+        const linkIndex = linkHistory[currentIndex];
+        loadLink(linkIndex, false);
     } else {
-        loadRandomWebsite();
+        loadRandomLink();
     }
 }
 
-function loadPreviousWebsite() {
-    if (websiteHistory.length === 0 || currentIndex <= 0) {
+function loadPreviousLink() {
+    if (linkHistory.length === 0 || currentIndex <= 0) {
         return;
     }
 
     currentIndex--;
-    const websiteIndex = websiteHistory[currentIndex];
-    loadWebsite(websiteIndex, false);
+    const linkIndex = linkHistory[currentIndex];
+    loadLink(linkIndex, false);
 }
 
-function loadWebsite(index, addToHistory = true) {
-    console.log('loadWebsite called with index:', index, 'addToHistory:', addToHistory);
+function loadLink(index, addToHistory = true) {
+    console.log('loadLink called with index:', index, 'addToHistory:', addToHistory);
 
-    // Validate index and website
-    if (index < 0 || index >= websites.length) {
-        console.error('Invalid website index:', index);
+    // Validate index and link
+    if (index < 0 || index >= links.length) {
+        console.error('Invalid link index:', index);
         return;
     }
 
-    const website = websites[index];
-    if (!website) {
-        console.error('Website not found at index:', index);
+    const link = links[index];
+    if (!link) {
+        console.error('Link not found at index:', index);
         return;
     }
 
-    console.log('Website to load:', website);
+    console.log('Link to load:', link);
 
     if (addToHistory) {
-        // Add to history if it's a new website
-        if (currentIndex < websiteHistory.length - 1) {
+        // Add to history if it's a new link
+        if (currentIndex < linkHistory.length - 1) {
             // Remove any forward history if we're going back and then to a new site
-            websiteHistory = websiteHistory.slice(0, currentIndex + 1);
+            linkHistory = linkHistory.slice(0, currentIndex + 1);
         }
-        websiteHistory.push(index);
-        currentIndex = websiteHistory.length - 1;
+        linkHistory.push(index);
+        currentIndex = linkHistory.length - 1;
     }
 
     // Mark as visited
-    if (!visitedWebsites.includes(index)) {
-        visitedWebsites.push(index);
+    if (!visitedLinks.includes(index)) {
+        visitedLinks.push(index);
     }
 
-    // Track the current website url for stats
-    currentWebsiteUrl = website.url;
+    // Track the current link url for stats
+    currentLinkUrl = link.url;
 
     // Update UI first
-    updateCurrentSiteInfo(website);
+    updateCurrentSiteInfo(link);
 
     // Optimistically increment views immediately
-    if (website.url && ENABLE_VIEW_TRACKING) {
+    if (link.url && ENABLE_VIEW_TRACKING) {
         const viewsElement = document.getElementById('views-count');
         if (viewsElement) {
             const currentViews = parseInt(viewsElement.textContent) || 0;
             viewsElement.textContent = currentViews + 1;
 
             // Sync with server in the background
-            updateWebsiteStats(website.url, 'view');
+            updateLinkStats(link.url, 'view');
         }
     }
 
-    // Open the website in a new window/tab
-    let urlToOpen = website.url;
+    // Open the link in a new window/tab
+    let urlToOpen = link.url;
     if (!/^https?:\/\//i.test(urlToOpen)) {
         urlToOpen = 'https://' + urlToOpen;
     }
 
-    console.log('Opening website:', urlToOpen);
+    console.log('Opening link:', urlToOpen);
     window.open(urlToOpen, '_blank');
 }
 
-function updateCurrentSiteInfo(website) {
-    const link = document.getElementById('current-site-link');
-    const statsDiv = document.getElementById('website-stats');
+function updateCurrentSiteInfo(link) {
+    const linkElement = document.getElementById('current-site-link');
+    const statsDiv = document.getElementById('link-stats');
     const likesDesktopBtn = document.getElementById('likesDesktop-btn');
     const dislikesDesktopBtn = document.getElementById('dislikesDesktop-btn');
 
     // Check if link element exists before accessing its properties
     if (link) {
-        link.href = website.url;
-        link.textContent = `${website.name} - ${website.url}`;
+        link.href = link.url;
+        link.textContent = `${link.name} - ${link.url}`;
     } else {
         console.error('current-site-link element not found');
         return;
     }
 
     // Add description as a separate element
-    const description = document.getElementById('website-description');
+    const description = document.getElementById('link-description');
     if (description) {
-        description.textContent = website.description;
+        description.textContent = link.description;
     }
     // Add tags as a separate element
-    const tags = document.getElementById('website-tags');
-    tags.textContent = `Tags: [${website.tags.join(', ')}]`;
+    const tags = document.getElementById('link-tags');
+    tags.textContent = `Tags: [${link.tags.join(', ')}]`;
 
 
     // Show stats and reset button states
@@ -416,15 +416,15 @@ function updateCurrentSiteInfo(website) {
 
     // Update stats with current data (force update for initial load)
     updateStatsDisplay({
-        views: website.views || 0,
-        likesDesktop: website.likesDesktop || 0,
-        dislikesDesktop: website.dislikesDesktop || 0
+        views: link.views || 0,
+        likesDesktop: link.likesDesktop || 0,
+        dislikesDesktop: link.dislikesDesktop || 0
     }, true);
 }
 
-// Add Website Modal Functions
-function showAddWebsiteForm() {
-    const modal = document.getElementById('add-website-modal');
+// Add Link Modal Functions
+function showAddLinkForm() {
+    const modal = document.getElementById('add-link-modal');
     modal.style.display = 'flex';
 
     // Clear any existing error messages
@@ -438,12 +438,12 @@ function showAddWebsiteForm() {
 
     // Focus on first input
     setTimeout(() => {
-        document.getElementById('website-name').focus();
+        document.getElementById('link-name').focus();
     }, FOCUS_DELAY);
 }
 
 function addCustomValidation() {
-    const form = document.getElementById('add-website-form');
+    const form = document.getElementById('add-link-form');
     const inputs = form.querySelectorAll('input[required], textarea[required]');
 
     inputs.forEach(input => {
@@ -508,12 +508,12 @@ function clearAllInputErrors() {
     });
 }
 
-function hideAddWebsiteForm() {
-    const modal = document.getElementById('add-website-modal');
+function hideAddLinkForm() {
+    const modal = document.getElementById('add-link-modal');
     modal.style.display = 'none';
 
     // Reset form
-    document.getElementById('add-website-form').reset();
+    document.getElementById('add-link-form').reset();
 
     // Reset tags
     selectedTags = [];
@@ -552,7 +552,7 @@ function normalizeUrl(url) {
     return url;
 }
 
-async function submitWebsite(event) {
+async function submitLink(event) {
     event.preventDefault();
 
     // Clear any existing errors
@@ -579,14 +579,14 @@ async function submitWebsite(event) {
     submitBtn.classList.add('btn-loading');
     submitBtn.textContent = 'Adding...';
 
-    const tagsInput = document.getElementById('add-website-tags');
+    const tagsInput = document.getElementById('add-link-tags');
     selectedTags = tagsInput.value.split(",")
         .map(tag => tag.trim().replace(/\s+/g, "")) // remove internal spaces
         .filter(tag => tag.length > 0);
 
     try {
         const formData = new FormData(event.target);
-        const websiteData = {
+        const linkData = {
             name: formData.get('name'),
             url: normalizeUrl(formData.get('url')),
             description: formData.get('description'),
@@ -596,12 +596,12 @@ async function submitWebsite(event) {
             dislikesDesktop: 0
         };
 
-        const response = await fetch(`${API_BASE_URL}/addwebsite`, {
+        const response = await fetch(`${API_BASE_URL}/addlink`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(websiteData)
+            body: JSON.stringify(linkData)
         });
 
         const result = await response.json();
@@ -609,7 +609,7 @@ async function submitWebsite(event) {
         if (response.ok) {
             // Success
             showSuccessMessage('Link submitted for spam review successfully! The link will be live globally after review approval 🎉');
-            hideAddWebsiteForm();
+            hideAddLinkForm();
 
             // Reset tags
             selectedTags = [];
@@ -618,13 +618,13 @@ async function submitWebsite(event) {
             if (response.status === 409) {
                 showModalError('This link already exists in the database. Please try a different URL.');
             } else {
-                showModalError(result.error || 'Failed to add website');
+                showModalError(result.error || 'Failed to add link');
             }
         }
 
     } catch (error) {
-        console.error('Error submitting website:', error);
-        showModalError('Failed to add website. Please try again.');
+        console.error('Error submitting link:', error);
+        showModalError('Failed to add link. Please try again.');
     } finally {
         // Reset button state
         submitBtn.disabled = false;
@@ -638,7 +638,7 @@ function showSuccessMessage(message) {
     successDiv.className = 'success-message';
 
     const boxDiv = document.createElement('div');
-    boxDiv.className = 'website-box success-box';
+    boxDiv.className = 'link-box success-box';
 
     const messagePara = document.createElement('p');
     messagePara.className = 'success-text';
@@ -659,9 +659,9 @@ function showSuccessMessage(message) {
 
 // Close modal when clicking outside
 document.addEventListener('click', function (event) {
-    const modal = document.getElementById('add-website-modal');
+    const modal = document.getElementById('add-link-modal');
     if (event.target === modal) {
-        hideAddWebsiteForm();
+        hideAddLinkForm();
     }
     if (event.target.classList.contains("btn")) {
         document.querySelectorAll(".error-message").forEach(el => el.remove());
@@ -678,20 +678,20 @@ document.addEventListener('keydown', function (event) {
     switch (event.key) {
         case 'ArrowRight':
             event.preventDefault();
-            loadNextWebsite();
+            loadNextLink();
             break;
         case 'ArrowLeft':
             event.preventDefault();
-            loadPreviousWebsite();
+            loadPreviousLink();
             break;
         case ' ':
             event.preventDefault();
-            loadRandomWebsite();
+            loadRandomLink();
             break;
         case 'Escape':
-            const modal = document.getElementById('add-website-modal');
+            const modal = document.getElementById('add-link-modal');
             if (modal.style.display === 'flex') {
-                hideAddWebsiteForm();
+                hideAddLinkForm();
             }
     }
 });
@@ -740,13 +740,13 @@ async function applyTagFilter() {
 
     console.log('Applying tag filter:', tagsAllowlist, tagsBlocklist);
 
-    // ✅ Wait for API and get website count
-    const websiteCount = await loadWebsitesFromAPI(tagsAllowlist, tagsBlocklist);
+    // ✅ Wait for API and get link count
+    const linkCount = await loadLinksFromAPI(tagsAllowlist, tagsBlocklist);
 
     if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0) {
-        successBox.textContent = `✅ Filter applied: ${websiteCount} website${websiteCount !== 1 ? 's' : ''} found`;
+        successBox.textContent = `✅ Filter applied: ${linkCount} link${linkCount !== 1 ? 's' : ''} found`;
     } else {
-        successBox.textContent = `✅ Showing all ${websiteCount} website${websiteCount !== 1 ? 's' : ''}`;
+        successBox.textContent = `✅ Showing all ${linkCount} link${linkCount !== 1 ? 's' : ''}`;
     }
 
     successBox.style.display = 'inline-block';

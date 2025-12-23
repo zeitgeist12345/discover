@@ -17,7 +17,7 @@ docker compose up -d --build
 
 ### 2. Verify it's working
 ```bash
-curl http://backend.discoverall.space/getWebsitesDesktop
+curl http://backend.discoverall.space/getLinksDesktop
 curl http://backend.discoverall.space/health
 ```
 

@@ -18,9 +18,9 @@ import androidx.compose.ui.unit.dp
 import com.example.discover.ui.theme.*
 
 @Composable
-fun AddWebsiteDialog(
+fun AddLinkDialog(
     onDismiss: () -> Unit,
-    onAddWebsite: (name: String, url: String, description: String, tags: List<String>) -> Unit
+    onAddLink: (name: String, url: String, description: String, tags: List<String>) -> Unit
 ) {
     var name by remember { mutableStateOf("") }
     var url by remember { mutableStateOf("") }
@@ -34,7 +34,7 @@ fun AddWebsiteDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
-                text = "➕ Add New Website",
+                text = "➕ Add New Link",
                 style = MaterialTheme.typography.headlineSmall,
                 color = TextPrimary,
                 fontWeight = FontWeight.Bold
@@ -49,7 +49,7 @@ fun AddWebsiteDialog(
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Website Name *") },
+                    label = { Text("Link Name *") },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
                     colors = textFieldColors()
@@ -59,7 +59,7 @@ fun AddWebsiteDialog(
                 OutlinedTextField(
                     value = url,
                     onValueChange = { url = it },
-                    label = { Text("Website URL *") },
+                    label = { Text("Link URL *") },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
@@ -154,10 +154,10 @@ fun AddWebsiteDialog(
                     isLoading = true
                     error = null
                     Log.d(
-                        "AddWebsiteDialog",
-                        "Adding website: $name, $url, $description, tags=$tags"
+                        "AddLinkDialog",
+                        "Adding link: $name, $url, $description, tags=$tags"
                     )
-                    onAddWebsite(name, url, description, tags)
+                    onAddLink(name, url, description, tags)
                     isLoading = false
                 },
                 enabled = !isLoading,
@@ -173,7 +173,7 @@ fun AddWebsiteDialog(
                         strokeWidth = 2.dp
                     )
                 } else {
-                    Text("Add Website")
+                    Text("Add Link")
                 }
             }
         },

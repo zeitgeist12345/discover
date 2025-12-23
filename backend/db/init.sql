@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS websites (
+CREATE TABLE IF NOT EXISTS links (
     url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS websites (
     reviewStatus INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO websites (
+INSERT INTO links (
         name,
         url,
         description,
@@ -74,7 +74,7 @@ VALUES (
     (
         'abirusabil123',
         'https://abirusabil123.github.io/',
-        'The personal website of the creator of this project',
+        'The personal link of the creator of this project',
         JSON_ARRAY('curated', 'sample'),
         79,
         4,
@@ -194,7 +194,7 @@ VALUES (
     (
         'Bored Button',
         'https://www.boredbutton.com/',
-        'Collection of random fun websites and games',
+        'Collection of random fun links and games',
         JSON_ARRAY('curated', 'sample'),
         49,
         2,
@@ -324,9 +324,9 @@ VALUES (
         1
     ),
     (
-        'Examples website',
+        'Examples link',
         'https://www.example.com/',
-        'Example website',
+        'Example link',
         JSON_ARRAY('beautiful', 'gorgeous'),
         25,
         0,
@@ -386,7 +386,7 @@ VALUES (
     (
         'Hacker News',
         'https://news.ycombinator.com/',
-        'Social news website focusing on computer science and entrepreneurship',
+        'Social news link focusing on computer science and entrepreneurship',
         JSON_ARRAY('curated', 'sample'),
         177,
         41,
@@ -974,7 +974,7 @@ VALUES (
     (
         'The Useless Web',
         'https://theuselessweb.com/',
-        'Random fun and bizarre websites with one click',
+        'Random fun and bizarre links with one click',
         JSON_ARRAY('curated', 'sample'),
         95,
         3,

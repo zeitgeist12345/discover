@@ -20,19 +20,19 @@ const apiLimiter = rateLimit({
   legacyHeaders: false // Disable the `X-RateLimit-*` headers
 });
 
-// Per-IP-per-website voting limit
+// Per-IP-per-link voting limit
 const voteLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute (per website)
-  max: 5, // allow 5 vote per 1 minute per IP per website
+  windowMs: 60 * 1000, // 1 minute (per link)
+  max: 5, // allow 5 vote per 1 minute per IP per link
   message: {
     status: 429,
-    error: 'You are voting too quickly for this website. Please wait a few seconds.'
+    error: 'You are voting too quickly for this link. Please wait a few seconds.'
   },
   keyGenerator: (req, res) => {
-    // Combine IP + website identifier (url)
+    // Combine IP + link identifier (url)
     const ip = req.ip || req.headers['x-forwarded-for'] || 'unknown';
-    const websiteUrl = req.query.url || 'unknown';
-    return `${ip}_${websiteUrl}`;
+    const linkUrl = req.query.url || 'unknown';
+    return `${ip}_${linkUrl}`;
   },
   standardHeaders: true,
   legacyHeaders: false
@@ -68,8 +68,8 @@ function needToIgnore(likesMobile, dislikesMobile) {
   return undesirable_score > 0.8;
 }
 
-// Get all websites
-app.get('/getWebsites', async (req, res) => {
+// Get all links
+app.get('/getLinks', async (req, res) => {
 
   console.log('Request origin:', req.headers.origin);
   console.log('Request query:', req.query);
@@ -87,7 +87,7 @@ app.get('/getWebsites', async (req, res) => {
       .filter(Boolean);
 
     const connection = await mysql.createConnection(dbConfig);
-    const [rows] = await connection.execute('SELECT * FROM websites ORDER BY name');
+    const [rows] = await connection.execute('SELECT * FROM links ORDER BY name');
     await connection.end();
 
     const parsed = rows.map(w => {
@@ -96,7 +96,7 @@ app.get('/getWebsites', async (req, res) => {
           ? w.tags
           : JSON.parse(w.tags || '[]');
       } catch (err) {
-        console.warn("Failed to parse tags for website url:", w.url);
+        console.warn("Failed to parse tags for link url:", w.url);
         w.tags = [];
       }
       return w;
@@ -119,7 +119,7 @@ app.get('/getWebsites', async (req, res) => {
 
     res.json(filtered);
   } catch (error) {
-    console.error('Get websites error:', error);
+    console.error('Get links error:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -170,7 +170,7 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
         return res.status(400).json({ success: false, error: 'Invalid action type' });
     }
 
-    query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
+    query = `UPDATE links SET ${fieldToUpdate} WHERE url = ?`;
     params = [url];
 
     const [result] = await connection.execute(query, params);
@@ -178,7 +178,7 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
     // Check if update affected any rows
     if (result.affectedRows === 0) {
       await connection.end();
-      return res.status(404).json({ success: false, error: 'Website not found' });
+      return res.status(404).json({ success: false, error: 'Link not found' });
     }
 
     await connection.end();
@@ -219,7 +219,7 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
         return res.status(400).json({ success: false, error: 'Invalid action type' });
     }
 
-    query = `UPDATE websites SET ${fieldToUpdate} WHERE url = ?`;
+    query = `UPDATE links SET ${fieldToUpdate} WHERE url = ?`;
     params = [url];
 
     const [result] = await connection.execute(query, params);
@@ -242,8 +242,8 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
   }
 });
 
-// Add new website
-app.post('/addwebsite', async (req, res) => {
+// Add new link
+app.post('/addlink', async (req, res) => {
   try {
     let { name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop } = req.body;
 
@@ -288,20 +288,20 @@ app.post('/addwebsite', async (req, res) => {
 
     const connection = await mysql.createConnection(dbConfig);
 
-    // Check if website already exists
+    // Check if link already exists
     const [existing] = await connection.execute(
-      'SELECT url FROM websites WHERE url = ?',
+      'SELECT url FROM links WHERE url = ?',
       [url]
     );
 
     if (existing.length > 0) {
       await connection.end();
-      return res.status(409).json({ error: 'Website already exists' });
+      return res.status(409).json({ error: 'Link already exists' });
     }
 
-    // Insert new website
+    // Insert new link
     const [result] = await connection.execute(
-      'INSERT INTO websites (name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop, reviewStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO links (name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop, reviewStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [name, url, description, tags, views || 0, likesMobile || 0, dislikesMobile || 0, likesDesktop || 0, dislikesDesktop || 0, 0]
     );
 
@@ -315,7 +315,7 @@ app.post('/addwebsite', async (req, res) => {
       tags
     });
   } catch (error) {
-    console.error('Add website error:', error);
+    console.error('Add link error:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -337,16 +337,16 @@ app.get('/health', async (req, res) => {
 app.get('/', async (req, res) => {
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const [rows] = await connection.execute('SELECT COUNT(*) as count FROM websites');
+    const [rows] = await connection.execute('SELECT COUNT(*) as count FROM links');
     await connection.end();
 
     res.json({
       message: 'Discover Backend API',
-      totalWebsites: rows[0].count,
+      totalLinks: rows[0].count,
       endpoints: {
-        '/getWebsites': 'GET - Get links',
+        '/getLinks': 'GET - Get links',
         '/incrementView': 'POST - Update link stats',
-        '/addwebsite': 'POST - Add new website',
+        '/addlink': 'POST - Add new link',
         '/removeLink': 'POST - Remove link',
         '/health': 'GET - Health check'
       }

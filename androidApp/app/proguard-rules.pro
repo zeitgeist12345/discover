@@ -22,7 +22,7 @@
 
 # --- Rules for Gson ---
 
-# Keep the Link data class (used in ApiService.getWebsites) and its members for Gson
+# Keep the Link data class (used in ApiService.getLinks) and its members for Gson
 -keep class com.example.discover.data.Link { *; }
 -keepclassmembers class com.example.discover.data.Link { *; }
 

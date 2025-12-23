@@ -1,7 +1,7 @@
 package com.example.discover.data
 
-object StaticWebsites {
-    val websites = listOf(
+object StaticLinks {
+    val links = listOf(
         Link(
             name = "12 Rules for Life - Jordan Bernt Peterson",
             url = "https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF",
@@ -25,7 +25,7 @@ object StaticWebsites {
         Link(
             name = "abirusabil123",
             url = "https://abirusabil123.github.io/",
-            description = "The personal website of the creator of this project",
+            description = "The personal link of the creator of this project",
             tags = listOf("curated", "sample"),
             views = 79,
             likesMobile = 4,
@@ -165,7 +165,7 @@ object StaticWebsites {
         Link(
             name = "Hacker News",
             url = "https://news.ycombinator.com/",
-            description = "Social news website focusing on computer science and entrepreneurship",
+            description = "Social news link focusing on computer science and entrepreneurship",
             tags = listOf("curated", "sample"),
             views = 177,
             likesMobile = 41,
@@ -385,7 +385,7 @@ object StaticWebsites {
         Link(
             name = "The Useless Web",
             url = "https://theuselessweb.com/",
-            description = "Random fun and bizarre websites with one click",
+            description = "Random fun and bizarre links with one click",
             tags = listOf("curated", "sample"),
             views = 95,
             likesMobile = 3,

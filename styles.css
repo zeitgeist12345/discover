@@ -116,8 +116,8 @@ body {
     text-decoration: none;
 }
 
-/* Style for the website box container */
-.website-box {
+/* Style for the link box container */
+.link-box {
     display: block;
     width: 100%;
     padding: 0.625rem 0.9375rem;
@@ -128,13 +128,13 @@ body {
     box-sizing: border-box;
 }
 
-.website-box:hover {
+.link-box:hover {
     background: rgba(74, 222, 128, 0.2);
     border-color: rgba(74, 222, 128, 0.5);
     transform: translateY(-0.0625rem);
 }
 
-/* Style for when a website is actually loaded */
+/* Style for when a link is actually loaded */
 .current-site a[href]:not([href="#"]):not([href=""]) {
     color: #4ade80;
     text-decoration: underline;
@@ -146,21 +146,21 @@ body {
 }
 
 /* Style for the description text */
-.website-description {
+.link-description {
     color: #AAA;
     text-align: center;
     word-break: break-word;
 }
 
 /* Style for the description text */
-.website-tags {
+.link-tags {
     color: #888;
     text-align: center;
     word-break: break-word;
 }
 
-/* Website Stats Styles */
-.website-stats {
+/* Link Stats Styles */
+.link-stats {
     margin-top: 0.9375rem;
     padding-top: 0.9375rem;
     border-top: 1px solid rgba(74, 222, 128, 0.2);
@@ -312,8 +312,8 @@ body {
         width: 100%;
     }
 
-    /* Ensure website box takes full width on mobile */
-    .website-box {
+    /* Ensure link box takes full width on mobile */
+    .link-box {
         display: block;
         width: 100%;
         padding: 0.75rem 0.9375rem;
@@ -324,19 +324,19 @@ body {
         line-height: 1.5;
     }
 
-    .website-description {
+    .link-description {
         font-size: 1rem;
         line-height: 1.3;
     }
 }
 
-/* Add Website Button */
-.add-website-btn {
+/* Add Link Button */
+.add-link-btn {
     background: #059669 !important;
     border-color: #10b981 !important;
 }
 
-.add-website-btn:hover {
+.add-link-btn:hover {
     background: #047857 !important;
     border-color: #059669 !important;
 }
@@ -405,7 +405,7 @@ body {
 }
 
 /* Form Styles */
-#add-website-form {
+#add-link-form {
     padding: 1.25rem;
 }
 
@@ -686,7 +686,7 @@ body {
     animation: fadeIn 0.3s ease;
 }
 
-.website-box.success-box {
+.link-box.success-box {
     background: #0f0f0f;
     border: 2px solid #10b981;
     padding: 16px 20px;

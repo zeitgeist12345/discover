@@ -1,5 +1,5 @@
 // tools/recreate-files.js
-import WEBSITES_TO_KEEP from './websites-dump-to-keep.json' assert { type: 'json' };
+import LINKS_TO_KEEP from './links-dump-to-keep.json' assert { type: 'json' };
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
@@ -45,11 +45,11 @@ function needToIgnore(likesMobile, dislikesMobile) {
 }
 
 // 1️⃣ Generate init.sql
-function generateInitSQL(websites) {
+function generateInitSQL(links) {
     const sqlPath = path.join(PROJECT_ROOT, 'backend', 'db', 'init.sql');
     console.log(`🧱 Writing SQL init file to ${sqlPath}...`);
 
-    const header = `CREATE TABLE IF NOT EXISTS websites (
+    const header = `CREATE TABLE IF NOT EXISTS links (
     url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -62,7 +62,7 @@ function generateInitSQL(websites) {
     reviewStatus INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO websites (
+INSERT INTO links (
         name,
         url,
         description,
@@ -76,7 +76,7 @@ INSERT INTO websites (
     )
 VALUES `;
 
-    const values = websites.map(site => {
+    const values = links.map(site => {
         const name = escapeSQL(site.name || '');
         const url = escapeSQL(site.url || '');
         const description = escapeSQL(site.description || '');
@@ -106,15 +106,15 @@ VALUES `;
 UPDATE url = url;`;
     fs.mkdirSync(path.dirname(sqlPath), { recursive: true });
     fs.writeFileSync(sqlPath, content);
-    console.log(`✅ init.sql regenerated (${websites.length} entries)\n`);
+    console.log(`✅ init.sql regenerated (${links.length} entries)\n`);
 }
 
 // 2️⃣ Generate static.js
-function generateConfigJS(websites) {
+function generateConfigJS(links) {
     const configPath = path.join(PROJECT_ROOT, 'static.js');
     console.log(`⚙️ Writing web config file to ${configPath}...`);
 
-    const sampleWebsites = websites
+    const sampleLinks = links
         .filter(site => !needToIgnore(site.likesDesktop, site.dislikesDesktop))
         .map((site, index) => ({
             name: site.name,
@@ -127,14 +127,14 @@ function generateConfigJS(websites) {
             likesDesktop: site.likesDesktop ?? 1,
             dislikesDesktop: site.dislikesDesktop ?? 0
         }));
-    const jsonIndented = JSON.stringify(sampleWebsites, null, 4)
+    const jsonIndented = JSON.stringify(sampleLinks, null, 4)
         .split('\n')
         .map((line, index) => (index < 1 ? line : '    ' + line)) // Skip first 4
         .join('\n');
     const js = `// static.js
 const STATIC = {
-    // Auto-generated sample websites
-    SAMPLE_WEBSITES: ${jsonIndented}
+    // Auto-generated sample links
+    SAMPLE_LINKS: ${jsonIndented}
 };
 
 if (typeof module !== 'undefined') {
@@ -143,11 +143,11 @@ if (typeof module !== 'undefined') {
 `;
 
     fs.writeFileSync(configPath, js.trim() + '\n');
-    console.log(`✅ static.js regenerated (${sampleWebsites.length} sample sites)\n`);
+    console.log(`✅ static.js regenerated (${sampleLinks.length} sample sites)\n`);
 }
 
-// 3️⃣ Generate StaticWebsites.kt
-function generateKotlin(websites) {
+// 3️⃣ Generate StaticLinks.kt
+function generateKotlin(links) {
     const kotlinPath = path.join(
         PROJECT_ROOT,
         'androidApp',
@@ -159,11 +159,11 @@ function generateKotlin(websites) {
         'example',
         'discover',
         'data',
-        'StaticWebsites.kt'
+        'StaticLinks.kt'
     );
-    console.log(`🤖 Writing Kotlin static websites to ${kotlinPath}...`);
+    console.log(`🤖 Writing Kotlin static links to ${kotlinPath}...`);
 
-    const kotlinEntries = websites
+    const kotlinEntries = links
         .filter(site => !needToIgnore(site.likesMobile, site.dislikesMobile))
         .map((site, i) => {
             const name = escapeKotlin(site.name || '');
@@ -187,8 +187,8 @@ function generateKotlin(websites) {
 
     const kotlinCode = `package com.example.discover.data
 
-object StaticWebsites {
-    val websites = listOf(
+object StaticLinks {
+    val links = listOf(
 ${kotlinEntries}
     )
 }
@@ -196,24 +196,24 @@ ${kotlinEntries}
 
     fs.mkdirSync(path.dirname(kotlinPath), { recursive: true });
     fs.writeFileSync(kotlinPath, kotlinCode.trim() + '\n');
-    console.log(`✅ StaticWebsites.kt regenerated (${websites.length} entries)\n`);
+    console.log(`✅ StaticLinks.kt regenerated (${links.length} entries)\n`);
 }
 
 // 🧩 Main generator
 function main() {
-    console.log('🚀 Starting regeneration of static website files...\n');
-    if (!Array.isArray(WEBSITES_TO_KEEP) || WEBSITES_TO_KEEP.length === 0) {
-        console.error('❌ No websites found in static-links.js');
+    console.log('🚀 Starting regeneration of static link files...\n');
+    if (!Array.isArray(LINKS_TO_KEEP) || LINKS_TO_KEEP.length === 0) {
+        console.error('❌ No links found in static-links.js');
         process.exit(1);
     }
 
-    console.log(`📦 Found ${WEBSITES_TO_KEEP.length} websites in static-links.js`);
-    const approvedWebsites = WEBSITES_TO_KEEP.filter(site => site.reviewStatus === 1);
-    console.log(`📦 Found ${approvedWebsites.length} approved websites in static-links.js`);
+    console.log(`📦 Found ${LINKS_TO_KEEP.length} links in static-links.js`);
+    const approvedLinks = LINKS_TO_KEEP.filter(site => site.reviewStatus === 1);
+    console.log(`📦 Found ${approvedLinks.length} approved links in static-links.js`);
 
-    generateInitSQL(approvedWebsites);
-    generateConfigJS(approvedWebsites);
-    generateKotlin(approvedWebsites);
+    generateInitSQL(approvedLinks);
+    generateConfigJS(approvedLinks);
+    generateKotlin(approvedLinks);
     console.log('🎉 All files successfully regenerated!\n');
 }
 

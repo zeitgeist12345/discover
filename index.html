@@ -59,25 +59,25 @@
 
         <!-- Control Buttons (initially hidden) -->
         <div id="control-buttons" class="control-buttons" style="display: none;">
-            <button class="btn direction-btn" onclick="loadPreviousWebsite()">⬅️ Previous link</button>
-            <button class="btn" onclick="loadRandomWebsite()">🎲 Load Random Link</button>
-            <button class="btn direction-btn" onclick="loadNextWebsite()">➡️ Next link</button>
-            <button class="btn add-website-btn" onclick="showAddWebsiteForm()">➕ Add link</button>
+            <button class="btn direction-btn" onclick="loadPreviousLink()">⬅️ Previous link</button>
+            <button class="btn" onclick="loadRandomLink()">🎲 Load Random Link</button>
+            <button class="btn direction-btn" onclick="loadNextLink()">➡️ Next link</button>
+            <button class="btn add-link-btn" onclick="showAddLinkForm()">➕ Add link</button>
         </div>
     </div>
 
     <div class="current-site" id="current-site-info">
-        <div class="website-box">
+        <div class="link-box">
             <a href="#" id="current-site-link" target="_blank">Click "🎲 Load Random Link" to discover amazing
                 links!<br>Links open in a new tab for the best experience.</a>
-            <div id="website-description" class="website-description"></div>
-            <div id="website-tags" class="website-tags"></div>
+            <div id="link-description" class="link-description"></div>
+            <div id="link-tags" class="link-tags"></div>
 
             <!-- Stats and Action Buttons -->
-            <div class="website-stats" id="website-stats" style="display: none;">
+            <div class="link-stats" id="link-stats" style="display: none;">
                 <div class="stats-row">
                     <button class="action-btn dislikesDesktop-btn" id="dislikesDesktop-btn"
-                        onclick="dislikesDesktopWebsite()">👎<span class="count-badge"
+                        onclick="dislikesDesktopLink()">👎<span class="count-badge"
                             id="dislikesDesktop-count">0</span>
                     </button>
                     <div class="views-center">
@@ -85,45 +85,45 @@
                         <span class="stat-label">views</span>
                     </div>
                     <button class="action-btn likesDesktop-btn" id="likesDesktop-btn"
-                        onclick="likesDesktopWebsite()">👍<span class="count-badge" id="likesDesktop-count">0</span>
+                        onclick="likesDesktopLink()">👍<span class="count-badge" id="likesDesktop-count">0</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Add Website Modal -->
-    <div id="add-website-modal" class="modal" style="display: none;">
+    <!-- Add Link Modal -->
+    <div id="add-link-modal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
                 <h3>➕ Add New Link</h3>
-                <span class="close" onclick="hideAddWebsiteForm()">&times;</span>
+                <span class="close" onclick="hideAddLinkForm()">&times;</span>
             </div>
-            <form id="add-website-form" onsubmit="submitWebsite(event)">
+            <form id="add-link-form" onsubmit="submitLink(event)">
                 <div class="form-group">
-                    <label for="website-name">Link Name *</label>
-                    <input type="text" id="website-name" name="name" required placeholder="e.g., GitHub">
+                    <label for="link-name">Link Name *</label>
+                    <input type="text" id="link-name" name="name" required placeholder="e.g., GitHub">
                 </div>
                 <div class="form-group">
-                    <label for="website-url">Link URL *</label>
-                    <input type="text" id="website-url" name="url" required placeholder="https://www.github.com">
+                    <label for="link-url">Link URL *</label>
+                    <input type="text" id="link-url" name="url" required placeholder="https://www.github.com">
                 </div>
                 <div class="form-group">
-                    <label for="website-description">Description *</label>
-                    <textarea id="website-description" name="description" required
+                    <label for="link-description">Description *</label>
+                    <textarea id="link-description" name="description" required
                         placeholder="Brief description of the link..." rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="website-tags">Tags</label>
+                    <label for="link-tags">Tags</label>
                     <div class="tags-input-container">
-                        <input type="text" id="add-website-tags" placeholder="Type a tag and press Enter or comma">
+                        <input type="text" id="add-link-tags" placeholder="Type a tag and press Enter or comma">
                         <div id="tags-display" class="tags-display"></div>
                     </div>
                     <small class="form-text">Add multiple tags separated by commas.</small>
                 </div>
                 <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" onclick="hideAddWebsiteForm()">Cancel</button>
-                    <button type="submit" class="btn btn-primary" id="submit-btn">Add Website</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideAddLinkForm()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Add Link</button>
                 </div>
 
                 <!-- Error message area - below submit button -->

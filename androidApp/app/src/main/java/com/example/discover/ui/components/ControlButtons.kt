@@ -24,7 +24,7 @@ fun ControlButtons(
     onPreviousClick: () -> Unit,
     onRandomClick: () -> Unit,
     onNextClick: () -> Unit,
-    onAddWebsiteClick: () -> Unit
+    onAddLinkClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -69,11 +69,11 @@ fun ControlButtons(
         Spacer(modifier = Modifier.height(Spacing.medium)) // Using theme spacing
 
         Button(
-            onClick = onAddWebsiteClick, colors = ButtonDefaults.buttonColors(
+            onClick = onAddLinkClick, colors = ButtonDefaults.buttonColors(
                 containerColor = SuccessColor, contentColor = TextPrimary
             ), modifier = Modifier.fillMaxWidth()
         ) {
-            Text("➕ Add Website", fontWeight = FontWeight.Bold)
+            Text("➕ Add Link", fontWeight = FontWeight.Bold)
         }
     }
 }

@@ -1,19 +1,19 @@
 // Test script for the Azure Functions API
-const API_BASE_URL = 'https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurewebsites.net/api';
+const API_BASE_URL = 'https://discover-api-g0c4bgbhgpeah7dt.uaenorth-01.azurelinks.net/api';
 
 async function testAPI() {
     console.log('🧪 Testing Azure Functions API...\n');
 
     try {
-        // Test 1: Get websites
-        console.log('1️⃣ Testing getWebsites...');
-        const websitesResponse = await fetch(`${API_BASE_URL}/getWebsites`);
-        const websites = await websitesResponse.json();
-        console.log(`✅ Found ${websites.length} websites`);
+        // Test 1: Get links
+        console.log('1️⃣ Testing getLinks...');
+        const linksResponse = await fetch(`${API_BASE_URL}/getLinks`);
+        const links = await linksResponse.json();
+        console.log(`✅ Found ${links.length} links`);
         
-        if (websites.length > 0) {
-            const testWebsite = websites[0];
-            console.log(`📝 Testing with website: ${testWebsite.name} (ID: ${testWebsite.id})`);
+        if (links.length > 0) {
+            const testLink = links[0];
+            console.log(`📝 Testing with link: ${testLink.name} (ID: ${testLink.id})`);
             
             // Test 2: Increment view
             console.log('\n2️⃣ Testing view increment...');
@@ -46,7 +46,7 @@ async function testAPI() {
             console.log(`   👎 dislikesMobile: ${dislikeResult.dislikesMobile}`);
             
         } else {
-            console.log('❌ No websites found to test with');
+            console.log('❌ No links found to test with');
         }
         
     } catch (error) {
@@ -59,7 +59,7 @@ async function testCORS() {
     console.log('\n🌐 Testing CORS...');
     
     try {
-        const response = await fetch(`${API_BASE_URL}/getWebsites`, {
+        const response = await fetch(`${API_BASE_URL}/getLinks`, {
             method: 'OPTIONS',
             headers: {
                 'Origin': 'https://abirusabil123.github.io',
