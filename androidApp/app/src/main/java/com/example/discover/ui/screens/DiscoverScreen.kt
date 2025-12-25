@@ -105,53 +105,40 @@ fun DiscoverScreen(
             <!DOCTYPE html>
             <html>
             <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="viewport" content="width=device-width">
                 <style>
                     body {
-                        margin: 0;
                         padding: 20px;
-                        background: rgba(0.1, 0.1, 0.1, 1);
-                        min-height: 100vh;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        color: white;
+                        background: #0F0F0F;
                     }
                     .container {
-                        max-width: 600px;
                         text-align: center;
                     }
                     .stats-container {
-                        background: rgba(255, 255, 255, 0.1);
-                        border-radius: 16px;
-                        padding: 24px;
-                        margin-top: 24px;
-                        backdrop-filter: blur(10px);
+                        background: #323232;
+                        border-radius: 1rem;
+                        padding: 1rem;
                     }
                     .stat-item {
                         display: flex;
                         justify-content: space-between;
-                        margin: 12px 0;
-                        font-size: 1.1rem;
+                        margin: 0.5rem 0.5rem 0 0;
+                        color: white;
                     }
                     .stat-value {
-                        font-weight: 600;
+                        font-weight: bold;
                     }
                     h1 {
-                        font-size: 2.5rem;
-                        margin-bottom: 8px;
-                    }
-                    p {
                         font-size: 1.2rem;
-                        opacity: 0.9;
-                        margin-bottom: 24px;
+                        opacity: 0.8;
+                        margin-bottom: 1rem;
+                        color: white;
                     }
                 </style>
             </head>
             <body>
                 <div class="container">
-                    <p>Press 🌐 Discover to explore amazing links!</p>
+                    <h1>Press 🌐 Discover to explore amazing links!</h1>
                     
                     <div class="stats-container" id="statsContainer">
                         <div class="stat-item">
