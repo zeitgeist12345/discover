@@ -75,8 +75,6 @@ fun WebViewArea(
                 bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
             )
     ) {
-
-        // 1. Create a Box with a fixed height to reserve the space.
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -95,7 +93,7 @@ fun WebViewArea(
         }
 
         // The AndroidView now simply PLACES the existing WebView.
-        AndroidView(factory = { webView }, modifier = Modifier.weight(1f), update = { view ->
+        AndroidView(factory = { webView }, update = { view ->
             // The update block ensures the clients are correctly set.
             view.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(v: WebView?, newProgress: Int) {

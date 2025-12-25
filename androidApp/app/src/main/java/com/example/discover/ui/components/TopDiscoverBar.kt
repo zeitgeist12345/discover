@@ -23,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.example.discover.ui.theme.ErrorColor
 import com.example.discover.ui.theme.Spacing
 import com.example.discover.ui.theme.SuccessColor
@@ -42,7 +41,7 @@ fun TopDiscoverBar(
     onClose: () -> Unit
 ) {
     Surface(
-        modifier = Modifier.fillMaxWidth(), color = SurfaceDark, shadowElevation = 4.dp
+        modifier = Modifier.fillMaxWidth(), color = SurfaceDark
     ) {
         Row(
             modifier = Modifier
