@@ -93,7 +93,7 @@ fun WebViewArea(
         }
 
         // The AndroidView now simply PLACES the existing WebView.
-        AndroidView(factory = { webView }, update = { view ->
+        AndroidView(factory = { webView }, modifier = Modifier.fillMaxSize(), update = { view ->
             // The update block ensures the clients are correctly set.
             view.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(v: WebView?, newProgress: Int) {
