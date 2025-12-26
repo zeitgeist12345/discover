@@ -74,8 +74,10 @@ app.get('/getLinks', async (req, res) => {
   const timestamp = new Date().toISOString();
   const country = req.headers['cf-ipcountry'] || req.headers['x-country'] || 'Unknown';
   const userAgent = req.headers['user-agent'] || 'Unknown';
-
-  console.log(`[${timestamp}] Request received from country: ${country} with user agent: ${userAgent}`);
+  console.log('New getLinks request!')
+  console.log('Request timestamp:', timestamp);
+  console.log('Request country:', country);
+  console.log('Request userAgent:', userAgent);
   console.log('Request origin:', req.headers.origin);
   console.log('Request query:', req.query);
 
