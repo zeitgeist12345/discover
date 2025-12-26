@@ -80,6 +80,7 @@ app.get('/getLinks', async (req, res) => {
   console.log('Request userAgent:', userAgent);
   console.log('Request origin:', req.headers.origin);
   console.log('Request query:', req.query);
+  console.log('\n\n\n')
 
   try {
     const { platform, reviewStatusEnable, tagsAllowlist, tagsBlocklist } = req.query;
