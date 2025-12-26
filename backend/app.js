@@ -70,9 +70,15 @@ function needToIgnore(likesMobile, dislikesMobile) {
 
 // Get all links
 app.get('/getLinks', async (req, res) => {
+  // Log country and time
+  const timestamp = new Date().toISOString();
+  const country = req.headers['cf-ipcountry'] || req.headers['x-country'] || 'Unknown';
+  const userAgent = req.headers['user-agent'] || 'Unknown';
 
+  console.log(`[${timestamp}] Request received from country: ${country} with user agent: ${userAgent}`);
   console.log('Request origin:', req.headers.origin);
   console.log('Request query:', req.query);
+
   try {
     const { platform, reviewStatusEnable, tagsAllowlist, tagsBlocklist } = req.query;
 
