@@ -386,14 +386,8 @@ function updateCurrentSiteInfo(link) {
     const likesDesktopBtn = document.getElementById('likesDesktop-btn');
     const dislikesDesktopBtn = document.getElementById('dislikesDesktop-btn');
 
-    // Check if link element exists before accessing its properties
-    if (link) {
-        link.href = link.url;
-        link.textContent = `${link.name} - ${link.url}`;
-    } else {
-        console.error('current-site-link element not found');
-        return;
-    }
+    linkElement.href = link.url;
+    linkElement.textContent = `${link.name} - ${link.url}`;
 
     // Add description as a separate element
     const description = document.getElementById('link-description');
