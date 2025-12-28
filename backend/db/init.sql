@@ -1,3 +1,14 @@
+CREATE TABLE IF NOT EXISTS errors (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    source TEXT,
+    level TEXT,
+    message TEXT NOT NULL,
+    user_agent TEXT,
+    resolved BOOLEAN DEFAULT FALSE,
+    resolved_at TIMESTAMP NULL
+);
+
 CREATE TABLE IF NOT EXISTS links (
     url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,

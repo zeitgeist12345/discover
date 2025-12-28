@@ -129,7 +129,7 @@ function fixUrl(url) {
     }
 }
 
-function saveToFile(data) {
+async function saveToFile(data) {
     try {
         // 🔥 Remove created_at from each link object
         const cleanedLinks = data.links.map(({ created_at, ...rest }) => ({
@@ -141,7 +141,23 @@ function saveToFile(data) {
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(cleanedLinks, null, 2));
         console.log(`💾 Raw data saved to: ${OUTPUT_FILE}`);
 
-        // Save comprehensive summary with metadata
+        // Get errors from API
+        let errorsData = { count: 0, unresolved: 0, recent: [] };
+        try {
+            const response = await fetch(`${API_BASE_URL}/errors?limit=1000`);
+            if (response.ok) {
+                const errors = await response.json();
+                errorsData = {
+                    count: errors.length,
+                    unresolved: errors.filter(e => !e.resolved).length,
+                    recent: errors.slice(0, 10)
+                };
+            }
+        } catch (error) {
+            console.warn('⚠️ Could not fetch errors:', error.message);
+        }
+
+        // Save summary WITH errors data
         const summaryFile = path.join(__dirname, 'links-summary.json');
         fs.writeFileSync(summaryFile, JSON.stringify({
             metadata: {
@@ -149,7 +165,8 @@ function saveToFile(data) {
                 apiUrl: API_BASE_URL,
                 totalLinks: data.links.length
             },
-            analysis: data.analysis
+            analysis: data.analysis,
+            errors: errorsData  // Add errors here
         }, null, 2));
         console.log(`📋 Summary saved to: ${summaryFile}`);
 
@@ -176,7 +193,7 @@ async function main() {
         analysis.blockedDesktopUrls.sort();
 
         // Save to file
-        saveToFile({ links: allLinks, analysis });
+        await saveToFile({ links: allLinks, analysis });
 
         console.log('\n✅ Link data dump completed successfully!');
 

@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generatedAt": "2025-12-26T12:53:01.599Z",
+    "generatedAt": "2025-12-28T16:18:43.137Z",
     "apiUrl": "https://backend.discoverall.space",
-    "totalLinks": 88
+    "totalLinks": 83
   },
   "analysis": {
-    "total": 88,
-    "filteredMobile": 46,
-    "filteredDesktop": 8,
+    "total": 83,
+    "filteredMobile": 42,
+    "filteredDesktop": 4,
     "blockedMobileUrls": [
       "http://radio.garden/",
       "https://10minutemail.com/",
@@ -40,10 +40,6 @@
       "https://sony.com/",
       "https://stellarium-web.org/",
       "https://tails.net/",
-      "https://test.com/",
-      "https://test10.com/",
-      "https://test2.com/",
-      "https://test3.com/",
       "https://theuselessweb.com/",
       "https://thisissand.com/",
       "https://twitter.com/",
@@ -59,28 +55,29 @@
     "blockedDesktopUrls": [
       "https://canon.com/",
       "https://mojapp.in/",
-      "https://test.com/",
-      "https://test10.com/",
-      "https://test2.com/",
-      "https://test3.com/",
       "https://twitter.com/",
       "https://www.example.com/"
     ],
     "byReason": {},
     "byScore": {
-      "0%": 38,
+      "0%": 37,
       "1-25%": 3,
       "26-50%": 0,
       "51-75%": 0,
       "76-79%": 0,
-      "80-100%": 47
+      "80-100%": 43
     },
     "byVoteCount": {
-      "0 votes": 7,
+      "0 votes": 6,
       "1-3 votes": 23,
       "4-10 votes": 9,
       "11-50 votes": 2,
-      "50+ votes": 47
+      "50+ votes": 43
     }
+  },
+  "errors": {
+    "count": 0,
+    "unresolved": 0,
+    "recent": []
   }
 }

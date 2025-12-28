@@ -56,6 +56,24 @@ app.use(cors({
   origin: ['https://discoverall.space', 'http://localhost:44631']
 }));
 
+// Add after middleware setup, before routes
+app.use(async (err, req, res, next) => {
+  // Log to errors table
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    await connection.execute(
+      'INSERT INTO errors (source, level, message, user_agent) VALUES (?, ?, ?, ?)',
+      ['backend', 'error', err.message, req.headers['user-agent']]
+    );
+    await connection.end();
+  } catch (dbError) {
+    console.error('Failed to log to errors table:', dbError);
+  }
+
+  // Send response
+  res.status(500).json({ error: 'Internal Server Error' });
+});
+
 // Filtering criteria
 function needToIgnore(likesMobile, dislikesMobile) {
   const total = likesMobile + dislikesMobile;
@@ -67,6 +85,84 @@ function needToIgnore(likesMobile, dislikesMobile) {
 
   return undesirable_score > 0.8;
 }
+
+// POST endpoint to log errors
+app.post('/log-error', async (req, res) => {
+  try {
+    const { source, level, message, user_agent } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: 'Message is required' });
+    }
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    const [result] = await connection.execute(
+      'INSERT INTO errors (source, level, message, user_agent) VALUES (?, ?, ?, ?)',
+      [source || 'unknown', level || 'error', message, user_agent || req.headers['user-agent']]
+    );
+
+    await connection.end();
+    res.json({ success: true, id: result.insertId });
+
+  } catch (error) {
+    console.error('Error logging error:', error);
+    res.status(500).json({ error: 'Failed to log error' });
+  }
+});
+
+// GET endpoint to retrieve errors
+app.get('/errors', async (req, res) => {
+  try {
+    const { limit = 100, resolved } = req.query;
+    const connection = await mysql.createConnection(dbConfig);
+
+    let query = 'SELECT * FROM errors';
+    const params = [];
+
+    if (resolved !== undefined) {
+      query += ' WHERE resolved = ?';
+      params.push(resolved === 'true');
+    }
+
+    query += ' ORDER BY timestamp DESC LIMIT ?';
+    params.push(parseInt(limit));
+
+    const [rows] = await connection.execute(query, params);
+    await connection.end();
+
+    res.json(rows);
+
+  } catch (error) {
+    console.error('Get errors error:', error);
+    res.status(500).json({ error: 'Failed to fetch errors' });
+  }
+});
+
+// Mark error as resolved
+app.put('/errors/:id/resolve', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const connection = await mysql.createConnection(dbConfig);
+
+    const [result] = await connection.execute(
+      'UPDATE errors SET resolved = TRUE, resolved_at = CURRENT_TIMESTAMP WHERE id = ?',
+      [id]
+    );
+
+    await connection.end();
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Error not found' });
+    }
+
+    res.json({ success: true });
+
+  } catch (error) {
+    console.error('Resolve error error:', error);
+    res.status(500).json({ error: 'Failed to resolve error' });
+  }
+});
 
 // Get all links
 app.get('/getLinks', async (req, res) => {
@@ -129,7 +225,7 @@ app.get('/getLinks', async (req, res) => {
     res.json(filtered);
   } catch (error) {
     console.error('Get links error:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    next(error);
   }
 });
 
@@ -199,7 +295,7 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
     });
   } catch (error) {
     console.error('Increment view error:', error);
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 });
 
@@ -247,7 +343,7 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
     });
   } catch (error) {
     console.error('Remove error:', error);
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 });
 
@@ -325,7 +421,7 @@ app.post('/addlink', async (req, res) => {
     });
   } catch (error) {
     console.error('Add link error:', error);
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 });
 
@@ -338,7 +434,7 @@ app.get('/health', async (req, res) => {
 
     res.json({ status: 'OK', message: 'Database connection successful' });
   } catch (error) {
-    res.status(500).json({ status: 'ERROR', error: error.message });
+    next(error);
   }
 });
 
@@ -361,7 +457,7 @@ app.get('/', async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 });
 

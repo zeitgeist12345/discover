@@ -90,16 +90,15 @@
     "reviewStatus": 1
   },
   {
-    "url": "https://www.aljazeera.com/#flips",
+    "url": "https://www.aljazeera.com/#flips-6386599316112",
     "name": "Aljazeera flips",
-    "description": "Aljazeera flips",
+    "description": "Short clips from Aljazeera.",
     "tags": [
-      "aljazeeraflips",
       "aljazeera",
       "flips",
       "learning"
     ],
-    "views": 30,
+    "views": 17,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -123,15 +122,16 @@
     "reviewStatus": 1
   },
   {
-    "url": "https://www.aljazeera.com/#flips-6386599316112",
+    "url": "https://www.aljazeera.com/#flips",
     "name": "Aljazeera flips",
-    "description": "Short clips from Aljazeera.",
+    "description": "Aljazeera flips",
     "tags": [
+      "aljazeeraflips",
       "aljazeera",
       "flips",
       "learning"
     ],
-    "views": 17,
+    "views": 30,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -541,7 +541,7 @@
     "dislikesMobile": 0,
     "likesDesktop": 0,
     "dislikesDesktop": 0,
-    "reviewStatus": 0
+    "reviewStatus": 1
   },
   {
     "url": "https://github.com/alex/what-happens-when",
@@ -1099,81 +1099,6 @@
     "dislikesMobile": 1002,
     "likesDesktop": 6,
     "dislikesDesktop": 0,
-    "reviewStatus": 1
-  },
-  {
-    "url": "https://test.com/",
-    "name": "test",
-    "description": "Test",
-    "tags": [
-      "test",
-      "testingalot",
-      "good"
-    ],
-    "views": 5,
-    "likesMobile": 0,
-    "dislikesMobile": 2000,
-    "likesDesktop": 0,
-    "dislikesDesktop": 1002,
-    "reviewStatus": 1
-  },
-  {
-    "url": "https://test10.com/",
-    "name": "test10",
-    "description": "Testing escaping of \"quotes\".",
-    "tags": [
-      "quotes",
-      "\"quotes\"",
-      "test"
-    ],
-    "views": 1,
-    "likesMobile": 0,
-    "dislikesMobile": 1000,
-    "likesDesktop": 0,
-    "dislikesDesktop": 1000,
-    "reviewStatus": 1
-  },
-  {
-    "url": "https://test2.com/",
-    "name": "Test2",
-    "description": "Testing 2",
-    "tags": [
-      "test",
-      "testingalot",
-      "cool"
-    ],
-    "views": 1,
-    "likesMobile": 0,
-    "dislikesMobile": 2000,
-    "likesDesktop": 0,
-    "dislikesDesktop": 1000,
-    "reviewStatus": 1
-  },
-  {
-    "url": "https://test23.com/",
-    "name": "test23",
-    "description": "testing",
-    "tags": [
-      "test",
-      "lol"
-    ],
-    "views": 0,
-    "likesMobile": 0,
-    "dislikesMobile": 0,
-    "likesDesktop": 0,
-    "dislikesDesktop": 0,
-    "reviewStatus": 0
-  },
-  {
-    "url": "https://test3.com/",
-    "name": "test3",
-    "description": "test",
-    "tags": [],
-    "views": 3,
-    "likesMobile": 0,
-    "dislikesMobile": 2001,
-    "likesDesktop": 0,
-    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {

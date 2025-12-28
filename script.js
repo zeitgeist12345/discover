@@ -20,6 +20,24 @@ const ENABLE_FALLBACK = true;
 const ENABLE_VIEW_TRACKING = true;
 const ERROR_MESSAGE = 'Unable to connect to the server. Please make sure your local backend is running.';
 
+// Add at top of script.js after constants
+async function logFrontendError(message, level = 'error') {
+    try {
+        await fetch(`${API_BASE_URL}/log-error`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                source: 'frontend',
+                level: level,
+                message: message,
+                user_agent: navigator.userAgent
+            })
+        });
+    } catch (error) {
+        console.error('Failed to log frontend error:', error);
+    }
+}
+
 // Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded, initializing app...');
@@ -112,7 +130,6 @@ function enableControls() {
 
 
 function showErrorMessage(message) {
-
     // If an error box already exists, just update the text.
     const existing = document.querySelector('.error-message');
     if (existing) {
@@ -129,6 +146,7 @@ function showErrorMessage(message) {
     `;
 
     document.body.appendChild(errorDiv);
+    logFrontendError(message, 'error');
 }
 
 
@@ -619,6 +637,7 @@ async function submitLink(event) {
     } catch (error) {
         console.error('Error submitting link:', error);
         showModalError('Failed to add link. Please try again.');
+        logFrontendError(error.message, 'error');
     } finally {
         // Reset button state
         submitBtn.disabled = false;
@@ -751,3 +770,11 @@ async function applyTagFilter() {
     }, 3000);
 }
 
+// Add at end of script.js
+window.addEventListener('error', (event) => {
+    logFrontendError(`${event.message} at ${event.filename}:${event.lineno}`);
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    logFrontendError(`Unhandled promise rejection: ${event.reason}`);
+});
