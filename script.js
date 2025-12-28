@@ -33,8 +33,9 @@ async function logFrontendError(message, level = 'error') {
                 user_agent: navigator.userAgent
             })
         });
+        console.error('Successfully logged frontend error:', message);
     } catch (error) {
-        console.error('Failed to log frontend error:', error);
+        console.error('Failed to log frontend error:', message);
     }
 }
 
@@ -545,6 +546,7 @@ function showModalError(message) {
         // Scroll to error message
         errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+    logFrontendError(message, 'error');
 }
 
 function hideModalError() {
@@ -637,7 +639,6 @@ async function submitLink(event) {
     } catch (error) {
         console.error('Error submitting link:', error);
         showModalError('Failed to add link. Please try again.');
-        logFrontendError(error.message, 'error');
     } finally {
         // Reset button state
         submitBtn.disabled = false;

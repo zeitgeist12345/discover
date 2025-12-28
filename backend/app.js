@@ -56,23 +56,32 @@ app.use(cors({
   origin: ['https://discoverall.space', 'http://localhost:44631']
 }));
 
-// Add after middleware setup, before routes
-app.use(async (err, req, res, next) => {
-  // Log to errors table
+// Error logging middleware
+async function logError(err, req, res, next) {
+  const statusCode = err.status || res.statusCode || 500;
+  const isClientError = statusCode >= 400 && statusCode < 500;
+
   try {
     const connection = await mysql.createConnection(dbConfig);
     await connection.execute(
       'INSERT INTO errors (source, level, message, user_agent) VALUES (?, ?, ?, ?)',
-      ['backend', 'error', err.message, req.headers['user-agent']]
+      [
+        'backend',
+        isClientError ? 'warning' : 'error',
+        `${statusCode}: ${err.message || 'Client error'} (${req.method} ${req.path})`,
+        req.headers['user-agent']
+      ]
     );
     await connection.end();
   } catch (dbError) {
-    console.error('Failed to log to errors table:', dbError);
+    console.error('Failed to log error:', dbError);
   }
 
-  // Send response
-  res.status(500).json({ error: 'Internal Server Error' });
-});
+  // Only call next for server errors (let client errors send response)
+  if (!isClientError) {
+    next(err);
+  }
+}
 
 // Filtering criteria
 function needToIgnore(likesMobile, dislikesMobile) {
@@ -122,11 +131,11 @@ app.get('/errors', async (req, res) => {
 
     if (resolved !== undefined) {
       query += ' WHERE resolved = ?';
-      params.push(resolved === 'true');
+      params.push(resolved === 'true' ? 1 : 0); // Fix: Convert boolean to number
     }
 
     query += ' ORDER BY timestamp DESC LIMIT ?';
-    params.push(parseInt(limit));
+    params.push(limit); // Fix: Ensure integer
 
     const [rows] = await connection.execute(query, params);
     await connection.end();
@@ -459,6 +468,11 @@ app.get('/', async (req, res) => {
   } catch (error) {
     next(error);
   }
+});
+
+app.use(logError);
+app.use((err, req, res, next) => {
+  res.status(500).json({ error: 'Internal Server Error' });
 });
 
 app.listen(3000, '0.0.0.0', () => {
