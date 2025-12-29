@@ -44,10 +44,10 @@ object StaticLinks {
 
         Link(
             name = "Aljazeera flips",
-            url = "https://www.aljazeera.com/#flips",
-            description = "Aljazeera flips",
-            tags = listOf("aljazeeraflips", "aljazeera", "flips", "learning"),
-            views = 30,
+            url = "https://www.aljazeera.com/#flips-6386599316112",
+            description = "Short clips from Aljazeera.",
+            tags = listOf("aljazeera", "flips", "learning"),
+            views = 17,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -64,10 +64,10 @@ object StaticLinks {
 
         Link(
             name = "Aljazeera flips",
-            url = "https://www.aljazeera.com/#flips-6386599316112",
-            description = "Short clips from Aljazeera.",
-            tags = listOf("aljazeera", "flips", "learning"),
-            views = 17,
+            url = "https://www.aljazeera.com/#flips",
+            description = "Aljazeera flips",
+            tags = listOf("aljazeeraflips", "aljazeera", "flips", "learning"),
+            views = 30,
             likesMobile = 1,
             dislikesMobile = 0
         ),

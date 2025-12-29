@@ -49,7 +49,16 @@ function generateInitSQL(links) {
     const sqlPath = path.join(PROJECT_ROOT, 'backend', 'db', 'init.sql');
     console.log(`🧱 Writing SQL init file to ${sqlPath}...`);
 
-    const header = `CREATE TABLE IF NOT EXISTS errors (
+    const header = `CREATE TABLE IF NOT EXISTS visitors (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    country VARCHAR(10),
+    user_agent VARCHAR(1000),
+    origin VARCHAR(500),
+    platform VARCHAR(50),
+    path VARCHAR(255)
+);
+CREATE TABLE IF NOT EXISTS errors (
     id INT PRIMARY KEY AUTO_INCREMENT,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     source TEXT,
@@ -59,7 +68,6 @@ function generateInitSQL(links) {
     resolved BOOLEAN DEFAULT FALSE,
     resolved_at TIMESTAMP NULL
 );
-
 CREATE TABLE IF NOT EXISTS links (
     url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,

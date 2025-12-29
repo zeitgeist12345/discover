@@ -88,15 +88,14 @@ const STATIC = {
         },
         {
             "name": "Aljazeera flips",
-            "url": "https://www.aljazeera.com/#flips",
-            "description": "Aljazeera flips",
+            "url": "https://www.aljazeera.com/#flips-6386599316112",
+            "description": "Short clips from Aljazeera.",
             "tags": [
-                "aljazeeraflips",
                 "aljazeera",
                 "flips",
                 "learning"
             ],
-            "views": 30,
+            "views": 17,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -119,14 +118,15 @@ const STATIC = {
         },
         {
             "name": "Aljazeera flips",
-            "url": "https://www.aljazeera.com/#flips-6386599316112",
-            "description": "Short clips from Aljazeera.",
+            "url": "https://www.aljazeera.com/#flips",
+            "description": "Aljazeera flips",
             "tags": [
+                "aljazeeraflips",
                 "aljazeera",
                 "flips",
                 "learning"
             ],
-            "views": 17,
+            "views": 30,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,

@@ -90,16 +90,15 @@
     "reviewStatus": 1
   },
   {
-    "url": "https://www.aljazeera.com/#flips",
+    "url": "https://www.aljazeera.com/#flips-6386599316112",
     "name": "Aljazeera flips",
-    "description": "Aljazeera flips",
+    "description": "Short clips from Aljazeera.",
     "tags": [
-      "aljazeeraflips",
       "aljazeera",
       "flips",
       "learning"
     ],
-    "views": 30,
+    "views": 17,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -123,15 +122,16 @@
     "reviewStatus": 1
   },
   {
-    "url": "https://www.aljazeera.com/#flips-6386599316112",
+    "url": "https://www.aljazeera.com/#flips",
     "name": "Aljazeera flips",
-    "description": "Short clips from Aljazeera.",
+    "description": "Aljazeera flips",
     "tags": [
+      "aljazeeraflips",
       "aljazeera",
       "flips",
       "learning"
     ],
-    "views": 17,
+    "views": 30,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
