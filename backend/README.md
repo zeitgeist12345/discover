@@ -21,17 +21,10 @@ curl http://backend.discoverall.space/getLinksDesktop
 curl http://backend.discoverall.space/health
 ```
 
-### 3. Reinitialize the database
+### 3. Reinitialize the links database
 
-// Stop all containers
-// Remove the database volume (this deletes all MySQL data)
-// Rebuild and restart containers
-
-docker compose down
-
-docker volume rm $(basename $(pwd))_mysql_data
-
-docker compose up -d --build
+docker compose exec db mysql -u root -ppassword mydatabase -e "DROP TABLE links;"
+cat db/init.sql | docker compose exec -T db mysql -u root -ppassword mydatabase
 
 ## 🔧 Management Commands
 ```bash
@@ -42,6 +35,9 @@ docker compose logs cloudflared
 
 # Stop containers
 docker compose down
+
+# Delete all SQL data
+docker volume rm $(basename $(pwd))_mysql_data
 
 # Restart containers
 docker compose restart

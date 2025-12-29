@@ -28,7 +28,7 @@ const voteLimiter = rateLimit({
     status: 429,
     error: 'You are voting too quickly for this link. Please wait a few seconds.'
   },
-  keyGenerator: (req, res) => {
+  keyGenerator: (req, res, next) => {
     // Combine IP + link identifier (url)
     const ip = req.ip || req.headers['x-forwarded-for'] || 'unknown';
     const linkUrl = req.query.url || 'unknown';
@@ -96,7 +96,7 @@ function needToIgnore(likesMobile, dislikesMobile) {
 }
 
 // POST endpoint to log errors
-app.post('/log-error', async (req, res) => {
+app.post('/log-error', async (req, res, next) => {
   try {
     const { source, level, message, user_agent } = req.body;
 
@@ -121,7 +121,7 @@ app.post('/log-error', async (req, res) => {
 });
 
 // GET endpoint to retrieve errors
-app.get('/errors', async (req, res) => {
+app.get('/errors', async (req, res, next) => {
   try {
     const { limit = 100, resolved } = req.query;
     const connection = await mysql.createConnection(dbConfig);
@@ -149,7 +149,7 @@ app.get('/errors', async (req, res) => {
 });
 
 // Mark error as resolved
-app.put('/errors/:id/resolve', async (req, res) => {
+app.put('/errors/:id/resolve', async (req, res, next) => {
   try {
     const { id } = req.params;
     const connection = await mysql.createConnection(dbConfig);
@@ -174,7 +174,7 @@ app.put('/errors/:id/resolve', async (req, res) => {
 });
 
 // GET visitors analytics
-app.get('/visitors-analytics', async (req, res) => {
+app.get('/visitors-analytics', async (req, res, next) => {
   try {
     const connection = await mysql.createConnection(dbConfig);
 
@@ -202,7 +202,7 @@ app.get('/visitors-analytics', async (req, res) => {
 });
 
 // Get all links
-app.get('/getLinks', async (req, res) => {
+app.get('/getLinks', async (req, res, next) => {
   // Log country and time
   const timestamp = new Date().toISOString();
   const country = req.headers['cf-ipcountry'] || req.headers['x-country'] || 'Unknown';
@@ -284,7 +284,7 @@ app.get('/getLinks', async (req, res) => {
   }
 });
 
-app.post('/incrementView', voteLimiter, async (req, res) => {
+app.post('/incrementView', voteLimiter, async (req, res, next) => {
   try {
     const { url, action } = req.query;
 
@@ -354,7 +354,7 @@ app.post('/incrementView', voteLimiter, async (req, res) => {
   }
 });
 
-app.post('/removeLink', voteLimiter, async (req, res) => {
+app.post('/removeLink', voteLimiter, async (req, res, next) => {
   try {
     const { url, action } = req.query;
 
@@ -403,7 +403,7 @@ app.post('/removeLink', voteLimiter, async (req, res) => {
 });
 
 // Add new link
-app.post('/addlink', async (req, res) => {
+app.post('/addlink', async (req, res, next) => {
   try {
     let { name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop } = req.body;
 
@@ -481,7 +481,7 @@ app.post('/addlink', async (req, res) => {
 });
 
 // Health check endpoint
-app.get('/health', async (req, res) => {
+app.get('/health', async (req, res, next) => {
   try {
     const connection = await mysql.createConnection(dbConfig);
     await connection.execute('SELECT 1');
@@ -494,7 +494,7 @@ app.get('/health', async (req, res) => {
 });
 
 // Default route
-app.get('/', async (req, res) => {
+app.get('/', async (req, res, next) => {
   try {
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT COUNT(*) as count FROM links');
