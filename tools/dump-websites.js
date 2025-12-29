@@ -182,8 +182,8 @@ async function saveToFile(data) {
                 totalLinks: data.links.length
             },
             analysis: data.analysis,
-            errors: errorsData,
-            visitors: visitorsAnalytics
+            visitors: visitorsAnalytics,
+            errors: errorsData
         }, null, 2));
         console.log(`📋 Summary saved to: ${summaryFile}`);
 

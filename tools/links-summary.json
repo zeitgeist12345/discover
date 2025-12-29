@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2025-12-29T14:49:40.928Z",
+    "generatedAt": "2025-12-29T15:22:31.468Z",
     "apiUrl": "https://backend.discoverall.space",
     "totalLinks": 83
   },
@@ -75,22 +75,123 @@
       "50+ votes": 43
     }
   },
-  "errors": {
-    "count": 0,
-    "unresolved": 0,
-    "recent": []
-  },
   "visitors": {
     "byCountry": [
       {
         "country": "IN",
-        "count": 4
+        "count": 10
       }
     ],
     "byMonth": [
       {
         "month": "202512",
-        "count": 4
+        "count": 10
+      }
+    ]
+  },
+  "errors": {
+    "count": 10,
+    "unresolved": 10,
+    "recent": [
+      {
+        "id": 10,
+        "timestamp": "2025-12-29T15:20:07.000Z",
+        "source": "backend",
+        "level": "error",
+        "message": "200: Table 'mydatabase.links' doesn't exist (GET /getLinks)",
+        "user_agent": "node",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 9,
+        "timestamp": "2025-12-29T15:19:58.000Z",
+        "source": "backend",
+        "level": "error",
+        "message": "200: Table 'mydatabase.links' doesn't exist (GET /getLinks)",
+        "user_agent": "node",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 8,
+        "timestamp": "2025-12-29T15:17:23.000Z",
+        "source": "frontend",
+        "level": "error",
+        "message": "Failed to load links from API.<br>Cannot reach backend server: Error: HTTP error! status: 500<br>Fallback to static list.",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 7,
+        "timestamp": "2025-12-29T15:17:22.000Z",
+        "source": "backend",
+        "level": "error",
+        "message": "200: Table 'mydatabase.links' doesn't exist (GET /getLinks)",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 6,
+        "timestamp": "2025-12-29T15:15:20.000Z",
+        "source": "frontend",
+        "level": "error",
+        "message": "Failed to load links from API.<br>Cannot reach backend server: Error: HTTP error! status: 500<br>Fallback to static list.",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 5,
+        "timestamp": "2025-12-29T15:15:19.000Z",
+        "source": "backend",
+        "level": "error",
+        "message": "200: Table 'mydatabase.links' doesn't exist (GET /getLinks)",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 4,
+        "timestamp": "2025-12-29T15:13:44.000Z",
+        "source": "frontend",
+        "level": "error",
+        "message": "Failed to load links from API.<br>Cannot reach backend server: Error: HTTP error! status: 500<br>Fallback to static list.",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 3,
+        "timestamp": "2025-12-29T15:13:43.000Z",
+        "source": "backend",
+        "level": "error",
+        "message": "200: Table 'mydatabase.links' doesn't exist (GET /getLinks)",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 2,
+        "timestamp": "2025-12-29T15:13:37.000Z",
+        "source": "frontend",
+        "level": "error",
+        "message": "Failed to load links from API.<br>Cannot reach backend server: Error: HTTP error! status: 500<br>Fallback to static list.",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 1,
+        "timestamp": "2025-12-29T15:13:36.000Z",
+        "source": "backend",
+        "level": "error",
+        "message": "200: Table 'mydatabase.links' doesn't exist (GET /getLinks)",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
       }
     ]
   }
