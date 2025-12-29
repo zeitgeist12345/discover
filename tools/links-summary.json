@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2025-12-28T17:05:12.191Z",
+    "generatedAt": "2025-12-29T14:49:40.928Z",
     "apiUrl": "https://backend.discoverall.space",
     "totalLinks": 83
   },
@@ -76,38 +76,21 @@
     }
   },
   "errors": {
-    "count": 3,
-    "unresolved": 3,
-    "recent": [
+    "count": 0,
+    "unresolved": 0,
+    "recent": []
+  },
+  "visitors": {
+    "byCountry": [
       {
-        "id": 1,
-        "timestamp": "2025-12-28T17:04:52.000Z",
-        "source": "frontend",
-        "level": "error",
-        "message": "Please enter a URL",
-        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
-        "resolved": 0,
-        "resolved_at": null
-      },
+        "country": "IN",
+        "count": 4
+      }
+    ],
+    "byMonth": [
       {
-        "id": 2,
-        "timestamp": "2025-12-28T17:04:52.000Z",
-        "source": "frontend",
-        "level": "error",
-        "message": "Please enter a link name",
-        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
-        "resolved": 0,
-        "resolved_at": null
-      },
-      {
-        "id": 3,
-        "timestamp": "2025-12-28T17:04:52.000Z",
-        "source": "frontend",
-        "level": "error",
-        "message": "Please enter a description for the link",
-        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
-        "resolved": 0,
-        "resolved_at": null
+        "month": "202512",
+        "count": 4
       }
     ]
   }

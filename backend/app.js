@@ -173,6 +173,34 @@ app.put('/errors/:id/resolve', async (req, res) => {
   }
 });
 
+// GET visitors analytics
+app.get('/visitors-analytics', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+
+    // Get visitors by country
+    const [byCountry] = await connection.execute(
+      'SELECT country, COUNT(*) as count FROM visitors GROUP BY country ORDER BY count DESC'
+    );
+
+    // Get visitors by YYYYMM
+    const [byMonth] = await connection.execute(
+      'SELECT DATE_FORMAT(timestamp, "%Y%m") as month, COUNT(*) as count FROM visitors GROUP BY month ORDER BY month DESC'
+    );
+
+    await connection.end();
+
+    res.json({
+      byCountry,
+      byMonth
+    });
+
+  } catch (error) {
+    console.error('Get visitors analytics error:', error);
+    res.status(500).json({ error: 'Failed to fetch analytics' });
+  }
+});
+
 // Get all links
 app.get('/getLinks', async (req, res) => {
   // Log country and time
@@ -186,6 +214,24 @@ app.get('/getLinks', async (req, res) => {
   console.log('Request origin:', req.headers.origin);
   console.log('Request query:', req.query);
   console.log('\n\n\n')
+
+  // Log visitor to database (silently, don't fail if this errors)
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    await connection.execute(
+      'INSERT INTO visitors (country, user_agent, origin, platform, path) VALUES (?, ?, ?, ?, ?)',
+      [
+        (country || 'unknown').substring(0, 10),
+        (userAgent || 'unknown').substring(0, 1000),
+        (req.headers.origin || 'direct').substring(0, 500),
+        (req.query.platform || 'unknown').substring(0, 50),
+        '/getLinks'
+      ]
+    );
+    await connection.end();
+  } catch (dbError) {
+    console.error('Failed to log visitor:', dbError);
+  }
 
   try {
     const { platform, reviewStatusEnable, tagsAllowlist, tagsBlocklist } = req.query;

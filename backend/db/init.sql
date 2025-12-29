@@ -1,3 +1,12 @@
+CREATE TABLE IF NOT EXISTS visitors (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    country VARCHAR(10),
+    user_agent VARCHAR(1000),
+    origin VARCHAR(500),
+    platform VARCHAR(50),
+    path VARCHAR(255)
+);
 CREATE TABLE IF NOT EXISTS errors (
     id INT PRIMARY KEY AUTO_INCREMENT,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -8,7 +17,6 @@ CREATE TABLE IF NOT EXISTS errors (
     resolved BOOLEAN DEFAULT FALSE,
     resolved_at TIMESTAMP NULL
 );
-
 CREATE TABLE IF NOT EXISTS links (
     url VARCHAR(500) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -110,7 +118,12 @@ VALUES (
         'Aljazeera flips',
         'https://www.aljazeera.com/#flips',
         'Aljazeera flips',
-        JSON_ARRAY('aljazeeraflips', 'aljazeera', 'flips', 'learning'),
+        JSON_ARRAY(
+            'aljazeeraflips',
+            'aljazeera',
+            'flips',
+            'learning'
+        ),
         30,
         1,
         0,
@@ -602,7 +615,14 @@ VALUES (
         'Moj',
         'https://mojapp.in/',
         'TikTok alternative.',
-        JSON_ARRAY('tiktok', 'moj', 'social', 'media', 'socialmedia', 'app'),
+        JSON_ARRAY(
+            'tiktok',
+            'moj',
+            'social',
+            'media',
+            'socialmedia',
+            'app'
+        ),
         4,
         0,
         2000,
@@ -662,7 +682,12 @@ VALUES (
         'OnePlus',
         'https://www.oneplus.com/',
         'Phone company',
-        JSON_ARRAY('phone', 'phonecompany', 'mobilephonecompany', 'poetic'),
+        JSON_ARRAY(
+            'phone',
+            'phonecompany',
+            'mobilephonecompany',
+            'poetic'
+        ),
         36,
         1,
         0,
@@ -674,7 +699,13 @@ VALUES (
         'Oppo',
         'https://www.oppo.com/',
         'Mobile phone company.',
-        JSON_ARRAY('mobile', 'mobile phone', 'company', 'mobilephonecompany', 'poetic'),
+        JSON_ARRAY(
+            'mobile',
+            'mobile phone',
+            'company',
+            'mobilephonecompany',
+            'poetic'
+        ),
         37,
         0,
         2,
@@ -1022,7 +1053,14 @@ VALUES (
         'YouTube',
         'https://m.youtube.com/feed/subscriptions',
         'The subscriptions feed does not have implicit personalized recommendations.',
-        JSON_ARRAY('video', 'social', 'good', 'dynamic', 'regular', 'repeat'),
+        JSON_ARRAY(
+            'video',
+            'social',
+            'good',
+            'dynamic',
+            'regular',
+            'repeat'
+        ),
         41,
         2,
         0,

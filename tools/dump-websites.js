@@ -129,6 +129,19 @@ function fixUrl(url) {
     }
 }
 
+async function fetchVisitorsAnalytics() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/visitors-analytics`);
+        if (response.ok) {
+            return await response.json();
+        }
+        return { byCountry: [], byMonth: [] };
+    } catch (error) {
+        console.warn('⚠️ Could not fetch visitors analytics:', error.message);
+        return { byCountry: [], byMonth: [] };
+    }
+}
+
 async function saveToFile(data) {
     try {
         // 🔥 Remove created_at from each link object
@@ -157,6 +170,9 @@ async function saveToFile(data) {
             console.warn('⚠️ Could not fetch errors:', error.message);
         }
 
+        // Get visitors analytics
+        const visitorsAnalytics = await fetchVisitorsAnalytics();
+
         // Save summary WITH errors data
         const summaryFile = path.join(__dirname, 'links-summary.json');
         fs.writeFileSync(summaryFile, JSON.stringify({
@@ -166,7 +182,8 @@ async function saveToFile(data) {
                 totalLinks: data.links.length
             },
             analysis: data.analysis,
-            errors: errorsData  // Add errors here
+            errors: errorsData,
+            visitors: visitorsAnalytics
         }, null, 2));
         console.log(`📋 Summary saved to: ${summaryFile}`);
 
