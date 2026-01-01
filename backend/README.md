@@ -39,11 +39,11 @@ docker compose down
 # Delete all SQL data
 docker volume rm $(basename $(pwd))_mysql_data
 
-# Restart containers
-docker compose restart
-
 # Rebuild after code changes
 docker compose up -d --build
+
+# Restart containers
+docker compose restart
 
 # Always use docker desktop
 docker context use desktop-linux

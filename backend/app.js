@@ -53,8 +53,30 @@ app.use(apiLimiter);
 
 // Cors
 app.use(cors({
-  origin: ['https://discoverall.space', 'http://localhost:44631']
+  origin: ['https://discoverall.space', 'http://localhost:44631', 'https://abirusabil123.github.io']
 }));
+
+async function logErrorToDB(errorData) {
+  try {
+    const { source = 'unknown', level = 'error', message, user_agent = null } = errorData;
+
+    if (!message) {
+      throw new Error('Message is required for error logging');
+    }
+
+    const connection = await mysql.createConnection(dbConfig);
+    const [result] = await connection.execute(
+      'INSERT INTO errors (source, level, message, user_agent) VALUES (?, ?, ?, ?)',
+      [source, level, message, user_agent]
+    );
+    await connection.end();
+
+    return { success: true, id: result.insertId };
+  } catch (dbError) {
+    console.error('Failed to log error to database:', dbError);
+    return { success: false, error: dbError.message };
+  }
+}
 
 // Error logging middleware
 async function logError(err, req, res, next) {
@@ -62,17 +84,12 @@ async function logError(err, req, res, next) {
   const isClientError = statusCode >= 400 && statusCode < 500;
 
   try {
-    const connection = await mysql.createConnection(dbConfig);
-    await connection.execute(
-      'INSERT INTO errors (source, level, message, user_agent) VALUES (?, ?, ?, ?)',
-      [
-        'backend',
-        isClientError ? 'warning' : 'error',
-        `${statusCode}: ${err.message || 'Client error'} (${req.method} ${req.path})`,
-        req.headers['user-agent']
-      ]
-    );
-    await connection.end();
+    await logErrorToDB({
+      source: 'backend',
+      level: isClientError ? 'warning' : 'error',
+      message: `${statusCode}: ${err.message || 'Client error'} (${req.method} ${req.path})`,
+      user_agent: req.headers['user-agent']
+    });
   } catch (dbError) {
     console.error('Failed to log error:', dbError);
   }
@@ -103,16 +120,18 @@ app.post('/log-error', async (req, res, next) => {
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
+    const result = await logErrorToDB({
+      source,
+      level,
+      message,
+      user_agent: user_agent || req.headers['user-agent']
+    });
 
-    const connection = await mysql.createConnection(dbConfig);
-
-    const [result] = await connection.execute(
-      'INSERT INTO errors (source, level, message, user_agent) VALUES (?, ?, ?, ?)',
-      [source || 'unknown', level || 'error', message, user_agent || req.headers['user-agent']]
-    );
-
-    await connection.end();
-    res.json({ success: true, id: result.insertId });
+    if (result.success) {
+      res.json({ success: true, id: result.id });
+    } else {
+      res.status(500).json({ error: 'Failed to log error' });
+    }
 
   } catch (error) {
     console.error('Error logging error:', error);
@@ -135,7 +154,7 @@ app.get('/errors', async (req, res, next) => {
     }
 
     query += ' ORDER BY timestamp DESC LIMIT ?';
-    params.push(limit); // Fix: Ensure integer
+    params.push(limit);
 
     const [rows] = await connection.execute(query, params);
     await connection.end();
@@ -201,47 +220,106 @@ app.get('/visitors-analytics', async (req, res, next) => {
   }
 });
 
-// Get all links
-app.get('/getLinks', async (req, res, next) => {
-  // Log country and time
-  const timestamp = new Date().toISOString();
-  const country = req.headers['cf-ipcountry'] || req.headers['x-country'] || 'Unknown';
-  const userAgent = req.headers['user-agent'] || 'Unknown';
-  console.log('New getLinks request!')
-  console.log('Request timestamp:', timestamp);
-  console.log('Request country:', country);
-  console.log('Request userAgent:', userAgent);
-  console.log('Request origin:', req.headers.origin);
-  console.log('Request query:', req.query);
-  console.log('\n\n\n')
-
-  // Log visitor to database (silently, don't fail if this errors)
+async function logVisitorToDB(visitorData) {
   try {
+    const { country = 'unknown', user_agent = 'unknown', origin = 'direct', platform = 'unknown', path = 'unknown', product = 'unknown' } = visitorData;
+
     const connection = await mysql.createConnection(dbConfig);
-    await connection.execute(
-      'INSERT INTO visitors (country, user_agent, origin, platform, path) VALUES (?, ?, ?, ?, ?)',
+    const [result] = await connection.execute(
+      'INSERT INTO visitors (country, user_agent, origin, platform, path, product) VALUES (?, ?, ?, ?, ?, ?)', // 6 placeholders
       [
-        (country || 'unknown').substring(0, 10),
-        (userAgent || 'unknown').substring(0, 1000),
-        (req.headers.origin || 'direct').substring(0, 500),
-        (req.query.platform || 'unknown').substring(0, 50),
-        '/getLinks'
+        country.substring(0, 10),
+        user_agent.substring(0, 1000),
+        origin.substring(0, 500),
+        platform.substring(0, 50),
+        path.substring(0, 255),
+        product.substring(0, 255)
       ]
     );
     await connection.end();
+    return { success: true, id: result.insertId };
   } catch (dbError) {
     console.error('Failed to log visitor:', dbError);
+    return { success: false, error: dbError.message };
   }
+}
+
+// POST API for JavaScript frontend to log visitors
+app.post('/api/log-visitor', async (req, res) => {
+  // Get country from headers (Cloudflare provides this)
+  const country = req.headers['cf-ipcountry'] || req.headers['x-country'] || 'unknown';
 
   try {
-    const { platform, reviewStatusEnable, tagsAllowlist, tagsBlocklist } = req.query;
+    const {
+      user_agent,
+      origin,
+      platform,
+      path,
+      product
+    } = req.body; // <-- FIX: Use req.body, not req.query
 
-    tagsAllowlistArray = (tagsAllowlist || "")
+    // Validate required fields
+    if (!path && !product) {
+      return res.status(400).json({
+        success: false,
+        error: 'At least path or product is required'
+      });
+    }
+    // Log visitor to database
+    const result = await logVisitorToDB({
+      country: country, // From headers
+      user_agent: user_agent || req.headers['user-agent'] || 'unknown',
+      origin: origin || req.headers.origin || 'direct',
+      platform: platform || 'web',
+      path: path || '/',
+      product: product || 'frontend-app'
+    });
+
+    if (result.success) {
+      res.json({
+        success: true,
+        id: result.id,
+        message: 'Visitor logged successfully'
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        error: 'Failed to log visitor'
+      });
+    }
+  } catch (error) {
+    console.error('Error in log-visitor endpoint:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error'
+    });
+  }
+});
+
+// Get all links
+app.get('/getLinks', async (req, res, next) => {
+  const { platform, reviewStatusEnable, tagsAllowlist, tagsBlocklist } = req.query;
+  const country = req.headers['cf-ipcountry'] || req.headers['x-country'] || 'Unknown';
+  const userAgent = req.headers['user-agent'] || 'Unknown';
+  const origin = req.headers.origin || 'direct';
+
+  await logVisitorToDB({
+    country: country,
+    user_agent: userAgent,
+    origin: origin,
+    platform: platform,
+    path: '/getLinks',
+    product: 'discover-backend'
+  });
+
+  try {
+
+    const tagsAllowlistArray = (tagsAllowlist || "")
       .split(",")
       .map(t => t.trim())
       .filter(Boolean);
 
-    tagsBlocklistArray = (tagsBlocklist || "")
+    const tagsBlocklistArray = (tagsBlocklist || "")
       .split(",")
       .map(t => t.trim())
       .filter(Boolean);
@@ -403,7 +481,7 @@ app.post('/removeLink', voteLimiter, async (req, res, next) => {
 });
 
 // Add new link
-app.post('/addlink', async (req, res, next) => {
+app.post('/addlink', apiLimiter, async (req, res, next) => {
   try {
     let { name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop } = req.body;
 

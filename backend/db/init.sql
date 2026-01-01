@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS visitors (
     user_agent VARCHAR(1000),
     origin VARCHAR(500),
     platform VARCHAR(50),
-    path VARCHAR(255)
+    path VARCHAR(255),
+    product VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS errors (
     id INT PRIMARY KEY AUTO_INCREMENT,
