@@ -135,10 +135,10 @@ async function fetchVisitorsAnalytics() {
         if (response.ok) {
             return await response.json();
         }
-        return { byCountry: [], byMonth: [] };
+        return {};
     } catch (error) {
         console.warn('⚠️ Could not fetch visitors analytics:', error.message);
-        return { byCountry: [], byMonth: [] };
+        return {};
     }
 }
 
