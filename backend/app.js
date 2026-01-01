@@ -270,10 +270,10 @@ async function logVisitorToDB(visitorData) {
 app.get('/api/log-visitor-pixel', async (req, res) => {
   const country = req.headers['cf-ipcountry'] || 'unknown';
   const { user_agent, origin, platform, path, product } = req.query;
-  
+
   // Log to database (same as before)
   await logVisitorToDB({ country, user_agent, origin, platform, path, product });
-  
+
   // Return 1x1 transparent pixel
   res.setHeader('Content-Type', 'image/gif');
   res.setHeader('Cache-Control', 'no-cache, no-store');
