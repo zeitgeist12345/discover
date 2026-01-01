@@ -138,7 +138,7 @@ fun DiscoverScreen(
             </head>
             <body>
                 <div class="container">
-                    <h1>Press 🌐 Discover to explore amazing links!</h1>
+                    <h1>Press 🌏 Discover to explore amazing links!</h1>
                     
                     <div class="stats-container" id="statsContainer">
                         <div class="stat-item">
@@ -267,7 +267,7 @@ fun DiscoverScreen(
                 ) {
                     // Header Text (This is the main screen's header, distinct from TopDiscoverBar)
                     Text(
-                        text = "🌐 Discover",
+                        text = "🌏 Discover",
                         style = MaterialTheme.typography.headlineLarge,
                         color = TextPrimary,
                         fontWeight = FontWeight.Bold,

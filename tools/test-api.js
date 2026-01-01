@@ -56,7 +56,7 @@ async function testAPI() {
 
 // Test CORS
 async function testCORS() {
-    console.log('\n🌐 Testing CORS...');
+    console.log('\n🌏 Testing CORS...');
     
     try {
         const response = await fetch(`${API_BASE_URL}/getLinks`, {

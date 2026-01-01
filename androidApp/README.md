@@ -1,4 +1,4 @@
-# 🌐 Discover Android App
+# 🌏 Discover Android App
 
 A simple Android app.
 

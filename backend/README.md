@@ -1,4 +1,4 @@
-# 🌐 Local Backend Setup
+# 🌏 Local Backend Setup
 A containerized Node.js (v18, Alpine) backend with MySQL 8.0, automatically creating the database and inserting sample data on first run.
 
 Publicly exposed at https://backend.discoverall.space via Cloudflare Tunnel to forward requests to the local Node.js app on port 3000.

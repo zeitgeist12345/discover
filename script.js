@@ -717,7 +717,7 @@ document.querySelector('.header h1').addEventListener('click', function () {
     if (clickCount === 5) {
         this.textContent = '🎉 You found the secret! 🎉';
         setTimeout(() => {
-            this.textContent = '🌐 Discover';
+            this.textContent = '🌏 Discover';
             clickCount = 0;
         }, RESET_DELAY);
     }

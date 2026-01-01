@@ -57,7 +57,7 @@ fun TopDiscoverBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "🌐 Discover",
+                "🌏 Discover",
                 style = MaterialTheme.typography.headlineSmall,
                 color = TextPrimary,
                 fontWeight = FontWeight.Bold,
