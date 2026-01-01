@@ -4,6 +4,7 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('path');
 
 // Configure Express to trust proxies (important for Docker + Cloudflare)
 app.set('trust proxy', 1);
@@ -111,6 +112,10 @@ function needToIgnore(likesMobile, dislikesMobile) {
 
   return undesirable_score > 0.8;
 }
+
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, 'favicon.ico'));
+});
 
 // POST endpoint to log errors
 app.post('/log-error', async (req, res, next) => {
