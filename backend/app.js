@@ -266,57 +266,18 @@ async function logVisitorToDB(visitorData) {
     return { success: false, error: dbError.message };
   }
 }
-
-// POST API for JavaScript frontend to log visitors
-app.post('/api/log-visitor', async (req, res) => {
-  // Get country from headers (Cloudflare provides this)
-  const country = req.headers['cf-ipcountry'] || req.headers['x-country'] || 'unknown';
-
-  try {
-    const {
-      user_agent,
-      origin,
-      platform,
-      path,
-      product
-    } = req.query;
-
-    // Validate required fields
-    if (!path && !product) {
-      return res.status(400).json({
-        success: false,
-        error: 'At least path or product is required'
-      });
-    }
-    // Log visitor to database
-    const result = await logVisitorToDB({
-      country: country, // From headers
-      user_agent: user_agent || req.headers['user-agent'] || 'unknown',
-      origin: origin || req.headers.origin || 'direct',
-      platform: platform || 'web',
-      path: path || '/',
-      product: product || 'frontend-app'
-    });
-
-    if (result.success) {
-      res.json({
-        success: true,
-        id: result.id,
-        message: 'Visitor logged successfully'
-      });
-    } else {
-      res.status(500).json({
-        success: false,
-        error: 'Failed to log visitor'
-      });
-    }
-  } catch (error) {
-    console.error('Error in log-visitor endpoint:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Internal server error'
-    });
-  }
+// Add GET endpoint for image beacon
+app.get('/api/log-visitor-pixel', async (req, res) => {
+  const country = req.headers['cf-ipcountry'] || 'unknown';
+  const { user_agent, origin, platform, path, product } = req.query;
+  
+  // Log to database (same as before)
+  await logVisitorToDB({ country, user_agent, origin, platform, path, product });
+  
+  // Return 1x1 transparent pixel
+  res.setHeader('Content-Type', 'image/gif');
+  res.setHeader('Cache-Control', 'no-cache, no-store');
+  res.send(Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64'));
 });
 
 // Get all links

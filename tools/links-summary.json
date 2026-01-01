@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-01-01T11:31:40.008Z",
+    "generatedAt": "2026-01-01T13:31:58.828Z",
     "apiUrl": "https://backend.discoverall.space",
     "totalLinks": 83
   },
@@ -79,51 +79,86 @@
     "byCountry": [
       {
         "country": "IN",
-        "count": 14
+        "count": 5
       }
     ],
     "byMonth": [
       {
         "month": "202601",
-        "count": 14
+        "count": 5
       }
     ],
     "byPlatform": [
       {
-        "platform": "unknown",
-        "count": 12
-      },
-      {
         "platform": "desktop",
         "count": 2
+      },
+      {
+        "platform": "web",
+        "count": 2
+      },
+      {
+        "platform": "unknown",
+        "count": 1
       }
     ],
     "byProduct": [
       {
         "product": "discover-backend",
-        "count": 14
+        "count": 3
+      },
+      {
+        "product": "test",
+        "count": 1
+      },
+      {
+        "product": "abirusabil123.github.io",
+        "count": 1
       }
     ],
     "byOrigin": [
       {
-        "origin": "direct",
-        "count": 12
-      },
-      {
         "origin": "https://discoverall.space",
         "count": 2
+      },
+      {
+        "origin": "https://abirusabil123.github.io",
+        "count": 2
+      },
+      {
+        "origin": "direct",
+        "count": 1
       }
     ],
     "byPath": [
       {
         "path": "/getLinks",
-        "count": 14
+        "count": 3
+      },
+      {
+        "path": "/test.html",
+        "count": 1
+      },
+      {
+        "path": "/art.html",
+        "count": 1
       }
     ]
   },
   "errors": {
-    "count": 0,
-    "unresolved": 0,
-    "recent": []
+    "count": 1,
+    "unresolved": 1,
+    "recent": [
+      {
+        "id": 1,
+        "timestamp": "2026-01-01T13:05:15.000Z",
+        "source": "frontend",
+        "level": "error",
+        "message": "Failed to load links from API.<br>Cannot reach backend server: TypeError: NetworkError when attempting to fetch resource.<br>Fallback to static list.",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+        "resolved": 0,
+        "resolved_at": null
+      }
+    ]
   }
 }
