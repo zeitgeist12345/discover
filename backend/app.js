@@ -199,32 +199,32 @@ app.get('/visitors-analytics', async (req, res, next) => {
 
     // Get visitors by country
     const [byCountry] = await connection.execute(
-      'SELECT country, COUNT(*) as count FROM visitors GROUP BY country ORDER BY count DESC'
+      'SELECT country, COUNT(*) as count FROM visitors GROUP BY country ORDER BY country ASC'
     );
 
-    // Get visitors by YYYYMM
+    // Get visitors by YYYYMM (keep chronological order)
     const [byMonth] = await connection.execute(
       'SELECT DATE_FORMAT(timestamp, "%Y%m") as month, COUNT(*) as count FROM visitors GROUP BY month ORDER BY month DESC'
     );
 
     // Get visitors by platform
     const [byPlatform] = await connection.execute(
-      'SELECT platform, COUNT(*) as count FROM visitors GROUP BY platform ORDER BY count DESC'
+      'SELECT platform, COUNT(*) as count FROM visitors GROUP BY platform ORDER BY platform ASC'
     );
 
     // Get visitors by product
     const [byProduct] = await connection.execute(
-      'SELECT product, COUNT(*) as count FROM visitors GROUP BY product ORDER BY count DESC'
+      'SELECT product, COUNT(*) as count FROM visitors GROUP BY product ORDER BY product ASC'
     );
 
     // Get visitors by origin
     const [byOrigin] = await connection.execute(
-      'SELECT origin, COUNT(*) as count FROM visitors GROUP BY origin ORDER BY count DESC'
+      'SELECT origin, COUNT(*) as count FROM visitors GROUP BY origin ORDER BY origin ASC'
     );
 
     // Get visitors by path
     const [byPath] = await connection.execute(
-      'SELECT path, COUNT(*) as count FROM visitors GROUP BY path ORDER BY count DESC'
+      'SELECT path, COUNT(*) as count FROM visitors GROUP BY path ORDER BY path ASC'
     );
     await connection.end();
 
