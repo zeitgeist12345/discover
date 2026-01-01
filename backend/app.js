@@ -279,7 +279,7 @@ app.post('/api/log-visitor', async (req, res) => {
       platform,
       path,
       product
-    } = req.body; // <-- FIX: Use req.body, not req.query
+    } = req.query;
 
     // Validate required fields
     if (!path && !product) {
