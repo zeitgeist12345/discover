@@ -292,14 +292,16 @@ app.get('/getLinks', async (req, res, next) => {
   const userAgent = req.headers['user-agent'] || 'Unknown';
   const origin = req.headers.origin || 'direct';
 
-  await logVisitorToDB({
-    country: country,
-    user_agent: userAgent,
-    origin: origin,
-    platform: platform,
-    path: '/getLinks',
-    product: 'discover-backend'
-  });
+  if (!reviewStatusEnable) {
+    await logVisitorToDB({
+      country: country,
+      user_agent: userAgent,
+      origin: origin,
+      platform: platform,
+      path: '/getLinks',
+      product: 'discover-backend'
+    });
+  }
 
   try {
 
