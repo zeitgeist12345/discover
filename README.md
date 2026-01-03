@@ -28,19 +28,9 @@ This is my contribution so you don't use personalized recommendation algorithms 
 
 Let's go back to before 2005, before EdgeRank was released. 
 
-## Local testing
+## Run frontend for local testing
 ```
 npx serve . -l 44631
-```
-
-## Manually approve submitted links regularly
-When recreating the database change the following value.
-```
-"reviewStatus": 0
-```
-to
-```
-"reviewStatus": 1
 ```
 
 ## Format code in VS Codium  

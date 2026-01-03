@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-01-03T07:09:22.531Z",
+    "generatedAt": "2026-01-03T07:42:01.069Z",
     "apiUrl": "https://backend.discoverall.space",
     "totalLinks": 83
   },
@@ -79,13 +79,13 @@
     "byCountry": [
       {
         "country": "IN",
-        "count": 84
+        "count": 88
       }
     ],
     "byMonth": [
       {
         "month": "202601",
-        "count": 84
+        "count": 88
       }
     ],
     "byPlatform": [
@@ -95,7 +95,7 @@
       },
       {
         "platform": "mobile",
-        "count": 7
+        "count": 9
       },
       {
         "platform": "unknown",
@@ -103,17 +103,17 @@
       },
       {
         "platform": "web",
-        "count": 24
+        "count": 26
       }
     ],
     "byProduct": [
       {
         "product": "abirusabil123.github.io",
-        "count": 23
+        "count": 25
       },
       {
         "product": "discover-backend",
-        "count": 60
+        "count": 62
       },
       {
         "product": "test",
@@ -123,11 +123,11 @@
     "byOrigin": [
       {
         "origin": "direct",
-        "count": 21
+        "count": 23
       },
       {
         "origin": "https://abirusabil123.github.io",
-        "count": 24
+        "count": 26
       },
       {
         "origin": "https://discoverall.space",
@@ -137,7 +137,7 @@
     "byPath": [
       {
         "path": "/",
-        "count": 1
+        "count": 3
       },
       {
         "path": "/art.html",
@@ -145,7 +145,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 60
+        "count": 62
       },
       {
         "path": "/index.html",
@@ -175,7 +175,7 @@
   },
   "errors": {
     "count": 1,
-    "unresolved": 1,
+    "unresolved": 0,
     "recent": [
       {
         "id": 1,
@@ -184,8 +184,8 @@
         "level": "error",
         "message": "Failed to load links from API.<br>Cannot reach backend server: TypeError: NetworkError when attempting to fetch resource.<br>Fallback to static list.",
         "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
-        "resolved": 0,
-        "resolved_at": null
+        "resolved": 1,
+        "resolved_at": "2026-01-03T07:13:42.000Z"
       }
     ]
   }
