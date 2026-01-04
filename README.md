@@ -37,3 +37,8 @@ npx serve . -l 44631
 ```
 Ctrl+Shift+I
 ```
+
+## Add LICENSE header to new file
+```
+python addHeader.py
+```
