@@ -23,7 +23,7 @@
       "learning",
       "12rulesforlife"
     ],
-    "views": 24,
+    "views": 30,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -37,7 +37,7 @@
     "tags": [
       "user-submitted"
     ],
-    "views": 51,
+    "views": 58,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -67,7 +67,7 @@
       "curated",
       "sample"
     ],
-    "views": 92,
+    "views": 101,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -82,7 +82,7 @@
       "curated",
       "sample"
     ],
-    "views": 124,
+    "views": 133,
     "likesMobile": 8,
     "dislikesMobile": 0,
     "likesDesktop": 4,
@@ -98,7 +98,7 @@
       "flips",
       "learning"
     ],
-    "views": 19,
+    "views": 28,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -114,7 +114,7 @@
       "flips",
       "learning"
     ],
-    "views": 11,
+    "views": 21,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -131,7 +131,7 @@
       "flips",
       "learning"
     ],
-    "views": 33,
+    "views": 39,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -145,7 +145,7 @@
     "tags": [
       "user-submitted"
     ],
-    "views": 54,
+    "views": 63,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -161,9 +161,9 @@
       "library",
       "books"
     ],
-    "views": 30,
+    "views": 34,
     "likesMobile": 1,
-    "dislikesMobile": 0,
+    "dislikesMobile": 1000,
     "likesDesktop": 1,
     "dislikesDesktop": 1,
     "reviewStatus": 1
@@ -177,9 +177,9 @@
       "library",
       "learning"
     ],
-    "views": 9,
+    "views": 10,
     "likesMobile": 0,
-    "dislikesMobile": 0,
+    "dislikesMobile": 1000,
     "likesDesktop": 0,
     "dislikesDesktop": 0,
     "reviewStatus": 1
@@ -192,7 +192,7 @@
       "social",
       "media"
     ],
-    "views": 44,
+    "views": 53,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -207,7 +207,7 @@
       "social",
       "media"
     ],
-    "views": 48,
+    "views": 57,
     "likesMobile": 3,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -222,7 +222,7 @@
       "curated",
       "sample"
     ],
-    "views": 49,
+    "views": 50,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -238,7 +238,7 @@
       "electric",
       "company"
     ],
-    "views": 50,
+    "views": 57,
     "likesMobile": 5,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -272,7 +272,7 @@
       "fun",
       "poetic"
     ],
-    "views": 64,
+    "views": 71,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -360,7 +360,7 @@
       "curated",
       "sample"
     ],
-    "views": 89,
+    "views": 90,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 9,
@@ -403,7 +403,7 @@
     "tags": [
       "user-submitted"
     ],
-    "views": 42,
+    "views": 49,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -417,7 +417,7 @@
     "tags": [
       "user-submitted"
     ],
-    "views": 39,
+    "views": 45,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -460,7 +460,7 @@
       "curated",
       "sample"
     ],
-    "views": 187,
+    "views": 198,
     "likesMobile": 41,
     "dislikesMobile": 3,
     "likesDesktop": 18,
@@ -474,7 +474,7 @@
     "tags": [
       "user-submitted"
     ],
-    "views": 36,
+    "views": 43,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -490,7 +490,7 @@
       "blog",
       "learning"
     ],
-    "views": 23,
+    "views": 29,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -504,7 +504,7 @@
     "tags": [
       "user-submitted"
     ],
-    "views": 44,
+    "views": 52,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -521,7 +521,7 @@
       "pretty",
       "poetic"
     ],
-    "views": 58,
+    "views": 66,
     "likesMobile": 5,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -536,7 +536,7 @@
       "learning",
       "news"
     ],
-    "views": 3,
+    "views": 10,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -631,7 +631,7 @@
       "wesome",
       "wesome,gorgeous"
     ],
-    "views": 59,
+    "views": 64,
     "likesMobile": 3,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -676,7 +676,7 @@
       "curated",
       "sample"
     ],
-    "views": 124,
+    "views": 131,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -708,7 +708,7 @@
       "chips",
       "company"
     ],
-    "views": 45,
+    "views": 51,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 4,
@@ -743,7 +743,7 @@
       "motherboard",
       "company"
     ],
-    "views": 51,
+    "views": 61,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -757,12 +757,27 @@
     "tags": [
       "user-submitted"
     ],
-    "views": 48,
+    "views": 55,
     "likesMobile": 7,
     "dislikesMobile": 0,
     "likesDesktop": 2,
     "dislikesDesktop": 0,
     "reviewStatus": 1
+  },
+  {
+    "url": "https://maktoobmedia.com/india/muslim-rickshaw-puller-assaulted-partially-buried-in-sand-set-on-fire-by-hindutva-men-in-agartala/",
+    "name": "Muslim rickshaw puller assaulted, partially buried in sand, set on fire by Hindutva men in Agartala",
+    "description": "Intolerance and hate crime.",
+    "tags": [
+      "learning",
+      "intolerance"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 0
   },
   {
     "url": "https://ncase.me/",
@@ -772,7 +787,7 @@
       "curated",
       "sample"
     ],
-    "views": 116,
+    "views": 124,
     "likesMobile": 3,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -787,7 +802,7 @@
       "car",
       "company"
     ],
-    "views": 52,
+    "views": 59,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -804,7 +819,7 @@
       "mobilephonecompany",
       "poetic"
     ],
-    "views": 41,
+    "views": 45,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -822,7 +837,7 @@
       "mobilephonecompany",
       "poetic"
     ],
-    "views": 39,
+    "views": 47,
     "likesMobile": 0,
     "dislikesMobile": 2,
     "likesDesktop": 2,
@@ -852,7 +867,7 @@
       "urdu",
       "music"
     ],
-    "views": 31,
+    "views": 40,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -867,7 +882,7 @@
       "curated",
       "sample"
     ],
-    "views": 114,
+    "views": 124,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -897,7 +912,7 @@
       "curated",
       "sample"
     ],
-    "views": 110,
+    "views": 117,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -912,7 +927,7 @@
       "curated",
       "sample"
     ],
-    "views": 161,
+    "views": 168,
     "likesMobile": 30,
     "dislikesMobile": 3,
     "likesDesktop": 16,
@@ -928,7 +943,7 @@
       "cs",
       "coding"
     ],
-    "views": 51,
+    "views": 57,
     "likesMobile": 5,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -958,7 +973,7 @@
       "curated",
       "sample"
     ],
-    "views": 50,
+    "views": 51,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 3,
@@ -975,7 +990,7 @@
       "poetic",
       "beautiful"
     ],
-    "views": 57,
+    "views": 65,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -1051,7 +1066,7 @@
       "curated",
       "sample"
     ],
-    "views": 121,
+    "views": 127,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 5,
@@ -1153,7 +1168,7 @@
       "curated",
       "sample"
     ],
-    "views": 113,
+    "views": 120,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -1210,7 +1225,7 @@
       "curated",
       "sample"
     ],
-    "views": 238,
+    "views": 245,
     "likesMobile": 54,
     "dislikesMobile": 4,
     "likesDesktop": 26,
@@ -1242,7 +1257,7 @@
     ],
     "views": 63,
     "likesMobile": 12,
-    "dislikesMobile": 6000,
+    "dislikesMobile": 7000,
     "likesDesktop": 3,
     "dislikesDesktop": 0,
     "reviewStatus": 1
@@ -1259,7 +1274,7 @@
       "regular",
       "repeat"
     ],
-    "views": 45,
+    "views": 54,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 4,
