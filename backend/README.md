@@ -26,6 +26,15 @@ curl http://backend.discoverall.space/health
 docker compose exec db mysql -u root -ppassword mydatabase -e "DROP TABLE links;"
 cat db/init.sql | docker compose exec -T db mysql -u root -ppassword mydatabase
 
+### 4. Get SQL data directly
+Run in the `backend-db-1` docker container `Exec`.
+```
+sh-5.1# mysql -u root -p
+mysql> SHOW DATABASES;
+mysql> USE mydatabase
+mysql> SELECT * FROM visitors ORDER BY timestamp DESC;
+```
+
 ## 🔧 Management Commands
 ```bash
 # View logs
