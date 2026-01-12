@@ -80,6 +80,7 @@ fun DiscoverScreen(
     val dailyTime = formatTime(timeStats.daily)
     val yesterdayTime = formatTime(timeStats.yesterday)
     val weeklyTime = formatTime(timeStats.weekly)
+    val previousWeekTime = formatTime(timeStats.previousWeek)
     val monthlyTime = formatTime(timeStats.monthly)
     val yearlyTime = formatTime(timeStats.yearly)
     val totalTime = formatTime(timeStats.total)
@@ -154,6 +155,10 @@ fun DiscoverScreen(
                         <div class="stat-item">
                             <span>This Week:</span>
                             <span class="stat-value" id="weeklyStat">${weeklyTime}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Previous Week:</span>
+                            <span class="stat-value" id="previousWeekStat">${previousWeekTime}</span>
                         </div>
                         <div class="stat-item">
                             <span>This Month:</span>

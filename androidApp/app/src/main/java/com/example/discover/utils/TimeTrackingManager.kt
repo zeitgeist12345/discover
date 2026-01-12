@@ -85,6 +85,13 @@ class TimeTrackingManager(context: Context) {
 
         val currentWeekKey =
             "${KEY_WEEKLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.WEEK_OF_YEAR)}"
+
+        // Get previousWeek
+        calendar.add(Calendar.WEEK_OF_YEAR, -1) // Subtract one week
+        val previousWeekKey =
+            "${KEY_WEEKLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.WEEK_OF_YEAR)}"
+        calendar.add(Calendar.WEEK_OF_YEAR, 1)
+
         val currentMonthKey =
             "${KEY_MONTHLY_TIME}${calendar.get(Calendar.YEAR)}${calendar.get(Calendar.MONTH)}"
         val currentYearKey = "${KEY_YEARLY_TIME}${calendar.get(Calendar.YEAR)}"
@@ -93,6 +100,7 @@ class TimeTrackingManager(context: Context) {
             daily = prefs.getLong(currentDayKey, 0L),
             yesterday = prefs.getLong(yesterdayDayKey, 0L),
             weekly = prefs.getLong(currentWeekKey, 0L),
+            previousWeek = prefs.getLong(previousWeekKey, 0L),
             monthly = prefs.getLong(currentMonthKey, 0L),
             yearly = prefs.getLong(currentYearKey, 0L),
             total = prefs.getLong(KEY_TOTAL_TIME, 0L),
@@ -105,6 +113,7 @@ data class TimeStats(
     val daily: Long,
     val yesterday: Long,
     val weekly: Long,
+    val previousWeek: Long,
     val monthly: Long,
     val yearly: Long,
     val total: Long,

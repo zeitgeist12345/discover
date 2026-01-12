@@ -64,7 +64,7 @@ class DiscoverViewModel(
     private val linkHistory = mutableListOf<Link>()
     private var currentIndex = -1
     private val timeTrackingManager = TimeTrackingManager(application)
-    private val _timeStats = MutableStateFlow(TimeStats(0, 0, 0, 0, 0, 0))
+    private val _timeStats = MutableStateFlow(TimeStats(0, 0, 0, 0, 0, 0, 0))
     val timeStats: StateFlow<TimeStats> = _timeStats.asStateFlow()
 
     init {
