@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-01-10T16:17:41.461Z",
+    "generatedAt": "2026-01-14T13:25:58.132Z",
     "apiUrl": "https://backend.discoverall.space",
     "totalLinks": 84
   },
@@ -81,27 +81,31 @@
     "byCountry": [
       {
         "country": "IN",
-        "count": 166
+        "count": 175
+      },
+      {
+        "country": "PY",
+        "count": 1
       },
       {
         "country": "US",
-        "count": 11
+        "count": 19
       }
     ],
     "byMonth": [
       {
         "month": "202601",
-        "count": 177
+        "count": 195
       }
     ],
     "byPlatform": [
       {
         "platform": "desktop",
-        "count": 52
+        "count": 62
       },
       {
         "platform": "mobile",
-        "count": 38
+        "count": 44
       },
       {
         "platform": "unknown",
@@ -109,17 +113,17 @@
       },
       {
         "platform": "web",
-        "count": 72
+        "count": 74
       }
     ],
     "byProduct": [
       {
         "product": "abirusabil123.github.io",
-        "count": 71
+        "count": 73
       },
       {
         "product": "discover-backend",
-        "count": 104
+        "count": 120
       },
       {
         "product": "test",
@@ -133,21 +137,21 @@
     "byOrigin": [
       {
         "origin": "direct",
-        "count": 56
+        "count": 63
       },
       {
         "origin": "https://abirusabil123.github.io",
-        "count": 72
+        "count": 74
       },
       {
         "origin": "https://discoverall.space",
-        "count": 49
+        "count": 58
       }
     ],
     "byPath": [
       {
         "path": "/",
-        "count": 18
+        "count": 20
       },
       {
         "path": "/art.html",
@@ -155,7 +159,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 104
+        "count": 120
       },
       {
         "path": "/index.html",
