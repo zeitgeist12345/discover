@@ -30,9 +30,11 @@ cat db/init.sql | docker compose exec -T db mysql -u root -ppassword mydatabase
 Run in the `backend-db-1` docker container `Exec`.
 ```
 sh-5.1# mysql -u root -p
+# password is password
 mysql> SHOW DATABASES;
 mysql> USE mydatabase
 mysql> SELECT * FROM visitors ORDER BY timestamp DESC;
+mysql> SELECT * FROM visitors WHERE country NOT IN ('IN') ORDER BY timestamp DESC;
 ```
 
 ## 🔧 Management Commands
