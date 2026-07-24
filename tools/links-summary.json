@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-07-22T12:22:23.499Z",
+    "generatedAt": "2026-07-24T16:51:26.028Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 106
   },
@@ -99,11 +99,11 @@
       },
       {
         "country": "AT",
-        "count": 3
+        "count": 4
       },
       {
         "country": "BA",
-        "count": 4
+        "count": 5
       },
       {
         "country": "BG",
@@ -111,15 +111,15 @@
       },
       {
         "country": "CA",
-        "count": 2
+        "count": 3
       },
       {
         "country": "CN",
-        "count": 35
+        "count": 39
       },
       {
         "country": "DE",
-        "count": 13
+        "count": 14
       },
       {
         "country": "EE",
@@ -139,7 +139,7 @@
       },
       {
         "country": "HK",
-        "count": 11
+        "count": 13
       },
       {
         "country": "IN",
@@ -171,7 +171,7 @@
       },
       {
         "country": "RU",
-        "count": 5
+        "count": 6
       },
       {
         "country": "SC",
@@ -191,13 +191,13 @@
       },
       {
         "country": "US",
-        "count": 237
+        "count": 254
       }
     ],
     "byMonth": [
       {
         "month": "202607",
-        "count": 201
+        "count": 229
       },
       {
         "month": "202606",
@@ -211,11 +211,11 @@
     "byPlatform": [
       {
         "platform": "",
-        "count": 446
+        "count": 473
       },
       {
         "platform": "desktop",
-        "count": 142
+        "count": 143
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -245,17 +245,17 @@
       },
       {
         "product": "discover-backend",
-        "count": 588
+        "count": 616
       }
     ],
     "byOrigin": [
       {
         "origin": "",
-        "count": 445
+        "count": 472
       },
       {
         "origin": "http://discoverall.space",
-        "count": 58
+        "count": 59
       },
       {
         "origin": "https://abirusabil123.github.io",
@@ -301,7 +301,7 @@
     "byPath": [
       {
         "path": "/",
-        "count": 451
+        "count": 478
       },
       {
         "path": "/addlink",
@@ -313,7 +313,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 142
+        "count": 143
       },
       {
         "path": "/index.html",
@@ -339,11 +339,11 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 622
+        "count": 650
       },
       {
         "status": "Bot",
-        "count": 621
+        "count": 664
       }
     ]
   },
