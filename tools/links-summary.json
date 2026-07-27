@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-07-24T16:51:26.028Z",
+    "generatedAt": "2026-07-27T02:26:29.692Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 106
   },
@@ -91,7 +91,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 171
+        "count": 181
       },
       {
         "country": "AE",
@@ -103,7 +103,7 @@
       },
       {
         "country": "BA",
-        "count": 5
+        "count": 7
       },
       {
         "country": "BG",
@@ -115,7 +115,7 @@
       },
       {
         "country": "CN",
-        "count": 39
+        "count": 40
       },
       {
         "country": "DE",
@@ -135,11 +135,11 @@
       },
       {
         "country": "GB",
-        "count": 13
+        "count": 15
       },
       {
         "country": "HK",
-        "count": 13
+        "count": 15
       },
       {
         "country": "IN",
@@ -163,7 +163,11 @@
       },
       {
         "country": "NL",
-        "count": 8
+        "count": 10
+      },
+      {
+        "country": "PL",
+        "count": 1
       },
       {
         "country": "RO",
@@ -171,7 +175,7 @@
       },
       {
         "country": "RU",
-        "count": 6
+        "count": 7
       },
       {
         "country": "SC",
@@ -187,17 +191,17 @@
       },
       {
         "country": "TR",
-        "count": 2
+        "count": 4
       },
       {
         "country": "US",
-        "count": 254
+        "count": 278
       }
     ],
     "byMonth": [
       {
         "month": "202607",
-        "count": 229
+        "count": 276
       },
       {
         "month": "202606",
@@ -211,15 +215,15 @@
     "byPlatform": [
       {
         "platform": "",
-        "count": 473
+        "count": 512
       },
       {
         "platform": "desktop",
-        "count": 143
+        "count": 145
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
-        "count": 1
+        "count": 7
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 11; Page) AppleWebKit/",
@@ -241,17 +245,17 @@
     "byProduct": [
       {
         "product": "abirusabil123.github.io",
-        "count": 34
+        "count": 40
       },
       {
         "product": "discover-backend",
-        "count": 616
+        "count": 657
       }
     ],
     "byOrigin": [
       {
         "origin": "",
-        "count": 472
+        "count": 512
       },
       {
         "origin": "http://discoverall.space",
@@ -259,15 +263,15 @@
       },
       {
         "origin": "https://abirusabil123.github.io",
-        "count": 8
+        "count": 9
       },
       {
         "origin": "https://abirusabil123.github.io/",
-        "count": 5
+        "count": 6
       },
       {
         "origin": "https://abirusabil123.github.io/art.html",
-        "count": 3
+        "count": 4
       },
       {
         "origin": "https://abirusabil123.github.io/index.html",
@@ -279,15 +283,15 @@
       },
       {
         "origin": "https://abirusabil123.github.io/shayaris.html",
-        "count": 3
+        "count": 4
       },
       {
         "origin": "https://abirusabil123.github.io/sketches.html",
-        "count": 5
+        "count": 6
       },
       {
         "origin": "https://abirusabil123.github.io/work-life.html",
-        "count": 3
+        "count": 4
       },
       {
         "origin": "https://bing.com/",
@@ -295,13 +299,13 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 85
+        "count": 86
       }
     ],
     "byPath": [
       {
         "path": "/",
-        "count": 478
+        "count": 518
       },
       {
         "path": "/addlink",
@@ -309,11 +313,11 @@
       },
       {
         "path": "/art.html",
-        "count": 2
+        "count": 3
       },
       {
         "path": "/getLinks",
-        "count": 143
+        "count": 145
       },
       {
         "path": "/index.html",
@@ -321,29 +325,29 @@
       },
       {
         "path": "/products.html",
-        "count": 7
+        "count": 8
       },
       {
         "path": "/shayaris.html",
-        "count": 5
+        "count": 6
       },
       {
         "path": "/sketches.html",
-        "count": 3
+        "count": 4
       },
       {
         "path": "/work-life.html",
-        "count": 4
+        "count": 5
       }
     ],
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 650
+        "count": 697
       },
       {
         "status": "Bot",
-        "count": 664
+        "count": 720
       }
     ]
   },
