@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-07-27T02:26:29.692Z",
+    "generatedAt": "2026-07-29T12:39:09.086Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 106
   },
@@ -91,7 +91,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 181
+        "count": 185
       },
       {
         "country": "AE",
@@ -100,6 +100,10 @@
       {
         "country": "AT",
         "count": 4
+      },
+      {
+        "country": "AU",
+        "count": 2
       },
       {
         "country": "BA",
@@ -115,7 +119,7 @@
       },
       {
         "country": "CN",
-        "count": 40
+        "count": 42
       },
       {
         "country": "DE",
@@ -135,7 +139,7 @@
       },
       {
         "country": "GB",
-        "count": 15
+        "count": 16
       },
       {
         "country": "HK",
@@ -163,7 +167,7 @@
       },
       {
         "country": "NL",
-        "count": 10
+        "count": 11
       },
       {
         "country": "PL",
@@ -191,17 +195,17 @@
       },
       {
         "country": "TR",
-        "count": 4
+        "count": 5
       },
       {
         "country": "US",
-        "count": 278
+        "count": 295
       }
     ],
     "byMonth": [
       {
         "month": "202607",
-        "count": 276
+        "count": 304
       },
       {
         "month": "202606",
@@ -215,11 +219,11 @@
     "byPlatform": [
       {
         "platform": "",
-        "count": 512
+        "count": 538
       },
       {
         "platform": "desktop",
-        "count": 145
+        "count": 147
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -249,13 +253,13 @@
       },
       {
         "product": "discover-backend",
-        "count": 657
+        "count": 685
       }
     ],
     "byOrigin": [
       {
         "origin": "",
-        "count": 512
+        "count": 538
       },
       {
         "origin": "http://discoverall.space",
@@ -299,13 +303,13 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 86
+        "count": 88
       }
     ],
     "byPath": [
       {
         "path": "/",
-        "count": 518
+        "count": 544
       },
       {
         "path": "/addlink",
@@ -317,7 +321,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 145
+        "count": 147
       },
       {
         "path": "/index.html",
@@ -343,11 +347,11 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 697
+        "count": 725
       },
       {
         "status": "Bot",
-        "count": 720
+        "count": 768
       }
     ]
   },
