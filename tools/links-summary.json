@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-08-11T12:30:16.113Z",
+    "generatedAt": "2026-08-14T16:32:04.284Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 106
   },
@@ -91,7 +91,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 208
+        "count": 211
       },
       {
         "country": "AE",
@@ -107,7 +107,7 @@
       },
       {
         "country": "BA",
-        "count": 7
+        "count": 8
       },
       {
         "country": "BG",
@@ -115,11 +115,11 @@
       },
       {
         "country": "CA",
-        "count": 10
+        "count": 12
       },
       {
         "country": "CN",
-        "count": 48
+        "count": 56
       },
       {
         "country": "DE",
@@ -203,13 +203,13 @@
       },
       {
         "country": "US",
-        "count": 405
+        "count": 425
       }
     ],
     "byMonth": [
       {
         "month": "202608",
-        "count": 141
+        "count": 175
       },
       {
         "month": "202607",
@@ -227,11 +227,11 @@
     "byPlatform": [
       {
         "platform": "",
-        "count": 715
+        "count": 748
       },
       {
         "platform": "desktop",
-        "count": 153
+        "count": 154
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -261,13 +261,13 @@
       },
       {
         "product": "discover-backend",
-        "count": 868
+        "count": 902
       }
     ],
     "byOrigin": [
       {
         "origin": "",
-        "count": 715
+        "count": 749
       },
       {
         "origin": "file://",
@@ -321,7 +321,7 @@
     "byPath": [
       {
         "path": "/",
-        "count": 721
+        "count": 754
       },
       {
         "path": "/addlink",
@@ -333,7 +333,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 153
+        "count": 154
       },
       {
         "path": "/home/abirusabil/Documents/github/abirusabil123.github.io/products.html",
@@ -363,11 +363,11 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 911
+        "count": 945
       },
       {
         "status": "Bot",
-        "count": 1058
+        "count": 1129
       }
     ]
   },
