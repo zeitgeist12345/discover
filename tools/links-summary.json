@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generatedAt": "2026-08-18T15:37:34.294Z",
+    "generatedAt": "2026-08-28T05:51:02.080Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
-    "totalLinks": 106
+    "totalLinks": 107
   },
   "analysis": {
-    "total": 106,
+    "total": 107,
     "filteredMobile": 53,
     "filteredDesktop": 5,
     "blockedMobileUrls": [
@@ -72,7 +72,7 @@
     ],
     "byReason": {},
     "byScore": {
-      "0%": 44,
+      "0%": 45,
       "1-25%": 6,
       "26-50%": 1,
       "51-75%": 1,
@@ -80,7 +80,7 @@
       "80-100%": 54
     },
     "byVoteCount": {
-      "0 votes": 19,
+      "0 votes": 20,
       "1-3 votes": 19,
       "4-10 votes": 12,
       "11-50 votes": 2,
@@ -91,7 +91,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 216
+        "count": 231
       },
       {
         "country": "AE",
@@ -103,7 +103,7 @@
       },
       {
         "country": "AU",
-        "count": 3
+        "count": 5
       },
       {
         "country": "BA",
@@ -115,19 +115,19 @@
       },
       {
         "country": "CA",
-        "count": 12
+        "count": 17
       },
       {
         "country": "CN",
-        "count": 59
+        "count": 65
       },
       {
         "country": "DE",
-        "count": 16
+        "count": 17
       },
       {
         "country": "EE",
-        "count": 3
+        "count": 4
       },
       {
         "country": "FI",
@@ -135,15 +135,15 @@
       },
       {
         "country": "FR",
-        "count": 3
+        "count": 4
       },
       {
         "country": "GB",
-        "count": 21
+        "count": 23
       },
       {
         "country": "HK",
-        "count": 23
+        "count": 24
       },
       {
         "country": "ID",
@@ -151,7 +151,7 @@
       },
       {
         "country": "IN",
-        "count": 28
+        "count": 33
       },
       {
         "country": "JP",
@@ -175,7 +175,7 @@
       },
       {
         "country": "NL",
-        "count": 17
+        "count": 20
       },
       {
         "country": "PL",
@@ -187,7 +187,7 @@
       },
       {
         "country": "RU",
-        "count": 11
+        "count": 12
       },
       {
         "country": "SC",
@@ -203,17 +203,17 @@
       },
       {
         "country": "TR",
-        "count": 12
+        "count": 14
       },
       {
         "country": "US",
-        "count": 459
+        "count": 535
       }
     ],
     "byMonth": [
       {
         "month": "202608",
-        "count": 226
+        "count": 347
       },
       {
         "month": "202607",
@@ -231,11 +231,11 @@
     "byPlatform": [
       {
         "platform": "",
-        "count": 797
+        "count": 911
       },
       {
         "platform": "desktop",
-        "count": 156
+        "count": 163
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -265,13 +265,13 @@
       },
       {
         "product": "discover-backend",
-        "count": 953
+        "count": 1074
       }
     ],
     "byOrigin": [
       {
         "origin": "",
-        "count": 798
+        "count": 911
       },
       {
         "origin": "file://",
@@ -319,17 +319,17 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 96
+        "count": 104
       }
     ],
     "byPath": [
       {
         "path": "/",
-        "count": 803
+        "count": 916
       },
       {
         "path": "/addlink",
-        "count": 4
+        "count": 5
       },
       {
         "path": "/art.html",
@@ -337,7 +337,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 156
+        "count": 163
       },
       {
         "path": "/home/abirusabil/Documents/github/abirusabil123.github.io/products.html",
@@ -367,17 +367,17 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 996
+        "count": 1117
       },
       {
         "status": "Bot",
-        "count": 1213
+        "count": 1399
       }
     ]
   },
   "errors": {
-    "count": 13,
-    "unresolved": 10,
+    "count": 14,
+    "unresolved": 11,
     "allUnresolvedErrors": [
       {
         "id": 4,
@@ -476,6 +476,16 @@
         "level": "error",
         "message": "Failed to load links from API.<br>Cannot reach backend server: TypeError: Failed to fetch<br>Fallback to static list.",
         "user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/136.0.0.0 Safari/537.36",
+        "resolved": 0,
+        "resolved_at": null
+      },
+      {
+        "id": 14,
+        "timestamp": "2026-08-27T04:21:31.000Z",
+        "source": "frontend",
+        "level": "error",
+        "message": "Failed to load links from API.<br>Cannot reach backend server: TimeoutError: The operation timed out.<br>Fallback to static list.",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
         "resolved": 0,
         "resolved_at": null
       }

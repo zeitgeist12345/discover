@@ -131,7 +131,7 @@ fun DiscoverScreen(
                 builtInZoomControls = true
                 displayZoomControls = false
                 javaScriptCanOpenWindowsAutomatically = false
-                mediaPlaybackRequiresUserGesture = true
+                mediaPlaybackRequiresUserGesture = false
                 domStorageEnabled =
                     true  // DOM storage (localStorage, sessionStorage) needed for some websites to load
                 // Use a generic user agent to avoid fingerprinting

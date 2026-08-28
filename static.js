@@ -21,6 +21,20 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "10 Minute Mail",
+            "url": "https://10minutemail.com/",
+            "description": "Disposable email for spam-free signups",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 70,
+            "likesMobile": 2,
+            "dislikesMobile": 1000,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "4chan",
             "url": "https://4chan.org/",
             "description": "Free speech social media platform.",
@@ -30,10 +44,67 @@ const STATIC = {
                 "optional",
                 "user-submitted"
             ],
-            "views": 139,
+            "views": 143,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Anna's Archive",
+            "url": "https://annas-archive.org/",
+            "description": "Open library",
+            "tags": [
+                "open",
+                "library",
+                "learning"
+            ],
+            "views": 14,
+            "likesMobile": 0,
+            "dislikesMobile": 1000,
+            "likesDesktop": 0,
+            "dislikesDesktop": 2
+        },
+        {
+            "name": "Anna's archive",
+            "url": "https://annas-archive.se/",
+            "description": "Open library.",
+            "tags": [
+                "open",
+                "library",
+                "books"
+            ],
+            "views": 38,
+            "likesMobile": 1,
+            "dislikesMobile": 1000,
+            "likesDesktop": 1,
+            "dislikesDesktop": 2
+        },
+        {
+            "name": "draw.io",
+            "url": "https://app.diagrams.net/",
+            "description": "Diagram making software which includes UML diagrams in software engineering.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 15,
+            "likesMobile": 0,
+            "dislikesMobile": 1000,
+            "likesDesktop": 7,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Internet Archive",
+            "url": "https://archive.org/",
+            "description": "Digital library of free & borrowable books, movies, music & Wayback Machine",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 69,
+            "likesMobile": 4,
+            "dislikesMobile": 1000,
+            "likesDesktop": 5,
             "dislikesDesktop": 0
         },
         {
@@ -60,7 +131,7 @@ const STATIC = {
                 "sample",
                 "positive"
             ],
-            "views": 182,
+            "views": 183,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 5,
@@ -74,7 +145,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 60,
+            "views": 71,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -89,10 +160,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 76,
+            "views": 78,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 3,
+            "likesDesktop": 4,
             "dislikesDesktop": 0
         },
         {
@@ -135,7 +206,7 @@ const STATIC = {
                 "user-submitted",
                 "positive"
             ],
-            "views": 11,
+            "views": 12,
             "likesMobile": 0,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -196,7 +267,7 @@ const STATIC = {
                 "islam",
                 "learning"
             ],
-            "views": 93,
+            "views": 105,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -255,7 +326,7 @@ const STATIC = {
                 "blog",
                 "platform"
             ],
-            "views": 8,
+            "views": 10,
             "likesMobile": 0,
             "dislikesMobile": 2000,
             "likesDesktop": 2,
@@ -269,7 +340,7 @@ const STATIC = {
                 "positive",
                 "user-submitted"
             ],
-            "views": 72,
+            "views": 73,
             "likesMobile": 4,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -328,10 +399,26 @@ const STATIC = {
                 "learning",
                 "positive"
             ],
-            "views": 0,
+            "views": 1,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Honda",
+            "url": "https://honda.com/",
+            "description": "Hardware company.",
+            "tags": [
+                "brilliant",
+                "good",
+                "pretty",
+                "poetic"
+            ],
+            "views": 130,
+            "likesMobile": 5,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
@@ -351,6 +438,37 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "Interview Ready",
+            "url": "https://interviewready.io/learn/ai-engineering/who-is-this-course-for/course-intro",
+            "description": "Artificial Intelligence (AI) engineering course.",
+            "tags": [
+                "learning",
+                "code",
+                "ai",
+                "course"
+            ],
+            "views": 32,
+            "likesMobile": 0,
+            "dislikesMobile": 1000,
+            "likesDesktop": 5,
+            "dislikesDesktop": 2
+        },
+        {
+            "name": "Interview Ready - System Design",
+            "url": "https://interviewready.io/learn/system-design-course/how-do-i-use-this-course/what-do-we-offer?tab=chapters",
+            "description": "Best System Design course.",
+            "tags": [
+                "systemdesign",
+                "course",
+                "learning"
+            ],
+            "views": 12,
+            "likesMobile": 0,
+            "dislikesMobile": 1001,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "learnislam4free",
             "url": "https://learnislam4free.org/",
             "description": "Free Islamic books and ebooks.",
@@ -363,6 +481,34 @@ const STATIC = {
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
+        },
+        {
+            "name": "lg",
+            "url": "https://lg.com/",
+            "description": "lg",
+            "tags": [
+                "wesome",
+                "wesome,gorgeous"
+            ],
+            "views": 116,
+            "likesMobile": 3,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 1
+        },
+        {
+            "name": "Library Genesis",
+            "url": "https://libgen.li/",
+            "description": "Massive digital library of books, articles, and media",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 70,
+            "likesMobile": 4,
+            "dislikesMobile": 1000,
+            "likesDesktop": 2,
+            "dislikesDesktop": 1
         },
         {
             "name": "Little Alchemy 2",
@@ -422,8 +568,35 @@ const STATIC = {
                 "daily",
                 "news"
             ],
-            "views": 72,
+            "views": 84,
             "likesMobile": 4,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Muslim rickshaw puller assaulted, partially buried in sand, set on fire by Hindutva men in Agartala",
+            "url": "https://maktoobmedia.com/india/muslim-rickshaw-puller-assaulted-partially-buried-in-sand-set-on-fire-by-hindutva-men-in-agartala/",
+            "description": "Intolerance and hate crime.",
+            "tags": [
+                "learning",
+                "intolerance"
+            ],
+            "views": 49,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Muslim woman dies after mob violence led by village head's son in Bihar's Madhubani",
+            "url": "https://maktoobmedia.com/india/muslim-woman-dies-after-mob-violence-led-by-village-heads-son-in-bihars-madhubani/",
+            "description": "Hate crime",
+            "tags": [
+                "news"
+            ],
+            "views": 18,
+            "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
@@ -452,10 +625,38 @@ const STATIC = {
                 "twitteralternative",
                 "socialmedia"
             ],
-            "views": 76,
+            "views": 86,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "MSI",
+            "url": "https://msi.com/",
+            "description": "Computer motherboard company.",
+            "tags": [
+                "computer",
+                "motherboard",
+                "company"
+            ],
+            "views": 115,
+            "likesMobile": 1,
+            "dislikesMobile": 0,
+            "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Fatiha ka tarika",
+            "url": "https://namazein.com/fatiha-ka-tarika/",
+            "description": "How to do fatiha follow through guide.",
+            "tags": [
+                "user-submitted"
+            ],
+            "views": 101,
+            "likesMobile": 2,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -482,7 +683,7 @@ const STATIC = {
                 "sample",
                 "positive"
             ],
-            "views": 74,
+            "views": 76,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -498,7 +699,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 297,
+            "views": 311,
             "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
@@ -515,7 +716,7 @@ const STATIC = {
                 "lunar",
                 "islam"
             ],
-            "views": 2,
+            "views": 3,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -531,7 +732,7 @@ const STATIC = {
                 "palestine",
                 "free"
             ],
-            "views": 36,
+            "views": 49,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -547,10 +748,24 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 219,
+            "views": 230,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 4,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Play Counter-Strike 1.6",
+            "url": "https://play-cs.com/",
+            "description": "Play classic CS 1.6 online without downloading",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 52,
+            "likesMobile": 2,
+            "dislikesMobile": 1000,
+            "likesDesktop": 3,
             "dislikesDesktop": 0
         },
         {
@@ -563,10 +778,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 229,
+            "views": 240,
             "likesMobile": 4,
             "dislikesMobile": 1,
-            "likesDesktop": 3,
+            "likesDesktop": 4,
             "dislikesDesktop": 2
         },
         {
@@ -624,7 +839,7 @@ const STATIC = {
                 "sample",
                 "positive"
             ],
-            "views": 66,
+            "views": 67,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -654,11 +869,25 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 19,
+            "views": 32,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
+        },
+        {
+            "name": "Sci-Hub",
+            "url": "https://sci-hub.se/",
+            "description": "Removing barriers in the way of science by providing free access to research papers",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 48,
+            "likesMobile": 2,
+            "dislikesMobile": 1000,
+            "likesDesktop": 1,
+            "dislikesDesktop": 1
         },
         {
             "name": "Scream Into the Void",
@@ -684,10 +913,21 @@ const STATIC = {
                 "sample",
                 "positive"
             ],
-            "views": 50,
+            "views": 51,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Sony",
+            "url": "https://sony.com/",
+            "description": "Tech giant.",
+            "tags": [],
+            "views": 39,
+            "likesMobile": 1,
+            "dislikesMobile": 1000,
+            "likesDesktop": 5,
             "dislikesDesktop": 0
         },
         {
@@ -699,7 +939,7 @@ const STATIC = {
                 "sample",
                 "positive"
             ],
-            "views": 60,
+            "views": 61,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -730,7 +970,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 108,
+            "views": 110,
             "likesMobile": 3,
             "dislikesMobile": 1000,
             "likesDesktop": 3,
@@ -752,6 +992,19 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "twitter",
+            "url": "https://twitter.com/",
+            "description": "twitter",
+            "tags": [
+                "optional"
+            ],
+            "views": 23,
+            "likesMobile": 0,
+            "dislikesMobile": 1000,
+            "likesDesktop": 10,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Unsplash",
             "url": "https://unsplash.com/",
             "description": "Beautiful, free images gifted by the world's most generous community of photographers",
@@ -761,10 +1014,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 366,
+            "views": 378,
             "likesMobile": 56,
             "dislikesMobile": 4,
-            "likesDesktop": 27,
+            "likesDesktop": 28,
             "dislikesDesktop": 1
         },
         {
@@ -792,7 +1045,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 234,
+            "views": 249,
             "likesMobile": 8,
             "dislikesMobile": 0,
             "likesDesktop": 4,
@@ -809,7 +1062,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 109,
+            "views": 124,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -847,6 +1100,21 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "BYD",
+            "url": "https://www.byd.com/",
+            "description": "Electric car company.",
+            "tags": [
+                "car",
+                "electric",
+                "company"
+            ],
+            "views": 105,
+            "likesMobile": 5,
+            "dislikesMobile": 0,
+            "likesDesktop": 2,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Connected Papers",
             "url": "https://www.connectedpapers.com/",
             "description": "Visual tool to explore academic research connections",
@@ -855,11 +1123,25 @@ const STATIC = {
                 "sample",
                 "positive"
             ],
-            "views": 82,
+            "views": 83,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 10,
             "dislikesDesktop": 0
+        },
+        {
+            "name": "DeepSeek",
+            "url": "https://www.deepseek.com/en",
+            "description": "AI research and development company",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 78,
+            "likesMobile": 2,
+            "dislikesMobile": 1000,
+            "likesDesktop": 1,
+            "dislikesDesktop": 1
         },
         {
             "name": "Digit",
@@ -871,7 +1153,7 @@ const STATIC = {
                 "new",
                 "tech"
             ],
-            "views": 43,
+            "views": 61,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -903,10 +1185,10 @@ const STATIC = {
                 "sports",
                 "positive"
             ],
-            "views": 19,
+            "views": 20,
             "likesMobile": 0,
             "dislikesMobile": 0,
-            "likesDesktop": 0,
+            "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
@@ -934,7 +1216,23 @@ const STATIC = {
                 "canadamexicousa2026",
                 "positive"
             ],
-            "views": 18,
+            "views": 19,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "FIFA 12 songs",
+            "url": "https://www.fifplay.com/fifa-12/soundtrack/",
+            "description": "The great FIFA 12 soundtrack for those who love nostalgia.",
+            "tags": [
+                "songs",
+                "fifa",
+                "positive",
+                "daily"
+            ],
+            "views": 0,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -969,6 +1267,82 @@ const STATIC = {
             "likesMobile": 0,
             "dislikesMobile": 2002,
             "likesDesktop": 1,
+            "dislikesDesktop": 1
+        },
+        {
+            "name": "MediaTek",
+            "url": "https://www.mediatek.com/",
+            "description": "Silicon chips company.",
+            "tags": [
+                "silicon",
+                "chips",
+                "company"
+            ],
+            "views": 101,
+            "likesMobile": 2,
+            "dislikesMobile": 0,
+            "likesDesktop": 4,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "How hate drove a Muslim flower-seller to death in a Maharashtra village",
+            "url": "https://www.newslaundry.com/2025/11/10/how-hate-drove-a-muslim-flower-seller-to-death-in-a-maharashtra-village",
+            "description": "Intolerance news.",
+            "tags": [
+                "learning",
+                "news"
+            ],
+            "views": 62,
+            "likesMobile": 5,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Nissan",
+            "url": "https://www.nissan-global.com/EN/",
+            "description": "Car company",
+            "tags": [
+                "car",
+                "company"
+            ],
+            "views": 105,
+            "likesMobile": 2,
+            "dislikesMobile": 0,
+            "likesDesktop": 1,
+            "dislikesDesktop": 1
+        },
+        {
+            "name": "OnePlus",
+            "url": "https://www.oneplus.com/",
+            "description": "Phone company",
+            "tags": [
+                "phone",
+                "phonecompany",
+                "mobilephonecompany",
+                "poetic"
+            ],
+            "views": 93,
+            "likesMobile": 2,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Oppo",
+            "url": "https://www.oppo.com/",
+            "description": "Mobile phone company.",
+            "tags": [
+                "mobile",
+                "mobile phone",
+                "company",
+                "mobilephonecompany",
+                "poetic"
+            ],
+            "views": 87,
+            "likesMobile": 0,
+            "dislikesMobile": 2,
+            "likesDesktop": 2,
             "dislikesDesktop": 1
         },
         {
@@ -1012,7 +1386,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 249,
+            "views": 250,
             "likesMobile": 31,
             "dislikesMobile": 3,
             "likesDesktop": 16,
@@ -1030,7 +1404,7 @@ const STATIC = {
                 "incompetence",
                 "evil"
             ],
-            "views": 0,
+            "views": 1,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1049,7 +1423,7 @@ const STATIC = {
                 "beautiful",
                 "optional"
             ],
-            "views": 160,
+            "views": 161,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -1065,7 +1439,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 172,
+            "views": 183,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1081,7 +1455,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 172,
+            "views": 189,
             "likesMobile": 3,
             "dislikesMobile": 1,
             "likesDesktop": 0,
@@ -1097,7 +1471,7 @@ const STATIC = {
                 "learning",
                 "news"
             ],
-            "views": 64,
+            "views": 75,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1127,7 +1501,7 @@ const STATIC = {
                 "tiktok",
                 "videos"
             ],
-            "views": 85,
+            "views": 98,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -1144,7 +1518,7 @@ const STATIC = {
                 "daily",
                 "optional"
             ],
-            "views": 88,
+            "views": 91,
             "likesMobile": 1,
             "dislikesMobile": 2,
             "likesDesktop": 0,
@@ -1160,9 +1534,23 @@ const STATIC = {
                 "daily",
                 "optional"
             ],
-            "views": 121,
+            "views": 127,
             "likesMobile": 7,
             "dislikesMobile": 0,
+            "likesDesktop": 5,
+            "dislikesDesktop": 1
+        },
+        {
+            "name": "xkcd",
+            "url": "https://xkcd.com/",
+            "description": "A webcomic of romance, sarcasm, math, and language",
+            "tags": [
+                "curated",
+                "sample"
+            ],
+            "views": 68,
+            "likesMobile": 12,
+            "dislikesMobile": 9000,
             "likesDesktop": 3,
             "dislikesDesktop": 1
         }
