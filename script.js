@@ -6,7 +6,7 @@
 let links = [];
 let currentIndex = -1;
 let linkHistory = [];
-let visitedLinks = [];
+let visitedLinks = new Set();
 let isLoading = false;
 let currentLinkUrl = null;
 let selectedTags = [];
@@ -208,7 +208,7 @@ async function updateLinkStats(linkUrl, action) {
     }
 
     // Find the link to get its URL
-    const link = links.find(w => w.url === linkUrl);
+    const link = links.find(w => w.url === linkUrl) || linkHistory.find(w => w.url === linkUrl);
     if (!link) {
         console.error(`Link not found with url: ${linkUrl}`);
         return;
@@ -335,26 +335,23 @@ function loadRandomLink() {
     }
 
     // Get a random link that hasn't been visited yet
-    const unvisitedLinks = links.filter((_, index) => !visitedLinks.includes(index));
+    const unvisitedLinks = links.filter(link => !visitedLinks.has(link.url));
     console.log('unvisitedLinks.length:', unvisitedLinks.length);
 
     if (unvisitedLinks.length === 0) {
         // All links have been visited, reset
         console.log('All links visited, resetting...');
-        visitedLinks = [];
-        linkHistory = [];
-        currentIndex = -1;
-        setTimeout(loadRandomLink, RESET_DELAY);
+        visitedLinks.clear();
+        loadRandomLink();
         return;
     }
 
     const randomIndex = Math.floor(Math.random() * unvisitedLinks.length);
     const link = unvisitedLinks[randomIndex];
-    const originalIndex = links.indexOf(link);
 
-    console.log('Selected random link:', link.name, 'at index:', originalIndex);
+    console.log('Selected random link:', link.name);
 
-    loadLink(originalIndex);
+    loadLink(link);
 }
 
 function loadNextLink() {
@@ -365,54 +362,45 @@ function loadNextLink() {
 
     if (currentIndex < linkHistory.length - 1) {
         currentIndex++;
-        const linkIndex = linkHistory[currentIndex];
-        loadLink(linkIndex, false);
+        const link = linkHistory[currentIndex];
+        loadLink(link, false);
     } else {
         loadRandomLink();
     }
 }
 
 function loadPreviousLink() {
+    console.log('loadPreviousLink() called');
     if (linkHistory.length === 0 || currentIndex <= 0) {
+        console.log('linkHistory.length', linkHistory.length, ' currentIndex', currentIndex);
         return;
     }
 
     currentIndex--;
-    const linkIndex = linkHistory[currentIndex];
-    loadLink(linkIndex, false);
+    const link = linkHistory[currentIndex];
+    loadLink(link, false);
 }
 
-function loadLink(index, addToHistory = true) {
-    console.log('loadLink called with index:', index, 'addToHistory:', addToHistory);
-
-    // Validate index and link
-    if (index < 0 || index >= links.length) {
-        console.error('Invalid link index:', index);
-        return;
-    }
-
-    const link = links[index];
+function loadLink(link, addToHistory = true) {
+    console.log('loadLink called with link:', link, 'addToHistory:', addToHistory);
     if (!link) {
-        console.error('Link not found at index:', index);
+        console.error('Link is null');
         return;
     }
-
     console.log('Link to load:', link);
 
     if (addToHistory) {
         // Add to history if it's a new link
         if (currentIndex < linkHistory.length - 1) {
-            // Remove any forward history if we're going back and then to a new site
+            // Remove any forward history if we're going back and then to a new random site
             linkHistory = linkHistory.slice(0, currentIndex + 1);
         }
-        linkHistory.push(index);
+        linkHistory.push(link);
         currentIndex = linkHistory.length - 1;
     }
 
     // Mark as visited
-    if (!visitedLinks.includes(index)) {
-        visitedLinks.push(index);
-    }
+    visitedLinks.add(link.url);
 
     // Track the current link url for stats
     currentLinkUrl = link.url;
@@ -422,14 +410,7 @@ function loadLink(index, addToHistory = true) {
 
     // Optimistically increment views immediately
     if (link.url && ENABLE_VIEW_TRACKING) {
-        const viewsElement = document.getElementById('views-count');
-        if (viewsElement) {
-            const currentViews = parseInt(viewsElement.textContent) || 0;
-            viewsElement.textContent = currentViews + 1;
-
-            // Sync with server in the background
-            updateLinkStats(link.url, 'view');
-        }
+        updateLinkStats(link.url, 'view');
     }
 
     // Open the link in a new window/tab
