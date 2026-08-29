@@ -3,14 +3,13 @@
 
 // script.js
 // Global variables
-let links = [];
-let currentIndex = -1;
-let linkHistory = [];
-let visitedLinks = new Set();
-let isLoading = false;
-let currentLinkUrl = null;
-let selectedTags = [];
-const userActions = new Map();
+let links = []; // Current list of links loaded from API or static fallback
+let linkHistory = []; // History of visited link objects (preserved across list updates)
+let currentIndex = -1; // Index of current link in linkHistory (not in links)
+let visitedLinks = new Set(); // URLs of links already visited this session (Set ensures uniqueness)
+let currentLinkUrl = null; // URL of the currently displayed link (used for stats actions)
+let selectedTags = []; // Tags selected in the add-link form
+const userActions = new Map(); // Tracks user actions in session per link URL to prevent duplicate server calls
 
 const UI_ANIMATION_DELAY = 10;
 const FOCUS_DELAY = 100;
@@ -84,8 +83,6 @@ async function loadLinksFromAPI() {
 
     let linkCount = 0;
     try {
-        isLoading = true;
-
         const query = `&tagsAllowlist=${encodeURIComponent(tagsAllowlist.join(','))}&tagsBlocklist=${encodeURIComponent(tagsBlocklist.join(','))}&urlsAllowlist=${encodeURIComponent(urlsAllowlist.join(' '))}&urlsBlocklist=${encodeURIComponent(urlsBlocklist.join(' '))}`;
         const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop${query}`, { signal: AbortSignal.timeout(API_TIMEOUT) });
 
@@ -109,8 +106,6 @@ async function loadLinksFromAPI() {
 
         document.getElementById('api-status-indicator').classList.add('offline');
     } finally {
-        isLoading = false;
-
         if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0 || urlsAllowlist.length > 0 || urlsBlocklist.length > 0) {
             successBox.textContent = `✅ Filter applied: ${linkCount} link${linkCount !== 1 ? 's' : ''} found`;
         } else {
@@ -325,12 +320,11 @@ function dislikesDesktopLink() {
 
 function loadRandomLink() {
     console.log('loadRandomLink called');
-    console.log('isLoading:', isLoading);
     console.log('links.length:', links.length);
     console.log('visitedLinks:', visitedLinks);
 
-    if (isLoading || links.length === 0) {
-        console.log('Cannot load random link - loading or no links');
+    if (links.length === 0) {
+        console.log('Cannot load random link - no links');
         return;
     }
 
