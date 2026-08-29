@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function initializeApp() {
     console.log('Initializing app...');
+    loadSettings();
     console.log('Using API mode');
     loadLinksFromAPI();
 }
@@ -80,11 +81,14 @@ async function loadLinksFromAPI() {
         .filter(t => t.length > 0);
 
     console.log('Applying tags filter:', tagsAllowlist, tagsBlocklist, '\nApplying urls filter:', urlsAllowlist, urlsBlocklist);
+    saveSettings();
 
     let linkCount = 0;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
     try {
         const query = `&tagsAllowlist=${encodeURIComponent(tagsAllowlist.join(','))}&tagsBlocklist=${encodeURIComponent(tagsBlocklist.join(','))}&urlsAllowlist=${encodeURIComponent(urlsAllowlist.join(' '))}&urlsBlocklist=${encodeURIComponent(urlsBlocklist.join(' '))}`;
-        const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop${query}`, { signal: AbortSignal.timeout(API_TIMEOUT) });
+        const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop${query}`, { signal: controller.signal });
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -118,6 +122,7 @@ async function loadLinksFromAPI() {
         setTimeout(() => {
             successBox.style.display = 'none';
         }, 3000);
+        clearTimeout(timeoutId);
     }
 }
 
@@ -689,6 +694,33 @@ function showSuccessMessage(message) {
     }, RESET_DELAY_LONG);
 }
 
+function saveSettings() {
+    try {
+        localStorage.setItem('discover-settings', JSON.stringify({
+            tagsAllowlist: document.getElementById('filter-tags-allowlist').value,
+            tagsBlocklist: document.getElementById('filter-tags-blocklist').value,
+            urlsAllowlist: document.getElementById('filter-urls-allowlist').value,
+            urlsBlocklist: document.getElementById('filter-urls-blocklist').value
+        }));
+    } catch (e) {
+        console.warn('Could not save settings', e);
+    }
+}
+
+function loadSettings() {
+    try {
+        const saved = localStorage.getItem('discover-settings');
+        if (!saved) return;
+        const settings = JSON.parse(saved);
+        document.getElementById('filter-tags-allowlist').value = settings.tagsAllowlist || 'positive';
+        document.getElementById('filter-tags-blocklist').value = settings.tagsBlocklist || '';
+        document.getElementById('filter-urls-allowlist').value = settings.urlsAllowlist || '';
+        document.getElementById('filter-urls-blocklist').value = settings.urlsBlocklist || '';
+    } catch (e) {
+        console.warn('Could not load settings', e);
+    }
+}
+
 // Close modal when clicking outside
 document.addEventListener('click', function (event) {
     const modal = document.getElementById('add-link-modal');
@@ -761,6 +793,7 @@ function resetToDefaults() {
     document.getElementById('filter-tags-blocklist').value = '';
     document.getElementById('filter-urls-allowlist').value = '';
     document.getElementById('filter-urls-blocklist').value = '';
+    saveSettings();
     loadLinksFromAPI();
 }
 
