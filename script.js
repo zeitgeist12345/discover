@@ -15,9 +15,9 @@ const UI_ANIMATION_DELAY = 10;
 const FOCUS_DELAY = 100;
 const RESET_DELAY = 2000;
 const RESET_DELAY_LONG = 10000;
-
-const API_BASE_URL = 'https://backenddiscover.duckdns.org:8443';
 const API_TIMEOUT = 10000;
+const API_BASE_URL = 'https://backenddiscover.duckdns.org:8443';
+const MAX_HISTORY_LENGTH = 1024;
 const ENABLE_FALLBACK = true;
 const ENABLE_VIEW_TRACKING = true;
 const ERROR_MESSAGE = 'Unable to connect to the server. Please make sure your local backend is running.';
@@ -395,6 +395,11 @@ function loadLink(link, addToHistory = true) {
             linkHistory = linkHistory.slice(0, currentIndex + 1);
         }
         linkHistory.push(link);
+        // Limit history to fixed items to prevent unbounded growth
+        if (linkHistory.length > MAX_HISTORY_LENGTH) {
+            const excess = linkHistory.length - MAX_HISTORY_LENGTH;
+            linkHistory = linkHistory.slice(excess);
+        }
         currentIndex = linkHistory.length - 1;
     }
 
