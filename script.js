@@ -55,33 +55,8 @@ function initializeApp() {
 }
 
 async function loadLinksFromAPI() {
-
-    const tagsInputAllowlist = document.getElementById('filter-tags-allowlist');
-    const tagsInputBlocklist = document.getElementById('filter-tags-blocklist');
-    const urlsInputAllowlist = document.getElementById('filter-urls-allowlist');
-    const urlsInputBlocklist = document.getElementById('filter-urls-blocklist');
-    const successBox = document.getElementById('filter-success');
-
-    const tagsAllowlist = tagsInputAllowlist.value
-        .split(',')
-        .map(t => t.trim())
-        .filter(t => t.length > 0);
-    const tagsBlocklist = tagsInputBlocklist.value
-        .split(',')
-        .map(t => t.trim())
-        .filter(t => t.length > 0);
-
-    const urlsAllowlist = urlsInputAllowlist.value
-        .split(' ')
-        .map(t => t.trim())
-        .filter(t => t.length > 0);
-    const urlsBlocklist = urlsInputBlocklist.value
-        .split(' ')
-        .map(t => t.trim())
-        .filter(t => t.length > 0);
-
+    const { tagsAllowlist, tagsBlocklist, urlsAllowlist, urlsBlocklist } = getFilterList();
     console.log('Applying tags filter:', tagsAllowlist, tagsBlocklist, '\nApplying urls filter:', urlsAllowlist, urlsBlocklist);
-    saveSettings();
 
     let linkCount = 0;
     const controller = new AbortController();
@@ -110,6 +85,8 @@ async function loadLinksFromAPI() {
 
         document.getElementById('api-status-indicator').classList.add('offline');
     } finally {
+
+        const successBox = document.getElementById('filter-success');
         if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0 || urlsAllowlist.length > 0 || urlsBlocklist.length > 0) {
             successBox.textContent = `✅ Filter applied: ${linkCount} link${linkCount !== 1 ? 's' : ''} found`;
         } else {
@@ -172,7 +149,6 @@ function enableControls() {
     }
 }
 
-
 function showErrorMessage(message) {
     // If an error box already exists, just update the text.
     const existing = document.querySelector('.error-message');
@@ -192,8 +168,6 @@ function showErrorMessage(message) {
     document.body.appendChild(errorDiv);
     logFrontendError(message, 'error');
 }
-
-
 
 async function updateLinkStats(linkUrl, action) {
     if (!ENABLE_VIEW_TRACKING) {
@@ -594,87 +568,6 @@ function normalizeUrl(url) {
     return url;
 }
 
-async function submitLink(event) {
-    event.preventDefault();
-
-    // Clear any existing errors
-    hideModalError();
-    clearAllInputErrors();
-
-    // Check if form is valid
-    const form = event.target;
-    if (!form.checkValidity()) {
-        // Trigger validation for the first invalid field
-        const firstInvalid = form.querySelector(':invalid');
-        if (firstInvalid) {
-            firstInvalid.focus();
-            handleInvalidInput({ target: firstInvalid, preventDefault: () => { } });
-        }
-        return;
-    }
-
-    const submitBtn = document.getElementById('submit-btn');
-    const originalText = submitBtn.textContent;
-
-    // Show loading state
-    submitBtn.disabled = true;
-    submitBtn.classList.add('btn-loading');
-    submitBtn.textContent = 'Adding...';
-
-    const tagsInput = document.getElementById('add-link-tags');
-    selectedTags = tagsInput.value.split(",")
-        .map(tag => tag.trim().replace(/\s+/g, "")) // remove internal spaces
-        .filter(tag => tag.length > 0);
-
-    try {
-        const formData = new FormData(event.target);
-        const linkData = {
-            name: formData.get('name'),
-            url: normalizeUrl(formData.get('url')),
-            description: formData.get('description'),
-            tags: selectedTags.length > 0 ? selectedTags : ['user-submitted'],
-            views: 0,
-            likesDesktop: 0,
-            dislikesDesktop: 0
-        };
-
-        const response = await fetch(`${API_BASE_URL}/addlink`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(linkData)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            // Success
-            showSuccessMessage('Link submitted for spam review successfully! The link will be live globally after review and approval 🎉');
-            hideAddLinkForm();
-
-            // Reset tags
-            selectedTags = [];
-        } else {
-            // Handle specific error cases
-            if (response.status === 409) {
-                showModalError('This link already exists in the database. Please try a different URL.');
-            } else {
-                showModalError(result.error || 'Failed to add link');
-            }
-        }
-
-    } catch (error) {
-        console.error('Error submitting link:', error);
-        showModalError('Failed to add link. Please try again.');
-    } finally {
-        // Reset button state
-        submitBtn.disabled = false;
-        submitBtn.classList.remove('btn-loading');
-        submitBtn.textContent = originalText;
-    }
-}
-
 function showSuccessMessage(message) {
     const successDiv = document.createElement('div');
     successDiv.className = 'success-message';
@@ -697,33 +590,6 @@ function showSuccessMessage(message) {
     setTimeout(() => {
         successDiv.remove();
     }, RESET_DELAY_LONG);
-}
-
-function saveSettings() {
-    try {
-        localStorage.setItem('discover-settings', JSON.stringify({
-            tagsAllowlist: document.getElementById('filter-tags-allowlist').value,
-            tagsBlocklist: document.getElementById('filter-tags-blocklist').value,
-            urlsAllowlist: document.getElementById('filter-urls-allowlist').value,
-            urlsBlocklist: document.getElementById('filter-urls-blocklist').value
-        }));
-    } catch (e) {
-        console.warn('Could not save settings', e);
-    }
-}
-
-function loadSettings() {
-    try {
-        const saved = localStorage.getItem('discover-settings');
-        if (!saved) return;
-        const settings = JSON.parse(saved);
-        document.getElementById('filter-tags-allowlist').value = settings.tagsAllowlist || 'positive';
-        document.getElementById('filter-tags-blocklist').value = settings.tagsBlocklist || '';
-        document.getElementById('filter-urls-allowlist').value = settings.urlsAllowlist || '';
-        document.getElementById('filter-urls-blocklist').value = settings.urlsBlocklist || '';
-    } catch (e) {
-        console.warn('Could not load settings', e);
-    }
 }
 
 // Close modal when clicking outside
@@ -778,7 +644,6 @@ document.querySelector('.header h1').addEventListener('click', function () {
     }
 });
 
-
 // Settings screen toggle
 document.getElementById('settings-toggle').addEventListener('click', () => {
     const settingsScreen = document.getElementById('settings-screen');
@@ -792,15 +657,6 @@ document.getElementById('settings-toggle').addEventListener('click', () => {
         btn.textContent = '⚙️';
     }
 });
-
-function resetToDefaults() {
-    document.getElementById('filter-tags-allowlist').value = 'positive';
-    document.getElementById('filter-tags-blocklist').value = '';
-    document.getElementById('filter-urls-allowlist').value = '';
-    document.getElementById('filter-urls-blocklist').value = '';
-    saveSettings();
-    loadLinksFromAPI();
-}
 
 // Add at end of script.js
 window.addEventListener('error', (event) => {
