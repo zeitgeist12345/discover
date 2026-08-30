@@ -59,7 +59,7 @@
     "likesMobile": 4,
     "dislikesMobile": 1000,
     "likesDesktop": 3,
-    "dislikesDesktop": 1001,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {
@@ -184,7 +184,7 @@
     "likesMobile": 3,
     "dislikesMobile": 1000,
     "likesDesktop": 3,
-    "dislikesDesktop": 1002,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {
@@ -276,7 +276,7 @@
       "book",
       "positive"
     ],
-    "views": 16,
+    "views": 17,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -1007,7 +1007,7 @@
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
-    "dislikesDesktop": 1001,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {
@@ -1537,11 +1537,11 @@
       "12rulesforlife",
       "positive"
     ],
-    "views": 84,
+    "views": 86,
     "likesMobile": 3,
     "dislikesMobile": 1000,
-    "likesDesktop": 1000,
-    "dislikesDesktop": 2,
+    "likesDesktop": 0,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {

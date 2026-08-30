@@ -49,14 +49,14 @@
                         <br>
                         <span>Allowlist: <input type="text" id="filter-tags-allowlist"
                                 placeholder="e.g. ai, tools, productivity" value="positive"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(); }">
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
                         </span>
                         <span>Blocklist: <input type="text" id="filter-tags-blocklist"
                                 placeholder="e.g. ai, tools, productivity"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(); }">
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
                         </span>
                         <br>
-                        <button id="apply-tag-filter-btn" class="btn" onclick="loadLinksFromAPI()">Apply Tags
+                        <button id="apply-tag-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply Tags
                             Filter</button>
                     </div>
 
@@ -66,14 +66,14 @@
                         <br>
                         <span>Allowlist: <input type="text" id="filter-urls-allowlist"
                                 placeholder="e.g. www.google.com www.example.com"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(); }">
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
                         </span>
                         <span>Blocklist: <input type="text" id="filter-urls-blocklist"
                                 placeholder="e.g. www.google.com www.example.com"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(); }">
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
                         </span>
                         <br>
-                        <button id="apply-url-filter-btn" class="btn" onclick="loadLinksFromAPI()">Apply URL
+                        <button id="apply-url-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply URL
                             Filter</button>
                     </div>
                 </div>

@@ -51,10 +51,10 @@ function initializeApp() {
     console.log('Initializing app...');
     loadSettings();
     console.log('Using API mode');
-    loadLinksFromAPI();
+    loadLinksFromAPI(1);
 }
 
-async function loadLinksFromAPI() {
+async function loadLinksFromAPI(logUser) {
     const { tagsAllowlist, tagsBlocklist, urlsAllowlist, urlsBlocklist } = getFilterList();
     console.log('Applying tags filter:', tagsAllowlist, tagsBlocklist, '\nApplying urls filter:', urlsAllowlist, urlsBlocklist);
 
@@ -63,7 +63,7 @@ async function loadLinksFromAPI() {
     const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
     try {
         const query = `&tagsAllowlist=${encodeURIComponent(tagsAllowlist.join(','))}&tagsBlocklist=${encodeURIComponent(tagsBlocklist.join(','))}&urlsAllowlist=${encodeURIComponent(urlsAllowlist.join(' '))}&urlsBlocklist=${encodeURIComponent(urlsBlocklist.join(' '))}`;
-        const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop${query}`, { signal: controller.signal });
+        const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop&logUser=${logUser}${query}`, { signal: controller.signal });
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

@@ -91,7 +91,7 @@ VALUES (
         4,
         1000,
         3,
-        1001,
+        1000,
         1
     ),
     (
@@ -187,7 +187,7 @@ VALUES (
         3,
         1000,
         3,
-        1002,
+        1000,
         1
     ),
     (
@@ -255,7 +255,7 @@ VALUES (
         'https://dn710101.ca.archive.org/0/items/DIOXIN-KILLS/12_rules_of_life_-_Jordan_Peterson.pdf',
         'The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of "tell the truth, or atleast don''t lie" and the holy Quran''s ''do not mix truth with falsehood, nor knowingly conceal the truth'' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.',
         JSON_ARRAY('book', 'positive'),
-        16,
+        17,
         0,
         0,
         2,
@@ -799,7 +799,7 @@ VALUES (
         2,
         1000,
         1,
-        1001,
+        1000,
         1
     ),
     (
@@ -1191,11 +1191,11 @@ VALUES (
         'https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF',
         'The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of "tell the truth, or atleast don''t lie" and the holy Quran''s ''do not mix truth with falsehood, nor knowingly conceal the truth'' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.',
         JSON_ARRAY('book', 'learning', '12rulesforlife', 'positive'),
-        84,
+        86,
         3,
         1000,
+        0,
         1000,
-        2,
         1
     ),
     (

@@ -10,7 +10,7 @@ async function testAPI() {
     try {
         // Test 1: Get links
         console.log('1️⃣ Testing getLinks...');
-        const linksResponse = await fetch(`${API_BASE_URL}/getLinks`);
+        const linksResponse = await fetch(`${API_BASE_URL}/getLinks&logUser=0`);
         const links = await linksResponse.json();
         console.log(`✅ Found ${links.length} links`);
         
@@ -62,7 +62,7 @@ async function testCORS() {
     console.log('\n🌏 Testing CORS...');
     
     try {
-        const response = await fetch(`${API_BASE_URL}/getLinks`, {
+        const response = await fetch(`${API_BASE_URL}/getLinks&logUser=0`, {
             method: 'OPTIONS',
             headers: {
                 'Origin': 'https://abirusabil123.github.io',

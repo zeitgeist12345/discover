@@ -50,7 +50,7 @@ object StaticLinks {
             url = "https://dn710101.ca.archive.org/0/items/DIOXIN-KILLS/12_rules_of_life_-_Jordan_Peterson.pdf",
             description = "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
             tags = listOf("book", "positive"),
-            views = 16,
+            views = 17,
             likesMobile = 0,
             dislikesMobile = 0
         ),

@@ -34,7 +34,7 @@ async function loadIndividualFilter() {
     try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
-        const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop`, { signal: controller.signal });
+        const response = await fetch(`${API_BASE_URL}/getLinks?platform=desktop&logUser=0`, { signal: controller.signal });
         clearTimeout(timeoutId);
 
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -92,7 +92,7 @@ async function loadIndividualFilter() {
                     }
                 }
                 saveSettings();
-                loadLinksFromAPI();
+                loadLinksFromAPI(0);
                 updateSelectAllState();
             });
 
@@ -154,7 +154,7 @@ async function loadIndividualFilter() {
             }
 
             saveSettings();
-            loadLinksFromAPI();
+            loadLinksFromAPI(0);
             updateSelectAllState();
         });
 
@@ -173,7 +173,7 @@ function onFilterModeChange() {
     if (mode === 'individual') {
         loadIndividualFilter();
     }
-    loadLinksFromAPI();
+    loadLinksFromAPI(0);
 }
 
 function resetFilterToDefaults() {
@@ -191,7 +191,7 @@ function resetFilterToDefaults() {
     individualBlockedUrls = [];
 
     saveSettings();
-    loadLinksFromAPI();
+    loadLinksFromAPI(0);
 }
 
 function saveSettings() {

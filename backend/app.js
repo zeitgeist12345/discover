@@ -315,14 +315,14 @@ app.get('/api/log-visitor-pixel', async (req, res) => {
 
 // Get all links
 app.get('/getLinks', async (req, res, next) => {
-  const { platform, reviewStatusEnable, tagsAllowlist, urlsBlocklist, urlsAllowlist, tagsBlocklist } = req.query;
+  const { platform, reviewStatusEnable, logUser, tagsAllowlist, urlsBlocklist, urlsAllowlist, tagsBlocklist } = req.query;
 
   const user_agent = req.headers['user-agent'] || "";
   const origin = req.headers.origin || "";
 
   try {
 
-    if (!reviewStatusEnable) {
+    if (logUser && !reviewStatusEnable) {
       await logVisitorToDB(
         getCountryFromRequest(req),
         user_agent || "",
@@ -523,17 +523,6 @@ app.post('/removeLink', voteLimiter, async (req, res, next) => {
 // Add new link
 app.post('/addlink', apiLimiter, async (req, res, next) => {
   try {
-    // Add visitor tracking
-    await logVisitorToDB(
-      getCountryFromRequest(req),
-      req.headers['user-agent'] || "",
-      req.headers.origin || "",
-      req.query.platform || "",
-      '/addlink',
-      'discover-backend',
-      isbot(req.headers['user-agent'] || "")
-    );
-
     // API code
     let { name, url, description, tags, views, likesMobile, dislikesMobile, likesDesktop, dislikesDesktop } = req.body;
 
@@ -626,17 +615,6 @@ app.get('/health', async (req, res, next) => {
 // Default route
 app.get('/', async (req, res, next) => {
   try {
-    // Add visitor logging here
-    await logVisitorToDB(
-      getCountryFromRequest(req),
-      req.headers['user-agent'] || "",
-      req.headers.origin || "",
-      req.query.platform || "",
-      '/',
-      'discover-backend',
-      isbot(req.headers['user-agent'] || "")
-    );
-
     // Routing
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT COUNT(*) as count FROM links');

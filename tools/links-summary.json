@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generatedAt": "2026-08-30T08:46:38.223Z",
+    "generatedAt": "2026-08-30T09:16:03.304Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 107
   },
   "analysis": {
     "total": 107,
     "filteredMobile": 56,
-    "filteredDesktop": 8,
+    "filteredDesktop": 9,
     "blockedMobileUrls": [
       "http://radio.garden/",
       "https://10minutemail.com/",
@@ -74,7 +74,8 @@
       "https://www.example.com/",
       "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026",
       "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/standings"
+      "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/standings",
+      "https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF"
     ],
     "byReason": {},
     "byScore": {
@@ -97,7 +98,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 671
+        "count": 725
       },
       {
         "country": "AE",
@@ -219,7 +220,7 @@
     "byMonth": [
       {
         "month": "202608",
-        "count": 812
+        "count": 866
       },
       {
         "month": "202607",
@@ -241,7 +242,7 @@
       },
       {
         "platform": "desktop",
-        "count": 600
+        "count": 654
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -271,7 +272,7 @@
       },
       {
         "product": "discover-backend",
-        "count": 1539
+        "count": 1593
       }
     ],
     "byOrigin": [
@@ -289,7 +290,7 @@
       },
       {
         "origin": "http://localhost:44631",
-        "count": 402
+        "count": 441
       },
       {
         "origin": "https://abirusabil123.github.io",
@@ -329,7 +330,7 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 137
+        "count": 152
       },
       {
         "origin": "null",
@@ -351,7 +352,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 600
+        "count": 654
       },
       {
         "path": "/home/abirusabil/Documents/github/abirusabil123.github.io/products.html",
@@ -381,7 +382,7 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 1582
+        "count": 1636
       },
       {
         "status": "Bot",

@@ -235,7 +235,7 @@ const STATIC = {
                 "book",
                 "positive"
             ],
-            "views": 16,
+            "views": 17,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -1312,22 +1312,6 @@ const STATIC = {
             "dislikesMobile": 1000,
             "likesDesktop": 2,
             "dislikesDesktop": 0
-        },
-        {
-            "name": "12 Rules for Life - Jordan Bernt Peterson",
-            "url": "https://www.penguinrandomhouse.co.za/sites/penguinbooks.co.za/files/Extract_12%20Rules%20for%20Life.PDF",
-            "description": "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
-            "tags": [
-                "book",
-                "learning",
-                "12rulesforlife",
-                "positive"
-            ],
-            "views": 84,
-            "likesMobile": 3,
-            "dislikesMobile": 1000,
-            "likesDesktop": 1000,
-            "dislikesDesktop": 2
         },
         {
             "name": "Product Hunt",
