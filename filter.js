@@ -107,8 +107,11 @@ async function loadIndividualFilter() {
             name.className = 'individual-link-name';
             name.textContent = link.name || 'Untitled';
 
-            const url = document.createElement('span');
+            const url = document.createElement('a');
             url.className = 'individual-link-url';
+            url.href = link.url;
+            url.target = '_blank';
+            url.rel = 'noopener noreferrer';
             url.textContent = `(${link.url})`;
 
             info.appendChild(name);
