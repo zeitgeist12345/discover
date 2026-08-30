@@ -140,7 +140,7 @@ async function loadIndividualFilter() {
                 selectAllCheckbox.indeterminate = true;
             }
 
-            count.textContent = `${total - checkedCount} of ${total} links allowed`;
+            count.textContent = `${checkedCount} of ${total} links allowed`;
         }
 
         selectAllCheckbox.addEventListener('change', () => {
