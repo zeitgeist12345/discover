@@ -102,7 +102,19 @@ async function loadIndividualFilter() {
 
             const info = document.createElement('div');
             info.className = 'individual-link-info';
-            info.textContent = `${link.name || 'Untitled'} (${link.url})`;
+
+            const name = document.createElement('span');
+            name.className = 'individual-link-name';
+            name.textContent = link.name || 'Untitled';
+
+            const url = document.createElement('span');
+            url.className = 'individual-link-url';
+            url.textContent = `(${link.url})`;
+
+            info.appendChild(name);
+            info.appendChild(document.createTextNode(' '));
+            info.appendChild(url);
+
             label.appendChild(info);
 
             row.appendChild(label);
