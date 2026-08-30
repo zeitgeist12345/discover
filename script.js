@@ -652,6 +652,10 @@ document.getElementById('settings-toggle').addEventListener('click', () => {
     if (settingsScreen.style.display === 'none') {
         settingsScreen.style.display = 'flex';
         btn.textContent = '⬅️';
+        const mode = document.querySelector('input[name="filter-mode"]:checked')?.value;
+        if (mode === 'individual') {
+            loadIndividualFilter();
+        }
     } else {
         settingsScreen.style.display = 'none';
         btn.textContent = '⚙️';
