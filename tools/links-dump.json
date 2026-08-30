@@ -23,10 +23,10 @@
       "curated",
       "sample"
     ],
-    "views": 70,
+    "views": 71,
     "likesMobile": 2,
     "dislikesMobile": 1000,
-    "likesDesktop": 1,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "reviewStatus": 1
   },
@@ -40,7 +40,7 @@
       "optional",
       "user-submitted"
     ],
-    "views": 145,
+    "views": 155,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -132,7 +132,7 @@
       "curated",
       "sample"
     ],
-    "views": 78,
+    "views": 79,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 2,
@@ -148,7 +148,7 @@
       "sample",
       "positive"
     ],
-    "views": 183,
+    "views": 184,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 5,
@@ -276,10 +276,10 @@
       "book",
       "positive"
     ],
-    "views": 15,
+    "views": 16,
     "likesMobile": 0,
     "dislikesMobile": 0,
-    "likesDesktop": 1,
+    "likesDesktop": 2,
     "dislikesDesktop": 0,
     "reviewStatus": 1
   },
@@ -435,7 +435,7 @@
       "user-submitted",
       "positive"
     ],
-    "views": 119,
+    "views": 120,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -1340,11 +1340,11 @@
       "sports",
       "positive"
     ],
-    "views": 20,
+    "views": 21,
     "likesMobile": 0,
-    "dislikesMobile": 0,
+    "dislikesMobile": 1000,
     "likesDesktop": 1,
-    "dislikesDesktop": 0,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {
@@ -1356,11 +1356,11 @@
       "fifa",
       "sports"
     ],
-    "views": 18,
+    "views": 19,
     "likesMobile": 0,
-    "dislikesMobile": 0,
+    "dislikesMobile": 1000,
     "likesDesktop": 0,
-    "dislikesDesktop": 0,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {
@@ -1373,11 +1373,11 @@
       "canadamexicousa2026",
       "positive"
     ],
-    "views": 19,
+    "views": 20,
     "likesMobile": 0,
-    "dislikesMobile": 0,
+    "dislikesMobile": 1000,
     "likesDesktop": 0,
-    "dislikesDesktop": 0,
+    "dislikesDesktop": 1000,
     "reviewStatus": 1
   },
   {
@@ -1405,7 +1405,7 @@
       "user-submitted",
       "positive"
     ],
-    "views": 96,
+    "views": 97,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -1537,11 +1537,11 @@
       "12rulesforlife",
       "positive"
     ],
-    "views": 83,
+    "views": 84,
     "likesMobile": 3,
     "dislikesMobile": 1000,
-    "likesDesktop": 2,
-    "dislikesDesktop": 1,
+    "likesDesktop": 1000,
+    "dislikesDesktop": 2,
     "reviewStatus": 1
   },
   {
@@ -1593,7 +1593,7 @@
       "beautiful",
       "optional"
     ],
-    "views": 164,
+    "views": 174,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -1659,11 +1659,11 @@
       "video",
       "positive"
     ],
-    "views": 28,
+    "views": 29,
     "likesMobile": 0,
     "dislikesMobile": 1000,
     "likesDesktop": 0,
-    "dislikesDesktop": 0,
+    "dislikesDesktop": 1,
     "reviewStatus": 1
   },
   {
@@ -1694,10 +1694,10 @@
       "daily",
       "optional"
     ],
-    "views": 91,
+    "views": 100,
     "likesMobile": 1,
     "dislikesMobile": 2,
-    "likesDesktop": 0,
+    "likesDesktop": 1,
     "dislikesDesktop": 1,
     "reviewStatus": 1
   },
@@ -1711,7 +1711,7 @@
       "daily",
       "optional"
     ],
-    "views": 128,
+    "views": 137,
     "likesMobile": 7,
     "dislikesMobile": 0,
     "likesDesktop": 5,

@@ -28,10 +28,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 70,
+            "views": 71,
             "likesMobile": 2,
             "dislikesMobile": 1000,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -44,7 +44,7 @@ const STATIC = {
                 "optional",
                 "user-submitted"
             ],
-            "views": 143,
+            "views": 155,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -116,7 +116,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 78,
+            "views": 79,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -131,7 +131,7 @@ const STATIC = {
                 "sample",
                 "positive"
             ],
-            "views": 183,
+            "views": 184,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 5,
@@ -145,7 +145,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 71,
+            "views": 74,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -235,10 +235,10 @@ const STATIC = {
                 "book",
                 "positive"
             ],
-            "views": 15,
+            "views": 16,
             "likesMobile": 0,
             "dislikesMobile": 0,
-            "likesDesktop": 1,
+            "likesDesktop": 2,
             "dislikesDesktop": 0
         },
         {
@@ -267,7 +267,7 @@ const STATIC = {
                 "islam",
                 "learning"
             ],
-            "views": 105,
+            "views": 110,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -384,7 +384,7 @@ const STATIC = {
                 "user-submitted",
                 "positive"
             ],
-            "views": 119,
+            "views": 120,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -568,7 +568,7 @@ const STATIC = {
                 "daily",
                 "news"
             ],
-            "views": 84,
+            "views": 87,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -625,7 +625,7 @@ const STATIC = {
                 "twitteralternative",
                 "socialmedia"
             ],
-            "views": 86,
+            "views": 90,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -699,7 +699,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 311,
+            "views": 314,
             "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
@@ -732,7 +732,7 @@ const STATIC = {
                 "palestine",
                 "free"
             ],
-            "views": 49,
+            "views": 52,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -748,7 +748,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 230,
+            "views": 236,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 4,
@@ -778,7 +778,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 240,
+            "views": 244,
             "likesMobile": 4,
             "dislikesMobile": 1,
             "likesDesktop": 4,
@@ -869,7 +869,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 32,
+            "views": 36,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1014,7 +1014,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 378,
+            "views": 382,
             "likesMobile": 56,
             "dislikesMobile": 4,
             "likesDesktop": 28,
@@ -1045,7 +1045,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 249,
+            "views": 254,
             "likesMobile": 8,
             "dislikesMobile": 0,
             "likesDesktop": 4,
@@ -1062,7 +1062,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 124,
+            "views": 127,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1153,7 +1153,7 @@ const STATIC = {
                 "new",
                 "tech"
             ],
-            "views": 61,
+            "views": 63,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1176,53 +1176,6 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "name": "FIFA world cup 2026",
-            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026",
-            "description": "Live match updates and post match highlights for FIFA world cup 2026.",
-            "tags": [
-                "fifa",
-                "worldcup",
-                "sports",
-                "positive"
-            ],
-            "views": 20,
-            "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 1,
-            "dislikesDesktop": 0
-        },
-        {
-            "name": "FIFA world cup 2026 matches",
-            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-            "description": "List of all FIFA world cup 2026 completed and ongoing matches.",
-            "tags": [
-                "positive",
-                "fifa",
-                "sports"
-            ],
-            "views": 18,
-            "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 0,
-            "dislikesDesktop": 0
-        },
-        {
-            "name": "FIFA World Cup 2026 standings",
-            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/standings",
-            "description": "The results from all FIFA World Cup 2026 matches.",
-            "tags": [
-                "fifa",
-                "worldcup",
-                "canadamexicousa2026",
-                "positive"
-            ],
-            "views": 19,
-            "likesMobile": 0,
-            "dislikesMobile": 0,
-            "likesDesktop": 0,
-            "dislikesDesktop": 0
-        },
-        {
             "name": "FIFA 12 songs",
             "url": "https://www.fifplay.com/fifa-12/soundtrack/",
             "description": "The great FIFA 12 soundtrack for those who love nostalgia.",
@@ -1232,8 +1185,8 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 0,
-            "likesMobile": 0,
+            "views": 12,
+            "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
@@ -1246,7 +1199,7 @@ const STATIC = {
                 "user-submitted",
                 "positive"
             ],
-            "views": 96,
+            "views": 97,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -1370,11 +1323,11 @@ const STATIC = {
                 "12rulesforlife",
                 "positive"
             ],
-            "views": 83,
+            "views": 84,
             "likesMobile": 3,
             "dislikesMobile": 1000,
-            "likesDesktop": 2,
-            "dislikesDesktop": 1
+            "likesDesktop": 1000,
+            "dislikesDesktop": 2
         },
         {
             "name": "Product Hunt",
@@ -1423,7 +1376,7 @@ const STATIC = {
                 "beautiful",
                 "optional"
             ],
-            "views": 161,
+            "views": 174,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -1439,7 +1392,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 183,
+            "views": 186,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1455,7 +1408,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 189,
+            "views": 191,
             "likesMobile": 3,
             "dislikesMobile": 1,
             "likesDesktop": 0,
@@ -1471,7 +1424,7 @@ const STATIC = {
                 "learning",
                 "news"
             ],
-            "views": 75,
+            "views": 77,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1485,11 +1438,11 @@ const STATIC = {
                 "video",
                 "positive"
             ],
-            "views": 28,
+            "views": 29,
             "likesMobile": 0,
             "dislikesMobile": 1000,
             "likesDesktop": 0,
-            "dislikesDesktop": 0
+            "dislikesDesktop": 1
         },
         {
             "name": "YouTube shorts",
@@ -1501,7 +1454,7 @@ const STATIC = {
                 "tiktok",
                 "videos"
             ],
-            "views": 98,
+            "views": 102,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -1518,10 +1471,10 @@ const STATIC = {
                 "daily",
                 "optional"
             ],
-            "views": 91,
+            "views": 100,
             "likesMobile": 1,
             "dislikesMobile": 2,
-            "likesDesktop": 0,
+            "likesDesktop": 1,
             "dislikesDesktop": 1
         },
         {
@@ -1534,7 +1487,7 @@ const STATIC = {
                 "daily",
                 "optional"
             ],
-            "views": 127,
+            "views": 137,
             "likesMobile": 7,
             "dislikesMobile": 0,
             "likesDesktop": 5,

@@ -10,7 +10,7 @@ object StaticLinks {
             url = "https://4chan.org/",
             description = "Free speech social media platform.",
             tags = listOf("positive", "daily", "optional", "user-submitted"),
-            views = 143,
+            views = 155,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -20,7 +20,7 @@ object StaticLinks {
             url = "https://bazel.build/basics",
             description = "The best guide on how software build systems work and their evolution. Bazel is the best build system by Google offering 0.5 second incremental build times using functional programming concepts.",
             tags = listOf("curated", "sample", "positive"),
-            views = 183,
+            views = 184,
             likesMobile = 2,
             dislikesMobile = 0
         ),
@@ -30,7 +30,7 @@ object StaticLinks {
             url = "https://bsky.app/",
             description = "Social media",
             tags = listOf("positive", "daily"),
-            views = 71,
+            views = 74,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -50,7 +50,7 @@ object StaticLinks {
             url = "https://dn710101.ca.archive.org/0/items/DIOXIN-KILLS/12_rules_of_life_-_Jordan_Peterson.pdf",
             description = "The bridge between European ideas and Islam. Beyond Order: 12 More Rules for Life is also a required read after this book. Jordan Bernt Peterson almost reached Islam with pure logic which is remarkable. The difference can be seen in his Rule 8 of \"tell the truth, or atleast don't lie\" and the holy Quran's 'do not mix truth with falsehood, nor knowingly conceal the truth' - Surah Al-Baqarah (2:42). The Quran is much more strict and rewarding.",
             tags = listOf("book", "positive"),
-            views = 15,
+            views = 16,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -60,7 +60,7 @@ object StaticLinks {
             url = "https://easywaytoquran.com/4-qul-in-islam-2/",
             description = "Prophet Muhammad (SAW) recommended these surahs for their spiritual benefits, including protection against black magic, the evil eye, whispers of Shaitaan (Satan), and shirk (associating partners with Allah). Muslims often recite them before sleeping and during daily prayers to seek blessings and divine protection.",
             tags = listOf("positive", "daily", "quran", "islam", "learning"),
-            views = 105,
+            views = 110,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -80,7 +80,7 @@ object StaticLinks {
             url = "https://hindi-kavita.com/HindiAndherNagriBharatenduHarishchandra.php",
             description = "Short play on the British rule in India",
             tags = listOf("user-submitted", "positive"),
-            views = 119,
+            views = 120,
             likesMobile = 2,
             dislikesMobile = 0
         ),
@@ -130,7 +130,7 @@ object StaticLinks {
             url = "https://maktoobmedia.com/",
             description = "News website",
             tags = listOf("positive", "daily", "news"),
-            views = 84,
+            views = 87,
             likesMobile = 4,
             dislikesMobile = 0
         ),
@@ -160,7 +160,7 @@ object StaticLinks {
             url = "https://mastodon.social/explore",
             description = "Decentralized social media",
             tags = listOf("positive", "daily", "twitteralternative", "socialmedia"),
-            views = 86,
+            views = 90,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -200,7 +200,7 @@ object StaticLinks {
             url = "https://news.ycombinator.com/",
             description = "Social news link focusing on computer science and entrepreneurship",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 311,
+            views = 314,
             likesMobile = 41,
             dislikesMobile = 3
         ),
@@ -220,7 +220,7 @@ object StaticLinks {
             url = "https://palestine.com/",
             description = "The website https://palestine.com/.",
             tags = listOf("positive", "daily", "palestine", "free"),
-            views = 49,
+            views = 52,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -230,7 +230,7 @@ object StaticLinks {
             url = "https://patatap.com/",
             description = "Turn your keyboard into a sound machine with colorful animations",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 230,
+            views = 236,
             likesMobile = 4,
             dislikesMobile = 0
         ),
@@ -240,7 +240,7 @@ object StaticLinks {
             url = "https://pointerpointer.com/",
             description = "Photos of people pointing at your cursor wherever you move it",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 240,
+            views = 244,
             likesMobile = 4,
             dislikesMobile = 1
         ),
@@ -280,7 +280,7 @@ object StaticLinks {
             url = "https://safirnews.in/",
             description = "Indian news website.",
             tags = listOf("news", "positive", "daily"),
-            views = 32,
+            views = 36,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -290,7 +290,7 @@ object StaticLinks {
             url = "https://unsplash.com/",
             description = "Beautiful, free images gifted by the world's most generous community of photographers",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 378,
+            views = 382,
             likesMobile = 56,
             dislikesMobile = 4
         ),
@@ -300,7 +300,7 @@ object StaticLinks {
             url = "https://www.aljazeera.com/",
             description = "International news and current affairs network",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 249,
+            views = 254,
             likesMobile = 8,
             dislikesMobile = 0
         ),
@@ -310,7 +310,7 @@ object StaticLinks {
             url = "https://www.aljazeera.com/#flips-6386599316112",
             description = "Short clips from Aljazeera.",
             tags = listOf("aljazeera", "flips", "learning", "positive", "daily"),
-            views = 124,
+            views = 127,
             likesMobile = 2,
             dislikesMobile = 0
         ),
@@ -340,7 +340,7 @@ object StaticLinks {
             url = "https://www.digit.in/",
             description = "Technology magazine.",
             tags = listOf("positive", "daily", "new", "tech"),
-            views = 61,
+            views = 63,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -356,42 +356,12 @@ object StaticLinks {
         ),
 
         Link(
-            name = "FIFA world cup 2026",
-            url = "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026",
-            description = "Live match updates and post match highlights for FIFA world cup 2026.",
-            tags = listOf("fifa", "worldcup", "sports", "positive"),
-            views = 20,
-            likesMobile = 0,
-            dislikesMobile = 0
-        ),
-
-        Link(
-            name = "FIFA world cup 2026 matches",
-            url = "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-            description = "List of all FIFA world cup 2026 completed and ongoing matches.",
-            tags = listOf("positive", "fifa", "sports"),
-            views = 18,
-            likesMobile = 0,
-            dislikesMobile = 0
-        ),
-
-        Link(
-            name = "FIFA World Cup 2026 standings",
-            url = "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/standings",
-            description = "The results from all FIFA World Cup 2026 matches.",
-            tags = listOf("fifa", "worldcup", "canadamexicousa2026", "positive"),
-            views = 19,
-            likesMobile = 0,
-            dislikesMobile = 0
-        ),
-
-        Link(
             name = "FIFA 12 songs",
             url = "https://www.fifplay.com/fifa-12/soundtrack/",
             description = "The great FIFA 12 soundtrack for those who love nostalgia.",
             tags = listOf("songs", "fifa", "positive", "daily"),
-            views = 0,
-            likesMobile = 0,
+            views = 12,
+            likesMobile = 1,
             dislikesMobile = 0
         ),
 
@@ -400,7 +370,7 @@ object StaticLinks {
             url = "https://www.geeksforgeeks.org/",
             description = "Computer Science learning platform.",
             tags = listOf("user-submitted", "positive"),
-            views = 96,
+            views = 97,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -480,7 +450,7 @@ object StaticLinks {
             url = "https://www.rekhta.org/tags/famous-shayari/couplets",
             description = "Ponder and it might help clear blockers in the mind.",
             tags = listOf("positive", "daily", "shayaris", "cool", "poetic", "beautiful", "optional"),
-            views = 161,
+            views = 174,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -490,7 +460,7 @@ object StaticLinks {
             url = "https://www.teamblind.com/",
             description = "Social media.",
             tags = listOf("positive", "daily", "social", "media"),
-            views = 183,
+            views = 186,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -500,7 +470,7 @@ object StaticLinks {
             url = "https://www.teamblind.com/?sort=id",
             description = "Social media.",
             tags = listOf("positive", "daily", "social", "media"),
-            views = 189,
+            views = 191,
             likesMobile = 3,
             dislikesMobile = 1
         ),
@@ -510,7 +480,7 @@ object StaticLinks {
             url = "https://www.wsws.org/",
             description = "News site",
             tags = listOf("positive", "daily", "learning", "news"),
-            views = 75,
+            views = 77,
             likesMobile = 4,
             dislikesMobile = 0
         ),
@@ -520,7 +490,7 @@ object StaticLinks {
             url = "https://www.youtube.com/shorts/",
             description = "Short form YouTube videos in TikTok style.",
             tags = listOf("positive", "daily", "tiktok", "videos"),
-            views = 98,
+            views = 102,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -530,7 +500,7 @@ object StaticLinks {
             url = "https://www.youtube.com/watch?v=8of5w7RgcTc",
             description = "Contemplative popular music in Urdu.",
             tags = listOf("urdu", "music", "positive", "daily", "optional"),
-            views = 91,
+            views = 100,
             likesMobile = 1,
             dislikesMobile = 2
         ),
@@ -540,7 +510,7 @@ object StaticLinks {
             url = "https://www.youtube.com/watch?v=jxLsiOflofk",
             description = "Muslim Prayer - How to perform 2 Raka'at (2 Units) of prayer to help in praying Jumma farz namaz.",
             tags = listOf("user-submitted", "positive", "daily", "optional"),
-            views = 127,
+            views = 137,
             likesMobile = 7,
             dislikesMobile = 0
         )
