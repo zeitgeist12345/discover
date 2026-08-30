@@ -123,7 +123,7 @@ class DiscoverViewModel(
             putString("urls_allow", urlsAllowlist.value)
             putString("urls_block", urlsBlocklist.value)
         }
-        updateLinksInBackground()
+        updateLinksInBackground(0)
     }
 
     fun resetToDefaults() {
@@ -135,7 +135,7 @@ class DiscoverViewModel(
         applyFilters()
     }
 
-    private fun updateLinksInBackground() {
+    private fun updateLinksInBackground(logUser: Int) {
         viewModelScope.launch {
             try {
                 val tagsAllow =
@@ -147,7 +147,8 @@ class DiscoverViewModel(
                 val urlsBlock =
                     urlsBlocklist.value.split(" ").map { it.trim() }.filter { it.isNotEmpty() }
 
-                val linksList = apiService.getLinks(tagsAllow, tagsBlock, urlsAllow, urlsBlock)
+                val linksList =
+                    apiService.getLinks(tagsAllow, tagsBlock, urlsAllow, urlsBlock, logUser)
                 if (linksList.isNotEmpty()) {
                     _isApiAvailable.value = 1
                     _links.value = linksList
@@ -249,7 +250,7 @@ class DiscoverViewModel(
     fun onWebViewPageVisible() {
         _isWebViewLoading.value = false
         startWithFastestData()
-        updateLinksInBackground()
+        updateLinksInBackground(1)
     }
 
     fun likeLink() {

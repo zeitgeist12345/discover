@@ -50,9 +50,10 @@ class ApiService {
         tagsAllowlist: List<String> = emptyList(),
         tagsBlocklist: List<String> = emptyList(),
         urlsAllowlist: List<String> = emptyList(),
-        urlsBlocklist: List<String> = emptyList()
+        urlsBlocklist: List<String> = emptyList(),
+        logUser: Int
     ): List<Link> = withContext(Dispatchers.IO) {
-        val queryParams = StringBuilder("&platform=mobile")
+        val queryParams = StringBuilder("&platform=mobile&logUser=$logUser")
         if (tagsAllowlist.isNotEmpty()) queryParams.append(
             "&tagsAllowlist=${
                 URLEncoder.encode(
