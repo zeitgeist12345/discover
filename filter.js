@@ -183,10 +183,8 @@ function resetFilterToDefaults() {
     const listsRadio = document.querySelector('input[name="filter-mode"][value="lists"]');
     if (listsRadio) listsRadio.checked = true;
 
-    // Reset individual blocked URLs (not yet used)
-    const saved = JSON.parse(localStorage.getItem('discover-settings') || '{}');
-    saved.individual = { blockedUrls: [] };
-    localStorage.setItem('discover-settings', JSON.stringify(saved));
+    // Reset individual blocked URLs (in‑memory and storage)
+    individualBlockedUrls = [];
 
     saveSettings();
     loadLinksFromAPI();
