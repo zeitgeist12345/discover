@@ -45,6 +45,36 @@ async function loadIndividualFilter() {
         const blockedSet = new Set(individualBlockedUrls);
         container.innerHTML = '';
 
+        // Count line
+        const count = document.createElement('p');
+        count.className = 'individual-count';
+        count.textContent = `${allLinks.length - individualBlockedUrls.length} of ${allLinks.length} links allowed`;
+        container.appendChild(count);
+
+        // Select all row
+        const selectAllRow = document.createElement('div');
+        selectAllRow.className = 'individual-link-row select-all-row';
+
+        const selectAllLabel = document.createElement('label');
+        selectAllLabel.className = 'individual-link-label';
+
+        const selectAllCheckbox = document.createElement('input');
+        selectAllCheckbox.type = 'checkbox';
+        selectAllCheckbox.id = 'select-all-checkbox';
+        selectAllCheckbox.checked = true;
+
+        const selectAllText = document.createElement('span');
+        selectAllText.textContent = 'Select All';
+        selectAllText.style.marginLeft = '0.5rem';
+        selectAllText.style.color = '#fff';
+
+        selectAllLabel.appendChild(selectAllCheckbox);
+        selectAllLabel.appendChild(selectAllText);
+        selectAllRow.appendChild(selectAllLabel);
+        container.appendChild(selectAllRow);
+
+        const linkCheckboxes = [];
+
         allLinks.forEach(link => {
             const row = document.createElement('div');
             row.className = 'individual-link-row';
@@ -52,6 +82,8 @@ async function loadIndividualFilter() {
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.checked = !blockedSet.has(link.url);
+            linkCheckboxes.push(checkbox);
+
             checkbox.addEventListener('change', () => {
                 if (checkbox.checked) {
                     individualBlockedUrls = individualBlockedUrls.filter(u => u !== link.url);
@@ -61,7 +93,8 @@ async function loadIndividualFilter() {
                     }
                 }
                 saveSettings();
-                loadLinksFromAPI();   // reflect change in main list
+                loadLinksFromAPI();
+                updateSelectAllState();
             });
 
             const label = document.createElement('label');
@@ -70,12 +103,15 @@ async function loadIndividualFilter() {
 
             const info = document.createElement('div');
             info.className = 'individual-link-info';
+
             const name = document.createElement('span');
             name.className = 'individual-link-name';
             name.textContent = link.name || 'Untitled';
+
             const url = document.createElement('span');
             url.className = 'individual-link-url';
             url.textContent = link.url;
+
             info.appendChild(name);
             info.appendChild(url);
             label.appendChild(info);
@@ -84,10 +120,41 @@ async function loadIndividualFilter() {
             container.appendChild(row);
         });
 
-        const count = document.createElement('p');
-        count.className = 'individual-count';
-        count.textContent = `${allLinks.length - individualBlockedUrls.length} of ${allLinks.length} links allowed`;
-        container.prepend(count);
+        function updateSelectAllState() {
+            if (linkCheckboxes.length === 0) return;
+            const total = linkCheckboxes.length;
+            const checkedCount = linkCheckboxes.filter(cb => cb.checked).length;
+
+            if (checkedCount === total) {
+                selectAllCheckbox.checked = true;
+                selectAllCheckbox.indeterminate = false;
+            } else if (checkedCount === 0) {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = false;
+            } else {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = true;
+            }
+
+            count.textContent = `${total - checkedCount} of ${total} links allowed`;
+        }
+
+        selectAllCheckbox.addEventListener('change', () => {
+            const checked = selectAllCheckbox.checked;
+            linkCheckboxes.forEach(cb => { cb.checked = checked; });
+
+            if (checked) {
+                individualBlockedUrls = [];
+            } else {
+                individualBlockedUrls = allLinks.map(l => l.url);
+            }
+
+            saveSettings();
+            loadLinksFromAPI();
+            updateSelectAllState();
+        });
+
+        updateSelectAllState();
     } catch (error) {
         container.innerHTML = '<p style="color:#f87171;">Failed to load links. Please try again.</p>';
         console.error('Failed to load individual filter links:', error);

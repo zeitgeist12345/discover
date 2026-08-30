@@ -787,3 +787,8 @@ body {
     text-align: center;
     margin-bottom: 1rem;
 }
+
+.select-all-row .individual-link-label {
+    background: #263238;
+    border-color: #4ade80;
+}
