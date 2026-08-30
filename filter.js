@@ -65,7 +65,6 @@ async function loadIndividualFilter() {
 
         const selectAllText = document.createElement('span');
         selectAllText.textContent = 'Select All';
-        selectAllText.style.marginLeft = '0.5rem';
         selectAllText.style.color = '#fff';
 
         selectAllLabel.appendChild(selectAllCheckbox);
@@ -103,17 +102,7 @@ async function loadIndividualFilter() {
 
             const info = document.createElement('div');
             info.className = 'individual-link-info';
-
-            const name = document.createElement('span');
-            name.className = 'individual-link-name';
-            name.textContent = link.name || 'Untitled';
-
-            const url = document.createElement('span');
-            url.className = 'individual-link-url';
-            url.textContent = link.url;
-
-            info.appendChild(name);
-            info.appendChild(url);
+            info.textContent = `${link.name || 'Untitled'} (${link.url})`;
             label.appendChild(info);
 
             row.appendChild(label);
