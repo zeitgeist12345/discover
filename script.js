@@ -92,14 +92,6 @@ async function loadLinksFromAPI() {
         } else {
             successBox.textContent = `✅ Showing all ${linkCount} link${linkCount !== 1 ? 's' : ''}`;
         }
-
-        successBox.style.display = 'block';
-
-        // Auto-hide after 3 seconds
-        setTimeout(() => {
-            successBox.style.display = 'none';
-        }, 3000);
-        clearTimeout(timeoutId);
     }
 }
 
