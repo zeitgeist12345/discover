@@ -190,8 +190,7 @@ function resetFilterToDefaults() {
     // Reset individual blocked URLs (in‑memory and storage)
     individualBlockedUrls = [];
 
-    saveSettings();
-    loadLinksFromAPI(0);
+    onFilterModeChange();
 }
 
 function saveSettings() {
