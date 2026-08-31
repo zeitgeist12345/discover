@@ -14,6 +14,7 @@ let controlsEnabled = false;
 
 const UI_ANIMATION_DELAY = 10;
 const FOCUS_DELAY = 100;
+const LOADING_WAIT = 1000;
 const RESET_DELAY = 2000;
 const RESET_DELAY_LONG = 10000;
 const API_TIMEOUT = 10000;
@@ -55,14 +56,16 @@ function initializeApp() {
 
     // Show loading animation
     const loadingAnimation = document.getElementById('loading-animation');
+    const controlButtons = document.getElementById('control-buttons');
     if (loadingAnimation) {
         // Trigger animation after a brief delay
         setTimeout(() => {
             if (!controlsEnabled) {
+                controlButtons.style.display = 'none';
                 loadingAnimation.style.display = 'flex';
                 console.log('Loading links animation triggered');
             }
-        }, RESET_DELAY);
+        }, LOADING_WAIT);
     }
     loadLinksFromAPI(1);
 }
@@ -133,11 +136,11 @@ function enableControls() {
 
     // Show control buttons with animation
     if (controlButtons) {
+        controlButtons.style.display = 'flex';
+        controlButtons.style.visibility = 'visible';
         // Trigger animation after a brief delay
-        setTimeout(() => {
-            controlButtons.classList.add('show');
-            console.log('Control buttons animation triggered');
-        }, UI_ANIMATION_DELAY);
+        controlButtons.classList.add('show');
+        console.log('Control buttons animation triggered');
     }
 }
 
