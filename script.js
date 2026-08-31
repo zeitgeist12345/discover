@@ -10,6 +10,7 @@ let visitedLinks = new Set(); // URLs of links already visited this session (Set
 let currentLinkUrl = null; // URL of the currently displayed link (used for stats actions)
 let selectedTags = []; // Tags selected in the add-link form
 const userActions = new Map(); // Tracks user actions in session per link URL to prevent duplicate server calls
+let controlsEnabled = false;
 
 const UI_ANIMATION_DELAY = 10;
 const FOCUS_DELAY = 100;
@@ -51,6 +52,18 @@ function initializeApp() {
     console.log('Initializing app...');
     loadSettings();
     console.log('Using API mode');
+
+    // Show loading animation
+    const loadingAnimation = document.getElementById('loading-animation');
+    if (loadingAnimation) {
+        // Trigger animation after a brief delay
+        setTimeout(() => {
+            if (!controlsEnabled) {
+                loadingAnimation.style.display = 'flex';
+                console.log('Loading links animation triggered');
+            }
+        }, RESET_DELAY);
+    }
     loadLinksFromAPI(1);
 }
 
@@ -107,6 +120,7 @@ async function loadStaticLinks() {
 
 function enableControls() {
     console.log('enableControls called');
+    controlsEnabled = true;
 
     // Hide loading animation
     const loadingAnimation = document.getElementById('loading-animation');
@@ -119,25 +133,11 @@ function enableControls() {
 
     // Show control buttons with animation
     if (controlButtons) {
-        controlButtons.style.display = 'flex';
-        console.log('Control buttons container shown');
-
         // Trigger animation after a brief delay
         setTimeout(() => {
             controlButtons.classList.add('show');
             console.log('Control buttons animation triggered');
         }, UI_ANIMATION_DELAY);
-    }
-
-    // Enable only the control buttons (not modal buttons)
-    if (controlButtons) {
-        const buttons = controlButtons.querySelectorAll('.btn');
-        console.log('Found control buttons:', buttons.length);
-
-        buttons.forEach((btn, index) => {
-            btn.disabled = false;
-            console.log(`Control button ${index} enabled:`, btn.textContent);
-        });
     }
 }
 
