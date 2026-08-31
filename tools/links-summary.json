@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-08-30T09:16:03.304Z",
+    "generatedAt": "2026-08-31T13:59:23.956Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 107
   },
@@ -98,7 +98,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 725
+        "count": 831
       },
       {
         "country": "AE",
@@ -214,13 +214,13 @@
       },
       {
         "country": "US",
-        "count": 552
+        "count": 557
       }
     ],
     "byMonth": [
       {
         "month": "202608",
-        "count": 866
+        "count": 977
       },
       {
         "month": "202607",
@@ -242,7 +242,7 @@
       },
       {
         "platform": "desktop",
-        "count": 654
+        "count": 765
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -272,7 +272,7 @@
       },
       {
         "product": "discover-backend",
-        "count": 1593
+        "count": 1704
       }
     ],
     "byOrigin": [
@@ -290,7 +290,7 @@
       },
       {
         "origin": "http://localhost:44631",
-        "count": 441
+        "count": 472
       },
       {
         "origin": "https://abirusabil123.github.io",
@@ -330,7 +330,7 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 152
+        "count": 232
       },
       {
         "origin": "null",
@@ -352,7 +352,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 654
+        "count": 765
       },
       {
         "path": "/home/abirusabil/Documents/github/abirusabil123.github.io/products.html",
@@ -382,11 +382,11 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 1636
+        "count": 1747
       },
       {
         "status": "Bot",
-        "count": 1461
+        "count": 1465
       }
     ]
   },
