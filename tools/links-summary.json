@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-08-31T13:59:23.956Z",
+    "generatedAt": "2026-09-02T17:49:11.616Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 107
   },
@@ -98,7 +98,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 831
+        "count": 1284
       },
       {
         "country": "AE",
@@ -214,13 +214,17 @@
       },
       {
         "country": "US",
-        "count": 557
+        "count": 578
       }
     ],
     "byMonth": [
       {
+        "month": "202609",
+        "count": 32
+      },
+      {
         "month": "202608",
-        "count": 977
+        "count": 1419
       },
       {
         "month": "202607",
@@ -242,7 +246,7 @@
       },
       {
         "platform": "desktop",
-        "count": 765
+        "count": 1237
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -251,6 +255,10 @@
       {
         "platform": "Mozilla/5.0 (Linux; Android 11; Page) AppleWebKit/",
         "count": 22
+      },
+      {
+        "platform": "Mozilla/5.0 (Linux; Android 9; VirtualBox) AppleWe",
+        "count": 2
       },
       {
         "platform": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:151.0",
@@ -268,11 +276,11 @@
     "byProduct": [
       {
         "product": "abirusabil123.github.io",
-        "count": 43
+        "count": 45
       },
       {
         "product": "discover-backend",
-        "count": 1704
+        "count": 2176
       }
     ],
     "byOrigin": [
@@ -290,15 +298,15 @@
       },
       {
         "origin": "http://localhost:44631",
-        "count": 472
+        "count": 785
       },
       {
         "origin": "https://abirusabil123.github.io",
-        "count": 9
+        "count": 10
       },
       {
         "origin": "https://abirusabil123.github.io/",
-        "count": 6
+        "count": 7
       },
       {
         "origin": "https://abirusabil123.github.io/art.html",
@@ -330,7 +338,7 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 232
+        "count": 391
       },
       {
         "origin": "null",
@@ -340,7 +348,7 @@
     "byPath": [
       {
         "path": "/",
-        "count": 944
+        "count": 945
       },
       {
         "path": "/addlink",
@@ -352,7 +360,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 765
+        "count": 1237
       },
       {
         "path": "/home/abirusabil/Documents/github/abirusabil123.github.io/products.html",
@@ -364,7 +372,7 @@
       },
       {
         "path": "/products.html",
-        "count": 8
+        "count": 9
       },
       {
         "path": "/shayaris.html",
@@ -382,7 +390,7 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 1747
+        "count": 2221
       },
       {
         "status": "Bot",
@@ -391,7 +399,7 @@
     ]
   },
   "errors": {
-    "count": 18,
+    "count": 26,
     "unresolved": 0,
     "allUnresolvedErrors": []
   }
