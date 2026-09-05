@@ -28,7 +28,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 71,
+            "views": 72,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -44,10 +44,24 @@ const STATIC = {
                 "optional",
                 "user-submitted"
             ],
-            "views": 155,
+            "views": 159,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "9gag",
+            "url": "https://9gag.com/",
+            "description": "Memes website.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
@@ -116,7 +130,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 79,
+            "views": 80,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 2,
@@ -167,6 +181,19 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "clickclickclick",
+            "url": "https://clickclickclick.click/",
+            "description": "Commentary on your website activity.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Codeforces",
             "url": "https://codeforces.com/problemset",
             "description": "The top competitive programming platform.",
@@ -195,6 +222,45 @@ const STATIC = {
             "views": 6,
             "likesMobile": 0,
             "dislikesMobile": 1000,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "coffitivity",
+            "url": "https://coffitivity.com/",
+            "description": "Work while listening to coffee shop ambient sounds.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "copychar",
+            "url": "https://copychar.cc/",
+            "description": "Browse and copy characters.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "crontab guru",
+            "url": "https://crontab.guru/",
+            "description": "The quick and simple editor for cron schedule expressions by Cronitor.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
         },
@@ -235,7 +301,7 @@ const STATIC = {
                 "book",
                 "positive"
             ],
-            "views": 17,
+            "views": 18,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -257,6 +323,19 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
+            "name": "downforeveryoneorjustme",
+            "url": "https://downforeveryoneorjustme.com/",
+            "description": "Check if a website is down for others too.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "4 Quls in Quran",
             "url": "https://easywaytoquran.com/4-qul-in-islam-2/",
             "description": "Prophet Muhammad (SAW) recommended these surahs for their spiritual benefits, including protection against black magic, the evil eye, whispers of Shaitaan (Satan), and shirk (associating partners with Allah). Muslims often recite them before sleeping and during daily prayers to seek blessings and divine protection.",
@@ -267,10 +346,23 @@ const STATIC = {
                 "islam",
                 "learning"
             ],
-            "views": 110,
+            "views": 113,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "excalidraw",
+            "url": "https://excalidraw.com/",
+            "description": "Make design diagrams in your browser.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
@@ -326,7 +418,7 @@ const STATIC = {
                 "blog",
                 "platform"
             ],
-            "views": 10,
+            "views": 11,
             "likesMobile": 0,
             "dislikesMobile": 2000,
             "likesDesktop": 2,
@@ -422,6 +514,32 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "htmlcolorcodes",
+            "url": "https://htmlcolorcodes.com/",
+            "description": "Pick color codes.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "littlealchemy2",
+            "url": "https://https//littlealchemy2.com/",
+            "description": "Mix items to create new items.",
+            "tags": [
+                "reset"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "LLM Embeddings Explained",
             "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
             "description": "LLM Embeddings Explained: A Visual and Intuitive Guide",
@@ -475,6 +593,20 @@ const STATIC = {
             "tags": [
                 "learning",
                 "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "learn x in y minutes",
+            "url": "https://learnxinyminutes.com/",
+            "description": "Learn programming languages quickly.",
+            "tags": [
+                "positive",
+                "learning"
             ],
             "views": 0,
             "likesMobile": 0,
@@ -568,7 +700,7 @@ const STATIC = {
                 "daily",
                 "news"
             ],
-            "views": 87,
+            "views": 88,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -625,7 +757,7 @@ const STATIC = {
                 "twitteralternative",
                 "socialmedia"
             ],
-            "views": 90,
+            "views": 92,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -699,7 +831,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 314,
+            "views": 315,
             "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
@@ -732,7 +864,7 @@ const STATIC = {
                 "palestine",
                 "free"
             ],
-            "views": 52,
+            "views": 55,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -748,7 +880,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 236,
+            "views": 238,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 4,
@@ -778,7 +910,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 244,
+            "views": 245,
             "likesMobile": 4,
             "dislikesMobile": 1,
             "likesDesktop": 4,
@@ -846,6 +978,34 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "radio garden",
+            "url": "https://radio.garden/",
+            "description": "Listen to live radio from around the globe.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "refactoring guru",
+            "url": "https://refactoring.guru/",
+            "description": "Learn software design patterns.",
+            "tags": [
+                "learning",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Linux Kernel Explorer",
             "url": "https://reverser.dev/linux-kernel-explorer",
             "description": "A portal to study the Linux Kernel.",
@@ -854,7 +1014,7 @@ const STATIC = {
                 "kernel",
                 "positive"
             ],
-            "views": 8,
+            "views": 9,
             "likesMobile": 0,
             "dislikesMobile": 1001,
             "likesDesktop": 1,
@@ -869,7 +1029,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 36,
+            "views": 38,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -898,7 +1058,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 75,
+            "views": 77,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 1,
@@ -928,6 +1088,32 @@ const STATIC = {
             "likesMobile": 1,
             "dislikesMobile": 1000,
             "likesDesktop": 5,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "stackedit",
+            "url": "https://stackedit.io/app#",
+            "description": "Online markdown editor.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "stars",
+            "url": "https://stars.chromeexperiments.com/",
+            "description": "Browse stars on the browser.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
@@ -992,6 +1178,33 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "tohtml",
+            "url": "https://tohtml.com/",
+            "description": "Online syntax highlighting for the masses!",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "PaP — The Passive Aggressive Password Machine",
+            "url": "https://trypap.com/",
+            "description": "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X. ",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "twitter",
             "url": "https://twitter.com/",
             "description": "twitter",
@@ -1014,11 +1227,37 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 382,
+            "views": 383,
             "likesMobile": 56,
             "dislikesMobile": 4,
             "likesDesktop": 28,
             "dislikesDesktop": 1
+        },
+        {
+            "name": "Internet Archive - Wayback Machine",
+            "url": "https://web.archive.org/",
+            "description": "Explore more than 1 trillion web pages saved over time.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "What every Browser knows about you",
+            "url": "https://webkay.robinlinus.com/",
+            "description": "Insightful website on what every Browser knows about you on just visit. You can also upload an image to see what the image metadata is telling.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
         },
         {
             "name": "Window Swap",
@@ -1036,6 +1275,34 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "1point3acres English",
+            "url": "https://www.1point3acres.com/en",
+            "description": "Most Influential Chinese Community in North America.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "1point3acres interview",
+            "url": "https://www.1point3acres.com/interview",
+            "description": "Interview website of 1point3acres.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Al Jazeera",
             "url": "https://www.aljazeera.com/",
             "description": "International news and current affairs network",
@@ -1045,7 +1312,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 254,
+            "views": 258,
             "likesMobile": 8,
             "dislikesMobile": 0,
             "likesDesktop": 4,
@@ -1062,7 +1329,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 127,
+            "views": 129,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1144,6 +1411,19 @@ const STATIC = {
             "dislikesDesktop": 1
         },
         {
+            "name": "diffchecker",
+            "url": "https://www.diffchecker.com/",
+            "description": "Find the difference between two text files.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Digit",
             "url": "https://www.digit.in/",
             "description": "Technology magazine.",
@@ -1153,7 +1433,7 @@ const STATIC = {
                 "new",
                 "tech"
             ],
-            "views": 63,
+            "views": 64,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1185,7 +1465,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 12,
+            "views": 15,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1206,6 +1486,34 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "justwatch",
+            "url": "https://www.justwatch.com/",
+            "description": "What's trending in streaming OTT (over the top) entertainment.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "JSON Web Token (JWT) Debugger",
+            "url": "https://www.jwt.io/",
+            "description": "Decode, verify, and generate JSON Web Tokens, which are an open, industry standard RFC 7519 method for representing claims securely between two parties.",
+            "tags": [
+                "positive",
+                "learning"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Kaggle",
             "url": "https://www.kaggle.com/",
             "description": "Participate in AI competitions.",
@@ -1221,6 +1529,46 @@ const STATIC = {
             "dislikesMobile": 2002,
             "likesDesktop": 1,
             "dislikesDesktop": 1
+        },
+        {
+            "name": "khanacademy",
+            "url": "https://www.khanacademy.org/",
+            "description": "Free educational content website.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "Khanacademy personal-finance",
+            "url": "https://www.khanacademy.org/college-careers-more/personal-finance",
+            "description": "Course on personal-finance by Khanacademy.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "lofi cafe",
+            "url": "https://www.lofi.cafe/",
+            "description": "Listen to lofi cafe music.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
         },
         {
             "name": "MediaTek",
@@ -1348,6 +1696,20 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "reddit",
+            "url": "https://www.reddit.com/",
+            "description": "Online forum.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Rekhta famous shayaris",
             "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
             "description": "Ponder and it might help clear blockers in the mind.",
@@ -1360,7 +1722,7 @@ const STATIC = {
                 "beautiful",
                 "optional"
             ],
-            "views": 174,
+            "views": 176,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 3,
@@ -1376,7 +1738,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 186,
+            "views": 187,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1392,9 +1754,22 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 191,
+            "views": 192,
             "likesMobile": 3,
             "dislikesMobile": 1,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "worldtimebuddy",
+            "url": "https://www.worldtimebuddy.com/",
+            "description": "Compare time around the world.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
             "likesDesktop": 0,
             "dislikesDesktop": 0
         },
@@ -1408,7 +1783,7 @@ const STATIC = {
                 "learning",
                 "news"
             ],
-            "views": 77,
+            "views": 78,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1438,11 +1813,24 @@ const STATIC = {
                 "tiktok",
                 "videos"
             ],
-            "views": 102,
+            "views": 104,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
             "dislikesDesktop": 1
+        },
+        {
+            "name": "Veritasium",
+            "url": "https://www.youtube.com/user/1veritasium",
+            "description": "Physics trivia videos.",
+            "tags": [
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
         },
         {
             "name": "Pal Pal",
@@ -1455,7 +1843,7 @@ const STATIC = {
                 "daily",
                 "optional"
             ],
-            "views": 100,
+            "views": 101,
             "likesMobile": 1,
             "dislikesMobile": 2,
             "likesDesktop": 1,
@@ -1471,7 +1859,7 @@ const STATIC = {
                 "daily",
                 "optional"
             ],
-            "views": 137,
+            "views": 138,
             "likesMobile": 7,
             "dislikesMobile": 0,
             "likesDesktop": 5,

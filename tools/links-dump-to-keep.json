@@ -23,7 +23,7 @@
       "curated",
       "sample"
     ],
-    "views": 71,
+    "views": 72,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 2,
@@ -40,10 +40,25 @@
       "optional",
       "user-submitted"
     ],
-    "views": 155,
+    "views": 159,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 3,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://9gag.com/",
+    "name": "9gag",
+    "description": "Memes website.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
     "dislikesDesktop": 0,
     "reviewStatus": 1
   },
@@ -132,7 +147,7 @@
       "curated",
       "sample"
     ],
-    "views": 79,
+    "views": 80,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 2,
@@ -204,6 +219,20 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://clickclickclick.click/",
+    "name": "clickclickclick",
+    "description": "Commentary on your website activity.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://codeforces.com/problemset",
     "name": "Codeforces",
     "description": "The top competitive programming platform.",
@@ -233,6 +262,48 @@
     "views": 6,
     "likesMobile": 0,
     "dislikesMobile": 1000,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://coffitivity.com/",
+    "name": "coffitivity",
+    "description": "Work while listening to coffee shop ambient sounds.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://copychar.cc/",
+    "name": "copychar",
+    "description": "Browse and copy characters.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://crontab.guru/",
+    "name": "crontab guru",
+    "description": "The quick and simple editor for cron schedule expressions by Cronitor.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
     "likesDesktop": 0,
     "dislikesDesktop": 0,
     "reviewStatus": 1
@@ -276,7 +347,7 @@
       "book",
       "positive"
     ],
-    "views": 17,
+    "views": 18,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 2,
@@ -300,6 +371,20 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://downforeveryoneorjustme.com/",
+    "name": "downforeveryoneorjustme",
+    "description": "Check if a website is down for others too.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://easywaytoquran.com/4-qul-in-islam-2/",
     "name": "4 Quls in Quran",
     "description": "Prophet Muhammad (SAW) recommended these surahs for their spiritual benefits, including protection against black magic, the evil eye, whispers of Shaitaan (Satan), and shirk (associating partners with Allah). Muslims often recite them before sleeping and during daily prayers to seek blessings and divine protection.",
@@ -310,10 +395,24 @@
       "islam",
       "learning"
     ],
-    "views": 110,
+    "views": 113,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 1,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://excalidraw.com/",
+    "name": "excalidraw",
+    "description": "Make design diagrams in your browser.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
     "dislikesDesktop": 0,
     "reviewStatus": 1
   },
@@ -373,7 +472,7 @@
       "blog",
       "platform"
     ],
-    "views": 10,
+    "views": 11,
     "likesMobile": 0,
     "dislikesMobile": 2000,
     "likesDesktop": 2,
@@ -476,6 +575,34 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://htmlcolorcodes.com/",
+    "name": "htmlcolorcodes",
+    "description": "Pick color codes.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://https//littlealchemy2.com/",
+    "name": "littlealchemy2",
+    "description": "Mix items to create new items.",
+    "tags": [
+      "reset"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding",
     "name": "LLM Embeddings Explained",
     "description": "LLM Embeddings Explained: A Visual and Intuitive Guide",
@@ -532,6 +659,21 @@
     "tags": [
       "learning",
       "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://learnxinyminutes.com/",
+    "name": "learn x in y minutes",
+    "description": "Learn programming languages quickly.",
+    "tags": [
+      "positive",
+      "learning"
     ],
     "views": 0,
     "likesMobile": 0,
@@ -631,7 +773,7 @@
       "daily",
       "news"
     ],
-    "views": 87,
+    "views": 88,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -692,7 +834,7 @@
       "twitteralternative",
       "socialmedia"
     ],
-    "views": 90,
+    "views": 92,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -791,7 +933,7 @@
       "curated",
       "sample"
     ],
-    "views": 314,
+    "views": 315,
     "likesMobile": 41,
     "dislikesMobile": 3,
     "likesDesktop": 18,
@@ -826,7 +968,7 @@
       "palestine",
       "free"
     ],
-    "views": 52,
+    "views": 55,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -843,7 +985,7 @@
       "curated",
       "sample"
     ],
-    "views": 236,
+    "views": 238,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 4,
@@ -875,7 +1017,7 @@
       "curated",
       "sample"
     ],
-    "views": 244,
+    "views": 245,
     "likesMobile": 4,
     "dislikesMobile": 1,
     "likesDesktop": 4,
@@ -948,6 +1090,36 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://radio.garden/",
+    "name": "radio garden",
+    "description": "Listen to live radio from around the globe.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://refactoring.guru/",
+    "name": "refactoring guru",
+    "description": "Learn software design patterns.",
+    "tags": [
+      "learning",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://reverser.dev/linux-kernel-explorer",
     "name": "Linux Kernel Explorer",
     "description": "A portal to study the Linux Kernel.",
@@ -956,7 +1128,7 @@
       "kernel",
       "positive"
     ],
-    "views": 8,
+    "views": 9,
     "likesMobile": 0,
     "dislikesMobile": 1001,
     "likesDesktop": 1,
@@ -972,7 +1144,7 @@
       "positive",
       "daily"
     ],
-    "views": 36,
+    "views": 38,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -1019,7 +1191,7 @@
       "curated",
       "sample"
     ],
-    "views": 75,
+    "views": 77,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 1,
@@ -1051,6 +1223,34 @@
     "likesMobile": 1,
     "dislikesMobile": 1000,
     "likesDesktop": 5,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://stackedit.io/app#",
+    "name": "stackedit",
+    "description": "Online markdown editor.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://stars.chromeexperiments.com/",
+    "name": "stars",
+    "description": "Browse stars on the browser.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
     "dislikesDesktop": 0,
     "reviewStatus": 1
   },
@@ -1120,6 +1320,35 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://tohtml.com/",
+    "name": "tohtml",
+    "description": "Online syntax highlighting for the masses!",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://trypap.com/",
+    "name": "PaP — The Passive Aggressive Password Machine",
+    "description": "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X. ",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://twitter.com/",
     "name": "twitter",
     "description": "twitter",
@@ -1143,11 +1372,39 @@
       "curated",
       "sample"
     ],
-    "views": 382,
+    "views": 383,
     "likesMobile": 56,
     "dislikesMobile": 4,
     "likesDesktop": 28,
     "dislikesDesktop": 1,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://web.archive.org/",
+    "name": "Internet Archive - Wayback Machine",
+    "description": "Explore more than 1 trillion web pages saved over time.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://webkay.robinlinus.com/",
+    "name": "What every Browser knows about you",
+    "description": "Insightful website on what every Browser knows about you on just visit. You can also upload an image to see what the image metadata is telling.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
     "reviewStatus": 1
   },
   {
@@ -1167,6 +1424,36 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://www.1point3acres.com/en",
+    "name": "1point3acres English",
+    "description": "Most Influential Chinese Community in North America.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://www.1point3acres.com/interview",
+    "name": "1point3acres interview",
+    "description": "Interview website of 1point3acres.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://www.aljazeera.com/",
     "name": "Al Jazeera",
     "description": "International news and current affairs network",
@@ -1176,7 +1463,7 @@
       "curated",
       "sample"
     ],
-    "views": 254,
+    "views": 258,
     "likesMobile": 8,
     "dislikesMobile": 0,
     "likesDesktop": 4,
@@ -1194,7 +1481,7 @@
       "positive",
       "daily"
     ],
-    "views": 127,
+    "views": 129,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -1282,6 +1569,20 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://www.diffchecker.com/",
+    "name": "diffchecker",
+    "description": "Find the difference between two text files.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://www.digit.in/",
     "name": "Digit",
     "description": "Technology magazine.",
@@ -1291,7 +1592,7 @@
       "new",
       "tech"
     ],
-    "views": 63,
+    "views": 64,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -1390,7 +1691,7 @@
       "positive",
       "daily"
     ],
-    "views": 12,
+    "views": 15,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -1413,6 +1714,36 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://www.justwatch.com/",
+    "name": "justwatch",
+    "description": "What's trending in streaming OTT (over the top) entertainment.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://www.jwt.io/",
+    "name": "JSON Web Token (JWT) Debugger",
+    "description": "Decode, verify, and generate JSON Web Tokens, which are an open, industry standard RFC 7519 method for representing claims securely between two parties.",
+    "tags": [
+      "positive",
+      "learning"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://www.kaggle.com/",
     "name": "Kaggle",
     "description": "Participate in AI competitions.",
@@ -1428,6 +1759,49 @@
     "dislikesMobile": 2002,
     "likesDesktop": 1,
     "dislikesDesktop": 1,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://www.khanacademy.org/",
+    "name": "khanacademy",
+    "description": "Free educational content website.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://www.khanacademy.org/college-careers-more/personal-finance",
+    "name": "Khanacademy personal-finance",
+    "description": "Course on personal-finance by Khanacademy.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://www.lofi.cafe/",
+    "name": "lofi cafe",
+    "description": "Listen to lofi cafe music.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
     "reviewStatus": 1
   },
   {
@@ -1581,6 +1955,21 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://www.reddit.com/",
+    "name": "reddit",
+    "description": "Online forum.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://www.rekhta.org/tags/famous-shayari/couplets",
     "name": "Rekhta famous shayaris",
     "description": "Ponder and it might help clear blockers in the mind.",
@@ -1593,7 +1982,7 @@
       "beautiful",
       "optional"
     ],
-    "views": 174,
+    "views": 176,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 3,
@@ -1610,7 +1999,7 @@
       "social",
       "media"
     ],
-    "views": 186,
+    "views": 187,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -1627,9 +2016,23 @@
       "social",
       "media"
     ],
-    "views": 191,
+    "views": 192,
     "likesMobile": 3,
     "dislikesMobile": 1,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://www.worldtimebuddy.com/",
+    "name": "worldtimebuddy",
+    "description": "Compare time around the world.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
     "likesDesktop": 0,
     "dislikesDesktop": 0,
     "reviewStatus": 1
@@ -1644,7 +2047,7 @@
       "learning",
       "news"
     ],
-    "views": 77,
+    "views": 78,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -1676,11 +2079,25 @@
       "tiktok",
       "videos"
     ],
-    "views": 102,
+    "views": 104,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
     "dislikesDesktop": 1,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://www.youtube.com/user/1veritasium",
+    "name": "Veritasium",
+    "description": "Physics trivia videos.",
+    "tags": [
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
     "reviewStatus": 1
   },
   {
@@ -1694,7 +2111,7 @@
       "daily",
       "optional"
     ],
-    "views": 100,
+    "views": 101,
     "likesMobile": 1,
     "dislikesMobile": 2,
     "likesDesktop": 1,
@@ -1711,7 +2128,7 @@
       "daily",
       "optional"
     ],
-    "views": 137,
+    "views": 138,
     "likesMobile": 7,
     "dislikesMobile": 0,
     "likesDesktop": 5,

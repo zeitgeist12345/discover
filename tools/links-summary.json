@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generatedAt": "2026-09-02T17:49:11.616Z",
+    "generatedAt": "2026-09-05T09:52:51.602Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
-    "totalLinks": 107
+    "totalLinks": 136
   },
   "analysis": {
-    "total": 107,
+    "total": 136,
     "filteredMobile": 56,
     "filteredDesktop": 9,
     "blockedMobileUrls": [
@@ -79,7 +79,7 @@
     ],
     "byReason": {},
     "byScore": {
-      "0%": 42,
+      "0%": 71,
       "1-25%": 6,
       "26-50%": 1,
       "51-75%": 1,
@@ -87,7 +87,7 @@
       "80-100%": 57
     },
     "byVoteCount": {
-      "0 votes": 16,
+      "0 votes": 45,
       "1-3 votes": 20,
       "4-10 votes": 12,
       "11-50 votes": 2,
@@ -98,7 +98,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 1284
+        "count": 1295
       },
       {
         "country": "AE",
@@ -158,7 +158,7 @@
       },
       {
         "country": "IN",
-        "count": 33
+        "count": 38
       },
       {
         "country": "JP",
@@ -214,13 +214,13 @@
       },
       {
         "country": "US",
-        "count": 578
+        "count": 590
       }
     ],
     "byMonth": [
       {
         "month": "202609",
-        "count": 32
+        "count": 60
       },
       {
         "month": "202608",
@@ -246,7 +246,7 @@
       },
       {
         "platform": "desktop",
-        "count": 1237
+        "count": 1260
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -266,7 +266,7 @@
       },
       {
         "platform": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb",
-        "count": 8
+        "count": 13
       },
       {
         "platform": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
@@ -276,11 +276,11 @@
     "byProduct": [
       {
         "product": "abirusabil123.github.io",
-        "count": 45
+        "count": 50
       },
       {
         "product": "discover-backend",
-        "count": 2176
+        "count": 2199
       }
     ],
     "byOrigin": [
@@ -306,7 +306,7 @@
       },
       {
         "origin": "https://abirusabil123.github.io/",
-        "count": 7
+        "count": 8
       },
       {
         "origin": "https://abirusabil123.github.io/art.html",
@@ -330,7 +330,7 @@
       },
       {
         "origin": "https://abirusabil123.github.io/work-life.html",
-        "count": 4
+        "count": 6
       },
       {
         "origin": "https://bing.com/",
@@ -338,7 +338,11 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 391
+        "count": 414
+      },
+      {
+        "origin": "https://www.linkedin.com/",
+        "count": 2
       },
       {
         "origin": "null",
@@ -348,7 +352,7 @@
     "byPath": [
       {
         "path": "/",
-        "count": 945
+        "count": 947
       },
       {
         "path": "/addlink",
@@ -360,7 +364,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 1237
+        "count": 1260
       },
       {
         "path": "/home/abirusabil/Documents/github/abirusabil123.github.io/products.html",
@@ -376,25 +380,25 @@
       },
       {
         "path": "/shayaris.html",
-        "count": 6
+        "count": 7
       },
       {
         "path": "/sketches.html",
-        "count": 4
+        "count": 5
       },
       {
         "path": "/work-life.html",
-        "count": 5
+        "count": 6
       }
     ],
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 2221
+        "count": 2249
       },
       {
         "status": "Bot",
-        "count": 1465
+        "count": 1468
       }
     ]
   },
