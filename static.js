@@ -55,7 +55,6 @@ const STATIC = {
             "url": "https://9gag.com/",
             "description": "Memes website.",
             "tags": [
-                "daily",
                 "positive"
             ],
             "views": 0,
@@ -984,7 +983,6 @@ const STATIC = {
             "url": "https://radio.garden/",
             "description": "Listen to live radio from around the globe.",
             "tags": [
-                "daily",
                 "positive"
             ],
             "views": 0,
@@ -1280,7 +1278,6 @@ const STATIC = {
             "url": "https://www.1point3acres.com/en",
             "description": "Most Influential Chinese Community in North America.",
             "tags": [
-                "daily",
                 "positive"
             ],
             "views": 0,
@@ -1294,7 +1291,6 @@ const STATIC = {
             "url": "https://www.1point3acres.com/interview",
             "description": "Interview website of 1point3acres.",
             "tags": [
-                "daily",
                 "positive"
             ],
             "views": 0,

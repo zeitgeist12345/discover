@@ -19,7 +19,7 @@ object StaticLinks {
             name = "9gag",
             url = "https://9gag.com/",
             description = "Memes website.",
-            tags = listOf("daily", "positive"),
+            tags = listOf("positive"),
             views = 0,
             likesMobile = 0,
             dislikesMobile = 0
@@ -379,7 +379,7 @@ object StaticLinks {
             name = "radio garden",
             url = "https://radio.garden/",
             description = "Listen to live radio from around the globe.",
-            tags = listOf("daily", "positive"),
+            tags = listOf("positive"),
             views = 0,
             likesMobile = 0,
             dislikesMobile = 0
@@ -479,7 +479,7 @@ object StaticLinks {
             name = "1point3acres English",
             url = "https://www.1point3acres.com/en",
             description = "Most Influential Chinese Community in North America.",
-            tags = listOf("daily", "positive"),
+            tags = listOf("positive"),
             views = 0,
             likesMobile = 0,
             dislikesMobile = 0
@@ -489,7 +489,7 @@ object StaticLinks {
             name = "1point3acres interview",
             url = "https://www.1point3acres.com/interview",
             description = "Interview website of 1point3acres.",
-            tags = listOf("daily", "positive"),
+            tags = listOf("positive"),
             views = 0,
             likesMobile = 0,
             dislikesMobile = 0
