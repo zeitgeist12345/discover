@@ -238,7 +238,8 @@
     "description": "The top competitive programming platform.",
     "tags": [
       "positive",
-      "dailyplus",
+      "daily",
+      "optional",
       "code",
       "learning",
       "fun",
@@ -1047,7 +1048,8 @@
     "description": "Math and Computer Science puzzles.",
     "tags": [
       "positive",
-      "dailyplus",
+      "daily",
+      "optional",
       "learning"
     ],
     "views": 31,
@@ -1335,10 +1337,9 @@
   },
   {
     "url": "https://trypap.com/",
-    "name": "PaP â€” The Passive Aggressive Password Machine",
-    "description": "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X. ",
+    "name": "PaP - The Passive Aggressive Password Machine",
+    "description": "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X.",
     "tags": [
-      "daily",
       "positive"
     ],
     "views": 0,
@@ -1689,7 +1690,8 @@
       "songs",
       "fifa",
       "positive",
-      "daily"
+      "daily",
+      "optional"
     ],
     "views": 15,
     "likesMobile": 1,
@@ -1766,7 +1768,6 @@
     "name": "khanacademy",
     "description": "Free educational content website.",
     "tags": [
-      "daily",
       "positive"
     ],
     "views": 0,
@@ -1924,7 +1925,8 @@
     "description": "Platform for sharing and discovering new products",
     "tags": [
       "positive",
-      "dailyplus",
+      "daily",
+      "optional",
       "curated",
       "sample"
     ],

@@ -59,7 +59,7 @@ object StaticLinks {
             name = "Codeforces",
             url = "https://codeforces.com/problemset",
             description = "The top competitive programming platform.",
-            tags = listOf("positive", "dailyplus", "code", "learning", "fun", "poetic"),
+            tags = listOf("positive", "daily", "optional", "code", "learning", "fun", "poetic"),
             views = 148,
             likesMobile = 0,
             dislikesMobile = 0
@@ -359,7 +359,7 @@ object StaticLinks {
             name = "Project Euler Archives",
             url = "https://projecteuler.net/archives",
             description = "Math and Computer Science puzzles.",
-            tags = listOf("positive", "dailyplus", "learning"),
+            tags = listOf("positive", "daily", "optional", "learning"),
             views = 31,
             likesMobile = 1,
             dislikesMobile = 0
@@ -436,10 +436,10 @@ object StaticLinks {
         ),
 
         Link(
-            name = "PaP — The Passive Aggressive Password Machine",
+            name = "PaP - The Passive Aggressive Password Machine",
             url = "https://trypap.com/",
-            description = "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X. ",
-            tags = listOf("daily", "positive"),
+            description = "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X.",
+            tags = listOf("positive"),
             views = 0,
             likesMobile = 0,
             dislikesMobile = 0
@@ -569,7 +569,7 @@ object StaticLinks {
             name = "FIFA 12 songs",
             url = "https://www.fifplay.com/fifa-12/soundtrack/",
             description = "The great FIFA 12 soundtrack for those who love nostalgia.",
-            tags = listOf("songs", "fifa", "positive", "daily"),
+            tags = listOf("songs", "fifa", "positive", "daily", "optional"),
             views = 15,
             likesMobile = 1,
             dislikesMobile = 0
@@ -609,7 +609,7 @@ object StaticLinks {
             name = "khanacademy",
             url = "https://www.khanacademy.org/",
             description = "Free educational content website.",
-            tags = listOf("daily", "positive"),
+            tags = listOf("positive"),
             views = 0,
             likesMobile = 0,
             dislikesMobile = 0
@@ -689,7 +689,7 @@ object StaticLinks {
             name = "Product Hunt",
             url = "https://www.producthunt.com/",
             description = "Platform for sharing and discovering new products",
-            tags = listOf("positive", "dailyplus", "curated", "sample"),
+            tags = listOf("positive", "daily", "optional", "curated", "sample"),
             views = 250,
             likesMobile = 31,
             dislikesMobile = 3

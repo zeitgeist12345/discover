@@ -199,7 +199,8 @@ const STATIC = {
             "description": "The top competitive programming platform.",
             "tags": [
                 "positive",
-                "dailyplus",
+                "daily",
+                "optional",
                 "code",
                 "learning",
                 "fun",
@@ -938,7 +939,8 @@ const STATIC = {
             "description": "Math and Computer Science puzzles.",
             "tags": [
                 "positive",
-                "dailyplus",
+                "daily",
+                "optional",
                 "learning"
             ],
             "views": 31,
@@ -1191,11 +1193,10 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
-            "name": "PaP — The Passive Aggressive Password Machine",
+            "name": "PaP - The Passive Aggressive Password Machine",
             "url": "https://trypap.com/",
-            "description": "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X. ",
+            "description": "Its simple really, you enter a password...any password and the PaP Machine will be honest* about your passwords strength.* Honest like a lawyer, or your cold hearted X.",
             "tags": [
-                "daily",
                 "positive"
             ],
             "views": 0,
@@ -1463,7 +1464,8 @@ const STATIC = {
                 "songs",
                 "fifa",
                 "positive",
-                "daily"
+                "daily",
+                "optional"
             ],
             "views": 15,
             "likesMobile": 1,
@@ -1535,7 +1537,6 @@ const STATIC = {
             "url": "https://www.khanacademy.org/",
             "description": "Free educational content website.",
             "tags": [
-                "daily",
                 "positive"
             ],
             "views": 0,
@@ -1667,7 +1668,8 @@ const STATIC = {
             "description": "Platform for sharing and discovering new products",
             "tags": [
                 "positive",
-                "dailyplus",
+                "daily",
+                "optional",
                 "curated",
                 "sample"
             ],
