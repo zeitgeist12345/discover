@@ -706,6 +706,18 @@ body {
     white-space: nowrap;
 }
 
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background-color: green;
+    width: 0%;
+    z-index: 9999;
+    /* above the fixed nav */
+    transition: width 0.1s ease-out;
+}
+
 @media (max-width: 48rem) {
     .loading-animation {
         padding: 2rem 1rem;

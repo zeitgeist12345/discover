@@ -655,13 +655,38 @@ document.getElementById('settings-toggle').addEventListener('click', () => {
         settingsScreen.style.display = 'none';
         btn.textContent = '⚙️';
     }
+    updateProgressBar();
 });
+
+// Scroll progress bar start
+const progressBar = document.getElementById('scrollProgressBar');
+const settingsScreen = document.getElementById('settings-screen');
+
+function updateProgressBar() {
+    if (settingsScreen && settingsScreen.style.display !== 'none') {
+        const scrollTop = settingsScreen.scrollTop;
+        const scrollHeight = settingsScreen.scrollHeight;
+        const clientHeight = settingsScreen.clientHeight;
+        const maxScroll = scrollHeight - clientHeight;
+        progressBar.style.width = maxScroll <= 0 ? '100%' : (scrollTop / maxScroll * 100) + '%';
+    } else {
+        const scrollTop = window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = window.innerHeight;
+        const maxScroll = scrollHeight - clientHeight;
+        progressBar.style.width = maxScroll <= 0 ? '100%' : (scrollTop / maxScroll * 100) + '%';
+    }
+}
+window.addEventListener('scroll', updateProgressBar);
+window.addEventListener('resize', updateProgressBar);
+if (settingsScreen) settingsScreen.addEventListener('scroll', updateProgressBar);
+updateProgressBar();
+// Scroll progress bar end
 
 // Add at end of script.js
 window.addEventListener('error', (event) => {
     logFrontendError(`${event.message} at ${event.filename}:${event.lineno}`);
 });
-
 window.addEventListener('unhandledrejection', (event) => {
     logFrontendError(`Unhandled promise rejection: ${event.reason}`);
 });

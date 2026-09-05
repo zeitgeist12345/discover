@@ -174,6 +174,8 @@ function onFilterModeChange() {
         loadIndividualFilter();
     }
     loadLinksFromAPI(0);
+
+    updateProgressBar();
 }
 
 function resetFilterToDefaults() {
@@ -212,6 +214,7 @@ function saveSettings() {
         console.warn('Could not save settings', e);
     }
 }
+
 function loadSettings() {
     try {
         const saved = localStorage.getItem('discover-settings');
