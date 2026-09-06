@@ -1,0 +1,93 @@
+<!-- Copyright (c) 2025 Mohammad Sheraj -->
+<!-- Discover is licensed under India PSL v1. You can use this software according to the terms and conditions of the India PSL v1. You may obtain a copy of India PSL v1 at: https://github.com/abirusabil123/discover/blob/main/IndiaPSL1 THIS SOFTWARE IS PROVIDED ON AN “AS IS” BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE. See the India PSL v1 for more details. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.85em' font-size='85' text-anchor='middle' x='50'>🌏</text></svg>"> -->
+</head>
+
+<body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    <!-- API Status Indicator -->
+    <div id="api-status-indicator" class="api-status"></div>
+
+    <!-- Settings Icon -->
+    <a href="index.html" class="settings-btn" style="text-decoration:none;">⬅️</a>
+
+    <!-- Settings Screen -->
+    <div class="settings-page">
+        <h1 style="text-align: center;padding: 3rem;">⚙️ Settings</h1>
+        <div class="settings-section">
+            <button id="reset-defaults-btn" class="btn" onclick="resetFilterToDefaults()"
+                style="display:block;margin:1rem auto;background:green;color:white;">Reset to
+                Default</button>
+
+            <div id="filter-success" class="success-message" style="text-align: center;">🔄 Applying filter.</div>
+
+            <div class="filter-mode-selector" style="text-align:center; margin:1rem 0;">
+                <label class="filter-mode-option">
+                    <input type="radio" name="filter-mode" value="lists" onchange="onFilterModeChange()" checked>
+                    <span>📋 Lists</span>
+                </label>
+                <label class="filter-mode-option">
+                    <input type="radio" name="filter-mode" value="individual" onchange="onFilterModeChange()">
+                    <span>🔗 Individual</span>
+                </label>
+            </div>
+
+            <div id="lists-filter-section">
+                <div class="filter-row">
+                    <div class="filter-column">
+                        <label for="filter-tags" style="display: block; text-align: center;">Filter by Tags<br>(comma
+                            separated):</label>
+                        <br>
+                        <span>Allowlist: <input type="text" id="filter-tags-allowlist"
+                                placeholder="e.g. ai, tools, productivity" value="positive"
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
+                        </span>
+                        <span>Blocklist: <input type="text" id="filter-tags-blocklist"
+                                placeholder="e.g. ai, tools, productivity"
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
+                        </span>
+                        <br>
+                        <button id="apply-tag-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply Tags
+                            Filter</button>
+                    </div>
+
+                    <div class="filter-column">
+                        <label for="filter-tags" style="display: block; text-align: center;">Filter by URLs<br>(space
+                            separated):</label>
+                        <br>
+                        <span>Allowlist: <input type="text" id="filter-urls-allowlist"
+                                placeholder="e.g. www.google.com www.example.com"
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
+                        </span>
+                        <span>Blocklist: <input type="text" id="filter-urls-blocklist"
+                                placeholder="e.g. www.google.com www.example.com"
+                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
+                        </span>
+                        <br>
+                        <button id="apply-url-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply URL
+                            Filter</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="individual-filter-section">
+                <div id="individual-link-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="filter.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

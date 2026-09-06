@@ -103,10 +103,12 @@ async function loadLinksFromAPI(logUser) {
     } finally {
 
         const successBox = document.getElementById('filter-success');
-        if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0 || urlsAllowlist.length > 0 || urlsBlocklist.length > 0) {
-            successBox.textContent = `✅ Filter applied: ${linkCount} link${linkCount !== 1 ? 's' : ''} found`;
-        } else {
-            successBox.textContent = `✅ Showing all ${linkCount} link${linkCount !== 1 ? 's' : ''}`;
+        if (successBox) {
+            if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0 || urlsAllowlist.length > 0 || urlsBlocklist.length > 0) {
+                successBox.textContent = `✅ Filter applied: ${linkCount} link${linkCount !== 1 ? 's' : ''} found`;
+            } else {
+                successBox.textContent = `✅ Showing all ${linkCount} link${linkCount !== 1 ? 's' : ''}`;
+            }
         }
     }
 }
@@ -626,61 +628,25 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
-// Add some fun Easter eggs
-let clickCount = 0;
-document.querySelector('.header h1').addEventListener('click', function () {
-    clickCount++;
-    if (clickCount === 5) {
-        this.textContent = '🎉 You found the secret! 🎉';
-        setTimeout(() => {
-            this.textContent = '🌏 Discover';
-            clickCount = 0;
-        }, RESET_DELAY);
-    }
-});
-
-// Settings screen toggle
-document.getElementById('settings-toggle').addEventListener('click', () => {
-    const settingsScreen = document.getElementById('settings-screen');
-    const btn = document.getElementById('settings-toggle');
-
-    if (settingsScreen.style.display === 'none') {
-        settingsScreen.style.display = 'flex';
-        btn.textContent = '⬅️';
-        const mode = document.querySelector('input[name="filter-mode"]:checked')?.value;
-        if (mode === 'individual') {
-            loadIndividualFilter();
-        }
-    } else {
-        settingsScreen.style.display = 'none';
-        btn.textContent = '⚙️';
-    }
-    updateProgressBar();
-});
-
 // Scroll progress bar start
 const progressBar = document.getElementById('scrollProgressBar');
-const settingsScreen = document.getElementById('settings-screen');
-
 function updateProgressBar() {
-    if (settingsScreen && settingsScreen.style.display !== 'none') {
-        const scrollTop = settingsScreen.scrollTop;
-        const scrollHeight = settingsScreen.scrollHeight;
-        const clientHeight = settingsScreen.clientHeight;
-        const maxScroll = scrollHeight - clientHeight;
-        progressBar.style.width = maxScroll <= 0 ? '100%' : (scrollTop / maxScroll * 100) + '%';
-    } else {
-        const scrollTop = window.scrollY;
-        const scrollHeight = document.documentElement.scrollHeight;
-        const clientHeight = window.innerHeight;
-        const maxScroll = scrollHeight - clientHeight;
-        progressBar.style.width = maxScroll <= 0 ? '100%' : (scrollTop / maxScroll * 100) + '%';
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = window.innerHeight;
+    const maxScroll = scrollHeight - clientHeight;
+    // If page is not scrollable, show full green bar
+    if (maxScroll <= 0) {
+        progressBar.style.width = '100%';
+        return;
     }
+    const scrollPercent = (scrollTop / maxScroll) * 100;
+    progressBar.style.width = scrollPercent + '%';
 }
+// Run on load and on scroll
 window.addEventListener('scroll', updateProgressBar);
 window.addEventListener('resize', updateProgressBar);
-if (settingsScreen) settingsScreen.addEventListener('scroll', updateProgressBar);
-updateProgressBar();
+window.addEventListener('load', updateProgressBar);
 // Scroll progress bar end
 
 // Add at end of script.js

@@ -695,7 +695,6 @@ body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    white-space: nowrap;
 }
 
 .individual-link-info {
@@ -703,7 +702,6 @@ body {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .scroll-progress-bar {
@@ -716,6 +714,14 @@ body {
     z-index: 9999;
     /* above the fixed nav */
     transition: width 0.1s ease-out;
+}
+
+.settings-page {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #0f0f0f;
+    color: #fff;
 }
 
 @media (max-width: 48rem) {

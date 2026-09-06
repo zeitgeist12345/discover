@@ -19,87 +19,7 @@
     <div id="api-status-indicator" class="api-status"></div>
 
     <!-- Settings Icon -->
-    <button id="settings-toggle" class="settings-btn">⚙️</button>
-
-    <!-- Settings Screen -->
-    <div id="settings-screen" class="settings-screen" style="display: none;">
-        <h1 style="text-align: center;padding: 3rem;">⚙️ Settings</h1>
-        <div class="settings-section">
-            <button id="reset-defaults-btn" class="btn" onclick="resetFilterToDefaults()"
-                style="display:block;margin:1rem auto;background:green;color:white;">Reset to
-                Default</button>
-
-            <div id="filter-success" class="success-message" style="text-align: center;"></div>
-
-            <div class="filter-mode-selector" style="text-align:center; margin:1rem 0;">
-                <label class="filter-mode-option">
-                    <input type="radio" name="filter-mode" value="lists" onchange="onFilterModeChange()" checked>
-                    <span>📋 Lists</span>
-                </label>
-                <label class="filter-mode-option">
-                    <input type="radio" name="filter-mode" value="individual" onchange="onFilterModeChange()">
-                    <span>🔗 Individual</span>
-                </label>
-            </div>
-
-            <div id="lists-filter-section">
-                <div class="filter-row">
-                    <div class="filter-column">
-                        <label for="filter-tags" style="display: block; text-align: center;">Filter by Tags<br>(comma
-                            separated):</label>
-                        <br>
-                        <span>Allowlist: <input type="text" id="filter-tags-allowlist"
-                                placeholder="e.g. ai, tools, productivity" value="positive"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
-                        </span>
-                        <span>Blocklist: <input type="text" id="filter-tags-blocklist"
-                                placeholder="e.g. ai, tools, productivity"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
-                        </span>
-                        <br>
-                        <button id="apply-tag-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply Tags
-                            Filter</button>
-                    </div>
-
-                    <div class="filter-column">
-                        <label for="filter-tags" style="display: block; text-align: center;">Filter by URLs<br>(space
-                            separated):</label>
-                        <br>
-                        <span>Allowlist: <input type="text" id="filter-urls-allowlist"
-                                placeholder="e.g. www.google.com www.example.com"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
-                        </span>
-                        <span>Blocklist: <input type="text" id="filter-urls-blocklist"
-                                placeholder="e.g. www.google.com www.example.com"
-                                onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
-                        </span>
-                        <br>
-                        <button id="apply-url-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply URL
-                            Filter</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="individual-filter-section">
-                <div id="individual-link-list"></div>
-            </div>
-        </div>
-        <div>
-            <h3 style="text-align: center;margin: 1rem;">Tips:</h3>
-            <p style="text-align: center;margin: 1rem;">1. Press "Ctrl+w" to quickly close the current browser tab.</p>
-        </div>
-        <div>
-            <h3 style="text-align: center;margin: 1rem;">Feedback:</h3>
-            <p style="text-align: center;margin: 1rem;"><a href="https://github.com/abirusabil123/discover/issues"
-                    target="_blank">https://github.com/abirusabil123/discover/issues</a>
-            </p>
-            <h3 style="text-align: center;margin: 1rem;">Try out our Android app:
-            </h3>
-            <p style="text-align: center;margin: 1rem;"><a href="https://github.com/abirusabil123/discover/releases"
-                    target="_blank">https://github.com/abirusabil123/discover/releases</a>
-            </p>
-        </div>
-    </div>
+    <a href="settings.html" class="settings-btn" style="text-decoration:none;">⚙️</a>
 
     <div class="header">
         <h1>🌏 Discover</h1>
@@ -192,10 +112,10 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
     <script src="static.js"></script>
     <script src="submitLink.js"></script>
     <script src="filter.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

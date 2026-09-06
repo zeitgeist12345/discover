@@ -1,30 +1,47 @@
 let individualBlockedUrls = [];
 
-function getFilterList() {
-    const mode = document.querySelector('input[name="filter-mode"]:checked')?.value || 'lists';
+function getStoredSettings() {
+    const defaults = {
+        filterMode: 'lists',
+        lists: {
+            tagsAllowlist: 'positive',
+            tagsBlocklist: '',
+            urlsAllowlist: '',
+            urlsBlocklist: ''
+        },
+        individual: {
+            blockedUrls: []
+        }
+    };
 
-    if (mode === 'individual') {
+    try {
+        const saved = localStorage.getItem('discover-settings');
+        if (!saved) return defaults;
+        return { ...defaults, ...JSON.parse(saved) };
+    } catch (e) {
+        return defaults;
+    }
+}
+
+function getFilterList() {
+    const settings = getStoredSettings();
+
+    if (settings.filterMode === 'individual') {
         return {
             tagsAllowlist: [],
             tagsBlocklist: [],
             urlsAllowlist: [],
-            urlsBlocklist: individualBlockedUrls
+            urlsBlocklist: settings.individual.blockedUrls || []
         };
     }
 
-    // lists mode
-    const tagsInputAllowlist = document.getElementById('filter-tags-allowlist');
-    const tagsInputBlocklist = document.getElementById('filter-tags-blocklist');
-    const urlsInputAllowlist = document.getElementById('filter-urls-allowlist');
-    const urlsInputBlocklist = document.getElementById('filter-urls-blocklist');
-
-    const tagsAllowlist = tagsInputAllowlist.value.split(',').map(t => t.trim()).filter(Boolean);
-    const tagsBlocklist = tagsInputBlocklist.value.split(',').map(t => t.trim()).filter(Boolean);
-    const urlsAllowlist = urlsInputAllowlist.value.split(' ').map(t => t.trim()).filter(Boolean);
-    const urlsBlocklist = urlsInputBlocklist.value.split(' ').map(t => t.trim()).filter(Boolean);
-
-    saveSettings();   // persist current field values
-    return { tagsAllowlist, tagsBlocklist, urlsAllowlist, urlsBlocklist };
+    const lists = settings.lists;
+    return {
+        tagsAllowlist: (lists.tagsAllowlist || '').split(',').map(t => t.trim()).filter(Boolean),
+        tagsBlocklist: (lists.tagsBlocklist || '').split(',').map(t => t.trim()).filter(Boolean),
+        urlsAllowlist: (lists.urlsAllowlist || '').split(' ').map(t => t.trim()).filter(Boolean),
+        urlsBlocklist: (lists.urlsBlocklist || '').split(' ').map(t => t.trim()).filter(Boolean)
+    };
 }
 
 async function loadIndividualFilter() {
@@ -159,6 +176,7 @@ async function loadIndividualFilter() {
         });
 
         updateSelectAllState();
+        updateProgressBar()
     } catch (error) {
         container.innerHTML = '<p style="color:#f87171;">Failed to load links. Please try again.</p>';
         console.error('Failed to load individual filter links:', error);
@@ -174,7 +192,6 @@ function onFilterModeChange() {
         loadIndividualFilter();
     }
     loadLinksFromAPI(0);
-
     updateProgressBar();
 }
 
@@ -226,17 +243,19 @@ function loadSettings() {
         const modeRadio = document.querySelector(`input[name="filter-mode"][value="${mode}"]`);
         if (modeRadio) modeRadio.checked = true;
 
-        // set lists fields
-        const lists = settings.lists || {};
-        document.getElementById('filter-tags-allowlist').value = lists.tagsAllowlist || 'positive';
-        document.getElementById('filter-tags-blocklist').value = lists.tagsBlocklist || '';
-        document.getElementById('filter-urls-allowlist').value = lists.urlsAllowlist || '';
-        document.getElementById('filter-urls-blocklist').value = lists.urlsBlocklist || '';
-
         // set individual blocked urls
         individualBlockedUrls = settings.individual?.blockedUrls || [];
 
-        onFilterModeChange();   // show/hide sections and load individual if needed
+        // set lists fields
+        const lists = settings.lists || {};
+        if (document.getElementById('filter-tags-allowlist')) {
+            document.getElementById('filter-tags-allowlist').value = lists.tagsAllowlist || 'positive';
+            document.getElementById('filter-tags-blocklist').value = lists.tagsBlocklist || '';
+            document.getElementById('filter-urls-allowlist').value = lists.urlsAllowlist || '';
+            document.getElementById('filter-urls-blocklist').value = lists.urlsBlocklist || '';
+
+            onFilterModeChange();   // show/hide sections and load individual if needed
+        }
     } catch (e) {
         console.warn('Could not load settings', e);
     }
