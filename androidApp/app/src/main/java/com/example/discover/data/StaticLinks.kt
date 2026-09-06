@@ -120,7 +120,7 @@ object StaticLinks {
             url = "https://easywaytoquran.com/4-qul-in-islam-2/",
             description = "Prophet Muhammad (SAW) recommended these surahs for their spiritual benefits, including protection against black magic, the evil eye, whispers of Shaitaan (Satan), and shirk (associating partners with Allah). Muslims often recite them before sleeping and during daily prayers to seek blessings and divine protection.",
             tags = listOf("positive", "daily", "quran", "islam", "learning"),
-            views = 113,
+            views = 114,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -230,7 +230,7 @@ object StaticLinks {
             url = "https://maktoobmedia.com/",
             description = "News website",
             tags = listOf("positive", "daily", "news"),
-            views = 88,
+            views = 89,
             likesMobile = 4,
             dislikesMobile = 0
         ),
@@ -300,7 +300,7 @@ object StaticLinks {
             url = "https://news.ycombinator.com/",
             description = "Social news link focusing on computer science and entrepreneurship",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 315,
+            views = 318,
             likesMobile = 41,
             dislikesMobile = 3
         ),
@@ -320,7 +320,7 @@ object StaticLinks {
             url = "https://palestine.com/",
             description = "The website https://palestine.com/.",
             tags = listOf("positive", "daily", "palestine", "free"),
-            views = 55,
+            views = 57,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -330,7 +330,7 @@ object StaticLinks {
             url = "https://patatap.com/",
             description = "Turn your keyboard into a sound machine with colorful animations",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 238,
+            views = 241,
             likesMobile = 4,
             dislikesMobile = 0
         ),
@@ -340,7 +340,7 @@ object StaticLinks {
             url = "https://pointerpointer.com/",
             description = "Photos of people pointing at your cursor wherever you move it",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 245,
+            views = 247,
             likesMobile = 4,
             dislikesMobile = 1
         ),
@@ -400,7 +400,7 @@ object StaticLinks {
             url = "https://safirnews.in/",
             description = "Indian news website.",
             tags = listOf("news", "positive", "daily"),
-            views = 38,
+            views = 40,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -500,7 +500,7 @@ object StaticLinks {
             url = "https://www.aljazeera.com/",
             description = "International news and current affairs network",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 258,
+            views = 261,
             likesMobile = 8,
             dislikesMobile = 0
         ),
@@ -550,7 +550,17 @@ object StaticLinks {
             url = "https://www.digit.in/",
             description = "Technology magazine.",
             tags = listOf("positive", "daily", "new", "tech"),
-            views = 64,
+            views = 65,
+            likesMobile = 0,
+            dislikesMobile = 0
+        ),
+
+        Link(
+            name = "equal earth",
+            url = "https://www.equal-earth.com/",
+            description = "A map based on the Equal Earth map projection. The Equal Earth Wall Map is for schools, organizations, or anyone who needs a map showing countries and continents at their true sizes relative to each other. Africa appears 14 times larger than Greenland as it actually is.",
+            tags = listOf("positive", "learning"),
+            views = 0,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -590,7 +600,7 @@ object StaticLinks {
             url = "https://www.justwatch.com/",
             description = "What's trending in streaming OTT (over the top) entertainment.",
             tags = listOf("daily", "positive"),
-            views = 0,
+            views = 1,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -730,7 +740,7 @@ object StaticLinks {
             url = "https://www.teamblind.com/",
             description = "Social media.",
             tags = listOf("positive", "daily", "social", "media"),
-            views = 187,
+            views = 188,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -740,7 +750,7 @@ object StaticLinks {
             url = "https://www.teamblind.com/?sort=id",
             description = "Social media.",
             tags = listOf("positive", "daily", "social", "media"),
-            views = 192,
+            views = 193,
             likesMobile = 3,
             dislikesMobile = 1
         ),
@@ -760,7 +770,7 @@ object StaticLinks {
             url = "https://www.wsws.org/",
             description = "News site",
             tags = listOf("positive", "daily", "learning", "news"),
-            views = 78,
+            views = 79,
             likesMobile = 4,
             dislikesMobile = 0
         ),
@@ -770,7 +780,7 @@ object StaticLinks {
             url = "https://www.youtube.com/shorts/",
             description = "Short form YouTube videos in TikTok style.",
             tags = listOf("positive", "daily", "tiktok", "videos"),
-            views = 104,
+            views = 105,
             likesMobile = 0,
             dislikesMobile = 0
         ),

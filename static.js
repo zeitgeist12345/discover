@@ -346,7 +346,7 @@ const STATIC = {
                 "islam",
                 "learning"
             ],
-            "views": 113,
+            "views": 114,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -418,7 +418,7 @@ const STATIC = {
                 "blog",
                 "platform"
             ],
-            "views": 11,
+            "views": 12,
             "likesMobile": 0,
             "dislikesMobile": 2000,
             "likesDesktop": 2,
@@ -700,7 +700,7 @@ const STATIC = {
                 "daily",
                 "news"
             ],
-            "views": 88,
+            "views": 89,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -831,7 +831,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 315,
+            "views": 318,
             "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
@@ -864,7 +864,7 @@ const STATIC = {
                 "palestine",
                 "free"
             ],
-            "views": 55,
+            "views": 57,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -880,7 +880,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 238,
+            "views": 241,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 4,
@@ -910,7 +910,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 245,
+            "views": 247,
             "likesMobile": 4,
             "dislikesMobile": 1,
             "likesDesktop": 4,
@@ -1029,7 +1029,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 38,
+            "views": 40,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1309,10 +1309,10 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 258,
+            "views": 261,
             "likesMobile": 8,
             "dislikesMobile": 0,
-            "likesDesktop": 4,
+            "likesDesktop": 5,
             "dislikesDesktop": 0
         },
         {
@@ -1430,7 +1430,21 @@ const STATIC = {
                 "new",
                 "tech"
             ],
-            "views": 64,
+            "views": 65,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "equal earth",
+            "url": "https://www.equal-earth.com/",
+            "description": "A map based on the Equal Earth map projection. The Equal Earth Wall Map is for schools, organizations, or anyone who needs a map showing countries and continents at their true sizes relative to each other. Africa appears 14 times larger than Greenland as it actually is.",
+            "tags": [
+                "positive",
+                "learning"
+            ],
+            "views": 0,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1491,7 +1505,7 @@ const STATIC = {
                 "daily",
                 "positive"
             ],
-            "views": 0,
+            "views": 1,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1736,7 +1750,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 187,
+            "views": 188,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1752,7 +1766,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 192,
+            "views": 193,
             "likesMobile": 3,
             "dislikesMobile": 1,
             "likesDesktop": 0,
@@ -1781,7 +1795,7 @@ const STATIC = {
                 "learning",
                 "news"
             ],
-            "views": 78,
+            "views": 79,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1811,7 +1825,7 @@ const STATIC = {
                 "tiktok",
                 "videos"
             ],
-            "views": 104,
+            "views": 105,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
