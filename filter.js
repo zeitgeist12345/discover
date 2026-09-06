@@ -16,7 +16,10 @@ function getStoredSettings() {
 
     try {
         const saved = localStorage.getItem('discover-settings');
-        if (!saved) return defaults;
+        if (!saved) {
+            console.log("No persisted settings found.");
+            return defaults;
+        }
         return { ...defaults, ...JSON.parse(saved) };
     } catch (e) {
         return defaults;
@@ -24,24 +27,52 @@ function getStoredSettings() {
 }
 
 function getFilterList() {
-    const settings = getStoredSettings();
+    const tagsInputAllowlist = document.getElementById('filter-tags-allowlist');
+    const tagsInputBlocklist = document.getElementById('filter-tags-blocklist');
+    const urlsInputAllowlist = document.getElementById('filter-urls-allowlist');
+    const urlsInputBlocklist = document.getElementById('filter-urls-blocklist');
 
-    if (settings.filterMode === 'individual') {
+    if (tagsInputAllowlist) {
+        saveSettings();
+
+        const mode = document.querySelector('input[name="filter-mode"]:checked')?.value || 'lists';
+        if (mode === 'individual') {
+            return {
+                tagsAllowlist: [],
+                tagsBlocklist: [],
+                urlsAllowlist: [],
+                urlsBlocklist: individualBlockedUrls
+            };
+        }
+
+        // list mode
         return {
-            tagsAllowlist: [],
-            tagsBlocklist: [],
-            urlsAllowlist: [],
-            urlsBlocklist: settings.individual.blockedUrls || []
+            tagsAllowlist: tagsInputAllowlist.value.split(',').map(t => t.trim()).filter(Boolean),
+            tagsBlocklist: tagsInputBlocklist.value.split(',').map(t => t.trim()).filter(Boolean),
+            urlsAllowlist: urlsInputAllowlist.value.split(' ').map(t => t.trim()).filter(Boolean),
+            urlsBlocklist: urlsInputBlocklist.value.split(' ').map(t => t.trim()).filter(Boolean)
+        };
+    } else {
+        console.log("At getFilterList else.");
+        const settings = getStoredSettings();
+        if (settings.filterMode === 'individual') {
+            return {
+                tagsAllowlist: [],
+                tagsBlocklist: [],
+                urlsAllowlist: [],
+                urlsBlocklist: settings.individual.blockedUrls || []
+            };
+        }
+
+        // list mode
+        const lists = settings.lists;
+        return {
+            tagsAllowlist: lists.tagsAllowlist.split(',').map(t => t.trim()).filter(Boolean),
+            tagsBlocklist: lists.tagsBlocklist.split(',').map(t => t.trim()).filter(Boolean),
+            urlsAllowlist: lists.urlsAllowlist.split(' ').map(t => t.trim()).filter(Boolean),
+            urlsBlocklist: lists.urlsBlocklist.split(' ').map(t => t.trim()).filter(Boolean)
         };
     }
-
-    const lists = settings.lists;
-    return {
-        tagsAllowlist: (lists.tagsAllowlist || '').split(',').map(t => t.trim()).filter(Boolean),
-        tagsBlocklist: (lists.tagsBlocklist || '').split(',').map(t => t.trim()).filter(Boolean),
-        urlsAllowlist: (lists.urlsAllowlist || '').split(' ').map(t => t.trim()).filter(Boolean),
-        urlsBlocklist: (lists.urlsBlocklist || '').split(' ').map(t => t.trim()).filter(Boolean)
-    };
 }
 
 async function loadIndividualFilter() {

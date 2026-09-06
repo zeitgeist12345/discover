@@ -56,9 +56,6 @@
                                 placeholder="e.g. ai, tools, productivity"
                                 onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
                         </span>
-                        <br>
-                        <button id="apply-tag-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply Tags
-                            Filter</button>
                     </div>
 
                     <div class="filter-column">
@@ -73,10 +70,10 @@
                                 placeholder="e.g. www.google.com www.example.com"
                                 onkeydown="if (event.key === 'Enter') { event.preventDefault(); loadLinksFromAPI(0); }">
                         </span>
-                        <br>
-                        <button id="apply-url-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply URL
-                            Filter</button>
                     </div>
+                </div>
+                <div class="filter-row">
+                    <button id="apply-tag-filter-btn" class="btn" onclick="loadLinksFromAPI(0)">Apply Filter</button>
                 </div>
             </div>
 
