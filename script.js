@@ -101,7 +101,6 @@ async function loadLinksFromAPI(logUser) {
 
         document.getElementById('api-status-indicator').classList.add('offline');
     } finally {
-
         const successBox = document.getElementById('filter-success');
         if (successBox) {
             if (tagsAllowlist.length > 0 || tagsBlocklist.length > 0 || urlsAllowlist.length > 0 || urlsBlocklist.length > 0) {
@@ -110,6 +109,7 @@ async function loadLinksFromAPI(logUser) {
                 successBox.textContent = `✅ Showing all ${linkCount} link${linkCount !== 1 ? 's' : ''}`;
             }
         }
+        updateProgressBar();
     }
 }
 
@@ -640,7 +640,8 @@ function updateProgressBar() {
         progressBar.style.width = '100%';
         return;
     }
-    const scrollPercent = (scrollTop / maxScroll) * 100;
+    let scrollPercent = (Math.ceil(scrollTop) / Math.floor(maxScroll)) * 100;
+    scrollPercent = Math.min(Math.ceil(scrollPercent), 100);
     progressBar.style.width = scrollPercent + '%';
 }
 // Run on load and on scroll
