@@ -96,6 +96,7 @@ async function loadIndividualFilter() {
             row.className = 'individual-link-row';
 
             const checkbox = document.createElement('input');
+            checkbox.style['margin-top'] = '0.3rem';
             checkbox.type = 'checkbox';
             checkbox.checked = !blockedSet.has(link.url);
             linkCheckboxes.push(checkbox);
