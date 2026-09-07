@@ -77,6 +77,22 @@
     "reviewStatus": 1
   },
   {
+    "url": "https://alternativeto.net/",
+    "name": "alternative to",
+    "description": "AlternativeTo is a crowd-sourced and free site that helps you find better apps and services.",
+    "tags": [
+      "daily",
+      "positive",
+      "learning"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
     "url": "https://annas-archive.org/",
     "name": "Anna's Archive",
     "description": "Open library",
@@ -395,7 +411,7 @@
       "islam",
       "learning"
     ],
-    "views": 114,
+    "views": 115,
     "likesMobile": 1,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -834,7 +850,7 @@
       "twitteralternative",
       "socialmedia"
     ],
-    "views": 92,
+    "views": 94,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -933,10 +949,25 @@
       "curated",
       "sample"
     ],
-    "views": 318,
+    "views": 319,
     "likesMobile": 41,
     "dislikesMobile": 3,
     "likesDesktop": 18,
+    "dislikesDesktop": 0,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://nitter.net/",
+    "name": "nitter",
+    "description": "Browse twitter without logging in for a no personalized recommendation algorithm experience.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 1,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
     "dislikesDesktop": 0,
     "reviewStatus": 1
   },
@@ -968,7 +999,7 @@
       "palestine",
       "free"
     ],
-    "views": 57,
+    "views": 58,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,
@@ -1312,7 +1343,7 @@
       "curated",
       "sample"
     ],
-    "views": 79,
+    "views": 80,
     "likesMobile": 2,
     "dislikesMobile": 1000,
     "likesDesktop": 3,
@@ -1371,11 +1402,26 @@
       "curated",
       "sample"
     ],
-    "views": 383,
+    "views": 384,
     "likesMobile": 56,
     "dislikesMobile": 4,
     "likesDesktop": 28,
     "dislikesDesktop": 1,
+    "reviewStatus": 1
+  },
+  {
+    "url": "https://unsplash.com/illustrations",
+    "name": "Unsplash illustrations",
+    "description": "Free stock vector illustrations. Powered by creators everywhere.",
+    "tags": [
+      "daily",
+      "positive"
+    ],
+    "views": 0,
+    "likesMobile": 0,
+    "dislikesMobile": 0,
+    "likesDesktop": 0,
+    "dislikesDesktop": 0,
     "reviewStatus": 1
   },
   {
@@ -1460,7 +1506,7 @@
       "curated",
       "sample"
     ],
-    "views": 261,
+    "views": 262,
     "likesMobile": 8,
     "dislikesMobile": 0,
     "likesDesktop": 5,
@@ -1478,7 +1524,7 @@
       "positive",
       "daily"
     ],
-    "views": 129,
+    "views": 130,
     "likesMobile": 2,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -1734,7 +1780,7 @@
       "daily",
       "positive"
     ],
-    "views": 1,
+    "views": 2,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -2012,7 +2058,7 @@
       "social",
       "media"
     ],
-    "views": 188,
+    "views": 189,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -2060,7 +2106,7 @@
       "learning",
       "news"
     ],
-    "views": 79,
+    "views": 81,
     "likesMobile": 4,
     "dislikesMobile": 0,
     "likesDesktop": 0,
@@ -2092,7 +2138,7 @@
       "tiktok",
       "videos"
     ],
-    "views": 105,
+    "views": 106,
     "likesMobile": 0,
     "dislikesMobile": 0,
     "likesDesktop": 1,

@@ -64,6 +64,21 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "alternative to",
+            "url": "https://alternativeto.net/",
+            "description": "AlternativeTo is a crowd-sourced and free site that helps you find better apps and services.",
+            "tags": [
+                "daily",
+                "positive",
+                "learning"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "Anna's Archive",
             "url": "https://annas-archive.org/",
             "description": "Open library",
@@ -346,7 +361,7 @@ const STATIC = {
                 "islam",
                 "learning"
             ],
-            "views": 114,
+            "views": 115,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -757,7 +772,7 @@ const STATIC = {
                 "twitteralternative",
                 "socialmedia"
             ],
-            "views": 92,
+            "views": 94,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -831,10 +846,24 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 318,
+            "views": 319,
             "likesMobile": 41,
             "dislikesMobile": 3,
             "likesDesktop": 18,
+            "dislikesDesktop": 0
+        },
+        {
+            "name": "nitter",
+            "url": "https://nitter.net/",
+            "description": "Browse twitter without logging in for a no personalized recommendation algorithm experience.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 1,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
             "dislikesDesktop": 0
         },
         {
@@ -864,7 +893,7 @@ const STATIC = {
                 "palestine",
                 "free"
             ],
-            "views": 57,
+            "views": 58,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -1171,7 +1200,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 79,
+            "views": 80,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 3,
@@ -1226,11 +1255,25 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 383,
+            "views": 384,
             "likesMobile": 56,
             "dislikesMobile": 4,
             "likesDesktop": 28,
             "dislikesDesktop": 1
+        },
+        {
+            "name": "Unsplash illustrations",
+            "url": "https://unsplash.com/illustrations",
+            "description": "Free stock vector illustrations. Powered by creators everywhere.",
+            "tags": [
+                "daily",
+                "positive"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
         },
         {
             "name": "Internet Archive - Wayback Machine",
@@ -1309,7 +1352,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 261,
+            "views": 262,
             "likesMobile": 8,
             "dislikesMobile": 0,
             "likesDesktop": 5,
@@ -1326,7 +1369,7 @@ const STATIC = {
                 "positive",
                 "daily"
             ],
-            "views": 129,
+            "views": 130,
             "likesMobile": 2,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1505,7 +1548,7 @@ const STATIC = {
                 "daily",
                 "positive"
             ],
-            "views": 1,
+            "views": 2,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1750,7 +1793,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 188,
+            "views": 189,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1795,7 +1838,7 @@ const STATIC = {
                 "learning",
                 "news"
             ],
-            "views": 79,
+            "views": 81,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1825,7 +1868,7 @@ const STATIC = {
                 "tiktok",
                 "videos"
             ],
-            "views": 105,
+            "views": 106,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
