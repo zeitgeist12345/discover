@@ -633,7 +633,7 @@ body {
 .filter-mode-option span {
     display: block;
     padding: 1rem;
-    background: #2a2a2a;
+    background: grey;
     border-radius: 0.75rem;
     text-align: center;
     font-size: 1rem;
@@ -641,7 +641,7 @@ body {
 }
 
 .filter-mode-option input:checked+span {
-    background: #1e3a2f;
+    background: green;
     color: white;
     box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
 }
