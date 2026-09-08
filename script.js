@@ -650,6 +650,19 @@ window.addEventListener('resize', updateProgressBar);
 window.addEventListener('load', updateProgressBar);
 // Scroll progress bar end
 
+// Add some fun Easter eggs
+let clickCount = 0;
+document.querySelector('.header h1').addEventListener('click', function () {
+    clickCount++;
+    if (clickCount === 5) {
+        this.textContent = '🎉 You found the secret! 🎉';
+        setTimeout(() => {
+            this.textContent = '🌏 Discover';
+            clickCount = 0;
+        }, RESET_DELAY);
+    }
+});
+
 // Add at end of script.js
 window.addEventListener('error', (event) => {
     logFrontendError(`${event.message} at ${event.filename}:${event.lineno}`);

@@ -44,9 +44,9 @@ body {
 .controls {
     padding: 1rem;
     text-align: center;
-    background: #0f0f0f;
     width: 100%;
-    max-width: 50rem;
+    max-width: 39.25rem;
+    padding: 1rem;
 }
 
 .btn {
@@ -58,10 +58,6 @@ body {
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.2s ease;
-}
-
-.direction-btn {
-    width: 13rem
 }
 
 .btn:hover {
@@ -89,9 +85,9 @@ body {
 
 .current-site {
     background: #0f0f0f;
-    padding: 1rem;
     width: 100%;
     max-width: 50rem;
+    padding: 1rem;
     text-align: center;
 }
 
@@ -272,10 +268,27 @@ body {
     color: #ffffff;
 }
 
+.direction-btn {
+    width: 12rem;
+}
+
+/* I'm Feeling Lucky Button */
+.random-btn {
+    background: #0000BB !important;
+    border-color: #0000FF !important;
+    width: 12rem;
+}
+
+.random-btn:hover {
+    background: #0000AA !important;
+    border-color: #0000EE !important;
+}
+
 /* Add Link Button */
 .add-link-btn {
     background: #059669 !important;
     border-color: #10b981 !important;
+    flex-basis: 100%;
 }
 
 .add-link-btn:hover {

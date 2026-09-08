@@ -12,7 +12,7 @@ import com.example.discover.ui.theme.*
 
 // --- Using Approximation ---
 private val APPROX_SINGLE_CONTROL_BUTTON_WIDTH =
-    Spacing.small * 12 // Adjusted estimate based on "⬅️ Previous" or "🎲 Random"
+    Spacing.small * 12 // Adjusted estimate based on "⬅️ Previous" or "I'm Feeling Lucky"
 private val MIN_INTER_BUTTON_SPACING_ROW = Spacing.small
 private const val NUMBER_OF_MAIN_CONTROL_BUTTONS = 3
 
@@ -103,7 +103,7 @@ private fun RandomButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
             horizontal = Spacing.small, vertical = Spacing.medium
         ), modifier = modifier
     ) {
-        Text("🎲Random", fontSize = MaterialTheme.typography.labelMedium.fontSize)
+        Text("I'm Feeling Lucky", fontSize = MaterialTheme.typography.labelMedium.fontSize)
     }
 }
 
