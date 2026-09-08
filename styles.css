@@ -442,7 +442,7 @@ body {
 }
 
 .error-box {
-    background: rgba(239, 68, 68, 0.1);
+    background: rgba(239, 68, 68, 0.2);
     border-radius: 0.375rem;
     padding: 0.75rem;
 }
@@ -590,7 +590,7 @@ body {
 }
 
 .success-text {
-    color: #00ff00;
+    color: green;
     margin: 0;
     font-size: 1rem;
     font-weight: 500;
