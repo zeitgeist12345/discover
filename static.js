@@ -14,7 +14,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 60,
+            "views": 61,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 4,
@@ -477,7 +477,7 @@ const STATIC = {
                 "positive",
                 "user-submitted"
             ],
-            "views": 135,
+            "views": 136,
             "likesMobile": 1,
             "dislikesMobile": 0,
             "likesDesktop": 2,
@@ -715,7 +715,7 @@ const STATIC = {
                 "daily",
                 "news"
             ],
-            "views": 89,
+            "views": 90,
             "likesMobile": 4,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -893,7 +893,7 @@ const STATIC = {
                 "palestine",
                 "free"
             ],
-            "views": 58,
+            "views": 59,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 1,
@@ -1021,6 +1021,20 @@ const STATIC = {
             "dislikesDesktop": 0
         },
         {
+            "name": "Nablus, Palestine - Radio FM 96.9",
+            "url": "https://radio.garden/visit/nablus/ODZJY3hW",
+            "description": "Radio Garden - Nablus, Palestine - Radio FM 96.9",
+            "tags": [
+                "positive",
+                "learning"
+            ],
+            "views": 0,
+            "likesMobile": 0,
+            "dislikesMobile": 0,
+            "likesDesktop": 0,
+            "dislikesDesktop": 0
+        },
+        {
             "name": "refactoring guru",
             "url": "https://refactoring.guru/",
             "description": "Learn software design patterns.",
@@ -1126,7 +1140,7 @@ const STATIC = {
             "tags": [
                 "positive"
             ],
-            "views": 0,
+            "views": 1,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1310,7 +1324,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 59,
+            "views": 60,
             "likesMobile": 2,
             "dislikesMobile": 1000,
             "likesDesktop": 4,
@@ -1352,7 +1366,7 @@ const STATIC = {
                 "curated",
                 "sample"
             ],
-            "views": 262,
+            "views": 263,
             "likesMobile": 8,
             "dislikesMobile": 0,
             "likesDesktop": 5,
@@ -1385,10 +1399,10 @@ const STATIC = {
                 "learning",
                 "positive"
             ],
-            "views": 81,
+            "views": 82,
             "likesMobile": 1,
             "dislikesMobile": 1,
-            "likesDesktop": 0,
+            "likesDesktop": 1,
             "dislikesDesktop": 0
         },
         {
@@ -1793,7 +1807,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 189,
+            "views": 190,
             "likesMobile": 0,
             "dislikesMobile": 0,
             "likesDesktop": 0,
@@ -1809,7 +1823,7 @@ const STATIC = {
                 "social",
                 "media"
             ],
-            "views": 193,
+            "views": 194,
             "likesMobile": 3,
             "dislikesMobile": 1,
             "likesDesktop": 0,

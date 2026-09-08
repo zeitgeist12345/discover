@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-09-07T12:16:50.770Z",
+    "generatedAt": "2026-09-08T02:33:20.116Z",
     "apiUrl": "https://backenddiscover.duckdns.org:8443",
     "totalLinks": 140
   },
@@ -98,7 +98,7 @@
     "byCountry": [
       {
         "country": "",
-        "count": 2572
+        "count": 2578
       },
       {
         "country": "AE",
@@ -220,7 +220,7 @@
     "byMonth": [
       {
         "month": "202609",
-        "count": 1337
+        "count": 1343
       },
       {
         "month": "202608",
@@ -246,7 +246,7 @@
       },
       {
         "platform": "desktop",
-        "count": 2537
+        "count": 2543
       },
       {
         "platform": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537",
@@ -280,7 +280,7 @@
       },
       {
         "product": "discover-backend",
-        "count": 3476
+        "count": 3482
       }
     ],
     "byOrigin": [
@@ -338,7 +338,7 @@
       },
       {
         "origin": "https://discoverall.space",
-        "count": 584
+        "count": 590
       },
       {
         "origin": "https://www.linkedin.com/",
@@ -364,7 +364,7 @@
       },
       {
         "path": "/getLinks",
-        "count": 2537
+        "count": 2543
       },
       {
         "path": "/home/abirusabil/Documents/github/abirusabil123.github.io/products.html",
@@ -394,11 +394,11 @@
     "byBotStatus": [
       {
         "status": "Human",
-        "count": 3526
+        "count": 3532
       },
       {
         "status": "Bot",
-        "count": 1481
+        "count": 1482
       }
     ]
   },

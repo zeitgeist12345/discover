@@ -150,7 +150,7 @@ object StaticLinks {
             url = "https://highscalability.com/",
             description = "System Design Blogs",
             tags = listOf("positive", "user-submitted"),
-            views = 135,
+            views = 136,
             likesMobile = 1,
             dislikesMobile = 0
         ),
@@ -240,7 +240,7 @@ object StaticLinks {
             url = "https://maktoobmedia.com/",
             description = "News website",
             tags = listOf("positive", "daily", "news"),
-            views = 89,
+            views = 90,
             likesMobile = 4,
             dislikesMobile = 0
         ),
@@ -340,7 +340,7 @@ object StaticLinks {
             url = "https://palestine.com/",
             description = "The website https://palestine.com/.",
             tags = listOf("positive", "daily", "palestine", "free"),
-            views = 58,
+            views = 59,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -406,6 +406,16 @@ object StaticLinks {
         ),
 
         Link(
+            name = "Nablus, Palestine - Radio FM 96.9",
+            url = "https://radio.garden/visit/nablus/ODZJY3hW",
+            description = "Radio Garden - Nablus, Palestine - Radio FM 96.9",
+            tags = listOf("positive", "learning"),
+            views = 0,
+            likesMobile = 0,
+            dislikesMobile = 0
+        ),
+
+        Link(
             name = "refactoring guru",
             url = "https://refactoring.guru/",
             description = "Learn software design patterns.",
@@ -430,7 +440,7 @@ object StaticLinks {
             url = "https://stackedit.io/app#",
             description = "Online markdown editor.",
             tags = listOf("positive"),
-            views = 0,
+            views = 1,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -530,7 +540,7 @@ object StaticLinks {
             url = "https://www.aljazeera.com/",
             description = "International news and current affairs network",
             tags = listOf("positive", "daily", "curated", "sample"),
-            views = 262,
+            views = 263,
             likesMobile = 8,
             dislikesMobile = 0
         ),
@@ -550,7 +560,7 @@ object StaticLinks {
             url = "https://www.aljazeera.com/#flips-6386609485112",
             description = "Short clips from Aljazeera.",
             tags = listOf("aljazeera", "flips", "learning", "positive"),
-            views = 81,
+            views = 82,
             likesMobile = 1,
             dislikesMobile = 1
         ),
@@ -770,7 +780,7 @@ object StaticLinks {
             url = "https://www.teamblind.com/",
             description = "Social media.",
             tags = listOf("positive", "daily", "social", "media"),
-            views = 189,
+            views = 190,
             likesMobile = 0,
             dislikesMobile = 0
         ),
@@ -780,7 +790,7 @@ object StaticLinks {
             url = "https://www.teamblind.com/?sort=id",
             description = "Social media.",
             tags = listOf("positive", "daily", "social", "media"),
-            views = 193,
+            views = 194,
             likesMobile = 3,
             dislikesMobile = 1
         ),
