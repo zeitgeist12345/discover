@@ -375,7 +375,6 @@ body {
 .form-group input.input-error,
 .form-group textarea.input-error {
     background: rgba(239, 68, 68, 0.1) !important;
-    box-shadow: 0 0 0 0.125rem rgba(239, 68, 68, 0.2) !important;
 }
 
 .form-group input::placeholder,
@@ -511,7 +510,6 @@ body {
     border-radius: 50%;
     background-color: yellow;
     /* Default - API failed */
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
     z-index: 9999;
 }
 
@@ -643,7 +641,6 @@ body {
 .filter-mode-option input:checked+span {
     background: green;
     color: white;
-    box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
 }
 
 #individual-filter-section {
