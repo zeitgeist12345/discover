@@ -10,7 +10,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #0f0f0f;
-    color: #ffffff;
+    color: white;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@ body {
 }
 
 .header h1 {
-    color: #ffffff;
+    color: white;
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 300;
@@ -50,7 +50,7 @@ body {
 
 .btn {
     background: #333;
-    color: #ffffff;
+    color: white;
     border: 1px solid #555;
     padding: 1rem 1rem;
     font-size: 1rem;
@@ -139,7 +139,7 @@ body {
 }
 
 .current-site a[href]:not([href="#"]):not([href=""]):hover {
-    color: #ffffff;
+    color: white;
 }
 
 /* Style for the description text */
@@ -201,7 +201,7 @@ body {
 
 .action-btn {
     background: #333;
-    color: #ffffff;
+    color: white;
     border: 1px solid #555;
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -217,7 +217,7 @@ body {
 
 .count-badge {
     background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    color: white;
     padding: 0.5rem 0.5rem;
     border-radius: 0.625rem;
     font-size: 1rem;
@@ -257,13 +257,13 @@ body {
 .likes-btn.liked {
     background: #059669;
     border-color: #10b981;
-    color: #ffffff;
+    color: white;
 }
 
 .dislikes-btn.disliked {
     background: #dc2626;
     border-color: #ef4444;
-    color: #ffffff;
+    color: white;
 }
 
 .direction-btn {
@@ -340,7 +340,7 @@ body {
 }
 
 .modal-header h3 {
-    color: #ffffff;
+    color: white;
     margin: 0;
     font-size: 1rem;
 }
@@ -354,7 +354,7 @@ body {
 }
 
 .close:hover {
-    color: #ffffff;
+    color: white;
 }
 
 /* Form Styles */
@@ -368,7 +368,7 @@ body {
 
 .form-group label {
     display: block;
-    color: #ffffff;
+    color: white;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
@@ -381,7 +381,7 @@ body {
     border: 1px solid #333;
     border-radius: 0.375rem;
     background: #2a2a2a;
-    color: #ffffff;
+    color: white;
     font-size: 1rem;
     transition: border-color 0.2s ease;
 }
@@ -452,7 +452,7 @@ body {
     width: 1rem;
     height: 1rem;
     margin: -0.5rem 0 0 -0.5rem;
-    border: 0.5rem solid #ffffff;
+    border: 0.5rem solid white;
     border-radius: 50%;
     border-top-color: transparent;
     animation: spin 1s linear infinite;
@@ -496,7 +496,7 @@ body {
     width: 2rem;
     height: 2rem;
     border: 0.5rem solid #333;
-    border-top: 0.5rem solid #ffffff;
+    border-top: 0.5rem solid white;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -573,7 +573,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    color: #fff;
+    color: white;
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
@@ -677,7 +677,7 @@ body {
 .filter-mode-option input:checked+span {
     border-color: #4ade80;
     background: #1e3a2f;
-    color: #fff;
+    color: white;
     box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
 }
 
@@ -726,7 +726,7 @@ body {
     max-width: 60rem;
     margin: 0 auto;
     padding: 2rem;
-    color: #fff;
+    color: white;
 }
 
 @media (max-width: 48rem) {
